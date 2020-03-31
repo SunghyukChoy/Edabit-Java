@@ -39,4 +39,15 @@ public class Challenge {
     }
     return true;
   }
+
+  /**
+   * Title : 문제이름
+   * Link : https://edabit.com/challenge/gdRGePvnZDfQGDS8g
+   * @param num1
+   * @param num2
+   * @return
+   */
+  public static boolean isEqual(int num1, int num2) {
+		return num1 == num2;
+  }
 }

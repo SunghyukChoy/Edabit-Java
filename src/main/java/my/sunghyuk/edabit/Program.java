@@ -9,7 +9,7 @@ public class Program {
     String repeatCh = "";
     for (int i = 0; i < s.length(); i++) {
       char ch = s.charAt(i);
-      repeatCh += ch + ch;
+      repeatCh += "" + ch + ch;
       // System.out.println(repeatCh);
     }
 
