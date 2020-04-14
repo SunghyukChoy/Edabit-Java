@@ -33,8 +33,30 @@ public class Program {
       return words[1] + " " + words[0];
   }
 
+  /*
+	 * title : Phone Number Formatting
+	 * link : https://edabit.com/challenge/sPz2LcPZyAiBHRgwX
+	 */
   public static String formatPhoneNumber(int[] nums) {
-		
+    String firstWord = "(";
+    String secondWord = " ";
+    String thirdWord = "-";
+    
+
+    for(int i = 0; i <= 2; i++) {
+      firstWord += ("" + nums[i]);
+    }
+    firstWord = firstWord + ")";
+    
+    for(int i = 3; i <= 5; i++) {
+      secondWord += ("" + nums[i]);
+    }
+
+    for (int i = 6; i <= 9; i++) {
+      thirdWord += ("" + nums[i]);
+    }
+
+    return firstWord + secondWord + thirdWord;
 	}
 
   
