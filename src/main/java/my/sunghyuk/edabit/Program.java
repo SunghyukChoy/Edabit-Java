@@ -33,5 +33,9 @@ public class Program {
       return words[1] + " " + words[0];
   }
 
+  public static String formatPhoneNumber(int[] nums) {
+		
+	}
+
   
 }

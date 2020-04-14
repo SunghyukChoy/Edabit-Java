@@ -8,6 +8,25 @@ public class App
 {
     public static void main( String[] args )
     {
+        final String FULL_STAR = "★";
+        final String FULL_EMPTY_STAR = "☆";
+        final String HALF_STAR = "별 반개";
         
+
+        int rate = 7;
+        System.out.println("expected : ★★★별 반개☆");
+
+        System.out.print("actual : ");
+        for (int i = 0; i < 10; i += 2) {
+            int val = (rate - i - 2);
+            if(val >= 0) {
+                System.out.print(FULL_STAR);
+            } else if(val < 0 && val == -1){
+                System.out.print(HALF_STAR);
+            } else {
+                System.out.print(FULL_EMPTY_STAR);
+            }
+        }
+
     }
 }
