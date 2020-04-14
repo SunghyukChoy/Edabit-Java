@@ -45,6 +45,7 @@ public class Program {
 
     for(int i = 0; i <= 2; i++) {
       firstWord += ("" + nums[i]);
+                  // 숫자를 문자로 변환하는 방법.
     }
     firstWord = firstWord + ")";
     
@@ -57,7 +58,12 @@ public class Program {
     }
 
     return firstWord + secondWord + thirdWord;
-	}
+  }  
+  
+  public static int length(String str) {
+    return str.length();
+            //.length 아닌 length() 메서드.    
+  } 
 
   
 }

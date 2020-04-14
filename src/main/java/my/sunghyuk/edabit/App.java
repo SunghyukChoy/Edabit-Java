@@ -4,10 +4,9 @@ package my.sunghyuk.edabit;
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
+public class App {
+    public static void main( String[] args ) {
+        /* 정수만큼 별 찍는 로직
         final String FULL_STAR = "★";
         final String FULL_EMPTY_STAR = "☆";
         final String HALF_STAR = "별 반개";
@@ -26,7 +25,11 @@ public class App
             } else {
                 System.out.print(FULL_EMPTY_STAR);
             }
-        }
+        } 
+        */
 
+        int a = 0;
+        int b = 5;
+        System.out.println(a/b);
     }
 }

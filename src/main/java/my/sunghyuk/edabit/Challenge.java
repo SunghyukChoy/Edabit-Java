@@ -141,6 +141,82 @@ public class Challenge {
 			 equalCount = 2;
 		}
 		return equalCount;
+  }
+  
+  /*
+	 * title : Repeating Letters N Times
+   * link : https://edabit.com/challenge/HDk4PC9w6KPS3X25W
+	*/  
+  public static String repeat(String str, int n) {
+		// 문자열의 길이만큼 돌림
+		// n만큼 문자 반복함
+    String repeatWord = "";
+    for(int i = 0; i < str.length(); i++) {
+			for(int j = 0; j < n; j++) {
+				repeatWord += str.charAt(i);
+			}
+    }
+    return repeatWord;    
 	}
+
+	/*
+	 * title : Basic Calculator
+   * link : https://edabit.com/challenge/gyfsGx7KrGLscxFrD
+	*/ 
+
+	/* public static int calculator(int num1, char operator, int num2) {
+		int result = 0;
+		if(operator == '+') {
+			result = num1 + num2;
+		} else if(operator == '-') {
+			result = num1 - num2;			
+		} else if(operator == '*') {
+			result = num1 * num2;
+		} else if(operator == '/') {
+			if(num2 == 0) {
+				result = 0;
+			} else {
+				result = num1 / num2;
+			}
+		}
+		return result;
+	} */
+
+	public static int calculator(int num1, char operator, int num2) {
+		switch(operator) {
+			case '+' : return num1 + num2;
+			case '-' : return num1 - num2;
+			case '*' : return num1 * num2;			
+			case '/' : return (num2 != 0) ? num1 / num2 : 0;
+		}
+		return 0;		// 잘못된 operator 입력 시 0으로 리턴.
+	}
+	
+	/*
+	 * title : How Many Vowels?
+   * link : https://edabit.com/challenge/GBKphScsmDi9ek3ra
+	*/ 
+
+	public static int getVowelsCount(String str) {
+		int vowelsCount = 0;
+		
+		for (int i = 0; i < str.length(); i++) {
+			if(str.charAt(i) == 'a' || str.charAt(i) == 'e' || str.charAt(i) == 'i' || str.charAt(i) == 'o' || str.charAt(i) == 'u') {
+				vowelsCount++;
+			}
+		}   
+    return vowelsCount;
+	} 
+	
+	/* public static int getVowelsCount(String str) {
+		char[] vowels = {'a','e','i','o','u'};
+		int vowelsCount = 0;
+
+		for (int i = 0; i < str.length(); i++) {
+			
+				
+			
+		}
+	} */
 	
 }
