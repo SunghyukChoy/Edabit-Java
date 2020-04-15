@@ -28,8 +28,11 @@ public class App {
         } 
         */
 
-        int a = 0;
-        int b = 5;
-        System.out.println(a/b);
+        // int a = 0;
+        // int b = 5;
+        // System.out.println(a/b); 
+
+        String word = "abcde";
+        System.out.println(word.charAt(word.length()-1) + word.substring(1, word.length()-1) + word.charAt(0));
     }
 }

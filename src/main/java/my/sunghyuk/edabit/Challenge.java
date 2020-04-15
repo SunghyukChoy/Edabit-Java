@@ -41,7 +41,9 @@ public class Challenge {
 	}
 
 	/**
-	 * Title : 문제이름 Link : https://edabit.com/challenge/gdRGePvnZDfQGDS8g
+	 * 문제이름
+	 * 
+	 * @see https://edabit.com/challenge/gdRGePvnZDfQGDS8g
 	 * 
 	 * @param num1
 	 * @param num2
@@ -55,9 +57,10 @@ public class Challenge {
 		return hours * 3600;
 	}
 
-	/*
-	 * title : The 3 Programmers Problem link :
-	 * https://edabit.com/challenge/akHQKSkHT26TuA7Ka
+	/**
+	 * The 3 Programmers Problem
+	 * 
+	 * @see https://edabit.com/challenge/akHQKSkHT26TuA7Ka
 	 */
 
 	// 첫 답안 제출.
@@ -97,126 +100,309 @@ public class Challenge {
 
 	// by Seon
 	/*
-	 * public static int programmers(int... arr) { // ... : 가변인자. 전달 받는 매겨 변수의 개수 유동적. 
-	 * int maxNum = Integer.MIN_VALUE;
-	 *  int minNum = Integer.MAX_VALUE;
-	 *  for(int i = 0; i < arr.length; i++) {
-	 * 		maxNum = Math.max(maxNum, arr[i]);
-	 * 		minNum = Math.min(minNum, arr[i]);
-	 *  }
-	 *  	return maxNum - minNum;
-	 *  }
+	 * public static int programmers(int... arr) { // ... : 가변인자. 전달 받는 매겨 변수의 개수
+	 * 유동적. int maxNum = Integer.MIN_VALUE; int minNum = Integer.MAX_VALUE; for(int
+	 * i = 0; i < arr.length; i++) { maxNum = Math.max(maxNum, arr[i]); minNum =
+	 * Math.min(minNum, arr[i]); } return maxNum - minNum; }
 	 */
-		
-	 // 미완성본 다시 생각해 볼 것.
-	/* public static int equal(int a, int b, int c) {
-		boolean aEqualB = (a == b) ? true : false;
-		boolean aEqualC = (a == c) ? true : false;
-		boolean bEqaulC = (b == c) ? true : false;
 
-		
-		int result = 0;
-		if(aEqualB || aEqualC) {
-			if(aEqualC || aEqualB) {
-				result = 3;
-			} else {
-				result = 2;
-			}
-		}
-		if(bEqaulC) {
-			result = 2;
-		}
-		return result;
-	} */
+	// 미완성본 다시 생각해 볼 것.
+	/*
+	 * public static int equal(int a, int b, int c) { boolean aEqualB = (a == b) ?
+	 * true : false; boolean aEqualC = (a == c) ? true : false; boolean bEqaulC = (b
+	 * == c) ? true : false;
+	 * 
+	 * 
+	 * int result = 0; if(aEqualB || aEqualC) { if(aEqualC || aEqualB) { result = 3;
+	 * } else { result = 2; } } if(bEqaulC) { result = 2; } return result; }
+	 */
 
-	 // by Seon
+	// by Seon
 	public static int equal(int a, int b, int c) {
 		int equalCount = a == b ? 2 : 0;
-		
+
 		if (equalCount == 2 && b == c) {
-			 equalCount = 3;
+			equalCount = 3;
 		} else if (equalCount == 0 && b == c) {
-			 equalCount = 2;
+			equalCount = 2;
 		} else if (equalCount == 0 && a == c) {
-			 equalCount = 2;
+			equalCount = 2;
 		}
 		return equalCount;
-  }
-  
-  /*
-	 * title : Repeating Letters N Times
-   * link : https://edabit.com/challenge/HDk4PC9w6KPS3X25W
-	*/  
-  public static String repeat(String str, int n) {
+	}
+
+	/*
+	 * Repeating Letters N Times link :
+	 * https://edabit.com/challenge/HDk4PC9w6KPS3X25W
+	 */
+	public static String repeat(String str, int n) {
 		// 문자열의 길이만큼 돌림
 		// n만큼 문자 반복함
-    String repeatWord = "";
-    for(int i = 0; i < str.length(); i++) {
-			for(int j = 0; j < n; j++) {
+		String repeatWord = "";
+		for (int i = 0; i < str.length(); i++) {
+			for (int j = 0; j < n; j++) {
 				repeatWord += str.charAt(i);
 			}
-    }
-    return repeatWord;    
+		}
+		return repeatWord;
 	}
 
-	/*
-	 * title : Basic Calculator
-   * link : https://edabit.com/challenge/gyfsGx7KrGLscxFrD
-	*/ 
+	/**
+	 * Basic Calculator
+	 * 
+	 * @see https://edabit.com/challenge/gyfsGx7KrGLscxFrD
+	 */
 
-	/* public static int calculator(int num1, char operator, int num2) {
-		int result = 0;
-		if(operator == '+') {
-			result = num1 + num2;
-		} else if(operator == '-') {
-			result = num1 - num2;			
-		} else if(operator == '*') {
-			result = num1 * num2;
-		} else if(operator == '/') {
-			if(num2 == 0) {
-				result = 0;
-			} else {
-				result = num1 / num2;
-			}
-		}
-		return result;
-	} */
+	/*
+	 * public static int calculator(int num1, char operator, int num2) { int result
+	 * = 0; if(operator == '+') { result = num1 + num2; } else if(operator == '-') {
+	 * result = num1 - num2; } else if(operator == '*') { result = num1 * num2; }
+	 * else if(operator == '/') { if(num2 == 0) { result = 0; } else { result = num1
+	 * / num2; } } return result; }
+	 */
 
 	public static int calculator(int num1, char operator, int num2) {
-		switch(operator) {
-			case '+' : return num1 + num2;
-			case '-' : return num1 - num2;
-			case '*' : return num1 * num2;			
-			case '/' : return (num2 != 0) ? num1 / num2 : 0;
+		switch (operator) {
+			case '+':
+				return num1 + num2;
+			case '-':
+				return num1 - num2;
+			case '*':
+				return num1 * num2;
+			case '/':
+				return (num2 != 0) ? num1 / num2 : 0;
 		}
-		return 0;		// 잘못된 operator 입력 시 0으로 리턴.
+		return 0; // 잘못된 operator 입력 시 0으로 리턴.
 	}
-	
-	/*
-	 * title : How Many Vowels?
-   * link : https://edabit.com/challenge/GBKphScsmDi9ek3ra
-	*/ 
+
+	/**
+	 * How Many Vowels?
+	 * 
+	 * @see https://edabit.com/challenge/GBKphScsmDi9ek3ra
+	 */
 
 	public static int getVowelsCount(String str) {
 		int vowelsCount = 0;
-		
-		for (int i = 0; i < str.length(); i++) {
-			if(str.charAt(i) == 'a' || str.charAt(i) == 'e' || str.charAt(i) == 'i' || str.charAt(i) == 'o' || str.charAt(i) == 'u') {
-				vowelsCount++;
-			}
-		}   
-    return vowelsCount;
-	} 
-	
-	/* public static int getVowelsCount(String str) {
-		char[] vowels = {'a','e','i','o','u'};
-		int vowelsCount = 0;
 
 		for (int i = 0; i < str.length(); i++) {
-			
-				
-			
+			if (str.charAt(i) == 'a' || str.charAt(i) == 'e' || str.charAt(i) == 'i' || str.charAt(i) == 'o'
+					|| str.charAt(i) == 'u') {
+				vowelsCount++;
+			}
 		}
-	} */
-	
+		return vowelsCount;
+	}
+
+	/*
+	 * 다시 풀어볼 것. 위의 if문의 반복되는 부분을 배열 이용해서 해결해 보기 public static int
+	 * getVowelsCount(String str) { char[] vowels = {'a','e','i','o','u'}; int
+	 * vowelsCount = 0; * for (int i = 0; i < str.length(); i++) {
+	 * 
+	 * 
+	 * 
+	 * } }
+	 */
+
+	/**
+	 * Scoring System
+	 * 
+	 * @see https://edabit.com/challenge/FRtmuYD26pcQWFR7k
+	 */
+
+	public static int[] calculateScores(String str) {
+		// 문재 갯수를 정수로 리턴
+		int aCount = 0;
+		int bCount = 0;
+		int cCount = 0;
+
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) == 'A') {
+				aCount++;
+			} else if (str.charAt(i) == 'B') {
+				bCount++;
+			} else if (str.charAt(i) == 'C') {
+				cCount++;
+			}
+		}
+
+		int[] result = { aCount, bCount, cCount };
+		// call by value로 값 '0' 복사.
+		// 자료형이 기본형인 경우 call by value
+		// 자료형이 클래스형인 경우 call by ref.
+		return result;
+	}
+
+	private static final int INDEX_OF_A = 0;
+	private static final int INDEX_OF_B = 1;
+	private static final int INDEX_OF_C = 2;
+
+	public static int[] calculateScoresDevelop(String str) {
+		int[] result = { 0, 0, 0 };
+
+		for (int i = 0; i < str.length(); i++) {
+			char ch = str.charAt(i);
+			switch (ch) {
+				case 'A':
+					result[INDEX_OF_A]++;
+					break;
+				case 'B':
+					result[INDEX_OF_B]++;
+					break;
+				case 'C':
+					result[INDEX_OF_C]++;
+					break;
+				default:
+					break;
+			}
+		}
+		return result;
+	}
+
+	/*
+	 * Reverse the Order of a String link :
+	 * https://edabit.com/challenge/5gPCp7v7iDWZvb4YQ
+	 */
+
+	public static String reverse(final String str) {
+		// str을 char 하나씩 뽑아 배열로 저장 # 필요없음
+		// char[] words = str.toCharArray(); // 문자열을 char 배열로 저장하는 방법
+
+		// 그 배열을 역순으로 출력
+		String reverse = "";
+
+		// #1 방법 // example : str = Hello World!
+		for (int i = str.length() - 1; i >= 0; i--) {
+			reverse += str.charAt(i);
+		}
+		// #2 방법
+		for (int i = 0; i < str.length(); i++) {
+			reverse += str.charAt(str.length() - i - 1);
+		}
+
+		// #2-1 방법 : StringBuffer
+		StringBuffer buffer = new StringBuffer();
+		for (int i = 0; i < str.length(); i++) {
+			buffer.append(str.charAt(str.length() - i - 1));
+		}
+
+		return buffer.toString(); // <-- 이 시점에 String 형으로 메모리로 할당되서 사용 가능
+
+		// #3 방법
+		// StringBuffer bufReverse = new StringBuffer(str);
+		// return bufReverse.reverse().toString();
+	}
+
+	public static void exampleImmutable() {
+		// 번외
+		// StringBuffer, StringBuilder
+
+		// 불변객체 : Immutable Object => String, LocalDateTime : 대표적인 불변객체
+		String x = "1234";
+		x += "567"; // 1234567
+		x += "777";
+		x += "888";
+		// 문자열 추가할 때마다 메모리 할당, 메모리 해제 작업 반복. 문자열이 길어질수록 자원 소모 심해짐.
+
+		// char[]
+		/*
+		 * 
+		 * [ String x ] #12 <-- memory address <-- Release(메모리 해제) : Garbage Collector 가
+		 * 회수 index 0 1 2 3 memory value [1][2][3][4] + [5][6][7] // wrong. 기존 주소가 갖고 있던
+		 * 값에 추가하는 것 아님.
+		 * 
+		 * // x에 문자열 추가 시 #12 메모리 해제 #223 // 메모리 할당 다시. 새로운 주소. index 0 1 2 3 4 5 6
+		 * memory value [1][2][3][4][5][6][7]
+		 * 
+		 * // StringBuffer, StringBuilder 클래스 객체는 메모리를 다시 할당하지 않고도 문자열 추가 가능.
+		 */
+	}
+
+	/**
+	 * Shapes With N Sides
+	 * 
+	 * @see https://edabit.com/challenge/odJPfYRD3kSpE45Jf
+	 */
+	public static String nSidedShape(int n) {
+		String[] result = { "circle", "semi-circle", "triangle", "square", "pentagon", "hexagon", "heptagon", "octagon",
+				"nonagon", "decagon" };
+		return result[n - 1];
+	}
+
+	/**
+	 * Hashes and Pluses
+	 * 
+	 * @see https://edabit.com/challenge/s8RHRY9hfmvYMuaeC
+	 */
+	public static int[] hashPlusCount(String s) {
+		int hashCount = 0;
+		int plusCount = 0;
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) == '#') {
+				hashCount++;
+			} else if (s.charAt(i) == '+') {
+				plusCount++;
+			}
+		}
+		int[] result = { hashCount, plusCount };
+		return result;
+	}
+
+	/**
+	 * Special Arrays
+	 * 
+	 * @see https://edabit.com/challenge/YmeiRhzaiR3MCPBiT
+	 * @param arr
+	 * @return all element are special (boolean)
+	 */
+	public static boolean isSpecialArray(int[] arr) {
+		// 배열의 짝수 인덱스 == 짝수 && 홀수 인덱스 == 홀수 return true
+		// otherwise return false. 인덱스 0은 짝수 인덱스.
+
+		/*
+		 * boolean evenFlag, oddFlag;
+		 * 
+		 * for (int i = 0; i < arr.length; i++) { if(arr[i] % 2 == 0) { evenFlag = true;
+		 * i++; } else if (arr[i] % 2 != 0) { evenFlag = false; i++; } }
+		 */
+
+		// return isEven(arr) && isOdd(arr);
+
+		for (int i = 0; i < arr.length; i++) {
+			if (isEven(i) && !isEven(arr[i])) { // if index is even and element is not even
+				return false;
+			} else if (isOdd(i) && !isOdd(arr[i])) { // if index is odd and element is not odd
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	private static boolean isEven(int value) {
+		return value % 2 == 0;
+	}
+
+	private static boolean isOdd(int value) {
+		return !isEven(value);
+	}
+
+	private static boolean isEven(int[] arr) {
+
+		for (int i = 0; i < arr.length; i += 2) {
+			if (arr[i] % 2 != 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private static boolean isOdd(int[] arr) {
+
+		for (int i = 1; i < arr.length; i += 2) {
+			if (arr[i] % 2 == 0) {
+				return false;
+			}
+		}
+		return true;
+	}
 }
