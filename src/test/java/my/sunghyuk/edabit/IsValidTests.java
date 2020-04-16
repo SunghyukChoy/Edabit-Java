@@ -54,4 +54,14 @@ public class IsValidTests {
 	public void test9() {
 		assertEquals(true, Challenge.isValid("06609"));
 	}
+
+	@Test 
+	public void test10() {
+		assertEquals(true, Challenge.isValid("-6609"));
+	}
+
+	@Test 
+	public void test11() {
+		assertEquals(true, Challenge.isValid("0x123"));
+	}
 }
