@@ -4,7 +4,7 @@ import static org.hamcrest.core.Is.is;
 import org.junit.Test;
 import static org.junit.Assert.assertThat;
 
-public class canCaptureTests {
+public class CanCaptureTests {
 	@Test 
 	public void test1() {
 		assertThat(Challenge.canCapture(new String[]{"A8", "E8"}), is(true));

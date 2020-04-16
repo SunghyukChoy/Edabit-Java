@@ -412,11 +412,12 @@ public class Challenge {
 
 	/**
 	 * Valid Zip Code
+	 * 
 	 * @see https://edabit.com/challenge/SmKPaHy5uY2gMk9na
 	 * @param zip
 	 * @return
 	 */
-	public static boolean isValid(String zip) {		
+	public static boolean isValid(String zip) {
 		// 1. 문자열이 다 숫자인가?
 		// 2. 공백이 있는가?
 		// 3. 5자리인가?
@@ -518,6 +519,7 @@ public class Challenge {
 
 	/**
 	 * Capture the Rook
+	 * 
 	 * @see https://edabit.com/challenge/rYD9NTBmNhaPM6wx2
 	 * @param rooks
 	 * @return
@@ -525,22 +527,27 @@ public class Challenge {
 	public static boolean canCapture(String[] rooks) {
 		// 1. 배열의 0번과 1번 인덱스의 문자열을 비교
 		// 2. 문자열의 첫번째 문자(문자)가 같거나 두번째 문자(숫자)가 같으면 true
-		// 3. otherwise false	
-		
+		// 3. otherwise false
+
 		if (rooks[0].charAt(0) == rooks[1].charAt(0) || rooks[0].charAt(1) == rooks[1].charAt(1)) {
 			return true;
-		} 
+		}
 		return false;
 	}
 
 	/**
 	 * Check if String Ending Matches Second String
+	 * 
 	 * @see https://edabit.com/challenge/PZnwXraqBPYv7w4Sm
 	 * @param str1
 	 * @param str2
 	 * @return
 	 */
 	public static boolean checkEnding(String str1, String str2) {
-    
-  }
+		// 1. str1과 str2의 마지막 문자가 같으면 true. otherwise false
+		if (str1.charAt(str1.length() - 1) == str2.charAt(str2.length() - 1)) {
+			return true;
+		}
+		return false;
+	}
 }

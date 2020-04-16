@@ -4,7 +4,7 @@ import static org.hamcrest.core.Is.is;
 import org.junit.Test;
 import static org.junit.Assert.assertThat;
 
-public class isSpecialArrayTests {
+public class IsSpecialArrayTests {
 	@Test
 	public void test1() {
 		assertThat(Challenge.isSpecialArray(new int[] { 2, 7, 4, 9, 6, 1, 6, 3 }), is(true));
