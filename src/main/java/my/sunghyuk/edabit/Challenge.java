@@ -131,9 +131,13 @@ public class Challenge {
 		return equalCount;
 	}
 
-	/*
-	 * Repeating Letters N Times link :
-	 * https://edabit.com/challenge/HDk4PC9w6KPS3X25W
+	/**
+	 * Repeating Letters N Times
+	 * 
+	 * @see https://edabit.com/challenge/HDk4PC9w6KPS3X25W
+	 * @param str
+	 * @param n
+	 * @return
 	 */
 	public static String repeat(String str, int n) {
 		// 문자열의 길이만큼 돌림
@@ -408,10 +412,11 @@ public class Challenge {
 
 	/**
 	 * Valid Zip Code
-	 * 
 	 * @see https://edabit.com/challenge/SmKPaHy5uY2gMk9na
+	 * @param zip
+	 * @return
 	 */
-	public static boolean isValid(String zip) {
+	public static boolean isValid(String zip) {		
 		// 1. 문자열이 다 숫자인가?
 		// 2. 공백이 있는가?
 		// 3. 5자리인가?
@@ -495,11 +500,11 @@ public class Challenge {
 		}
 		// String result = "";
 		// for (int i = 0; i < charArray.length; i++) {
-		// 	result += charArray[i];
+		// result += charArray[i];
 		// }
 		// return result;
 
-		return new String(charArray);	// char 배열을 문자열로 반환
+		return new String(charArray); // char 배열을 문자열로 반환
 	}
 
 	private static boolean isVowel(char ch) {
@@ -510,4 +515,32 @@ public class Challenge {
 		}
 		return false;
 	}
+
+	/**
+	 * Capture the Rook
+	 * @see https://edabit.com/challenge/rYD9NTBmNhaPM6wx2
+	 * @param rooks
+	 * @return
+	 */
+	public static boolean canCapture(String[] rooks) {
+		// 1. 배열의 0번과 1번 인덱스의 문자열을 비교
+		// 2. 문자열의 첫번째 문자(문자)가 같거나 두번째 문자(숫자)가 같으면 true
+		// 3. otherwise false	
+		
+		if (rooks[0].charAt(0) == rooks[1].charAt(0) || rooks[0].charAt(1) == rooks[1].charAt(1)) {
+			return true;
+		} 
+		return false;
+	}
+
+	/**
+	 * Check if String Ending Matches Second String
+	 * @see https://edabit.com/challenge/PZnwXraqBPYv7w4Sm
+	 * @param str1
+	 * @param str2
+	 * @return
+	 */
+	public static boolean checkEnding(String str1, String str2) {
+    
+  }
 }

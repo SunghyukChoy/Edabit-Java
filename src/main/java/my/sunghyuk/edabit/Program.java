@@ -1,10 +1,11 @@
 package my.sunghyuk.edabit;
 
-/**
- * Program
- */
-public class Program {
 
+public class Program {
+  /**
+ * Repeating Letters
+ * @see https://edabit.com/challenge/KeX3ZcaPo3sEqXTYb
+ */
   public static String doubleChar(String s) {
     String repeatCh = "";
     for (int i = 0; i < s.length(); i++) {
@@ -30,9 +31,9 @@ public class Program {
     return words[1] + " " + words[0];
   }
 
-  /*
-   * title : Phone Number Formatting link :
-   * https://edabit.com/challenge/sPz2LcPZyAiBHRgwX
+  /**
+   * Phone Number Formatting
+   * @see https://edabit.com/challenge/sPz2LcPZyAiBHRgwX
    */
   public static String formatPhoneNumber(int[] nums) {
     String firstWord = "(";
