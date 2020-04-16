@@ -32,7 +32,13 @@ public class App {
         // int b = 5;
         // System.out.println(a/b); 
 
-        String word = "abcde";
-        System.out.println(word.charAt(word.length()-1) + word.substring(1, word.length()-1) + word.charAt(0));
+        // String word = "abcde";
+        // System.out.println(word.charAt(word.length()-1) + word.substring(1, word.length()-1) + word.charAt(0));
+
+        String num = "123a";
+        int parseint = Integer.parseInt(num);
+        System.out.println(parseint);
+
+        
     }
 }

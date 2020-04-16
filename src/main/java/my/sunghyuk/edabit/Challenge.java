@@ -405,4 +405,74 @@ public class Challenge {
 		}
 		return true;
 	}
+
+	/**
+	 * Valid Zip Code
+	 * 
+	 * @see https://edabit.com/challenge/SmKPaHy5uY2gMk9na
+	 */
+	public static boolean isValid(String zip) {
+		// 1. 문자열이 다 숫자인가?
+		// 2. 공백이  있는가?
+		// 3. 5자리인가?
+		// 문자열 zip이 다섯자리의 숫자인가 return true; otherwise return false;
+		try {	// zip 문자열에 숫자가 아닌 문자 존재 시 NumberFormatException 에러 발생
+			int zipNum = Integer.parseInt(zip);	// 문자열을 정수로 변환. 
+
+			// if (!(zipNum >= 10000 && zipNum <= 99999)) {	
+												// "06636"의 경우 "6636"과 구분 불가.
+			// 	return false;
+			// }
+			if(zip.length() != 5) {	// 문자열의 길이가 5가 아니면 false return
+				return false;
+			}
+			return true;	// 위의 경우들에 해당하지 않으면 true 
+
+		} catch (NumberFormatException e) {
+			return false;
+		}
+	}
+
+	// 유효성 검사를 하는 일반적인 형태, 방법
+	// 조건을 하나씩 적용하여 조건에 따라 return 값 설정
+	public static boolean isValidation(String zip) {
+
+		if (isAnyNotNumberCharacter(zip))
+			return false;
+		
+		if (isAnyEmptySpaceCharacter(zip))
+			return false;
+
+		if (zip.length() != 5)
+			return false;
+
+		return true;	// 위의 경우가 아닐 때 true 리턴
+	}
+
+	private static boolean isAnyEmptySpaceCharacter(String zip) {
+		// TODO: 구현 필요 -> 문자들에 공백(" ")이 존재하는가
+		return true;
+	}
+
+	private static boolean isAnyNotNumberCharacter(String zip) {
+		// TODO: 구현 필요 -> 문자열이 숫자가 아닌게 존재하는가
+		return true;
+	}
+
+	// 메시지 출력 메서드
+	public static String isValidationStr(String zip) {
+
+		String message = "";
+
+		if (isAnyEmptySpaceCharacter(zip))
+			message += "문자열이 다 숫자가 아닙니다.\n";
+		
+		if (isAnyNotNumberCharacter(zip))
+			message += "문자열에 공백이 있습니다.\n";
+
+		if (zip.length() != 5)
+			message += "문자열이 5자리가 아닙니다.\n";
+
+		return message;
+	}
 }
