@@ -1,7 +1,5 @@
 package my.sunghyuk.edabit;
 
-import java.util.Arrays;
-
 /**
  * Challenge
  */
@@ -367,11 +365,11 @@ public class Challenge {
 		/*
 		 * boolean evenFlag, oddFlag;
 		 * 
-		 * for (int i = 0; i < arr.length; i++) { if(arr[i] % 2 == 0) { evenFlag = true;
-		 * i++; } else if (arr[i] % 2 != 0) { evenFlag = false; i++; } }
+		 * for (int i = 0; i < arr.length; i++) { if (arr[i] % 2 == 0) { evenFlag =
+		 * true; i++; } else if (arr[i] % 2 != 0) { evenFlag = false; i++; } }
+		 * 
+		 * return isEven(arr) && isOdd(arr);
 		 */
-
-		// return isEven(arr) && isOdd(arr);
 
 		for (int i = 0; i < arr.length; i++) {
 			if (isEven(i) && !isEven(arr[i])) { // if index is even and element is not even
@@ -555,24 +553,26 @@ public class Challenge {
 
 	/**
 	 * Spaces Between Each Character
+	 * 
 	 * @see https://edabit.com/challenge/ryEdPW2eqyngyWayy
 	 * @param str
 	 * @return
 	 */
 	public static String spaceMeOut(String str) {
 		// str 문자열 사이에 공백 넣기
-		char[] characters = str.toCharArray();		
+		char[] characters = str.toCharArray();
 		String spaceWord = "";
 
 		for (int i = 1; i < characters.length; i++) {
-			spaceWord += characters[i-1] + " ";
+			spaceWord += characters[i - 1] + " ";
 		}
-		spaceWord = spaceWord + str.charAt(str.length()-1);
-		return spaceWord; 		
+		spaceWord = spaceWord + str.charAt(str.length() - 1);
+		return spaceWord;
 	}
 
 	/**
 	 * Difference of Max and Min Numbers in Array
+	 * 
 	 * @see https://edabit.com/challenge/hymPkXdhmDQLe87QT
 	 * @param arr
 	 * @return
@@ -581,15 +581,31 @@ public class Challenge {
 		int maxValue = Integer.MIN_VALUE;
 		int minValue = Integer.MAX_VALUE;
 		for (int i = 0; i < arr.length; i++) {
-			if(arr[i] >= maxValue) {
+			if (arr[i] >= maxValue) {
 				maxValue = arr[i];
 			}
-			if(arr[i] <= minValue) {
+			if (arr[i] <= minValue) {
 				minValue = arr[i];
 			}
 		}
-		System.out.println(maxValue);
-		System.out.println(minValue);
 		return maxValue - minValue;
+
+		// 이거 왜 안 되는지 모르겠음..
+		// int maxValue = arr[0];
+		// int minValue = arr[0];
+		// for (int i = 1; i < arr.length; i++) {
+		// if (arr[i] >= arr[i - 1]) {
+		// maxValue = arr[i];
+		// }
+		// if (arr[i] <= arr[i - 1]) {
+		// minValue = arr[i];
+		// } else {
+		// minValue = arr[0];
+		// }
+		// }
+		// System.out.println(maxValue);
+		// System.out.println(minValue);
+		// return maxValue - minValue;
 	}
+
 }

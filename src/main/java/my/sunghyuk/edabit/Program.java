@@ -1,11 +1,11 @@
 package my.sunghyuk.edabit;
 
-
 public class Program {
   /**
- * Repeating Letters
- * @see https://edabit.com/challenge/KeX3ZcaPo3sEqXTYb
- */
+   * Repeating Letters
+   * 
+   * @see https://edabit.com/challenge/KeX3ZcaPo3sEqXTYb
+   */
   public static String doubleChar(String s) {
     String repeatCh = "";
     for (int i = 0; i < s.length(); i++) {
@@ -33,6 +33,7 @@ public class Program {
 
   /**
    * Phone Number Formatting
+   * 
    * @see https://edabit.com/challenge/sPz2LcPZyAiBHRgwX
    */
   public static String formatPhoneNumber(int[] nums) {
@@ -62,9 +63,10 @@ public class Program {
     // .length 아닌 length() 메서드.
   }
 
-  /*
-   * title : Xs and Os, Nobody Knows link :
-   * https://edabit.com/challenge/bkFqwEP5Gej23didA
+  /**
+   * Xs and Os, Nobody Knows link :
+   * 
+   * @see https://edabit.com/challenge/bkFqwEP5Gej23didA
    */
   public static boolean getXO(String str) {
     // 문자열에서 o,x 갯수 알아내기
@@ -83,22 +85,23 @@ public class Program {
     return xCount == oCount;
   }
 
-  /*
-   * title : Switcharoo 
-   * https://edabit.com/challenge/c52kNwPuWo5kp9x4H
+  /**
+   * Switcharoo
+   * 
+   * @see https://edabit.com/challenge/c52kNwPuWo5kp9x4H
    */
   public static String flipEndChars(String s) {
 
     String flipWord = "";
     // char firstChar = s.charAt(0);
     // char lastChar = s.charAt(s.length()-1);
-    
+
     if (s.length() < 2) {
       flipWord = "Incompatible.";
-    } else if (s.charAt(0) == s.charAt(s.length()-1)) {
+    } else if (s.charAt(0) == s.charAt(s.length() - 1)) {
       flipWord = "Two's a pair.";
     } else {
-      flipWord = s.charAt(s.length()-1) + s.substring(1, s.length() - 1) + s.charAt(0);
+      flipWord = s.charAt(s.length() - 1) + s.substring(1, s.length() - 1) + s.charAt(0);
     }
     return flipWord;
   }
@@ -111,9 +114,9 @@ public class Program {
 
     if (validationMessage != "")
       return validationMessage;
-    
+
     char firstChar = s.charAt(0);
-    char lastChar = s.charAt(s.length()-1);
+    char lastChar = s.charAt(s.length() - 1);
 
     return lastChar + s.substring(1, s.length() - 1) + firstChar;
   }
@@ -121,10 +124,23 @@ public class Program {
   private static String isValid(String s) {
     if (s.length() < 2)
       return "Incompatible.";
-  
+
     if (s.charAt(0) == s.charAt(s.length() - 1))
       return "Two's a pair.";
 
     return "";
+  }
+
+  /**
+   * Get Word Count
+   * 
+   * @see https://edabit.com/challenge/5LnycSd2xT4uwZCpi
+   * @param s
+   * @return
+   */
+  public static int countWords(String s) {
+    // s 문자열의 단어 갯수 출력
+    String[] wordsArray = s.split(" "); // " " 구분자로 문자열을 쪼갬. 나눈 문자열을 배열로 저장
+    return wordsArray.length; // 배열의 길이 출력
   }
 }
