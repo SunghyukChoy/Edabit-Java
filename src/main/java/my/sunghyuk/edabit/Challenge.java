@@ -550,4 +550,22 @@ public class Challenge {
 		}
 		return false;
 	}
+
+	/**
+	 * Spaces Between Each Character
+	 * @see https://edabit.com/challenge/ryEdPW2eqyngyWayy
+	 * @param str
+	 * @return
+	 */
+	public static String spaceMeOut(String str) {
+		// str 문자열 사이에 공백 넣기
+		char[] characters = str.toCharArray();		
+		String spaceWord = "";
+		
+		for (int i = 1; i < characters.length; i++) {
+			spaceWord += characters[i-1] + " ";
+		}
+		spaceWord = spaceWord + str.charAt(str.length()-1);
+		return spaceWord; 		
+	}
 }
