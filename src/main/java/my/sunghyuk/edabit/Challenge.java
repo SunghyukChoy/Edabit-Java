@@ -1,5 +1,7 @@
 package my.sunghyuk.edabit;
 
+import java.util.Arrays;
+
 /**
  * Challenge
  */
@@ -561,11 +563,33 @@ public class Challenge {
 		// str 문자열 사이에 공백 넣기
 		char[] characters = str.toCharArray();		
 		String spaceWord = "";
-		
+
 		for (int i = 1; i < characters.length; i++) {
 			spaceWord += characters[i-1] + " ";
 		}
 		spaceWord = spaceWord + str.charAt(str.length()-1);
 		return spaceWord; 		
+	}
+
+	/**
+	 * Difference of Max and Min Numbers in Array
+	 * @see https://edabit.com/challenge/hymPkXdhmDQLe87QT
+	 * @param arr
+	 * @return
+	 */
+	public static int differenceMaxMin(int[] arr) {
+		int maxValue = Integer.MIN_VALUE;
+		int minValue = Integer.MAX_VALUE;
+		for (int i = 0; i < arr.length; i++) {
+			if(arr[i] >= maxValue) {
+				maxValue = arr[i];
+			}
+			if(arr[i] <= minValue) {
+				minValue = arr[i];
+			}
+		}
+		System.out.println(maxValue);
+		System.out.println(minValue);
+		return maxValue - minValue;
 	}
 }
