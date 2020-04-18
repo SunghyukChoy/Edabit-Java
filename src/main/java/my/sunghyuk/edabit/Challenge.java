@@ -608,4 +608,22 @@ public class Challenge {
 		// return maxValue - minValue;
 	}
 
+	/**
+	 * Double Letters
+	 * 
+	 * @see https://edabit.com/challenge/EaWY5d2pYBckrkAnS
+	 * @param word
+	 * @return
+	 */
+	public static boolean doubleLetters(String word) {
+		// 문자열에 중복되는 문자가 있으면 return true; otherwise false;
+		char[] charArray = word.toCharArray();
+		for (int i = 1; i < charArray.length; i++) {
+			if(charArray[i] == charArray[i-1]) {
+				return true;
+			}			
+		}
+		return false;
+	}
+
 }
