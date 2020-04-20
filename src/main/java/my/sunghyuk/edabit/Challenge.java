@@ -681,4 +681,19 @@ public class Challenge {
 		return "Hello " + name + "!";
 	}
 
+	/**
+	 * Divides Evenly
+	 * @see https://edabit.com/challenge/dLXXzJ5hkLAzkyDCm
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+
+	public static boolean dividesEvenly(int a, int b) {
+		if(a % b == 0) {
+			return true;
+		}
+		return false;
+  }
+
 }
