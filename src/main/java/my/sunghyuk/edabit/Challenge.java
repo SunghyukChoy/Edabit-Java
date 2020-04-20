@@ -619,11 +619,66 @@ public class Challenge {
 		// 문자열에 중복되는 문자가 있으면 return true; otherwise false;
 		char[] charArray = word.toCharArray();
 		for (int i = 1; i < charArray.length; i++) {
-			if(charArray[i] == charArray[i-1]) {
+			if (charArray[i] == charArray[i - 1]) {
 				return true;
-			}			
+			}
 		}
 		return false;
+	}
+
+	// 모르겠다.. 근본없는 문법...
+	/**
+	 * Even Number Generator
+	 * 
+	 * @see https://edabit.com/challenge/jwXx478haGbZpRCWQ
+	 * @param num
+	 * @return
+	 */
+	public static int[] findEvenNums(int num) {
+		// 1부터 num까지의 짝수를 배열로 리턴
+		// num까지 짝수가 없으면 비어있는 배열로 리턴
+		int[] evenArray = new int[] {};
+		if (num == 1) {
+			return evenArray;
+		}
+
+		// num : 2 --> value : 2
+		// num : 3 --> value : 2
+		// num : 4 --> value : 2, 4
+		// num : 5 --> value : 2, 4
+		// num : 6 --> value : 2, 4, 6
+
+		for (int i = 1; i < (int) (num / 2); i++) {
+			evenArray[i] = i * 2;
+		}
+		evenArray[0] = 2;
+		return evenArray;
+	}
+
+	/**
+	 * Triangular Number Sequence
+	 * 
+	 * @see https://edabit.com/challenge/4kEHkvobTA4i6AQRE
+	 * @param n
+	 * @return
+	 */
+	public static int triangle(int n) {
+		// 1. 0번쨰 인덱스 값 : 1
+		// 2. 0번째 인덱스부터 2,3,4,5,6... 더해서 n번쨰 인덱스 값 구하기
+		// 3. {1, 3, 6, 10, 15, 21.....} 순
+		int result = 0;
+		int addValue = 0;
+
+		return 0;
+	}
+
+	/**
+	 * Name Greeting!
+	 * 
+	 * @see https://edabit.com/challenge/JAtN6KLtahAkmT3n3
+	 */
+	public static String helloName(String name) {
+		return "Hello " + name + "!";
 	}
 
 }
