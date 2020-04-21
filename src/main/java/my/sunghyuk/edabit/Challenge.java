@@ -1,5 +1,7 @@
 package my.sunghyuk.edabit;
 
+import java.util.Arrays;
+
 /**
  * Challenge
  */
@@ -718,5 +720,24 @@ public class Challenge {
 		return middleCharacter;
  }
 
-
+  /**
+    * Nth Smallest Element
+    * 
+    * @see https://edabit.com/challenge/zgBjnxQw9MHTBHLED
+    * @param arr
+    * @param n
+    * @return
+    */
+   // 배열 버블 정렬 몰라서 메서드 씀. 
+   // import java.util.Arrays; 제출 시 추가
+   public static int nthSmallest(int[] arr, int n) {
+		// 1. arr 배열에서 n번째로 작은 수 출력
+		// 2. n이 배열의 길이보다 클 켱우 return -1
+		try {
+			 Arrays.parallelSort(arr);
+			 return arr[n - 1];
+		} catch (Exception e) {
+			 return -1;
+		}
+ }
 }
