@@ -694,6 +694,29 @@ public class Challenge {
 			return true;
 		}
 		return false;
-  }
+	}
+	
+	/**
+    * Return the Middle Character(s) of a String
+    * 
+    * @see https://edabit.com/challenge/NrMGhrarTfpYSbr84
+    * @param word
+    * @return
+    */
+   // 원시적인 방법으로 풀음..
+   public static String getMiddle(String word) {
+		// 1. 문자열의 가운데 문자 출력
+		// 2. 문자열의 길이가 짝수면 가운데 문자 2개 출력
+		// 3. 문자열의 길이가 홀수면 가운데 문자 1개 출력
+		String middleCharacter = "";
+
+		if (word.length() % 2 == 0) {
+			 middleCharacter = "" + word.charAt((word.length() / 2) - 1) + word.charAt(word.length() / 2);
+		} else if (word.length() % 2 != 0) {
+			 middleCharacter = "" + word.charAt((word.length() - 1) / 2);
+		}
+		return middleCharacter;
+ }
+
 
 }
