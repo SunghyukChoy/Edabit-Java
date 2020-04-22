@@ -26,6 +26,13 @@ public class Program {
     return result;
   }
 
+  /**
+   * Shuffle the Name
+   * 
+   * @see https://edabit.com/challenge/8WBpaPzLP7piuHNeR
+   * @param s
+   * @return
+   */
   public static String nameShuffle(String s) {
     String[] words = s.split(" ");
     return words[1] + " " + words[0];
@@ -185,17 +192,18 @@ public class Program {
       boolean isSpecialCh = false;
       for (int j = 0; j < specialCh.length; j++) {
         if (s.charAt(i) == specialCh[j]) {
-          isSpecialCh = true;
+          isSpecialCh = true; // 어떤 문자가 특수 문자면 flag를 true로 설정.
         }
       }
-      if (!isSpecialCh) {
+      if (!isSpecialCh) { //isSpecialCh이 false 일 때, result에 문자 저장.
         result += s.charAt(i);
       }
     }    
     return result;
   }
   public static String removeSpecialCharactersDevelop(String s) {
-    return s.replaceAll("[^-_a-zA-Z0-9 ]", ""); 
+    return s.replaceAll("[^-_a-zA-Z0-9 ]", ""); //-와 _와 a에서z까지, A에서 Z까지, 0에서 9까지, 공백을 ""로 바꾸겠다
     // return s.replaceAll("[^-_\\w ]", ""); // a-zA-Z0-9를 \\로 치환
   }  
+ 
 }

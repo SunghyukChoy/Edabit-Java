@@ -628,6 +628,7 @@ public class Challenge {
 		return false;
 	}
 
+	/**************다시 풀 것********************************/
 	// 모르겠다.. 근본없는 문법...
 	/**
 	 * Even Number Generator
@@ -657,6 +658,7 @@ public class Challenge {
 		return evenArray;
 	}
 
+	/**************다시 풀 것********************************/
 	/**
 	 * Triangular Number Sequence
 	 * 
@@ -721,6 +723,7 @@ public class Challenge {
 		return middleCharacter;
 	}
 
+	/**************다시 풀 것********************************/
 	/**
 	 * Nth Smallest Element
 	 * 
@@ -755,8 +758,42 @@ public class Challenge {
 		// 인사말 + name. name의 첫문자는 대문자로
 		String HelloBye = (num == 1) ? "Hello" : "Bye";
 		char firstCh = Character.toUpperCase(name.charAt(0));
+									// char 타입은 기본 자료형. 클래스에 접근하여 메서드 사용.
+									// int -> Integer, boolean -> Boolean .....
 		String upperCaseName = firstCh + name.substring(1, name.length());
+		
 
 		return HelloBye + " " + upperCaseName;
+	}
+
+	/**
+	 * Is the Average of All Elements a Whole Number?
+	 * 
+	 * @see https://edabit.com/challenge/yk7GqGcCpFgQrk8fH
+	 * @param arr
+	 * @return
+	 */
+	public static boolean isAvgWhole(int[] arr) {
+		// 배열의 평균값이 정수이면 true. 실수이면 false
+		int arrSum = 0;
+		for (int i = 0; i < arr.length; i++) {
+			arrSum += arr[i];
+		}
+		double avg =  (double)arrSum / arr.length;
+							 // 캐스팅 없이 연산 시 결과로 int 값이 나오기 때문에 그 값을 double 타입의 변수에 담아도 .00 값으로 담기게 됨.
+
+							 // 타입이 다른 수를 연산할 때 범위가 더 큰 타입으로 캐스팅 됨. 
+							 // arr.length의 타입이 double로 캐스팅
+							 // int, double --> double
+							 // long, double --> double
+							 // float, double --> double
+							 
+		int avgInt = (int) avg;
+		// if(avg - avgInt > 0) {
+		// return false;
+		// }
+		// return true;
+
+		return avg - avgInt == 0;
 	}
 }
