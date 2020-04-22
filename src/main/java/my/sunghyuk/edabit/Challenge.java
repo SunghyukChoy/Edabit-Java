@@ -685,6 +685,7 @@ public class Challenge {
 
 	/**
 	 * Divides Evenly
+	 * 
 	 * @see https://edabit.com/challenge/dLXXzJ5hkLAzkyDCm
 	 * @param a
 	 * @param b
@@ -692,52 +693,52 @@ public class Challenge {
 	 */
 
 	public static boolean dividesEvenly(int a, int b) {
-		if(a % b == 0) {
+		if (a % b == 0) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	/**
-    * Return the Middle Character(s) of a String
-    * 
-    * @see https://edabit.com/challenge/NrMGhrarTfpYSbr84
-    * @param word
-    * @return
-    */
-   // 원시적인 방법으로 풀음..
-   public static String getMiddle(String word) {
+	 * Return the Middle Character(s) of a String
+	 * 
+	 * @see https://edabit.com/challenge/NrMGhrarTfpYSbr84
+	 * @param word
+	 * @return
+	 */
+	// 원시적인 방법으로 풀음..
+	public static String getMiddle(String word) {
 		// 1. 문자열의 가운데 문자 출력
 		// 2. 문자열의 길이가 짝수면 가운데 문자 2개 출력
 		// 3. 문자열의 길이가 홀수면 가운데 문자 1개 출력
 		String middleCharacter = "";
 
 		if (word.length() % 2 == 0) {
-			 middleCharacter = "" + word.charAt((word.length() / 2) - 1) + word.charAt(word.length() / 2);
+			middleCharacter = "" + word.charAt((word.length() / 2) - 1) + word.charAt(word.length() / 2);
 		} else if (word.length() % 2 != 0) {
-			 middleCharacter = "" + word.charAt((word.length() - 1) / 2);
+			middleCharacter = "" + word.charAt((word.length() - 1) / 2);
 		}
 		return middleCharacter;
- }
+	}
 
-  /**
-    * Nth Smallest Element
-    * 
-    * @see https://edabit.com/challenge/zgBjnxQw9MHTBHLED
-    * @param arr
-    * @param n
-    * @return
-    */
-   // 배열 버블 정렬 몰라서 메서드 씀. 
-   // import java.util.Arrays; 제출 시 추가
-   public static int nthSmallest(int[] arr, int n) {
+	/**
+	 * Nth Smallest Element
+	 * 
+	 * @see https://edabit.com/challenge/zgBjnxQw9MHTBHLED
+	 * @param arr
+	 * @param n
+	 * @return
+	 */
+	// 배열 버블 정렬 몰라서 메서드 씀.
+	// import java.util.Arrays; 제출 시 추가
+	public static int nthSmallest(int[] arr, int n) {
 		// 1. arr 배열에서 n번째로 작은 수 출력
 		// 2. n이 배열의 길이보다 클 켱우 return -1
 		try {
-			 Arrays.parallelSort(arr);
-			 return arr[n - 1];
+			Arrays.parallelSort(arr);
+			return arr[n - 1];
 		} catch (Exception e) {
-			 return -1;
+			return -1;
 		}
- }
+	}
 }

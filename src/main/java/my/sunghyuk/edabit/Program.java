@@ -155,18 +155,43 @@ public class Program {
     // 1. 배열에 값이 없으면 그대로 리턴
     // 2. 배열의 0번 인덱스는 0번 인덱스에 그대로 저장
     // 3. 배열의 n번 인덱스까지의 값을 더해서 n번 인덱스에 저장
-    if(nums.length == 0) {
+    if (nums.length == 0) {
       return nums;
     }
     int[] sumArray = new int[nums.length];
-    sumArray[0] = nums[0];  
+    sumArray[0] = nums[0];
     // i = 1 --> sumArray[1] = nums[0] + nums[1];
     // i = 2 --> sumArray[2] = sumArray[1] + num[2];
     // i = 3 --> sumArray[3] = sumArray[2] + nums[3];
     for (int i = 1; i < nums.length; i++) {
-      sumArray[i] = sumArray[i-1] + nums[i];
+      sumArray[i] = sumArray[i - 1] + nums[i];
     }
     return sumArray;
   }
+
+  /**
+   * Remove All Special Characters from a String
+   * 
+   * @see https://edabit.com/challenge/YNQQynxnFeoKNiqTM
+   * @param s
+   * @return
+   */
+  public static String removeSpecialCharacters(String s) {
+    // 문자열에서 특수문자 제거
+    char[] specialCh = { '!', '@', '#', '$', '%', '^', '&', '\\', '*', '(', ')', '.', ',', '[', ']', '~', '?', '`', '{',
+        '}', '+', '=', '<', '>', '|' };
+    String result = "";
+    for (int i = 0; i < s.length(); i++) {
+      boolean isSpecialCh = false;
+      for (int j = 0; j < specialCh.length; j++) {
+        if (s.charAt(i) == specialCh[j]) {
+          isSpecialCh = true;
+        }
+      }
+      if (!isSpecialCh) {
+        result += s.charAt(i);
+      }
+    }    
+    return result;
+  }
 }
- 
