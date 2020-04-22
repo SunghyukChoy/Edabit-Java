@@ -741,4 +741,22 @@ public class Challenge {
 			return -1;
 		}
 	}
+
+	/**
+	 * Say "Hello" Say "Bye"
+	 * 
+	 * @see https://edabit.com/challenge/zFccarRuia5zq4rhP
+	 * @param name
+	 * @param num
+	 * @return
+	 */
+	public static String sayHelloBye(String name, int num) {
+		// num이 1이면 Hello 0이면 Bye
+		// 인사말 + name. name의 첫문자는 대문자로
+		String HelloBye = (num == 1) ? "Hello" : "Bye";
+		char firstCh = Character.toUpperCase(name.charAt(0));
+		String upperCaseName = firstCh + name.substring(1, name.length());
+
+		return HelloBye + " " + upperCaseName;
+	}
 }

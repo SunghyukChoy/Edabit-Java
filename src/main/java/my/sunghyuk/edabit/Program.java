@@ -194,4 +194,8 @@ public class Program {
     }    
     return result;
   }
+  public static String removeSpecialCharactersDevelop(String s) {
+    return s.replaceAll("[^-_a-zA-Z0-9 ]", ""); 
+    // return s.replaceAll("[^-_\\w ]", ""); // a-zA-Z0-9를 \\로 치환
+  }  
 }
