@@ -628,7 +628,7 @@ public class Challenge {
 		return false;
 	}
 
-	/**************다시 풀 것********************************/
+	/************** 다시 풀 것 ********************************/
 	// 모르겠다.. 근본없는 문법...
 	/**
 	 * Even Number Generator
@@ -658,7 +658,7 @@ public class Challenge {
 		return evenArray;
 	}
 
-	/**************다시 풀 것********************************/
+	/************** 다시 풀 것 ********************************/
 	/**
 	 * Triangular Number Sequence
 	 * 
@@ -723,7 +723,7 @@ public class Challenge {
 		return middleCharacter;
 	}
 
-	/**************다시 풀 것********************************/
+	/************** 다시 풀 것 ********************************/
 	/**
 	 * Nth Smallest Element
 	 * 
@@ -758,10 +758,9 @@ public class Challenge {
 		// 인사말 + name. name의 첫문자는 대문자로
 		String HelloBye = (num == 1) ? "Hello" : "Bye";
 		char firstCh = Character.toUpperCase(name.charAt(0));
-									// char 타입은 기본 자료형. 클래스에 접근하여 메서드 사용.
-									// int -> Integer, boolean -> Boolean .....
+		// char 타입은 기본 자료형. 클래스에 접근하여 메서드 사용.
+		// int -> Integer, boolean -> Boolean .....
 		String upperCaseName = firstCh + name.substring(1, name.length());
-		
 
 		return HelloBye + " " + upperCaseName;
 	}
@@ -779,15 +778,15 @@ public class Challenge {
 		for (int i = 0; i < arr.length; i++) {
 			arrSum += arr[i];
 		}
-		double avg =  (double)arrSum / arr.length;
-							 // 캐스팅 없이 연산 시 결과로 int 값이 나오기 때문에 그 값을 double 타입의 변수에 담아도 .00 값으로 담기게 됨.
+		double avg = (double) arrSum / arr.length;
+		// 캐스팅 없이 연산 시 결과로 int 값이 나오기 때문에 그 값을 double 타입의 변수에 담아도 .00 값으로 담기게 됨.
 
-							 // 타입이 다른 수를 연산할 때 범위가 더 큰 타입으로 캐스팅 됨. 
-							 // arr.length의 타입이 double로 캐스팅
-							 // int, double --> double
-							 // long, double --> double
-							 // float, double --> double
-							 
+		// 타입이 다른 수를 연산할 때 범위가 더 큰 타입으로 캐스팅 됨.
+		// arr.length의 타입이 double로 캐스팅
+		// int, double --> double
+		// long, double --> double
+		// float, double --> double
+
 		int avgInt = (int) avg;
 		// if(avg - avgInt > 0) {
 		// return false;
@@ -821,7 +820,7 @@ public class Challenge {
 	public static String indexShuffle(String str) {
 		// 짝수 번째 인덱스와 홀수 번째 인덱스 문자끼리 묶어서 리턴. 0은 짝수 취급.
 		String evenString = "";
-		String oddString = "";		
+		String oddString = "";
 
 		for (int i = 0; i < str.length(); i = i + 2) {
 			evenString += str.charAt(i);
@@ -832,5 +831,21 @@ public class Challenge {
 		}
 
 		return evenString + oddString;
+	}
+
+	/**
+	 * Between Words
+	 * 
+	 * @see https://edabit.com/challenge/YjeGKZwXsdCo3sr7a
+	 * @param first
+	 * @param last
+	 * @param word
+	 * @return
+	 */
+	public static boolean isBetween(String first, String last, String word) {
+		// 알파벳순으로 정렬 시 word가 first와 last 사이에 오면 true; otherwise false;
+		String[] sortByAlphabet = new String[] { first, last, word };
+		Arrays.sort(sortByAlphabet);	// 배열을 오름차순으로 정렬
+		return sortByAlphabet[1] == word;
 	}
 }
