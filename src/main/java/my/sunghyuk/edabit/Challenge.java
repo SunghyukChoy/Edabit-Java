@@ -796,4 +796,18 @@ public class Challenge {
 
 		return avg - avgInt == 0;
 	}
+
+	/**
+	 * Re-Form the Word
+	 * 
+	 * @see https://edabit.com/challenge/R3PnRquBPADEqDxZg
+	 * @param left
+	 * @param right
+	 * @return
+	 */
+	public static String getWord(String left, String right) {
+		// 문자열 두 개 붙이기. left의 첫문자는 대문자로
+		String leftUpperCase = Character.toUpperCase(left.charAt(0)) + left.substring(1, left.length());
+		return leftUpperCase + right;
+	}
 }

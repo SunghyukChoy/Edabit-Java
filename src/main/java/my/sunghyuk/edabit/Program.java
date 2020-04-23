@@ -1,5 +1,8 @@
 package my.sunghyuk.edabit;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Program {
   /**
    * Repeating Letters
@@ -195,15 +198,34 @@ public class Program {
           isSpecialCh = true; // 어떤 문자가 특수 문자면 flag를 true로 설정.
         }
       }
-      if (!isSpecialCh) { //isSpecialCh이 false 일 때, result에 문자 저장.
+      if (!isSpecialCh) { // isSpecialCh이 false 일 때, result에 문자 저장.
         result += s.charAt(i);
       }
-    }    
+    }
     return result;
   }
+
   public static String removeSpecialCharactersDevelop(String s) {
-    return s.replaceAll("[^-_a-zA-Z0-9 ]", ""); //-와 _와 a에서z까지, A에서 Z까지, 0에서 9까지, 공백을 ""로 바꾸겠다
+    return s.replaceAll("[^-_a-zA-Z0-9 ]", ""); // -와 _와 a에서z까지, A에서 Z까지, 0에서 9까지, 공백을 ""로 바꾸겠다
     // return s.replaceAll("[^-_\\w ]", ""); // a-zA-Z0-9를 \\로 치환
-  }  
- 
+  }
+
+  /**
+   * Return the Four Letter Strings
+   * 
+   * @see https://edabit.com/challenge/EmRPehwiJFk6rf2iD
+   * @param s
+   * @return
+   */
+  // public static String[] isFourLetters(String[] s) {
+  //   // 4개의 문자로 이루어진 문자열 리턴
+  //   // String[] fourLetter = {};  
+  //   ArrayList<String> fourLetter = new ArrayList<String>();
+  //   for (int i = 0; i < s.length; i++) {
+  //     if (s[i].length() == 4) {
+  //       fourLetter.add(s[i]);
+  //     }
+  //   }
+  // }
+
 }
