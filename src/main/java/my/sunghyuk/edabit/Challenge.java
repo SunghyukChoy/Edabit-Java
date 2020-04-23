@@ -810,4 +810,27 @@ public class Challenge {
 		String leftUpperCase = Character.toUpperCase(left.charAt(0)) + left.substring(1, left.length());
 		return leftUpperCase + right;
 	}
+
+	/**
+	 * Index Shuffle
+	 * 
+	 * @see https://edabit.com/challenge/BZzAm9KXuB993p35r
+	 * @param str
+	 * @return
+	 */
+	public static String indexShuffle(String str) {
+		// 짝수 번째 인덱스와 홀수 번째 인덱스 문자끼리 묶어서 리턴. 0은 짝수 취급.
+		String evenString = "";
+		String oddString = "";		
+
+		for (int i = 0; i < str.length(); i = i + 2) {
+			evenString += str.charAt(i);
+		}
+
+		for (int i = 1; i < str.length(); i = i + 2) {
+			oddString += str.charAt(i);
+		}
+
+		return evenString + oddString;
+	}
 }
