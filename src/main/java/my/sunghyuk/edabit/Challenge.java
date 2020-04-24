@@ -813,7 +813,7 @@ public class Challenge {
 				}
 			}
 		}
-		return -1; // if문의 조건에 부합하지 않는 경우에도 return이 필요하므로 return 작성.
+		return -1; // if문의 조건에 부합하지 않는 경우에도 return이 필요하므로 return 작성.	// 인덱스가 가질 수 없는 숫자인 -1로 작성하였음..
 	}
 
 	/**

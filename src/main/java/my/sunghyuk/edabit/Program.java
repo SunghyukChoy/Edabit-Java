@@ -206,7 +206,9 @@ public class Program {
   }
 
   public static String removeSpecialCharactersDevelop(String s) {
-    return s.replaceAll("[^-_a-zA-Z0-9 ]", ""); // -와 _와 a에서z까지, A에서 Z까지, 0에서 9까지, 공백을 ""로 바꾸겠다
+    return s.replaceAll("[^-_a-zA-Z0-9 ]", "");
+    // -와 _와 a에서z까지, A에서 Z까지, 0에서 9까지, 공백을 제외한 문자를 ""로 바꾸겠다 == 특수문자를 ""로 바꾸겠다
+    // ^ : not의 의미.
     // return s.replaceAll("[^-_\\w ]", ""); // a-zA-Z0-9를 \\로 치환
   }
 
@@ -229,5 +231,19 @@ public class Program {
     }
     return s;
   }
+
+  /**
+   * Remove Every Vowel from a String
+   * 
+   * @see https://edabit.com/challenge/oMCKfdMqgt9kxqA2M
+   * @param s
+   * @return
+   */  
+  public static String removeVowels(String s) {
+    // 문자열에서 모음 제거
+    // Program.removeSpecialCharacters 참고
+    return s.replaceAll("[`a`e`i`o`u`A`E`I`O`U]", "");
+                        // 모음만 선택한 정규표현식. [`특정문자] : 특정문자 선택
+	}
 
 }
