@@ -212,7 +212,7 @@ public class Program {
     // return s.replaceAll("[^-_\\w ]", ""); // a-zA-Z0-9를 \\로 치환
   }
 
-  /**********************다시 풀 것 */
+  /********************** 아직 못 푼 것 */
   /**
    * Return the Four Letter Strings
    * 
@@ -222,7 +222,7 @@ public class Program {
    */
   public static String[] isFourLetters(String[] s) {
     // 4개의 문자로 이루어진 문자열 리턴
-    // String[] fourLetter = {};  
+    // String[] fourLetter = {};
     ArrayList<String> fourLetter = new ArrayList<String>();
     for (int i = 0; i < s.length; i++) {
       if (s[i].length() == 4) {
@@ -238,12 +238,13 @@ public class Program {
    * @see https://edabit.com/challenge/oMCKfdMqgt9kxqA2M
    * @param s
    * @return
-   */  
+   */
   public static String removeVowels(String s) {
     // 문자열에서 모음 제거
     // Program.removeSpecialCharacters 참고
-    return s.replaceAll("[`a`e`i`o`u`A`E`I`O`U]", "");
-                        // 모음만 선택한 정규표현식. [`특정문자] : 특정문자 선택
-	}
+    // return s.replaceAll("[`a`e`i`o`u`A`E`I`O`U]", "");
+    // 모음만 선택한 정규표현식. [`특정문자] : 특정문자 선택
+    return s.replaceAll("[aeiouAEIOU]", "");
+  }
 
 }

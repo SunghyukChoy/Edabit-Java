@@ -813,7 +813,8 @@ public class Challenge {
 				}
 			}
 		}
-		return -1; // if문의 조건에 부합하지 않는 경우에도 return이 필요하므로 return 작성.	// 인덱스가 가질 수 없는 숫자인 -1로 작성하였음..
+		return -1; // if문의 조건에 부합하지 않는 경우에도 return이 필요하므로 return 작성. // 인덱스가 가질 수 없는 숫자인 -1로
+								// 작성하였음..
 	}
 
 	/**
@@ -865,7 +866,7 @@ public class Challenge {
 	public static boolean isBetween(String first, String last, String word) {
 		// 알파벳순으로 정렬 시 word가 first와 last 사이에 오면 true; otherwise false;
 		String[] sortByAlphabet = new String[] { first, last, word };
-		Arrays.sort(sortByAlphabet);	// 배열을 오름차순으로 정렬
+		Arrays.sort(sortByAlphabet); // 배열을 오름차순으로 정렬
 		return sortByAlphabet[1] == word;
 	}
 
@@ -878,6 +879,38 @@ public class Challenge {
 	 */
 	public static boolean checkPalindrome(String str) {
 		// 문자열의 첫문자와 끝문자가 같으면 true, 다르면 false;
-		return str.charAt(0) == str.charAt(str.length()-1);
+		return str.charAt(0) == str.charAt(str.length() - 1);
+	}
+
+	/************************ 모르겠음. 아직 못 푼 것 */
+	/**
+	 * Join Two Portions of a Path
+	 * 
+	 * @see https://edabit.com/challenge/CDuD3xGtWRhnFzAP2
+	 * @param portion1
+	 * @param portion2
+	 * @return
+	 */
+	public static String joinPath(String portion1, String portion2) {
+		// 두 문자열 합치기. 중간에 /는 하나만. /가 없으면 추가. 중복되면 하나만.
+		// if-only문만 사용해서 푸는 것 피하기
+		return "";
+
+	}
+
+	/**
+	 * Index Multiplier
+	 * 
+	 * @see https://edabit.com/challenge/YMLm3DpuZXHFDAnou
+	 * @param arr
+	 * @return
+	 */
+	public static int indexMultiplier(int[] arr) {
+		// 배열의 각 값과 인덱스 번호를 곱한 후 총합 리턴
+		int sum = 0;
+		for (int i = 0; i < arr.length; i++) {
+			sum += (arr[i] * i);
+		}
+		return sum;
 	}
 }
