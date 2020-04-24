@@ -628,7 +628,7 @@ public class Challenge {
 		return false;
 	}
 
-	/**************다시 풀 것********************************/
+	/************** 다시 풀 것 ********************************/
 	// 모르겠다.. 근본없는 문법...
 	/**
 	 * Even Number Generator
@@ -658,7 +658,7 @@ public class Challenge {
 		return evenArray;
 	}
 
-	/**************다시 풀 것********************************/
+	/************** 다시 풀 것 ********************************/
 	/**
 	 * Triangular Number Sequence
 	 * 
@@ -723,7 +723,7 @@ public class Challenge {
 		return middleCharacter;
 	}
 
-	/**************다시 풀 것********************************/
+	/************** 다시 풀 것 ********************************/
 	/**
 	 * Nth Smallest Element
 	 * 
@@ -758,10 +758,9 @@ public class Challenge {
 		// 인사말 + name. name의 첫문자는 대문자로
 		String HelloBye = (num == 1) ? "Hello" : "Bye";
 		char firstCh = Character.toUpperCase(name.charAt(0));
-									// char 타입은 기본 자료형. 클래스에 접근하여 메서드 사용.
-									// int -> Integer, boolean -> Boolean .....
+		// char 타입은 기본 자료형. 클래스에 접근하여 메서드 사용.
+		// int -> Integer, boolean -> Boolean .....
 		String upperCaseName = firstCh + name.substring(1, name.length());
-		
 
 		return HelloBye + " " + upperCaseName;
 	}
@@ -779,15 +778,15 @@ public class Challenge {
 		for (int i = 0; i < arr.length; i++) {
 			arrSum += arr[i];
 		}
-		double avg =  (double)arrSum / arr.length;
-							 // 캐스팅 없이 연산 시 결과로 int 값이 나오기 때문에 그 값을 double 타입의 변수에 담아도 .00 값으로 담기게 됨.
+		double avg = (double) arrSum / arr.length;
+		// 캐스팅 없이 연산 시 결과로 int 값이 나오기 때문에 그 값을 double 타입의 변수에 담아도 .00 값으로 담기게 됨.
 
-							 // 타입이 다른 수를 연산할 때 범위가 더 큰 타입으로 캐스팅 됨. 
-							 // arr.length의 타입이 double로 캐스팅
-							 // int, double --> double
-							 // long, double --> double
-							 // float, double --> double
-							 
+		// 타입이 다른 수를 연산할 때 범위가 더 큰 타입으로 캐스팅 됨.
+		// arr.length의 타입이 double로 캐스팅
+		// int, double --> double
+		// long, double --> double
+		// float, double --> double
+
 		int avgInt = (int) avg;
 		// if(avg - avgInt > 0) {
 		// return false;
@@ -795,5 +794,25 @@ public class Challenge {
 		// return true;
 
 		return avg - avgInt == 0;
+	}
+
+	/**
+	 * Return the Index of the First Vowel
+	 * 
+	 * @see https://edabit.com/challenge/MsJzAHPmmmcwF4iCr
+	 * @param str
+	 * @return
+	 */
+	public static int firstVowel(String str) {
+		// 첫 번째 모음 인덱스 번호 출력
+		char[] vowels = new char[] { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
+		for (int i = 0; i < str.length(); i++) {
+			for (int j = 0; j < vowels.length; j++) {
+				if (str.charAt(i) == vowels[j]) {
+					return i;
+				}
+			}
+		}
+		return -1; // if문의 조건에 부합하지 않는 경우에도 return이 필요하므로 return 작성.
 	}
 }
