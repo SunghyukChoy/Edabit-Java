@@ -815,4 +815,57 @@ public class Challenge {
 		}
 		return -1; // if문의 조건에 부합하지 않는 경우에도 return이 필요하므로 return 작성.
 	}
+
+	/**
+	 * Re-Form the Word
+	 * 
+	 * @see https://edabit.com/challenge/R3PnRquBPADEqDxZg
+	 * @param left
+	 * @param right
+	 * @return
+	 */
+	public static String getWord(String left, String right) {
+		// 문자열 두 개 붙이기. left의 첫문자는 대문자로
+		String leftUpperCase = Character.toUpperCase(left.charAt(0)) + left.substring(1, left.length());
+		return leftUpperCase + right;
+	}
+
+	/**
+	 * Index Shuffle
+	 * 
+	 * @see https://edabit.com/challenge/BZzAm9KXuB993p35r
+	 * @param str
+	 * @return
+	 */
+	public static String indexShuffle(String str) {
+		// 짝수 번째 인덱스와 홀수 번째 인덱스 문자끼리 묶어서 리턴. 0은 짝수 취급.
+		String evenString = "";
+		String oddString = "";
+
+		for (int i = 0; i < str.length(); i = i + 2) {
+			evenString += str.charAt(i);
+		}
+
+		for (int i = 1; i < str.length(); i = i + 2) {
+			oddString += str.charAt(i);
+		}
+
+		return evenString + oddString;
+	}
+
+	/**
+	 * Between Words
+	 * 
+	 * @see https://edabit.com/challenge/YjeGKZwXsdCo3sr7a
+	 * @param first
+	 * @param last
+	 * @param word
+	 * @return
+	 */
+	public static boolean isBetween(String first, String last, String word) {
+		// 알파벳순으로 정렬 시 word가 first와 last 사이에 오면 true; otherwise false;
+		String[] sortByAlphabet = new String[] { first, last, word };
+		Arrays.sort(sortByAlphabet);	// 배열을 오름차순으로 정렬
+		return sortByAlphabet[1] == word;
+	}
 }
