@@ -868,4 +868,16 @@ public class Challenge {
 		Arrays.sort(sortByAlphabet);	// 배열을 오름차순으로 정렬
 		return sortByAlphabet[1] == word;
 	}
+
+	/**
+	 * Palindrome?
+	 * 
+	 * @see https://edabit.com/challenge/cwLnTvxpBX5espEgs
+	 * @param str
+	 * @return
+	 */
+	public static boolean checkPalindrome(String str) {
+		// 문자열의 첫문자와 끝문자가 같으면 true, 다르면 false;
+		return str.charAt(0) == str.charAt(str.length()-1);
+	}
 }
