@@ -882,7 +882,6 @@ public class Challenge {
 		return str.charAt(0) == str.charAt(str.length() - 1);
 	}
 
-	/************************ 모르겠음. 아직 못 푼 것 */
 	/**
 	 * Join Two Portions of a Path
 	 * 
@@ -894,8 +893,10 @@ public class Challenge {
 	public static String joinPath(String portion1, String portion2) {
 		// 두 문자열 합치기. 중간에 /는 하나만. /가 없으면 추가. 중복되면 하나만.
 		// if-only문만 사용해서 푸는 것 피하기
-		return "";
-
+		String revmoveSlash1 = portion1.replaceAll("[/]", "");
+		String revmoveSlash2 = portion2.replaceAll("[/]", "");
+		System.out.println(revmoveSlash1 + "/" + revmoveSlash2);
+		return revmoveSlash1 + "/" + revmoveSlash2;
 	}
 
 	/**
@@ -913,4 +914,18 @@ public class Challenge {
 		}
 		return sum;
 	}
+
+	/**
+	 * Concatenating Two Integer Arrays
+	 * 
+	 * @see https://edabit.com/challenge/E2WdAPmgNJnbL5RvF
+	 * @param arr1
+	 * @param arr2
+	 * @return
+	 */
+	public static int[] concat(int[] arr1, int[] arr2) {
+		// 두 배열 합치기
+		int[] concatArray = new int[]{};
+		return arr1;
+	}	
 }
