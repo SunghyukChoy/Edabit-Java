@@ -212,7 +212,7 @@ public class Program {
     // return s.replaceAll("[^-_\\w ]", ""); // a-zA-Z0-9를 \\로 치환
   }
 
-  /********************** 아직 못 푼 것 */
+  /***************다시 풀 것 */
   /**
    * Return the Four Letter Strings
    * 
@@ -223,13 +223,19 @@ public class Program {
   public static String[] isFourLetters(String[] s) {
     // 4개의 문자로 이루어진 문자열 리턴
     // String[] fourLetter = {};
-    ArrayList<String> fourLetter = new ArrayList<String>();
+    ArrayList<String> fourLetterList = new ArrayList<String>();
     for (int i = 0; i < s.length; i++) {
       if (s[i].length() == 4) {
-        fourLetter.add(s[i]);
+        fourLetterList.add(s[i]);
       }
     }
-    return s;
+    String[] fourLetter = new String[fourLetterList.size()];
+    int size = 0;
+    for(String temp : fourLetterList) {
+      fourLetter[size++] = temp;
+    }
+    // String[] fourLetter = fourLetterList.toArray(new String[fourLetterList.size()]);
+    return fourLetter;
   }
 
   /**
