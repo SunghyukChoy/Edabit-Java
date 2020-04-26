@@ -933,5 +933,32 @@ public class Challenge {
 	System.arraycopy(arr2, 0, concatArray, arr1.length, arr2.length);
 	// System.arraycopy(원본, 복사할 값을 보낼 원본의 시작 인덱스, 사본, 복사할 값을 받을 사본 시작 인덱스, 복사할 원본의 요소 갯수);
 		return concatArray;
-	}	
+	}
+
+	/*****************************not finished */
+	/**
+	 * Find the Smallest and Biggest Numbers
+	 * 
+	 * @see https://edabit.com/challenge/J4Yop3GjeZELWeoqT
+	 * @param arr
+	 * @return
+	 */
+	public static double[] minMax(double[] arr) {
+		// 배열에서 가장 작은 수와 가장 큰 수 출력
+		double minValue = Double.MAX_VALUE;
+		double maxValue = Double.MIN_VALUE;	
+		for (int i = 0; i < arr.length; i++) {
+			// if(arr[i] <= minValue) {
+			// 	minValue = arr[i];
+			// }
+			// else if(arr[i] >= maxValue) {
+			// 	maxValue = arr[i];
+			// }
+			
+			// minValue = Math.min(minValue, arr[i]);
+			// maxValue = Math.max(maxValue, arr[i]);
+		}
+		double[] minMaxArray = new double[]{minValue, maxValue};
+		return minMaxArray;
+	}
 }
