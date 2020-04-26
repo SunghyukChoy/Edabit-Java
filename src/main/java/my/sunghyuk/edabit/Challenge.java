@@ -915,6 +915,7 @@ public class Challenge {
 		return sum;
 	}
 
+	/****************다시 풀 것. for문 이용하여 다시 풀 것. */
 	/**
 	 * Concatenating Two Integer Arrays
 	 * 
@@ -925,7 +926,12 @@ public class Challenge {
 	 */
 	public static int[] concat(int[] arr1, int[] arr2) {
 		// 두 배열 합치기
-		int[] concatArray = new int[]{};
-		return arr1;
+	int[] concatArray = new int[arr1.length + arr2.length];
+	System.arraycopy(arr1, 0, concatArray, 0, arr1.length);
+	System.out.println(Arrays.toString(concatArray));
+									// 배열의 요소를 출력하는 방법.
+	System.arraycopy(arr2, 0, concatArray, arr1.length, arr2.length);
+	// System.arraycopy(원본, 복사할 값을 보낼 원본의 시작 인덱스, 사본, 복사할 값을 받을 사본 시작 인덱스, 복사할 원본의 요소 갯수);
+		return concatArray;
 	}	
 }
