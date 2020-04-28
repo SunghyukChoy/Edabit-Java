@@ -212,7 +212,7 @@ public class Program {
     // return s.replaceAll("[^-_\\w ]", ""); // a-zA-Z0-9를 \\로 치환
   }
 
-  /***************다시 풀 것 */
+  /*************** 다시 풀 것 */
   /**
    * Return the Four Letter Strings
    * 
@@ -231,10 +231,11 @@ public class Program {
     }
     String[] fourLetter = new String[fourLetterList.size()];
     int size = 0;
-    for(String temp : fourLetterList) {
+    for (String temp : fourLetterList) {
       fourLetter[size++] = temp;
     }
-    // String[] fourLetter = fourLetterList.toArray(new String[fourLetterList.size()]);
+    // String[] fourLetter = fourLetterList.toArray(new
+    // String[fourLetterList.size()]);
     return fourLetter;
   }
 
@@ -253,4 +254,22 @@ public class Program {
     return s.replaceAll("[aeiouAEIOU]", "");
   }
 
+  /**
+   * ATM PIN Code Validation
+   * 
+   * @see https://edabit.com/challenge/bL2E8p5DGWSNmEtAE
+   * @param s
+   * @return
+   */
+  public static boolean validatePIN(String s) {
+    // 1. 4자리 or 6자리 숫자로만 이루어진 PIN -> true
+    // 2. 문자, 특수문자, 공백 포함 시 -> false
+
+    for (int i = 0; i < s.length(); i++) {
+      if (!Character.isDigit(s.charAt(i))) {
+        return false;
+      }
+    }
+    return s.length() == 4 || s.length() == 6;
+  }
 }
