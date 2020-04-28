@@ -265,11 +265,15 @@ public class Program {
     // 1. 4자리 or 6자리 숫자로만 이루어진 PIN -> true
     // 2. 문자, 특수문자, 공백 포함 시 -> false
 
+    // int pinNum = Integer.parseInt(s);
+        // s 문자열이 '+','-'를 갖는 경우 특수문자가 아닌 하나의 양수, 음수로 인식하여 정상적인 int값 반환함.
     for (int i = 0; i < s.length(); i++) {
-      if (!Character.isDigit(s.charAt(i))) {
-        return false;
+      if (!Character.isDigit(s.charAt(i))) {  //siDigit : 캐릭터가 숫자인지 판별하는 메서드
+        return false; // 각각의 캐릭터가 숫자가 아니면 false
       }
     }
     return s.length() == 4 || s.length() == 6;
+      // 이미 위의 과정에서 문자열이 숫자로 이루어져 있지 않으면 false를 반환하므로 
+      // 그 외의 문자열 s는 숫자로만 이주어져 있음. 따라서 s의 길이 == 숫자의 자릿수.
   }
 }

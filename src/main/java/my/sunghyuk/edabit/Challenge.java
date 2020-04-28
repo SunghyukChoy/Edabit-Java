@@ -915,7 +915,7 @@ public class Challenge {
 		return sum;
 	}
 
-	/****************다시 풀 것. for문 이용하여 다시 풀 것. */
+	/**************** 다시 풀 것. for문 이용하여 다시 풀 것. */
 	/**
 	 * Concatenating Two Integer Arrays
 	 * 
@@ -926,16 +926,17 @@ public class Challenge {
 	 */
 	public static int[] concat(int[] arr1, int[] arr2) {
 		// 두 배열 합치기
-	int[] concatArray = new int[arr1.length + arr2.length];
-	System.arraycopy(arr1, 0, concatArray, 0, arr1.length);
-	System.out.println(Arrays.toString(concatArray));
-									// 배열의 요소를 출력하는 방법.
-	System.arraycopy(arr2, 0, concatArray, arr1.length, arr2.length);
-	// System.arraycopy(원본, 복사할 값을 보낼 원본의 시작 인덱스, 사본, 복사할 값을 받을 사본 시작 인덱스, 복사할 원본의 요소 갯수);
+		int[] concatArray = new int[arr1.length + arr2.length];
+		System.arraycopy(arr1, 0, concatArray, 0, arr1.length);
+		System.out.println(Arrays.toString(concatArray));
+		// 배열의 요소를 출력하는 방법.
+		System.arraycopy(arr2, 0, concatArray, arr1.length, arr2.length);
+		// System.arraycopy(원본, 복사할 값을 보낼 원본의 시작 인덱스, 사본, 복사할 값을 받을 사본 시작 인덱스, 복사할 원본의
+		// 요소 갯수);
 		return concatArray;
 	}
 
-	/*****************************not finished */
+	/***************************** not finished */
 	/**
 	 * Find the Smallest and Biggest Numbers
 	 * 
@@ -946,19 +947,40 @@ public class Challenge {
 	public static double[] minMax(double[] arr) {
 		// 배열에서 가장 작은 수와 가장 큰 수 출력
 		double minValue = Double.MAX_VALUE;
-		double maxValue = Double.MIN_VALUE;	
+		double maxValue = Double.MIN_VALUE;
 		for (int i = 0; i < arr.length; i++) {
 			// if(arr[i] <= minValue) {
-			// 	minValue = arr[i];
+			// minValue = arr[i];
 			// }
 			// else if(arr[i] >= maxValue) {
-			// 	maxValue = arr[i];
+			// maxValue = arr[i];
 			// }
-			
+
 			// minValue = Math.min(minValue, arr[i]);
 			// maxValue = Math.max(maxValue, arr[i]);
 		}
-		double[] minMaxArray = new double[]{minValue, maxValue};
+		double[] minMaxArray = new double[] { minValue, maxValue };
 		return minMaxArray;
+	}
+
+	/**
+	 * Amplify the Multiples of Four
+	 * 
+	 * @see https://edabit.com/challenge/XD6bQFpCZWiAMPanQ
+	 * @param num
+	 * @return
+	 */
+	public static int[] amplify(int num) {
+		// 1. num의 길이를 갖는 배열 생성
+		// 2. 배열의 값들은 1,2,3,4... 오름차순
+		// 3. 4의 배수는 4의 배수x10의 값.
+		int[] ampNumbers = new int[num];
+		for (int i = 0; i < num; i++) {
+			ampNumbers[i] = i + 1;
+			if (ampNumbers[i] % 4 == 0) {
+				ampNumbers[i] = (i + 1) * 10;
+			}
+		}
+		return ampNumbers;
 	}
 }
