@@ -983,4 +983,118 @@ public class Challenge {
 		}
 		return ampNumbers;
 	}
+
+	/***************************** not finished */
+	/**
+	 * Is the Number Symmetrical?
+	 * 
+	 * @see https://edabit.com/challenge/gzjQoZY6mYRBwDv2Q
+	 * @param num
+	 * @return
+	 */
+	public static boolean isSymmetrical(int num) {
+		// 1. num이 좌우반전해도 같은 숫자이면 true, 아니면 false
+		// 2. 12321 -> true, 12345 -> false.
+
+		return true;
+	}
+
+	/***************************** not finished */
+	/**
+	 * Transforming Words into Binary Strings
+	 * 
+	 * @see https://edabit.com/challenge/jwzMsyo2tbgn2KbGQ
+	 * @param str
+	 * @return
+	 */
+	public static String convertBinary(String str) {
+		// 1. a부터 m까지의 문자는 "0" 출력
+		// 2. n부터 z까지의 문자는 "1" 출력
+		String toZero = str.replaceAll("[a-mA-M]", "0");
+		String toOne = str.replaceAll("[n-zN-Z]", "1");
+
+		String binaryStr = "";
+		for (int i = 0; i < str.length(); i++) {
+
+		}
+		return "";
+	}
+
+	/***************************** not finished */
+	/**
+	 * Find the Mean of All Digits
+	 * 
+	 * @see https://edabit.com/challenge/mvHZK6Dy3ZF8EFoG3
+	 * @param a
+	 * @return
+	 */
+	public static int mean(int a) {
+		// 1. (각 자리 숫자의 합 / 숫자의 길이) 리턴
+		// 2. 512 --> (5 + 1 + 2) / 3 --> 3 리턴
+		int mean = 0;
+
+		return mean;
+	}
+
+	/***************************** not finished */
+	/**
+	 * Strange Pair
+	 * 
+	 * @see https://edabit.com/challenge/RSbXRKoom6ED9Xe9i
+	 * @param s1
+	 * @param s2
+	 * @return
+	 */
+	public static boolean isStrangePair(String s1, String s2) {
+		// 1. 첫번째 문자열의 첫번째 문자와 두번째 문자열의 마지막 문자가 같으면 true
+		// 2. 첫번째 문자열의 마지막 문자와 두번째 문자열의 첫번째 문자가 같으면 true
+		// 3. 위의 두 조건 모두 만족 시 true 리턴, 아니면 false
+
+		// if(isSameLetter_one(s1, s2) && isSameLetter_two(s1, s2)) {
+		// return true;
+		// }
+		// return false;
+
+		if (s1.length() == 0 || s2.length() == 0) {
+			return false;
+		} else if (s1.length() == 0 && s2.length() == 0) {
+			return true;
+		}
+		return isSameLetter_one(s1, s2) && isSameLetter_two(s1, s2) ? true : false;
+	}
+
+	private static boolean isSameLetter_one(String s1, String s2) {
+		return s1.charAt(0) == s2.charAt(s2.length() - 1);
+	}
+
+	private static boolean isSameLetter_two(String s1, String s2) {
+		return s1.charAt(s1.length() - 1) == s2.charAt(0);
+	}
+
+	/**
+	 * Halve and Halve Again
+	 * 
+	 * @see https://edabit.com/challenge/FQPo8iZ8vuPEj2dKB
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	public static int halveCount(int a, int b) {
+		// 1. a가 몇 번이나 반으로 나눠지는가
+		// 2. 나눈 값이 b보다 큰 동안만
+		// 3. 1000, 3 ➞ 8
+		// (1000 -> 500 -> 250 -> 125 -> 62.5 -> 31.25 -> 15.625 -> 7.8125 -> 3.90625
+
+		int halCount = 0;
+		double x = a;
+
+		while (true) {
+			x /= 2;
+			if (x <= b)
+				break;
+			else
+				halCount++;
+		}
+		return halCount;
+	}
 }
