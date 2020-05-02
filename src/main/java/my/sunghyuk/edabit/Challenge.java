@@ -1097,4 +1097,15 @@ public class Challenge {
 		}
 		return halCount;
 	}
+
+	/**
+	 * Is the String Empty?
+	 * 
+	 * @see https://edabit.com/challenge/wr8zTBNNeLtspmLLT
+	 * @param str
+	 * @return
+	 */
+	public static boolean isEmpty(String str) {
+		return str.equals("") ? true : false;
+	}
 }
