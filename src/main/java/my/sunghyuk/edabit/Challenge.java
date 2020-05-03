@@ -1108,4 +1108,16 @@ public class Challenge {
 	public static boolean isEmpty(String str) {
 		return str.equals("") ? true : false;
 	}
+
+	/**
+	 * Less Than 100?
+	 * 
+	 * @see https://edabit.com/challenge/FSKb2sKrGoejfJLrd	 * 
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	public static boolean lessThan100(int a, int b) {
+		return a + b < 100;
+  }
 }
