@@ -1119,5 +1119,32 @@ public class Challenge {
 	 */
 	public static boolean lessThan100(int a, int b) {
 		return a + b < 100;
-  }
+	}
+
+	/***************************** not finished */
+	/**
+	 * Clear the Fog
+	 * 
+	 * @see https://edabit.com/challenge/SSiwbDE337QvJ9FCZ
+	 * @param str
+	 * @return
+	 */
+	public static String clearFog(String str) {
+		// 1. str에서 f.o.g 제거
+		// 2. str에 f.o.g가 없으면 "It's a clear day!" 출력.
+		String removefog = str.replaceAll("[`f`o`g]", "");
+		return removefog;
+	}
+	
+	/**
+	 * Flip the Boolean
+	 * 
+	 * @see https://edabit.com/challenge/KWRQP86jxzM9SZmRM
+	 * @param b
+	 * @return
+	 */
+	public static boolean flipBoolean(boolean b) {
+		// 1. b의 반대값 출력
+		return !b;
+	}
 }
