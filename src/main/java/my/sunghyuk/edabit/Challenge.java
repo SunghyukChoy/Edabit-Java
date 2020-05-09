@@ -1147,4 +1147,33 @@ public class Challenge {
 		// 1. b의 반대값 출력
 		return !b;
 	}
+
+	/**
+	 * Multiple of 100
+	 * 
+	 * @see https://edabit.com/challenge/KnRj8TSD63JBpzDfi
+	 * @param num
+	 * @return
+	 */
+	public static boolean divisible(int num) {
+		// 1. 100으로 나누어지면 true
+		return num % 100 == 0;
+	}
+
+	/***************************** not finished */
+	/**
+	 * Power of Two
+	 * 
+	 * @see https://edabit.com/challenge/7LAsTPRvRH8sX6vD5
+	 * @param num
+	 * @return
+	 */
+	public static boolean powerOfTwo(int num) {
+		//1. num이 2의 거듭제곱수인가? (2^n제곱인가)
+		// num이 2의 제곱수인가 == num이 2의 제곱수로 나눠지는가
+
+
+		// num % (int)Math.pow(2, b)
+		return true;
+  }
 }
