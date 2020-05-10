@@ -1112,7 +1112,7 @@ public class Challenge {
 	/**
 	 * Less Than 100?
 	 * 
-	 * @see https://edabit.com/challenge/FSKb2sKrGoejfJLrd	 * 
+	 * @see https://edabit.com/challenge/FSKb2sKrGoejfJLrd *
 	 * @param a
 	 * @param b
 	 * @return
@@ -1135,7 +1135,7 @@ public class Challenge {
 		String removefog = str.replaceAll("[`f`o`g]", "");
 		return removefog;
 	}
-	
+
 	/**
 	 * Flip the Boolean
 	 * 
@@ -1160,7 +1160,6 @@ public class Challenge {
 		return num % 100 == 0;
 	}
 
-	/***************************** not finished */
 	/**
 	 * Power of Two
 	 * 
@@ -1168,12 +1167,26 @@ public class Challenge {
 	 * @param num
 	 * @return
 	 */
-	public static boolean powerOfTwo(int num) {
-		//1. num이 2의 거듭제곱수인가? (2^n제곱인가)
+	public static boolean powerOfTwo(final int num) {
+		// 1. num이 2의 거듭제곱수인가? (2^n제곱인가)
 		// num이 2의 제곱수인가 == num이 2의 제곱수로 나눠지는가
+		// 1, 2, 4, 8, 16, 32, 64...
+		// while and if
+				
+		int pow = 1;
 
-
-		// num % (int)Math.pow(2, b)
-		return true;
-  }
+		while (true) {
+			if (pow == num) {
+				return true;
+				// 2의 제곱수(pow)가 num이랑 같으면 true
+			} else if (pow < num) {
+				pow *= 2;
+				// pow를 2의 제곱수로 만드는 과정
+			} else {
+				return false;
+				// pow가 num보다 커지면 2의 제곱수가 아니라는 뜻.
+				// 위에서 2의 제곱수이면 true를 리턴했으므로..
+			}
+		}
+	}
 }
