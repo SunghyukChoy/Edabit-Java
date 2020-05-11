@@ -1132,8 +1132,15 @@ public class Challenge {
 	public static String clearFog(String str) {
 		// 1. str에서 f.o.g 제거
 		// 2. str에 f.o.g가 없으면 "It's a clear day!" 출력.
-		String removefog = str.replaceAll("[`f`o`g]", "");
-		return removefog;
+		for (int i = 0; i < str.length(); i++) {
+			if(str.charAt(i) == 'f' || str.charAt(i) == 'o' || str.charAt(i) == 'g') {
+				str.replaceAll("[`f`o`g]", "");
+				return str;
+			} else {
+				return "It's a clear day!";
+			}
+		}
+		return str;
 	}
 
 	/**
