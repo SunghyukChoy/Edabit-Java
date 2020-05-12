@@ -1196,4 +1196,19 @@ public class Challenge {
 			}
 		}
 	}
+
+	/**
+	 * Convert Number to String of Dashes
+	 * 
+	 * @see https://edabit.com/challenge/MhH32ydsoJKkjFjyz
+	 * @param num
+	 * @return
+	 */
+	public static String Go(int num) {
+		String dashes = "";
+		for (int i = 0; i < num; i++) {
+			dashes += "-";
+		}
+		return dashes;
+	}
 }
