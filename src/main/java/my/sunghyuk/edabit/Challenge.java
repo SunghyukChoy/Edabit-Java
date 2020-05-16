@@ -1211,4 +1211,47 @@ public class Challenge {
 		}
 		return dashes;
 	}
+	
+	/**
+	 * Compare Strings by Count of Characters
+	 * 
+	 * @see https://edabit.com/challenge/a9Shdt64Ak2Hwq7oP
+	 * @param str1
+	 * @param str2
+	 * @return
+	 */
+	public static boolean comp(String str1, String str2) {
+		// 1. 두 문자열의 길이 비교. 같으면 true
+		return str1.length() == str2.length();
+	}
+
+	/**
+	 * Return the First Element of an Array
+	 * 
+	 * @see https://edabit.com/challenge/SquoES5RxWr4CyX6G
+	 * @param arr
+	 * @return
+	 */
+	public static int getFirstValue(int[] arr) {
+		// 1. 배열의 첫 번째 값 리턴	
+		return arr[0];
+	}
+
+	/**
+	 * Hiding the Card Number
+	 * 
+	 * @see https://edabit.com/challenge/8ZFob4Juk8jzHMAHA
+	 * @param card
+	 * @return
+	 */
+	public static String cardHide(String card) {
+		// 1. 마지막 4자리 빼고 *로 변환
+		String hideNum = "";
+		for (int i = 0; i < card.length() - 5; i++) {
+			
+			hideNum += card.charAt(i);
+		}
+	}
+
+	
 }
