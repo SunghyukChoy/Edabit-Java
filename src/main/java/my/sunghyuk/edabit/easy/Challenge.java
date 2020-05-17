@@ -657,8 +657,7 @@ public class Challenge {
 		evenArray[0] = 2;
 		return evenArray;
 	}
-
-	/************** 다시 풀 것 ********************************/
+	
 	/**
 	 * Triangular Number Sequence
 	 * 
@@ -670,10 +669,30 @@ public class Challenge {
 		// 1. 0번쨰 인덱스 값 : 1
 		// 2. 0번째 인덱스부터 2,3,4,5,6... 더해서 n번쨰 인덱스 값 구하기
 		// 3. {1, 3, 6, 10, 15, 21.....} 순
-		int result = 0;
-		int addValue = 0;
+		// 4. 0 {1, 3, 6, 10, ...}
+		
+		// start value 'result' with 1
+		int result = 1;
+		
+		// first loop add 2
+			// add value to result
+		// second loop add 3
+			// add value to result
+		//..
+		// n loop add n + 1
+			// add value to result
+		for (int i = 2; i < n + 1; i++) {
+			result += i;
+		}
+		
+		return result;
 
-		return 0;
+		// int result = 0;
+		
+		// for (int i = 0; i < n; i++) {
+		// 	result += 1 + i;			
+		// }
+		// return result;
 	}
 
 	/**
@@ -1133,7 +1152,7 @@ public class Challenge {
 		// 1. str에서 f.o.g 제거
 		// 2. str에 f.o.g가 없으면 "It's a clear day!" 출력.
 		for (int i = 0; i < str.length(); i++) {
-			if(str.charAt(i) == 'f' || str.charAt(i) == 'o' || str.charAt(i) == 'g') {
+			if (str.charAt(i) == 'f' || str.charAt(i) == 'o' || str.charAt(i) == 'g') {
 				str.replaceAll("[`f`o`g]", "");
 				return str;
 			} else {
@@ -1179,7 +1198,7 @@ public class Challenge {
 		// num이 2의 제곱수인가 == num이 2의 제곱수로 나눠지는가
 		// 1, 2, 4, 8, 16, 32, 64...
 		// while and if
-				
+
 		int pow = 1;
 
 		while (true) {
@@ -1211,7 +1230,7 @@ public class Challenge {
 		}
 		return dashes;
 	}
-	
+
 	/**
 	 * Compare Strings by Count of Characters
 	 * 
@@ -1233,7 +1252,7 @@ public class Challenge {
 	 * @return
 	 */
 	public static int getFirstValue(int[] arr) {
-		// 1. 배열의 첫 번째 값 리턴	
+		// 1. 배열의 첫 번째 값 리턴
 		return arr[0];
 	}
 
@@ -1246,14 +1265,21 @@ public class Challenge {
 	 */
 	public static String cardHide(String card) {
 		// 1. 마지막 4자리 빼고 *로 변환
+		String result = "";
 		String hideNum = "";
-		char cardch = card.charAt(0);		
-		for (int i = 0; i < card.length() - 5; i++) {
-			char cardCh;
-			// cardCh
-			// Character.rep
-		}
-		return card;
-	}
 
+		// for (int i = 0; i < card.length(); i++) {
+		// 	result += card.length() - 4 > i ? "*" : card.charAt(i);
+		// }
+
+		for (int i = 0; i < card.length() - 4; i++) {
+			hideNum += "*";
+		}
+
+		for (int i = card.length() - 4; i < card.length(); i++) {
+			result += card.charAt(i);
+		}
+
+		return hideNum + result;
+	}	
 }
