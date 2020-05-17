@@ -6,26 +6,26 @@ import static org.junit.Assert.assertEquals;
 public class ConvertBinaryTests {
 	@Test 
 	public void test1() {
-		assertEquals("01110", EasyChallenge.convertBinary("house"));
+		assertEquals("01110", Challenge.convertBinary("house"));
 	}
 	
 	@Test 
 	public void test2() {
-		assertEquals("0100000", EasyChallenge.convertBinary("excLAIM"));
+		assertEquals("0100000", Challenge.convertBinary("excLAIM"));
 	}
 	
 	@Test 
 	public void test3() {
-		assertEquals("0111", EasyChallenge.convertBinary("moon"));
+		assertEquals("0111", Challenge.convertBinary("moon"));
 	}
 	
 	@Test 
 	public void test4() {
-		assertEquals("0111", EasyChallenge.convertBinary("MOOn"));
+		assertEquals("0111", Challenge.convertBinary("MOOn"));
 	}
 	
 	@Test 
 	public void test5() {
-		assertEquals("1111111111", EasyChallenge.convertBinary("topsyTurvy"));
+		assertEquals("1111111111", Challenge.convertBinary("topsyTurvy"));
 	}
 }

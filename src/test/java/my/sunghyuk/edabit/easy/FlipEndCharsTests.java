@@ -6,31 +6,31 @@ import static org.junit.Assert.assertEquals;
 public class FlipEndCharsTests {
   @Test
   public void test1() {
-    assertEquals(".at, dog, and mouseC", EasyProgram.flipEndChars("Cat, dog, and mouse."));
+    assertEquals(".at, dog, and mouseC", Program.flipEndChars("Cat, dog, and mouse."));
   }
 	
 	@Test
   public void test2() {
-    assertEquals("anna, BananA", EasyProgram.flipEndChars("Anna, Banana"));
+    assertEquals("anna, BananA", Program.flipEndChars("Anna, Banana"));
   }
 	
 	@Test
   public void test3() {
-    assertEquals("][", EasyProgram.flipEndChars("[]"));
+    assertEquals("][", Program.flipEndChars("[]"));
   }
 	
 	@Test
   public void test4() {
-    assertEquals("Incompatible.", EasyProgram.flipEndChars(""));
+    assertEquals("Incompatible.", Program.flipEndChars(""));
   }
 	
 	@Test
   public void test5() {
-    assertEquals("Two's a pair.", EasyProgram.flipEndChars("dfdkf49824fdfdfjhd"));
+    assertEquals("Two's a pair.", Program.flipEndChars("dfdkf49824fdfdfjhd"));
   }
 	
 	@Test
   public void test6() {
-    assertEquals("Two's a pair.", EasyProgram.flipEndChars("#343473847#"));
+    assertEquals("Two's a pair.", Program.flipEndChars("#343473847#"));
   }
 }

@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Challenge
  */
-public class EasyChallenge {
+public class Challenge {
 
 	/**
 	 * Check point 1 : Logic Check point 2 : 어디까지 나눠야 하나

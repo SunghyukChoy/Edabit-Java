@@ -6,11 +6,11 @@ import static org.junit.Assert.assertEquals;
 public class FlipBooleanTests {
 	@Test 
 	public void test1() {
-	assertEquals(true, EasyChallenge.flipBoolean(false));
+	assertEquals(true, Challenge.flipBoolean(false));
 	}
 	
 	@Test 
 	public void test2() {
-	assertEquals(false, EasyChallenge.flipBoolean(true));
+	assertEquals(false, Challenge.flipBoolean(true));
 	}
 }

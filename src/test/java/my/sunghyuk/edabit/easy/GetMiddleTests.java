@@ -7,47 +7,47 @@ import java.util.Random;
 public class GetMiddleTests {
   @Test
   public void test1() {
-		assertEquals("es", EasyChallenge.getMiddle("test"));
+		assertEquals("es", Challenge.getMiddle("test"));
   }
 	
 	@Test
   public void test2() {
-		assertEquals("t", EasyChallenge.getMiddle("testing"));
+		assertEquals("t", Challenge.getMiddle("testing"));
   }
 	
 	@Test
   public void test3() {
-		assertEquals("dd", EasyChallenge.getMiddle("middle"));
+		assertEquals("dd", Challenge.getMiddle("middle"));
   }
 	
 	@Test
   public void test4() {
-		assertEquals("A", EasyChallenge.getMiddle("A"));
+		assertEquals("A", Challenge.getMiddle("A"));
   }
 	
 	@Test
   public void test5() {
-		assertEquals("bi", EasyChallenge.getMiddle("inhabitant"));
+		assertEquals("bi", Challenge.getMiddle("inhabitant"));
   }
 	
 	@Test
   public void test6() {
-		assertEquals("o", EasyChallenge.getMiddle("brown"));
+		assertEquals("o", Challenge.getMiddle("brown"));
   }
 	
 	@Test
   public void test7() {
-		assertEquals("aw", EasyChallenge.getMiddle("pawn"));
+		assertEquals("aw", Challenge.getMiddle("pawn"));
   }
 	
 	@Test
   public void test8() {
-		assertEquals("i", EasyChallenge.getMiddle("cabinet"));
+		assertEquals("i", Challenge.getMiddle("cabinet"));
   }
 	
 	@Test
   public void test9() {
-		assertEquals("e", EasyChallenge.getMiddle("fresh"));
+		assertEquals("e", Challenge.getMiddle("fresh"));
   }
   
   private String middle(String word) {
@@ -67,7 +67,7 @@ public class GetMiddleTests {
         testWord += alph.substring(alphI, alphI+1);
       }
       String expected = middle(testWord);
-      String actual = EasyChallenge.getMiddle(testWord);
+      String actual = Challenge.getMiddle(testWord);
       assertEquals("Middle of " + testWord + " is " + expected + " not " + actual, expected, actual);
     }
   }

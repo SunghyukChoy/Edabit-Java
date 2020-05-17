@@ -7,11 +7,11 @@ import static org.junit.Assert.assertThat;
 public class DifferenceMaxMinTests {
 	@Test 
 	public void test1() {
-		assertThat(EasyChallenge.differenceMaxMin(new int[]{10, 4, 1, 2, 8, 91}), is(90));
+		assertThat(Challenge.differenceMaxMin(new int[]{10, 4, 1, 2, 8, 91}), is(90));
 	}
 	
 	@Test 
 	public void test2() {
-		assertThat(EasyChallenge.differenceMaxMin(new int[]{-70, 43, 34, 54, 22}), is(124));
+		assertThat(Challenge.differenceMaxMin(new int[]{-70, 43, 34, 54, 22}), is(124));
 	}
 }

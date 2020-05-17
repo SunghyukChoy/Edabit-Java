@@ -7,31 +7,31 @@ import static org.junit.Assert.assertThat;
 public class IsEmptyTests {
 	@Test 
 	public void test1() {
-		assertThat(EasyChallenge.isEmpty(""), is(true));
+		assertThat(Challenge.isEmpty(""), is(true));
 	}
 	
 	@Test 
 	public void test2() {
-		assertThat(EasyChallenge.isEmpty(" "), is(false));
+		assertThat(Challenge.isEmpty(" "), is(false));
 	}
 	
 	@Test 
 	public void test3() {
-		assertThat(EasyChallenge.isEmpty("            "), is(false));
+		assertThat(Challenge.isEmpty("            "), is(false));
 	}
 	
 	@Test 
 	public void test4() {
-		assertThat(EasyChallenge.isEmpty("38215"), is(false));
+		assertThat(Challenge.isEmpty("38215"), is(false));
 	}
 	
 	@Test 
 	public void test5() {
-		assertThat(EasyChallenge.isEmpty("afjabsdf"), is(false));
+		assertThat(Challenge.isEmpty("afjabsdf"), is(false));
 	}
 	
 	@Test 
 	public void test6() {
-		assertThat(EasyChallenge.isEmpty("!?@&"), is(false));
+		assertThat(Challenge.isEmpty("!?@&"), is(false));
 	}
 }

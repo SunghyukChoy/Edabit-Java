@@ -6,21 +6,21 @@ import static org.junit.Assert.assertEquals;
 public class RepeatTests {
   @Test
   public void test1() {
-    assertEquals("mmmmmiiiiiccccceeeee", EasyChallenge.repeat("mice", 5));
+    assertEquals("mmmmmiiiiiccccceeeee", Challenge.repeat("mice", 5));
   }
 	
 	@Test
   public void test2() {
-    assertEquals("hhheeellllllooo", EasyChallenge.repeat("hello", 3));
+    assertEquals("hhheeellllllooo", Challenge.repeat("hello", 3));
   }
 	
 	@Test
   public void test3() {
-    assertEquals("stop", EasyChallenge.repeat("stop", 1));
+    assertEquals("stop", Challenge.repeat("stop", 1));
   }
 	
 	@Test
   public void test4() {
-    assertEquals("ttoommaattoo", EasyChallenge.repeat("tomato", 2));
+    assertEquals("ttoommaattoo", Challenge.repeat("tomato", 2));
   }
 }

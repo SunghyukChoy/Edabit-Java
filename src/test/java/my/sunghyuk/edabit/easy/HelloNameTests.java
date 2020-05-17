@@ -7,21 +7,21 @@ import static org.junit.Assert.assertThat;
 public class HelloNameTests {
 	@Test
   public void test1() {
-  	assertThat(EasyChallenge.helloName("Gerald"), is("Hello Gerald!"));
+  	assertThat(Challenge.helloName("Gerald"), is("Hello Gerald!"));
 	}
 	
 	@Test
   public void test2() {
-  	assertThat(EasyChallenge.helloName("Fatima"), is("Hello Fatima!"));
+  	assertThat(Challenge.helloName("Fatima"), is("Hello Fatima!"));
 	}
 	
 	@Test
   public void test3() {
-  	assertThat(EasyChallenge.helloName("Ed"), is("Hello Ed!"));
+  	assertThat(Challenge.helloName("Ed"), is("Hello Ed!"));
 	}
 	
 	@Test
   public void test4() {
-  	assertThat(EasyChallenge.helloName("Tiffany"), is("Hello Tiffany!"));
+  	assertThat(Challenge.helloName("Tiffany"), is("Hello Tiffany!"));
 	}
 }

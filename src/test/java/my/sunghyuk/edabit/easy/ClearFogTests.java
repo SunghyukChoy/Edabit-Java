@@ -6,37 +6,37 @@ import static org.junit.Assert.assertEquals;
 public class ClearFogTests {
   @Test
   public void test1() {
-    assertEquals("trees", EasyChallenge.clearFog("fogfogfffoooofftreesggfoogfog"));
+    assertEquals("trees", Challenge.clearFog("fogfogfffoooofftreesggfoogfog"));
   }
 
 	@Test
   public void test2() {
-    assertEquals("sky", EasyChallenge.clearFog("fooofffgggofoogfoskygfogfogfoooggg"));
+    assertEquals("sky", Challenge.clearFog("fooofffgggofoogfoskygfogfogfoooggg"));
   }
 
 	@Test
   public void test3() {
-    assertEquals("birdsandthebees", EasyChallenge.clearFog("ffogfogoggofobirdsandthebeesfogfoggofgoffog"));
+    assertEquals("birdsandthebees", Challenge.clearFog("ffogfogoggofobirdsandthebeesfogfoggofgoffog"));
   }
 
 	@Test
   public void test4() {
-    assertEquals("plane", EasyChallenge.clearFog("fogfoofgfogfgplanefogofgoffgo"));
+    assertEquals("plane", Challenge.clearFog("fogfoofgfogfgplanefogofgoffgo"));
   }
 
 	@Test
   public void test5() {
-    assertEquals("thesaurus", EasyChallenge.clearFog("fogofogoofgfffogthesaurusfogfogfogfgofg"));
+    assertEquals("thesaurus", Challenge.clearFog("fogofogoofgfffogthesaurusfogfogfogfgofg"));
   }
 
 	@Test
   public void test6() {
-    assertEquals("sun", EasyChallenge.clearFog("fogfgofofsunfogfgoogfogofgff"));
+    assertEquals("sun", Challenge.clearFog("fogfgofofsunfogfgoogfogofgff"));
   }
 
 	@Test
   public void test7() {
-    assertEquals("It's a clear day!", EasyChallenge.clearFog("city"));
+    assertEquals("It's a clear day!", Challenge.clearFog("city"));
   }
 }
 

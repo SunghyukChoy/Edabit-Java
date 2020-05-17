@@ -6,51 +6,51 @@ import static org.junit.Assert.assertEquals;
 public class DoubleCharTests {
   @Test
   public void test1() {
-    assertEquals("SSttrriinngg", EasyProgram.doubleChar("String"));
+    assertEquals("SSttrriinngg", Program.doubleChar("String"));
   }
 
   @Test
   public void test2() {
-    assertEquals("HHeelllloo  WWoorrlldd!!", EasyProgram.doubleChar("Hello World!"));
+    assertEquals("HHeelllloo  WWoorrlldd!!", Program.doubleChar("Hello World!"));
   }
 
   @Test
   public void test3() {
-    assertEquals("11223344!!__  ", EasyProgram.doubleChar("1234!_ "));
+    assertEquals("11223344!!__  ", Program.doubleChar("1234!_ "));
   }
 
   @Test
   public void test4() {
-    assertEquals("####^^&&%%%%**&&%%%%$$##@@@@!!", EasyProgram.doubleChar("##^&%%*&%%$#@@!"));
+    assertEquals("####^^&&%%%%**&&%%%%$$##@@@@!!", Program.doubleChar("##^&%%*&%%$#@@!"));
   }
 
   @Test
   public void test5() {
-    assertEquals("ssccaannddaall", EasyProgram.doubleChar("scandal"));
+    assertEquals("ssccaannddaall", Program.doubleChar("scandal"));
   }
 
   @Test
   public void test6() {
-    assertEquals("eeccoonnoommiiccss", EasyProgram.doubleChar("economics"));
+    assertEquals("eeccoonnoommiiccss", Program.doubleChar("economics"));
   }
 
   @Test
   public void test7() {
-    assertEquals("  ", EasyProgram.doubleChar(" "));
+    assertEquals("  ", Program.doubleChar(" "));
   }
 
   @Test
   public void test8() {
-    assertEquals("______________", EasyProgram.doubleChar("_______"));
+    assertEquals("______________", Program.doubleChar("_______"));
   }
 
   @Test
   public void test9() {
-    assertEquals("eeqquuiipp  ggaalllloonn  rreeaadd", EasyProgram.doubleChar("equip gallon read"));
+    assertEquals("eeqquuiipp  ggaalllloonn  rreeaadd", Program.doubleChar("equip gallon read"));
   }
 
   @Test
   public void test10() {
-    assertEquals("bbaabbyy  iinnccrreeaassee", EasyProgram.doubleChar("baby increase"));
+    assertEquals("bbaabbyy  iinnccrreeaassee", Program.doubleChar("baby increase"));
   }
 }

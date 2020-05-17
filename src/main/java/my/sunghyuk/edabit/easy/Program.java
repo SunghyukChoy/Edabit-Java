@@ -1,9 +1,9 @@
 package my.sunghyuk.edabit.easy;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class EasyProgram {
+// refacor : rename
+public class Program {
   /**
    * Repeating Letters
    * 

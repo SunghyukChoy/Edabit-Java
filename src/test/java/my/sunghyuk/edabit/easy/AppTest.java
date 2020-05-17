@@ -21,6 +21,6 @@ public class AppTest
 
     @Test
     public void sumOf1To10() {
-        assertEquals(55, EasyProgram.sumOf1To10());
+        assertEquals(55, Program.sumOf1To10());
     }
 }
