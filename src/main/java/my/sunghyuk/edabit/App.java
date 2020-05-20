@@ -35,10 +35,12 @@ public class App {
         // String word = "abcde";
         // System.out.println(word.charAt(word.length()-1) + word.substring(1, word.length()-1) + word.charAt(0));
 
-        String num = "123a";
-        int parseint = Integer.parseInt(num);
-        System.out.println(parseint);
+        // String num = "123a";
+        // int parseint = Integer.parseInt(num);
+        // System.out.println(parseint);
 
-        
+        String word = "Apple";
+        System.out.println(word.length());
+        System.out.println(word.substring(0, word.length()));
     }
 }
