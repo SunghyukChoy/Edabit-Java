@@ -1012,10 +1012,16 @@ public class Challenge {
 	 * @return
 	 */
 	public static boolean isSymmetrical(int num) {
-		// 1. num이 좌우반전해도 같은 숫자이면 true, 아니면 false
-		// 2. 12321 -> true, 12345 -> false.
-
-		return true;
+	
+		int result = 0;
+		
+		for(int i = num ;i !=0; i /= 10){
+			
+			int digit = i%10;
+			result = (result*10) + digit;
+			
+		}
+		return result == num;
 	}
 
 	/***************************** not finished */
