@@ -1,6 +1,7 @@
 package my.sunghyuk.edabit.easy;
 
 import java.util.Arrays;
+import java.util.HashSet;
 
 /**
  * Challenge
@@ -8,23 +9,26 @@ import java.util.Arrays;
 public class Challenge {
 
 	/**
-	 * Check point 1 : Logic Check point 2 : 어디까지 나눠야 하나
+	 * Check if a Number is Prime
 	 * 
+	 * @see https://edabit.com/challenge/ePj2zup56kZrRbhDX
 	 * @param num
 	 * @return
 	 */
 	public static boolean isPrimeByChoi(int num) {
+		// 1. num이 소수이면 return true;
+		// 2. 숫자 1은 소수에서 제외
 		boolean flag = true;
 		if (num == 1) {
 			return false;
 		}
 
 		for (int i = 2; i < num; i++) {
-			if (num % i == 0) {
+			if (num % i == 0) { // num이 어떠한 숫자(i)로 나누어지면 소수가 아님.
 				flag = false;
-				break;
+				break; // 어떠한 숫자에서 나누어저 false를 반환하면 더 이상 진행할 필요가 없으므로 break
 
-			} else if (num % num == 0) {
+			} else if (num % num == 0) { // 자기 자신으로만 나누어지면 소수
 				flag = true;
 			}
 		}
@@ -35,7 +39,11 @@ public class Challenge {
 		if (num == 1)
 			return false;
 
-		for (int i = 2; i < Math.sqrt(num); i++) {
+		for (int i = 2; i <= Math.sqrt(num); i++) {
+			// Math.sqrt(100.0) -> 10.0 반환 double 타입.
+			// num이 100이라고 했을 때 100은 10의 제곱수(어떠한 수로 나뉘어짐)이고
+			// 10이 어떠한 수(i)로 나누어 진다면 소수가 아님을 나타내므로
+			// 굳이 100까지 연산할 필요 없음.
 			if (num % i == 0)
 				return false;
 		}
@@ -43,42 +51,48 @@ public class Challenge {
 	}
 
 	/**
-	 * 문제이름
-	 * 
-	 * @see https://edabit.com/challenge/gdRGePvnZDfQGDS8g
-	 * 
-	 * @param num1
-	 * @param num2
-	 * @return
-	 */
-	public static boolean isEqual(int num1, int num2) {
-		return num1 == num2;
-	}
-
-	public static int howManySeconds(int hours) {
-		return hours * 3600;
-	}
-
-	/**
 	 * The 3 Programmers Problem
 	 * 
 	 * @see https://edabit.com/challenge/akHQKSkHT26TuA7Ka
+	 * @param one
+	 * @param two
+	 * @param three
+	 * @return
 	 */
 
 	// 첫 답안 제출.
-	/*
-	 * public static int programmers(int one, int two, int three) { int maxNum = 0;
-	 * int minNum = 0;
-	 * 
-	 * if (one >= two && one >= three) { maxNum = one; if (two >= three) { minNum =
-	 * three; } else { minNum = two; } } else if (two >= one && two >= three) {
-	 * maxNum = two; if (one >= three) { minNum = three; } else { minNum = one; } }
-	 * else if (three >= one && three >= two) { maxNum = three; if (one >= two) {
-	 * minNum = two; } else { minNum = one; } } return maxNum - minNum; }
-	 */
+	// public static int programmers(int one, int two, int three) {
+	// int maxNum = 0;
+	// int minNum = 0;
+
+	// if (one >= two && one >= three) {
+	// maxNum = one;
+	// if (two >= three) {
+	// minNum = three;
+	// } else {
+	// minNum = two;
+	// }
+	// } else if (two >= one && two >= three) {
+	// maxNum = two;
+	// if (one >= three) {
+	// minNum = three;
+	// } else {
+	// minNum = one;
+	// }
+	// } else if (three >= one && three >= two) {
+	// maxNum = three;
+	// if (one >= two) {
+	// minNum = two;
+	// } else {
+	// minNum = one;
+	// }
+	// }
+	// return maxNum - minNum;
+	// }
 
 	// 두 번째 제출 답안
 	public static int programmers(int one, int two, int three) {
+		// 1. 세 수 중 가장 큰 수와 가장 작은 수의 차.
 
 		int[] arr = new int[] { one, two, three };
 		int maxNum = Integer.MIN_VALUE;
@@ -96,28 +110,67 @@ public class Challenge {
 			// 바꿔줌.
 			maxNum = Math.max(maxNum, arr[i]);
 			minNum = Math.min(minNum, arr[i]);
+			// 인덱스 돌면서 maxNum, minNum과의 비교, 각각 더 큰 수와 작은 수 반환
 		}
 		return maxNum - minNum;
 	}
 
 	// by Seon
-	/*
-	 * public static int programmers(int... arr) { // ... : 가변인자. 전달 받는 매겨 변수의 개수
-	 * 유동적. int maxNum = Integer.MIN_VALUE; int minNum = Integer.MAX_VALUE; for(int
-	 * i = 0; i < arr.length; i++) { maxNum = Math.max(maxNum, arr[i]); minNum =
-	 * Math.min(minNum, arr[i]); } return maxNum - minNum; }
-	 */
+	public static int programmers(int... arr) {
+		// ... : 가변인자. 전달 받는 매겨 변수의 개수 유동적.
+		int maxNum = Integer.MIN_VALUE;
+		int minNum = Integer.MAX_VALUE;
+		for (int i = 0; i < arr.length; i++) {
+			maxNum = Math.max(maxNum, arr[i]);
+			minNum = Math.min(minNum, arr[i]);
+		}
+		return maxNum - minNum;
+	}
 
-	// 미완성본 다시 생각해 볼 것.
-	/*
-	 * public static int equal(int a, int b, int c) { boolean aEqualB = (a == b) ?
-	 * true : false; boolean aEqualC = (a == c) ? true : false; boolean bEqaulC = (b
-	 * == c) ? true : false;
+	public static int programmersOtherSol(int one, int two, int three) {
+		int min = Math.min(one, Math.min(two, three));
+		int max = Math.max(one, Math.max(two, three));
+		return max - min;
+		// return Math.max(one, Math.max(two, three)) - Math.min(one, Math.min(two,
+		// three));
+	}
+
+	public static int programmersOtherSol2(int one, int two, int three) {
+		int[] arr = { one, two, three };
+		Arrays.sort(arr); // 내림차순으로 정렬
+		return arr[0] - arr[2];
+	}
+
+	/**
+	 * Equality of 3 Values
 	 * 
-	 * 
-	 * int result = 0; if(aEqualB || aEqualC) { if(aEqualC || aEqualB) { result = 3;
-	 * } else { result = 2; } } if(bEqaulC) { result = 2; } return result; }
+	 * @see https://edabit.com/challenge/nfc7H9CQFqJp54uEh
+	 * @param a
+	 * @param b
+	 * @param c
+	 * @return
 	 */
+	// public static int equal(int a, int b, int c) {
+	// // 1. 몇 개의 수가 같은 숫자인가..
+	// // 2. a,b 가 같으면 2 리턴, 같은 수가 없으면 0 리턴..
+
+	// boolean aEqualB = (a == b) ? true : false;
+	// boolean aEqualC = (a == c) ? true : false;
+	// boolean bEqaulC = (b == c) ? true : false;
+
+	// int result = 0;
+	// if (aEqualB || aEqualC) {
+	// if (aEqualC || aEqualB) {
+	// result = 3;
+	// } else {
+	// result = 2;
+	// }
+	// }
+	// if (bEqaulC) {
+	// result = 2;
+	// }
+	// return result;
+	// }
 
 	// by Seon
 	public static int equal(int a, int b, int c) {
@@ -133,6 +186,22 @@ public class Challenge {
 		return equalCount;
 	}
 
+	public static int equalOtherSol(int a, int b, int c) {
+		HashSet<Integer> equals = new HashSet<Integer>();
+
+		equals.add(a);
+		equals.add(b);
+		equals.add(c);
+
+		if (equals.size() == 1) {
+			return 3;
+		} else if (equals.size() == 2) {
+			return 2;
+		} else {
+			return 0;
+		}
+	}
+
 	/**
 	 * Repeating Letters N Times
 	 * 
@@ -142,8 +211,7 @@ public class Challenge {
 	 * @return
 	 */
 	public static String repeat(String str, int n) {
-		// 문자열의 길이만큼 돌림
-		// n만큼 문자 반복함
+		// 1. 문자열의 각 문자를 n번만큼 반복.
 		String repeatWord = "";
 		for (int i = 0; i < str.length(); i++) {
 			for (int j = 0; j < n; j++) {
@@ -153,19 +221,43 @@ public class Challenge {
 		return repeatWord;
 	}
 
+	public static String repeatOtherSol(String str, int n) {
+		String[] splitedWord = str.split("");
+		StringBuilder builder = new StringBuilder();
+		for (String ch : splitedWord) {
+			for (int i = 0; i < n; i++) {
+				builder.append(ch);
+			}
+		}
+		return builder.toString();
+	}
+
 	/**
 	 * Basic Calculator
 	 * 
 	 * @see https://edabit.com/challenge/gyfsGx7KrGLscxFrD
+	 * @param num1
+	 * @param operator
+	 * @param num2
+	 * @return
 	 */
-
-	/*
-	 * public static int calculator(int num1, char operator, int num2) { int result
-	 * = 0; if(operator == '+') { result = num1 + num2; } else if(operator == '-') {
-	 * result = num1 - num2; } else if(operator == '*') { result = num1 * num2; }
-	 * else if(operator == '/') { if(num2 == 0) { result = 0; } else { result = num1
-	 * / num2; } } return result; }
-	 */
+	// public static int calculator(int num1, char operator, int num2) {
+	// int result = 0;
+	// if (operator == '+') {
+	// result = num1 + num2;
+	// } else if (operator == '-') {
+	// result = num1 - num2;
+	// } else if (operator == '*') {
+	// result = num1 * num2;
+	// } else if (operator == '/') {
+	// if (num2 == 0) {
+	// result = 0;
+	// } else {
+	// result = num1 / num2;
+	// }
+	// }
+	// return result;
+	// }
 
 	public static int calculator(int num1, char operator, int num2) {
 		switch (operator) {
@@ -185,8 +277,9 @@ public class Challenge {
 	 * How Many Vowels?
 	 * 
 	 * @see https://edabit.com/challenge/GBKphScsmDi9ek3ra
+	 * @param str
+	 * @return
 	 */
-
 	public static int getVowelsCount(String str) {
 		int vowelsCount = 0;
 
@@ -199,15 +292,15 @@ public class Challenge {
 		return vowelsCount;
 	}
 
-	/*
-	 * 다시 풀어볼 것. 위의 if문의 반복되는 부분을 배열 이용해서 해결해 보기 public static int
-	 * getVowelsCount(String str) { char[] vowels = {'a','e','i','o','u'}; int
-	 * vowelsCount = 0; * for (int i = 0; i < str.length(); i++) {
-	 * 
-	 * 
-	 * 
-	 * } }
-	 */
+	/********************** not finished */
+	// 반복되는 부분 반복문 이용하여 풀어보기
+	// public static int getVowelsCount(String str) {
+	// char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
+	// int vowelsCount = 0;
+	// for (int i = 0; i < str.length(); i++) {
+
+	// }
+	// }
 
 	/**
 	 * Scoring System
@@ -657,7 +750,7 @@ public class Challenge {
 		evenArray[0] = 2;
 		return evenArray;
 	}
-	
+
 	/**
 	 * Triangular Number Sequence
 	 * 
@@ -670,54 +763,29 @@ public class Challenge {
 		// 2. 0번째 인덱스부터 2,3,4,5,6... 더해서 n번쨰 인덱스 값 구하기
 		// 3. {1, 3, 6, 10, 15, 21.....} 순
 		// 4. 0 {1, 3, 6, 10, ...}
-		
+
 		// start value 'result' with 1
 		int result = 1;
-		
+
 		// first loop add 2
-			// add value to result
+		// add value to result
 		// second loop add 3
-			// add value to result
-		//..
+		// add value to result
+		// ..
 		// n loop add n + 1
-			// add value to result
+		// add value to result
 		for (int i = 2; i < n + 1; i++) {
 			result += i;
 		}
-		
+
 		return result;
 
 		// int result = 0;
-		
+
 		// for (int i = 0; i < n; i++) {
-		// 	result += 1 + i;			
+		// result += 1 + i;
 		// }
 		// return result;
-	}
-
-	/**
-	 * Name Greeting!
-	 * 
-	 * @see https://edabit.com/challenge/JAtN6KLtahAkmT3n3
-	 */
-	public static String helloName(String name) {
-		return "Hello " + name + "!";
-	}
-
-	/**
-	 * Divides Evenly
-	 * 
-	 * @see https://edabit.com/challenge/dLXXzJ5hkLAzkyDCm
-	 * @param a
-	 * @param b
-	 * @return
-	 */
-
-	public static boolean dividesEvenly(int a, int b) {
-		if (a % b == 0) {
-			return true;
-		}
-		return false;
 	}
 
 	/**
@@ -1012,16 +1080,10 @@ public class Challenge {
 	 * @return
 	 */
 	public static boolean isSymmetrical(int num) {
-	
-		int result = 0;
-		
-		for(int i = num ;i !=0; i /= 10){
-			
-			int digit = i%10;
-			result = (result*10) + digit;
-			
-		}
-		return result == num;
+		// 1. num이 좌우반전해도 같은 숫자이면 true, 아니면 false
+		// 2. 12321 -> true, 12345 -> false.
+
+		return true;
 	}
 
 	/***************************** not finished */
@@ -1134,18 +1196,6 @@ public class Challenge {
 		return str.equals("") ? true : false;
 	}
 
-	/**
-	 * Less Than 100?
-	 * 
-	 * @see https://edabit.com/challenge/FSKb2sKrGoejfJLrd *
-	 * @param a
-	 * @param b
-	 * @return
-	 */
-	public static boolean lessThan100(int a, int b) {
-		return a + b < 100;
-	}
-
 	/***************************** not finished */
 	/**
 	 * Clear the Fog
@@ -1238,19 +1288,6 @@ public class Challenge {
 	}
 
 	/**
-	 * Compare Strings by Count of Characters
-	 * 
-	 * @see https://edabit.com/challenge/a9Shdt64Ak2Hwq7oP
-	 * @param str1
-	 * @param str2
-	 * @return
-	 */
-	public static boolean comp(String str1, String str2) {
-		// 1. 두 문자열의 길이 비교. 같으면 true
-		return str1.length() == str2.length();
-	}
-
-	/**
 	 * Return the First Element of an Array
 	 * 
 	 * @see https://edabit.com/challenge/SquoES5RxWr4CyX6G
@@ -1275,7 +1312,7 @@ public class Challenge {
 		String hideNum = "";
 
 		// for (int i = 0; i < card.length(); i++) {
-		// 	result += card.length() - 4 > i ? "*" : card.charAt(i);
+		// result += card.length() - 4 > i ? "*" : card.charAt(i);
 		// }
 
 		for (int i = 0; i < card.length() - 4; i++) {
@@ -1287,5 +1324,5 @@ public class Challenge {
 		}
 
 		return hideNum + result;
-	}	
+	}
 }

@@ -28,19 +28,23 @@ public class App {
         } 
         */
 
-        // int a = 0;
-        // int b = 5;
-        // System.out.println(a/b); 
+       /*  int a = 0;
+        int b = 5;
+        System.out.println(a/b);  */
 
-        // String word = "abcde";
-        // System.out.println(word.charAt(word.length()-1) + word.substring(1, word.length()-1) + word.charAt(0));
+        /* String word = "abcde";
+        System.out.println(word.charAt(word.length()-1) + word.substring(1, word.length()-1) + word.charAt(0)); */
 
-        // String num = "123a";
-        // int parseint = Integer.parseInt(num);
-        // System.out.println(parseint);
+        /* String num = "123a";
+        int parseint = Integer.parseInt(num);
+        System.out.println(parseint); */
 
-        String word = "Apple";
+        /* String word = "Apple";
         System.out.println(word.length());
-        System.out.println(word.substring(0, word.length()));
+        System.out.println(word.substring(0, word.length())); */
+        
+        double sqnum = Math.sqrt(100.0);
+        System.out.println(sqnum);
+
     }
 }
