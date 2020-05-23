@@ -1,6 +1,7 @@
 package my.sunghyuk.edabit.easy;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 
 /**
@@ -260,6 +261,7 @@ public class Challenge {
 	// }
 
 	public static int calculator(int num1, char operator, int num2) {
+		// 1. operator를 이용하여 num1과 num2 연산.
 		switch (operator) {
 			case '+':
 				return num1 + num2;
@@ -280,7 +282,8 @@ public class Challenge {
 	 * @param str
 	 * @return
 	 */
-	public static int getVowelsCount(String str) {
+	public static int getVowelsCount2(String str) {
+		// 1. 문자열에 있는 모음 갯수 리턴
 		int vowelsCount = 0;
 
 		for (int i = 0; i < str.length(); i++) {
@@ -292,24 +295,53 @@ public class Challenge {
 		return vowelsCount;
 	}
 
-	/********************** not finished */
 	// 반복되는 부분 반복문 이용하여 풀어보기
-	// public static int getVowelsCount(String str) {
-	// char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
-	// int vowelsCount = 0;
-	// for (int i = 0; i < str.length(); i++) {
+	public static int getVowelsCount(String str) {
+		char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
+		int vowelsCount = 0;
+		for (int i = 0; i < str.length(); i++) {
+			for (int j = 0; j < vowels.length; j++) {
+				if (str.charAt(i) == vowels[j]) {
+					vowelsCount++;
+				}
+			}
+		}
+		return vowelsCount;
+	}
 
-	// }
-	// }
+	public static int getVowelsCountOtherSol(String str) {
+		return str.replaceAll("[^aeiouAEIOU]", "").length();
+	}
+
+	public static int getVowelsCountOtherSol2(String str) {
+		int vowelsCount = 0;
+
+		for (int i = 0; i < str.length(); i++) {
+			switch (str.charAt(i)) {
+				case 'a':
+				case 'e':
+				case 'i':
+				case 'o':
+				case 'u':
+
+					vowelsCount++;
+					break;
+			}
+		}
+		return vowelsCount;
+	}
 
 	/**
 	 * Scoring System
 	 * 
 	 * @see https://edabit.com/challenge/FRtmuYD26pcQWFR7k
+	 * @param str
+	 * @return
 	 */
-
+	// 1. A, B, C 각 문자의 갯수를 배열 형태로 리턴, A는 배열의 0번, B는 1번, C는 2번 인덱스
+	// 2. str = "ABBACCCCAC" -> [3, 2, 5] 리턴
 	public static int[] calculateScores(String str) {
-		// 문재 갯수를 정수로 리턴
+
 		int aCount = 0;
 		int bCount = 0;
 		int cCount = 0;
@@ -357,11 +389,19 @@ public class Challenge {
 		return result;
 	}
 
-	/*
-	 * Reverse the Order of a String link :
-	 * https://edabit.com/challenge/5gPCp7v7iDWZvb4YQ
-	 */
+	public static int[] calculateScoresOtherSol(String s) {
+		return new int[] { s.replaceAll("[^A]", "").length(), s.replaceAll("[^B]", "").length(),
+				s.replaceAll("[^C]", "").length() };
+	}
 
+	/**
+	 * Reverse the Order of a String
+	 * 
+	 * @see https://edabit.com/challenge/5gPCp7v7iDWZvb4YQ
+	 * @param str
+	 * @return
+	 */
+	// 1. 문자열을 반대로 출력.
 	public static String reverse(final String str) {
 		// str을 char 하나씩 뽑아 배열로 저장 # 필요없음
 		// char[] words = str.toCharArray(); // 문자열을 char 배열로 저장하는 방법
@@ -1070,8 +1110,7 @@ public class Challenge {
 		}
 		return ampNumbers;
 	}
-
-	/***************************** not finished */
+	
 	/**
 	 * Is the Number Symmetrical?
 	 * 
@@ -1081,9 +1120,83 @@ public class Challenge {
 	 */
 	public static boolean isSymmetrical(int num) {
 		// 1. num이 좌우반전해도 같은 숫자이면 true, 아니면 false
+		// `좌우반전`을 어떻게 컴퓨터가 알아들을 수 있는 로직으로 표현할거냐?
+		//
 		// 2. 12321 -> true, 12345 -> false.
+		// String numText = String.valueOf(num);
+
+		// for (int i = 0; i < numText.length() / 2; i++) {
+		// char firstIndex = numText.charAt(i);
+		// char lastIndex = numText.charAt(numText.length() - (i + 1));
+
+		// if (firstIndex != lastIndex) {
+		// return false;
+		// }
+		// }
+		// return true;
+
+		// num = 12321 divider = 10000 10 ^ 4
+		// num = 232 divider = 100 10 ^ 2
+		// num = 3 END
+
+		// int len = String.valueOf(num).length(); // 1.
+
+		// num = 3223 divider = 1000 10 ^ 3
+		// num = 22 divider = 10 10 ^ 1
+		// num = 2 END
+		System.out.println("-----------------------");
+
+		int len = calculateIntegerLength(num);
+		while (num > 10) {
+			int divider = calculatePow(10, len - 1);
+			int firstIndex = num / divider; // 앞에 숫자 빼오기
+			int lastIndex = num % 10; // 뒤에 숫자 빼오기
+
+			System.out.printf("num=%d, divider=%d, len=%d, firstIndex=%d, lastIndex=%d\n", num, divider, len, firstIndex,
+					lastIndex);
+
+			if (firstIndex != lastIndex) {
+				return false;
+			}
+
+			num -= divider * firstIndex;
+			num /= 10;
+			len -= 2;
+		}
 
 		return true;
+	}
+
+	/**
+	 * 숫자의 길이를 리턴한다.
+	 * 
+	 * @param num
+	 * @return
+	 */
+	private static int calculateIntegerLength(int num) {
+		int len = 0;
+
+		while (num != 0) {
+			len++;
+			num /= 10; // len = 1, 12 / len = 2, 1 / len = 3, 0 /
+		}
+
+		return len;
+	}
+
+	/**
+	 * 제곱 숫자를 리턴한다, 형변환 이슈로 인한 속도 문제 해결
+	 * 
+	 * @param m
+	 * @param n
+	 * @return
+	 */
+	private static int calculatePow(int m, int n) {
+		int result = 1;
+		for (int i = 0; i < n; i++) {
+			result *= m;
+		}
+		return result;
 	}
 
 	/***************************** not finished */
