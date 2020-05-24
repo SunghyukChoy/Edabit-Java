@@ -1062,7 +1062,7 @@ public class Challenge {
 		// 요소 갯수);
 		return concatArray;
 	}
-	
+
 	/**
 	 * Find the Smallest and Biggest Numbers
 	 * 
@@ -1070,17 +1070,17 @@ public class Challenge {
 	 * @param arr
 	 * @return
 	 */
-	// 1. 배열에서 가장 작은 수와 가장 큰 수 출력  return {가장 작은 수, 가장 큰 수}
+	// 1. 배열에서 가장 작은 수와 가장 큰 수 출력 return {가장 작은 수, 가장 큰 수}
 	public static double[] minMax(double[] arr) {
 		double minValue = Double.MAX_VALUE;
 		double maxValue = Double.NEGATIVE_INFINITY;
-									// MIN_VALUE는 가장 작지 않다... 말이랑 안맞는 자바의 좋은 예
-									// Double의 범위에서 가장 작은 값.
+		// MIN_VALUE는 가장 작지 않다... 말이랑 안맞는 자바의 좋은 예
+		// Double의 범위에서 가장 작은 값.
 
 		for (int i = 0; i < arr.length; i++) {
-			minValue = Math.min(minValue, arr[i]);	
-			maxValue = Math.max(maxValue, arr[i]);	
-			
+			minValue = Math.min(minValue, arr[i]);
+			maxValue = Math.max(maxValue, arr[i]);
+
 		}
 		double[] minMaxArray = new double[] { minValue, maxValue };
 		return minMaxArray;
@@ -1106,7 +1106,7 @@ public class Challenge {
 		}
 		return ampNumbers;
 	}
-	
+
 	/**
 	 * Is the Number Symmetrical?
 	 * 
@@ -1215,7 +1215,7 @@ public class Challenge {
 		}
 		return "";
 	}
-	
+
 	/**
 	 * Find the Mean of All Digits
 	 * 
@@ -1223,30 +1223,37 @@ public class Challenge {
 	 * @param a
 	 * @return
 	 */
-		// 1. (각 자리 숫자의 합 / 숫자의 길이) 리턴
-		// 2. 512 --> (5 + 1 + 2) / 3 --> 2 리턴
+	// 1. (각 자리 숫자의 합 / 숫자의 길이) 리턴
+	// 2. 512 --> (5 + 1 + 2) / 3 --> 2 리턴
 	public static int mean(int a) {
 
-	int length = 0;
-	int quotient = a;		// 몫
-	int remainder = 0; // 나머지
-	int sumRemainder = 0;
-	// # 숫자를 10으로 나누면서 나머지들을 더함.
-	// # 나눈 횟수는 숫자의 길이가 됨.
-	// # 몫이 0이 아닌 동안 반복
+		int length = 0;
+		// int quotient = a; // 몫
+		int remainder = 0; // 나머지
+		int sumRemainder = 0;
+		// # 숫자를 10으로 나누면서 나머지들을 더함.
+		// # 나눈 횟수는 숫자의 길이가 됨.
+		// # 몫이 0이 아닌 동안 반복
 
-	if(a < 10) {
-		return a;
-	}
+		if (a < 10) {
+			return a;
+		}
 
-	// # 321의 몫과 나머지 -> 32 and 1, 3 and 2, 0 and 3
-	while(quotient != 0) {
-		remainder = a % 10;	// 1, 2, 3
-		sumRemainder += remainder;
-		quotient = a / 10;	// 32, 3, 0
-		a = quotient;	// a = 32, a = 3, a = 0
-		length++;	// 1, 2, 3
-	}		
+		// # 321의 몫과 나머지 -> 32 and 1, 3 and 2, 0 and 3
+		// while(quotient != 0) {
+		// remainder = a % 10; // 1, 2, 3
+		// sumRemainder += remainder;
+		// quotient = a / 10; // 32, 3, 0
+		// a = quotient; // a = 32, a = 3, a = 0
+		// length++; // 1, 2, 3
+		// }
+
+		while (a != 0) {
+			remainder = a % 10;
+			sumRemainder += remainder;
+			a /= 10;
+			length++;
+		}
 		return sumRemainder / length;
 	}
 
