@@ -1229,7 +1229,7 @@ public class Challenge {
 
 		int length = 0;
 		// int quotient = a; // 몫
-		int remainder = 0; // 나머지
+		// int remainder = 0; // 나머지
 		int sumRemainder = 0;
 		// # 숫자를 10으로 나누면서 나머지들을 더함.
 		// # 나눈 횟수는 숫자의 길이가 됨.
@@ -1249,15 +1249,13 @@ public class Challenge {
 		// }
 
 		while (a != 0) {
-			remainder = a % 10;
-			sumRemainder += remainder;
+			sumRemainder += a % 10;
 			a /= 10;
 			length++;
 		}
 		return sumRemainder / length;
 	}
 
-	/***************************** not finished */
 	/**
 	 * Strange Pair
 	 * 
@@ -1266,22 +1264,24 @@ public class Challenge {
 	 * @param s2
 	 * @return
 	 */
+	// 1. 첫번째 문자열의 첫번째 문자와 두번째 문자열의 마지막 문자가 같으면 true
+	// 2. 첫번째 문자열의 마지막 문자와 두번째 문자열의 첫번째 문자가 같으면 true
+	// 3. 위의 두 조건 모두 만족 시 true 리턴, 아니면 false
 	public static boolean isStrangePair(String s1, String s2) {
-		// 1. 첫번째 문자열의 첫번째 문자와 두번째 문자열의 마지막 문자가 같으면 true
-		// 2. 첫번째 문자열의 마지막 문자와 두번째 문자열의 첫번째 문자가 같으면 true
-		// 3. 위의 두 조건 모두 만족 시 true 리턴, 아니면 false
 
-		// if(isSameLetter_one(s1, s2) && isSameLetter_two(s1, s2)) {
-		// return true;
-		// }
-		// return false;
-
-		if (s1.length() == 0 || s2.length() == 0) {
-			return false;
-		} else if (s1.length() == 0 && s2.length() == 0) {
+		if (s1.length() == 0 && s2.length() == 0) {
 			return true;
+		} else if (s1.length() == 0 || s2.length() == 0) {
+			return false;
 		}
-		return isSameLetter_one(s1, s2) && isSameLetter_two(s1, s2) ? true : false;
+		// 위의 if문에서 조건식의 실행 순서를 바꾸면 오답 나옴
+		// || 연산자는 두 조건 모두 참인 경우 조건문이 실행되므로 위에서 false를 반환함.
+		// 두 문자열의 길이가 모두 0인 경우에 false를 반환해버림..
+
+		// && : 두 조건 모두 참일 경우에만 참 반환
+		// || : 두 조건 모두 거짓일 경우에만 거짓 반환
+
+		return isSameLetter_one(s1, s2) && isSameLetter_two(s1, s2);
 	}
 
 	private static boolean isSameLetter_one(String s1, String s2) {
