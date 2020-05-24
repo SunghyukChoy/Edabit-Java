@@ -5,7 +5,45 @@ package my.sunghyuk.edabit;
  *
  */
 public class App {
+
+    public static class IntegerHelper {
+
+        private IntegerHelper() {}
+
+        public static boolean isPrimeNumber(int value) {
+            if (value < 2)
+                return false;
+
+            double sqrt = Math.sqrt(value);
+            for (int i = 2; i <= sqrt; i++)
+            {
+                if (value % i == 0)
+                    return false;
+            }
+
+            return true;
+        }
+
+        public static boolean isOdd(int value) {
+            return value % 2 != 0;
+        }
+
+        public static boolean isEven(int value) {
+            return !isOdd(value);
+        }
+    }
+
     public static void main(String[] args) {
+
+        Integer val = Integer.valueOf(99);
+
+        if (IntegerHelper.isPrimeNumber(val)) {
+            // TODO
+        }
+
+        if (IntegerHelper.isEven(val)) {
+
+        }
         /*
          * 정수만큼 별 찍는 로직 final String FULL_STAR = "★"; final String FULL_EMPTY_STAR =
          * "☆"; final String HALF_STAR = "별 반개";
@@ -41,7 +79,9 @@ public class App {
         // double sqnum = Math.sqrt(100.0);
         // System.out.println(sqnum);
 
-        int num = 43211234;
+        
+
+        /* int num = 43211234;
 
         // call
         long start = System.currentTimeMillis();
@@ -56,7 +96,13 @@ public class App {
             boolean result = isSymmetricalWithInteger(num);
         }
         end = System.currentTimeMillis();
-        printElapsedTime(start, end);
+        printElapsedTime(start, end); 
+        */
+        
+        System.out.println(Double.MIN_VALUE < -99999999);
+        System.out.println(Double.NEGATIVE_INFINITY < -99999999);
+        System.out.println(Double.MIN_NORMAL < -99999999);
+        System.out.println(Double.MIN_EXPONENT < -99999999);
     }
 
     private static void printElapsedTime(long start, long end) {

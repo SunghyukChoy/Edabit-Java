@@ -1062,8 +1062,7 @@ public class Challenge {
 		// 요소 갯수);
 		return concatArray;
 	}
-
-	/***************************** not finished */
+	
 	/**
 	 * Find the Smallest and Biggest Numbers
 	 * 
@@ -1071,20 +1070,17 @@ public class Challenge {
 	 * @param arr
 	 * @return
 	 */
+	// 1. 배열에서 가장 작은 수와 가장 큰 수 출력  return {가장 작은 수, 가장 큰 수}
 	public static double[] minMax(double[] arr) {
-		// 배열에서 가장 작은 수와 가장 큰 수 출력
 		double minValue = Double.MAX_VALUE;
-		double maxValue = Double.MIN_VALUE;
-		for (int i = 0; i < arr.length; i++) {
-			// if(arr[i] <= minValue) {
-			// minValue = arr[i];
-			// }
-			// else if(arr[i] >= maxValue) {
-			// maxValue = arr[i];
-			// }
+		double maxValue = Double.NEGATIVE_INFINITY;
+									// MIN_VALUE는 가장 작지 않다... 말이랑 안맞는 자바의 좋은 예
+									// Double의 범위에서 가장 작은 값.
 
-			// minValue = Math.min(minValue, arr[i]);
-			// maxValue = Math.max(maxValue, arr[i]);
+		for (int i = 0; i < arr.length; i++) {
+			minValue = Math.min(minValue, arr[i]);	
+			maxValue = Math.max(maxValue, arr[i]);	
+			
 		}
 		double[] minMaxArray = new double[] { minValue, maxValue };
 		return minMaxArray;
@@ -1230,10 +1226,21 @@ public class Challenge {
 	 */
 	public static int mean(int a) {
 		// 1. (각 자리 숫자의 합 / 숫자의 길이) 리턴
-		// 2. 512 --> (5 + 1 + 2) / 3 --> 3 리턴
-		int mean = 0;
+		// 2. 512 --> (5 + 1 + 2) / 3 --> 2 리턴
 
-		return mean;
+		// # 숫자를 문자열로 변환
+		// # 각 문자를 다시 숫자로 변환 후 벼환		
+		String toString = String.valueOf(a);
+		
+		
+		int sum = 0;
+		// # 반복문을 돌면서 각 자리의 숫자를 더하기
+		for (int i = 0; i < toString.length(); i++) {
+			sum += 
+		}
+		System.out.println(sum);
+		
+		return 0;
 	}
 
 	/***************************** not finished */
