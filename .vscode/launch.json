@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CodeLens (Launch) - Teset",
+      "request": "launch",
+      "mainClass": "my.sunghyuk.edabit.Teset",
+      "projectName": "practice-edabit"
+    },
+    {
+      "type": "java",
       "name": "Debug (Launch) - Current File",
       "request": "launch",
       "mainClass": "${file}"

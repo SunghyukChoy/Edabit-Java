@@ -1215,8 +1215,7 @@ public class Challenge {
 		}
 		return "";
 	}
-
-	/***************************** not finished */
+	
 	/**
 	 * Find the Mean of All Digits
 	 * 
@@ -1224,23 +1223,31 @@ public class Challenge {
 	 * @param a
 	 * @return
 	 */
-	public static int mean(int a) {
 		// 1. (각 자리 숫자의 합 / 숫자의 길이) 리턴
 		// 2. 512 --> (5 + 1 + 2) / 3 --> 2 리턴
+	public static int mean(int a) {
 
-		// # 숫자를 문자열로 변환
-		// # 각 문자를 다시 숫자로 변환 후 벼환		
-		String toString = String.valueOf(a);
-		
-		
-		int sum = 0;
-		// # 반복문을 돌면서 각 자리의 숫자를 더하기
-		for (int i = 0; i < toString.length(); i++) {
-			sum += 
-		}
-		System.out.println(sum);
-		
-		return 0;
+	int length = 0;
+	int quotient = a;		// 몫
+	int remainder = 0; // 나머지
+	int sumRemainder = 0;
+	// # 숫자를 10으로 나누면서 나머지들을 더함.
+	// # 나눈 횟수는 숫자의 길이가 됨.
+	// # 몫이 0이 아닌 동안 반복
+
+	if(a < 10) {
+		return a;
+	}
+
+	// # 321의 몫과 나머지 -> 32 and 1, 3 and 2, 0 and 3
+	while(quotient != 0) {
+		remainder = a % 10;	// 1, 2, 3
+		sumRemainder += remainder;
+		quotient = a / 10;	// 32, 3, 0
+		a = quotient;	// a = 32, a = 3, a = 0
+		length++;	// 1, 2, 3
+	}		
+		return sumRemainder / length;
 	}
 
 	/***************************** not finished */
