@@ -1195,7 +1195,6 @@ public class Challenge {
 		return result;
 	}
 
-	/***************************** not finished */
 	/**
 	 * Transforming Words into Binary Strings
 	 * 
@@ -1203,17 +1202,38 @@ public class Challenge {
 	 * @param str
 	 * @return
 	 */
+	// 1. a부터 m까지의 문자는 "0" 출력
+	// 2. n부터 z까지의 문자는 "1" 출력
 	public static String convertBinary(String str) {
-		// 1. a부터 m까지의 문자는 "0" 출력
-		// 2. n부터 z까지의 문자는 "1" 출력
+		// str = str.toLowerCase(); // 소문자로 변환
 		String toZero = str.replaceAll("[a-mA-M]", "0");
-		String toOne = str.replaceAll("[n-zN-Z]", "1");
+		String toOne = toZero.replaceAll("[n-zN-Z]", "1");
 
-		String binaryStr = "";
-		for (int i = 0; i < str.length(); i++) {
+		return toOne;
+
+		// return str.replaceAll("[a-mA-M]", "0").replaceAll("[n-zN-Z]", "1");
+	}
+
+	public static String convertBinaryOtherSol(String str) {
+		str = str.toLowerCase();
+		char[] strChar = str.toCharArray();
+
+		for (int i = 0; i < strChar.length; i++) {
+
+			if (strChar[i] >= 'a' && strChar[i] <= 'm') {
+				strChar[i] = '0';
+			} else {
+				strChar[i] = '1';
+			}
 
 		}
-		return "";
+		StringBuilder sb = new StringBuilder();
+
+		for (int i = 0; i < strChar.length; i++) {
+			sb.append(strChar[i]);
+		}
+
+		return sb.toString();
 	}
 
 	/**
@@ -1292,6 +1312,14 @@ public class Challenge {
 		return s1.charAt(s1.length() - 1) == s2.charAt(0);
 	}
 
+	public static boolean isStrangePairOtherSol(String s1, String s2) {
+		if (s1.length() == 0 || s2.length() == 0) {
+			return s1.length() == 0 && s2.length() == 0;
+		}
+
+		return s1.charAt(0) == s2.charAt(s2.length() - 1) && s2.charAt(0) == s1.charAt(s1.length() - 1);
+	}
+
 	/**
 	 * Halve and Halve Again
 	 * 
@@ -1353,30 +1381,6 @@ public class Challenge {
 	}
 
 	/**
-	 * Flip the Boolean
-	 * 
-	 * @see https://edabit.com/challenge/KWRQP86jxzM9SZmRM
-	 * @param b
-	 * @return
-	 */
-	public static boolean flipBoolean(boolean b) {
-		// 1. b의 반대값 출력
-		return !b;
-	}
-
-	/**
-	 * Multiple of 100
-	 * 
-	 * @see https://edabit.com/challenge/KnRj8TSD63JBpzDfi
-	 * @param num
-	 * @return
-	 */
-	public static boolean divisible(int num) {
-		// 1. 100으로 나누어지면 true
-		return num % 100 == 0;
-	}
-
-	/**
 	 * Power of Two
 	 * 
 	 * @see https://edabit.com/challenge/7LAsTPRvRH8sX6vD5
@@ -1419,18 +1423,6 @@ public class Challenge {
 			dashes += "-";
 		}
 		return dashes;
-	}
-
-	/**
-	 * Return the First Element of an Array
-	 * 
-	 * @see https://edabit.com/challenge/SquoES5RxWr4CyX6G
-	 * @param arr
-	 * @return
-	 */
-	public static int getFirstValue(int[] arr) {
-		// 1. 배열의 첫 번째 값 리턴
-		return arr[0];
 	}
 
 	/**
