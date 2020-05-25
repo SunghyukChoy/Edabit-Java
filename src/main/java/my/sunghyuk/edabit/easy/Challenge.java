@@ -1358,7 +1358,6 @@ public class Challenge {
 		return str.equals("") ? true : false;
 	}
 
-	/***************************** not finished */
 	/**
 	 * Clear the Fog
 	 * 
@@ -1366,18 +1365,39 @@ public class Challenge {
 	 * @param str
 	 * @return
 	 */
+	// 1. str에서 f.o.g 제거
+	// 2. str에 f.o.g가 없으면 "It's a clear day!" 출력.
 	public static String clearFog(String str) {
-		// 1. str에서 f.o.g 제거
-		// 2. str에 f.o.g가 없으면 "It's a clear day!" 출력.
+
 		for (int i = 0; i < str.length(); i++) {
 			if (str.charAt(i) == 'f' || str.charAt(i) == 'o' || str.charAt(i) == 'g') {
-				str.replaceAll("[`f`o`g]", "");
+				str = str.replaceAll("[`f`o`g]", "");
 				return str;
 			} else {
 				return "It's a clear day!";
 			}
 		}
 		return str;
+
+		// # str의 각 문자와 문자 배열과 비교
+		// # 비교해서 요소가 있으면 변환
+		// # 없으면 클리어데이 리턴
+
+		// char[] fog = { 'f', 'o', 'g' };
+		// for (int i = 0; i < str.length(); i++) {
+		// for (int j = 0; j < fog.length; j++) {
+		// if (str.charAt(i) == fog[j]) {
+		// str = str.replaceAll("[`f`o`g]", "");
+		// } else {
+		// return "It's a clear day!";
+		// }
+		// }
+		// }
+		// return str;
+	}
+
+	public static String clearFogOtherSol(String str) {
+		return str.contains("fog") ? str.replaceAll("[fog]", "") : "It's a clear day!";
 	}
 
 	/**
@@ -1408,21 +1428,6 @@ public class Challenge {
 				// 위에서 2의 제곱수이면 true를 리턴했으므로..
 			}
 		}
-	}
-
-	/**
-	 * Convert Number to String of Dashes
-	 * 
-	 * @see https://edabit.com/challenge/MhH32ydsoJKkjFjyz
-	 * @param num
-	 * @return
-	 */
-	public static String Go(int num) {
-		String dashes = "";
-		for (int i = 0; i < num; i++) {
-			dashes += "-";
-		}
-		return dashes;
 	}
 
 	/**
