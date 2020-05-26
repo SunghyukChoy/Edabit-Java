@@ -296,4 +296,71 @@ public class Program {
     return false;
   }
 
+  /**
+   * Count Ones in Binary Representation of Integer
+   * 
+   * @see https://edabit.com/challenge/MwYW3sRdZxno5hXAF
+   * @param n
+   * @return
+   */
+  // 1. n을 2진수로 바꾼 후 2진수에서 1의 갯수 리턴
+  public static int countOnes(int n) {
+    // # n을 2로 나눔.
+    // # 몫이 2보다 작을 때까지.
+    // # 그 몫과 나머지들을 합치면 2진수
+
+    String binaryNum = "";
+    int remainder;
+    while (n > 1) { // n이 2 이상인 동안
+      remainder = n % 2;
+      n /= 2;
+      binaryNum += String.valueOf(remainder); // 숫자를 문자열로 바꿔줌.
+    }
+    binaryNum += String.valueOf(n); // 마지막에 남는 몫 n. 몫 + 나머지나머지나머지나머지... = 2진수
+    // 위의 연산은 2진수를 원래의 순서대로 출력할 수 없음.. 역순으로 출력됨...
+
+    int countOne = 0;
+    for (int i = 0; i < binaryNum.length(); i++) {
+      if (binaryNum.charAt(i) == '1') {
+        countOne++;
+      }
+    }
+    return countOne;
+  }
+
+  public static int countOnesOtherSol1(int n) {
+    return Integer.bitCount(n);
+  }
+
+  public static int countOnesOtherSol2(int n) {
+    int count = 0;
+
+    while (n != 0) {
+      int reminder = n % 2;
+      if (reminder == 1) {
+        count++;
+      }
+      n /= 2;
+    }
+    return count;
+  }
+
+  public static int countOnesOtherSol3(int n) {
+    if (n == 0) {
+      return 0;
+    } else {
+      return (n & 1) + countOnesOtherSol3(n >> 1);
+    }
+  }
+
+  public static int countOnesOtherSol4(int n) {
+    String binary = Integer.toBinaryString(n);
+    int cnt = 0;
+    for (int i = 0; i < binary.length(); i++) {
+      if (binary.charAt(i) == '1') {
+        cnt++;
+      }
+    }
+    return cnt;
+  }
 }

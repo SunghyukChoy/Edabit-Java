@@ -17,5 +17,9 @@ public class Test {
     String ex2 = ex[1];
     System.out.println(Arrays.toString(ex));
     System.out.println(ex2);
+    int num = 12;
+    String strNum = String.valueOf(num);
+    strNum = strNum + 50;
+    System.out.println(strNum);
   }
 }
