@@ -770,9 +770,10 @@ public class Challenge {
 	 * @param num
 	 * @return
 	 */
+	// 1부터 num까지의 짝수를 배열로 리턴
+	// num까지 짝수가 없으면 비어있는 배열로 리턴
 	public static int[] findEvenNums(int num) {
-		// 1부터 num까지의 짝수를 배열로 리턴
-		// num까지 짝수가 없으면 비어있는 배열로 리턴
+
 		int[] evenArray = new int[] {};
 		if (num == 1) {
 			return evenArray;
@@ -784,7 +785,7 @@ public class Challenge {
 		// num : 5 --> value : 2, 4
 		// num : 6 --> value : 2, 4, 6
 
-		for (int i = 1; i < (int) (num / 2); i++) {
+		for (int i = 1; i <= num / 2; i++) {
 			evenArray[i] = i * 2;
 		}
 		evenArray[0] = 2;
@@ -940,8 +941,10 @@ public class Challenge {
 				}
 			}
 		}
-		return -1; // if문의 조건에 부합하지 않는 경우에도 return이 필요하므로 return 작성. // 인덱스가 가질 수 없는 숫자인 -1로
-								// 작성하였음..
+		return -1;
+		// if문의 조건에 부합하지 않는 경우에도 return이 필요하므로 return 작성.
+		// 인덱스가 가질 수 없는 숫자인 -1로 작성하였음..
+
 	}
 
 	/**
@@ -1051,8 +1054,9 @@ public class Challenge {
 	 * @param arr2
 	 * @return
 	 */
+	// 1. 두 배열 합치기
 	public static int[] concat(int[] arr1, int[] arr2) {
-		// 두 배열 합치기
+
 		int[] concatArray = new int[arr1.length + arr2.length];
 		System.arraycopy(arr1, 0, concatArray, 0, arr1.length);
 		System.out.println(Arrays.toString(concatArray));
@@ -1455,5 +1459,44 @@ public class Challenge {
 		}
 
 		return hideNum + result;
+	}
+
+	/**
+	 * Get the File Extension
+	 * 
+	 * @see https://edabit.com/challenge/ENNmwseEab73TMoBc
+	 * @param arr
+	 * @return
+	 */
+	// 1. 파일명의 확장자 리턴
+	// 2. {"index.html", "main.css"} -> {"html", "css"} 리턴
+	public static String[] getExtension(String[] arr) {
+		String[] extension = new String[arr.length];
+		for (int i = 0; i < arr.length; i++) {
+			extension[i] = arr[i].split("[.]")[1];
+			// 각 요소를 .을 기준으로 나눈 뒤 뒤의 요소만 배열에 저장
+			// split(".") -> 안 됨. split("[.]") -> 됨.
+		}
+		return extension;
+	}
+
+	public static String[] getExtensionOtherSol1(String[] arr) {
+
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = arr[i].substring(arr[i].indexOf(".") + 1);
+		}
+		
+		return arr;
+	}
+
+	public static String[] getExtensionOtherSol2(String[] arr) {
+		String ext[] = new String[arr.length];
+
+		for (int i = 0; i < arr.length; i++) {
+			String pattern = "^.+[.]";
+			ext[i] = arr[i].replaceAll(pattern, "");
+		}
+
+		return ext;
 	}
 }
