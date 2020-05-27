@@ -277,7 +277,6 @@ public class Program {
     // 그 외의 문자열 s는 숫자로만 이주어져 있음. 따라서 s의 길이 == 숫자의 자릿수.
   }
 
-  /***************************** not finished */
   /**
    * Prefixes vs. Suffixes
    * 
@@ -286,14 +285,32 @@ public class Program {
    * @param prefix
    * @return
    */
+  // 1. prefix가 word의 어두이면 true, 아니면 false
+  // 2. suffix가 word의 어미이면 true, 아니면 false
   public static boolean isPrefix(String word, String prefix) {
-    // 1. prefix가 word의 어두이면 true, 아니면 false
-    return word.substring(0, prefix.length() - 1) == prefix.substring(0, prefix.length() - 1);
+
+    return word.startsWith(prefix.replaceAll("-", ""));
   }
 
   public static boolean isSuffix(String word, String suffix) {
-    // 1. suffix가 word의 어미이면 true, 아니면 false
-    return false;
+
+    return word.endsWith(suffix = suffix.replaceAll("-", ""));
+  }
+
+  public static boolean isPrefixOtherSol(String word, String prefix) {
+    if (word.startsWith(prefix.substring(0, prefix.length() - 1))) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public static boolean isSuffixOtherSol(String word, String suffix) {
+    if (word.endsWith(suffix.substring(1, suffix.length()))) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   /**
