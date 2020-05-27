@@ -1499,4 +1499,64 @@ public class Challenge {
 
 		return ext;
 	}
+
+	/**
+	 * GCD of Two Numbers
+	 * 
+	 * @see https://edabit.com/challenge/jrh488nh4CyDmwMre
+	 * @param n1
+	 * @param n2
+	 * @return
+	 */
+	// 1. n1과 n2의 최대공약수 구하기
+	public static int gcd(int n1, int n2) {
+		// # 각 숫자의 약수를 구해서
+		// # 공통된 값 중 제일 큰 값을 찾음.
+
+		/*
+		 * int n1Divisor = 0; // 약수 int i = 2; while (i != n1) { if (n1 % i == 0) {
+		 * n1Divisor = n1 / i; } else { i++; } } System.out.println(n1Divisor);
+		 */
+
+		// for (int i = 1; i <= n1; i++) {
+		// if (n1 % i == 0) {
+		// for (int j = 1; j <= n2; j++) {
+		// if (n2 % j == 0) {
+		// if (n1 / i == n2 / j) {
+		// return i;
+		// }
+		// }
+		// }
+		// }
+		// }
+
+		for (int i = 1; i <= Math.min(n1, n2); i++) {
+			if (n1 % i == 0 && n2 % i == 0) {
+				if (n1 / i == n2 / i) {
+					return i;
+				}
+			}
+		}
+		return 1;
+	}
+
+	/**
+	 * Reverse an Array
+	 * 
+	 * @see https://edabit.com/challenge/j5mm8HjTZGZagrnz8
+	 * @param arr
+	 * @return
+	 */
+	// 1. 배열을 반대로 출력
+	public static int[] reverse(int[] arr) {
+		if (arr.length == 0) {
+			return arr;
+		}
+
+		int[] reverseArray = new int[arr.length];
+		for (int i = 0; i < arr.length; i++) {
+			reverseArray[i] = arr[arr.length - (i + 1)];
+		}
+		return reverseArray;
+	}
 }

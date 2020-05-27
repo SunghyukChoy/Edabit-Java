@@ -294,7 +294,7 @@ public class Program {
 
   public static boolean isSuffix(String word, String suffix) {
 
-    return word.endsWith(suffix = suffix.replaceAll("-", ""));
+    return word.endsWith(suffix.replaceAll("-", ""));
   }
 
   public static boolean isPrefixOtherSol(String word, String prefix) {
