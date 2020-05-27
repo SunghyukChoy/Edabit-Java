@@ -1500,6 +1500,7 @@ public class Challenge {
 		return ext;
 	}
 
+	/********************** not finished */
 	/**
 	 * GCD of Two Numbers
 	 * 
@@ -1558,5 +1559,56 @@ public class Challenge {
 			reverseArray[i] = arr[arr.length - (i + 1)];
 		}
 		return reverseArray;
+	}
+
+	/**
+	 * Largest Swap
+	 * 
+	 * @see https://edabit.com/challenge/Jr7ueGQMEthBFYpB6
+	 * @param num
+	 * @return
+	 */
+	// 1. 두 자리의 수 num의 앞,뒷자리 수를 바꾸었을 때,
+	// 2. 원래의 num이 자리를 바꾼 num 이상이면 true 아니면 false
+	// num = 39, reverseNum = 93 -> false
+	// num = 99, reverseNum = 99 -> true;
+	public static boolean largestSwap(int num) {
+
+		String reverseNumStr = "";
+		int remainder;
+		int divisor = num;
+		while (divisor != 0) {
+			// num을 조작 시 while문이 끝난 후 n은 0이 되어버림.
+			// 그래서 num과 같은 변수 divisor 생성.
+			remainder = divisor % 10;
+			divisor = divisor / 10;
+			reverseNumStr += String.valueOf(remainder);
+		}
+		System.out.println("reverseNumStr = " + reverseNumStr);
+		int reverseNum = Integer.parseInt(reverseNumStr);
+		System.out.println("reverseNum = " + reverseNum);
+		System.out.println("num = " + num + "reverseNum = " + reverseNum);
+		return num >= reverseNum;
+	}
+
+	public static boolean largestSwapOtherSol1(int num) {
+		int dig1 = num % 10;
+		int dig2 = num / 10;
+		return dig2 >= dig1;
+	}
+
+	public static boolean largestSwapOtherSol2(int num) {
+		String numb = Integer.toString(num);
+		String x = "" + numb.charAt(1) + numb.charAt(0);
+		int f = Integer.parseInt(numb);
+		int g = Integer.parseInt(x);
+		if (f == g) {
+			return true;
+		}
+		if (f > g) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
