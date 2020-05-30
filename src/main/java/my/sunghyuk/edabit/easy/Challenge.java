@@ -1500,7 +1500,6 @@ public class Challenge {
 		return ext;
 	}
 
-	/********************** not finished */
 	/**
 	 * GCD of Two Numbers
 	 * 
@@ -1511,34 +1510,54 @@ public class Challenge {
 	 */
 	// 1. n1과 n2의 최대공약수 구하기
 	public static int gcd(int n1, int n2) {
-		// # 각 숫자의 약수를 구해서
-		// # 공통된 값 중 제일 큰 값을 찾음.
 
-		/*
-		 * int n1Divisor = 0; // 약수 int i = 2; while (i != n1) { if (n1 % i == 0) {
-		 * n1Divisor = n1 / i; } else { i++; } } System.out.println(n1Divisor);
-		 */
+		int gcd = Integer.MIN_VALUE;
+		// 최대공약수. 임의의 값. 최대공약수는 양수로 나올 것이기 때문에 나중에 바뀔 수 있는 음수 값으로 넣어줌.
+		for (int commonDivisor = 1; commonDivisor <= Math.min(n1, n2); commonDivisor++) {
+			if (n1 % commonDivisor == 0 && n2 % commonDivisor == 0) {
+				gcd = commonDivisor;
+				// return gcd;
+				// 처음에 return을 for문 안에 넣어서 계속 오답 출력됨. 초기값인 1로 출력되었음.
+				// i = 1일 떄 조건에 부합하므로 i가 gcd로 되었고 그대로 리턴이 됨.
+				// return 밖으로 빼내고 for문이 계속 돌아 조건에 만족하는 최대값(최대공약수) 찾음.
+			}
+		}
+		return gcd;
+	}
 
-		// for (int i = 1; i <= n1; i++) {
-		// if (n1 % i == 0) {
-		// for (int j = 1; j <= n2; j++) {
-		// if (n2 % j == 0) {
-		// if (n1 / i == n2 / j) {
-		// return i;
-		// }
-		// }
-		// }
-		// }
-		// }
+	public static int gcdOtherSol1(int n1, int n2) {
 
-		for (int i = 1; i <= Math.min(n1, n2); i++) {
-			if (n1 % i == 0 && n2 % i == 0) {
-				if (n1 / i == n2 / i) {
-					return i;
+		int gcd = Integer.MIN_VALUE;
+		for (int tmpCommonDivisor = 1; tmpCommonDivisor <= Math.min(n1, n2); tmpCommonDivisor++) {
+			if (n1 % tmpCommonDivisor == 0 && n2 % tmpCommonDivisor == 0) {
+				if (gcd < tmpCommonDivisor) { // 공약수가 이전의 최대공약수보다 크다면
+					gcd = tmpCommonDivisor; // 공약수를 최대공약수에 대입.
 				}
 			}
 		}
-		return 1;
+		return gcd;
+	}
+
+	public static int gcdOtherSol2(int n1, int n2) {
+		int i = n1 < n2 ? n1 : n2; // i(최대공약수)를 둘 중 더 작은 값으로 초기화 하고
+		while (!(n1 % i == 0 && n2 % i == 0)) { // i가 n1, n2 둘 다 나누어지는 경우가 아니라면
+			i--; // i값 감소. 위의 조건을 만족하는 i값이 나오지 않으면 while문 반복. 반복하면서 i 값 중 가장 큰 값을 찾음.
+		}
+		return i; // while문의 조건을 만족하지 않는 경우(i로 n1, n2를 모두 나눌 수 있는 경우) i값 리턴
+	}
+
+	// 이게 왜 되는지 수학이 이해가 안 됨.
+	public static int gcdOtherSol3(int n1, int n2) {
+		return (n2 == 0) ? n1 : gcdOtherSol3(n2, n1 % n2);
+	}
+
+	// 이게 왜 되는지 수학이 이해가 안 됨.
+	public static int gcdOtherSol4(int num1, int num2) {
+		if (num2 != 0) {
+			return gcdOtherSol4(num2, num1 % num2);
+		} else {
+			return num1;
+		}
 	}
 
 	/**
@@ -1610,5 +1629,29 @@ public class Challenge {
 		} else {
 			return false;
 		}
+	}
+
+	/**************** not finished */
+	/**
+	 * Grab the City
+	 * 
+	 * @see https://edabit.com/challenge/NgyZdeFBWJcBGXxjq
+	 * @param str
+	 * @return
+	 */
+	// 1. 문자열에서 도시 이름 출력
+	// 2. 도시 이름은 [] 안에 들어감.
+	// 3. 도시 이름이 들어간 [] 은 문자열 맨 마지막에만 옴.
+	public static String grabCity(String str) {
+		// # 문자열을 쪼갠 후 맨 마지막 요소만 출력
+		// # 마지막 요소에서 [] 제거
+
+		String[] strArr = str.split(" ");
+		System.out.println(Arrays.toString(strArr));
+		String city = strArr[strArr.length - 1];
+		city = city.replaceAll("[\\[\\]]", "");
+		// 특수문자 제거 표현식. 제거하려는 특수문자 앞에 \\ 붙여 사용.
+
+		return city;
 	}
 }
