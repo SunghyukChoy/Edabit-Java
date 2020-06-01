@@ -1473,9 +1473,9 @@ public class Challenge {
 	public static String[] getExtension(String[] arr) {
 		String[] extension = new String[arr.length];
 		for (int i = 0; i < arr.length; i++) {
-			extension[i] = arr[i].split("[.]")[1];
+			extension[i] = arr[i].split("\\.")[1];
 			// 각 요소를 .을 기준으로 나눈 뒤 뒤의 요소만 배열에 저장
-			// split(".") -> 안 됨. split("[.]") -> 됨.
+			// split(".") -> 안 됨. split("[.]") -> 됨. split("\\.") -> 됨.
 		}
 		return extension;
 	}
@@ -1631,7 +1631,6 @@ public class Challenge {
 		}
 	}
 
-	/**************** not finished */
 	/**
 	 * Grab the City
 	 * 
@@ -1646,12 +1645,16 @@ public class Challenge {
 		// # 문자열을 쪼갠 후 맨 마지막 요소만 출력
 		// # 마지막 요소에서 [] 제거
 
-		String[] strArr = str.split(" ");
+		String[] strArr = str.split("\\[");
 		System.out.println(Arrays.toString(strArr));
 		String city = strArr[strArr.length - 1];
-		city = city.replaceAll("[\\[\\]]", "");
+		city = city.replaceAll("[\\]]", "");
 		// 특수문자 제거 표현식. 제거하려는 특수문자 앞에 \\ 붙여 사용.
 
 		return city;
+	}
+
+	public static String grabCityOtherSol(String str) {
+		return str.substring(str.lastIndexOf('[') + 1, str.lastIndexOf(']'));
 	}
 }
