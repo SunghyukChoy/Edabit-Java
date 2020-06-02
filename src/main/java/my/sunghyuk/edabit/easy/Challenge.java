@@ -1670,4 +1670,35 @@ public class Challenge {
 		
 		return str.replaceAll("[^a-zA-Z]", "");
 	}
+
+	/**
+	 * Convert a Number to Base 2
+	 * 
+	 * @see https://edabit.com/challenge/xH7uvX2MoH8e85aYS
+	 * @param decimal
+	 * @return
+	 */
+	// 1. decimal을 2진수로 리턴. 문자열로 리턴
+	// 2. 리턴값은 1034 이상일 수 없음.
+	// 3. && 연산자는 유용하게 쓰일 수 있다.
+	public static String binary(int decimal) {
+
+		String binaryStr = "";
+		String remainderStr = "";
+
+		if(decimal == 0) { // 아래의 while문 실행되지 않으므로 그대로 "0" 리턴.
+			return "0";
+		}
+
+		while(decimal != 0) {
+			remainderStr += String.valueOf(decimal % 2);
+			decimal = decimal / 2;
+		}
+
+		for (int i = remainderStr.length() - 1; i >= 0 ; i--) {
+			binaryStr += remainderStr.charAt(i);
+		}
+		
+		return binaryStr;
+	}
 }

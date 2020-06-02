@@ -35,5 +35,18 @@ public class Test {
     String str = "This is last index of example";  
     int index = str.lastIndexOf("of");  
     System.out.println(index);     */   
+    /* String num = "12345";
+    String reverseNum = "";
+    for (int i = num.length() - 1; i >= 0; i--) {
+      
+      reverseNum += num.charAt(i);      
+    }
+    System.out.println(reverseNum);
+   */
+
+   int a = 0 /2;
+   int ra = 0 % 2;
+   System.out.println(a);
+   System.out.println(ra);
   }
 }
