@@ -1657,4 +1657,17 @@ public class Challenge {
 	public static String grabCityOtherSol(String str) {
 		return str.substring(str.lastIndexOf('[') + 1, str.lastIndexOf(']'));
 	}
+
+	/**
+	 * Letters Only
+	 * 
+	 * @see https://edabit.com/challenge/HPcr7REWMLTosoXME
+	 * @param str
+	 * @return
+	 */
+	// 1. 문자열에서 특수문자, 숫자 제외한 문자만 리턴
+	public static String lettersOnly(String str) {
+		
+		return str.replaceAll("[^a-zA-Z]", "");
+	}
 }
