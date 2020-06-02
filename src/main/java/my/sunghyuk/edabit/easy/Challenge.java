@@ -1667,7 +1667,7 @@ public class Challenge {
 	 */
 	// 1. 문자열에서 특수문자, 숫자 제외한 문자만 리턴
 	public static String lettersOnly(String str) {
-		
+
 		return str.replaceAll("[^a-zA-Z]", "");
 	}
 
@@ -1686,19 +1686,64 @@ public class Challenge {
 		String binaryStr = "";
 		String remainderStr = "";
 
-		if(decimal == 0) { // 아래의 while문 실행되지 않으므로 그대로 "0" 리턴.
+		if (decimal == 0) { // 아래의 while문 실행되지 않으므로 그대로 "0" 리턴.
 			return "0";
 		}
 
-		while(decimal != 0) {
+		while (decimal != 0) {
 			remainderStr += String.valueOf(decimal % 2);
 			decimal = decimal / 2;
 		}
 
-		for (int i = remainderStr.length() - 1; i >= 0 ; i--) {
+		for (int i = remainderStr.length() - 1; i >= 0; i--) {
 			binaryStr += remainderStr.charAt(i);
 		}
-		
+
 		return binaryStr;
+	}
+
+	public static String binaryOtherSol(int decimal) {
+		return Integer.toBinaryString(decimal);
+	}
+
+	/**
+	 * Valid Variable Names
+	 * 
+	 * @see https://edabit.com/challenge/6gDTBRgZKpotCsgib
+	 * @param variable
+	 * @return
+	 */
+	// 1. variable이 올바른 변수명인가 리턴
+	// 2. 변수명은 항상 문자로 시작해야 함.
+	// 3. variable이 숫자나 특수문자로 시작하거나, _ 이외의 특수문자를 포함하거나 공백이 있거나 -> false 리턴
+	// 4. 그렇지 않으면 true 리턴
+	public static boolean variableValid(String variable) {
+
+		// # 공백을 포함하는 경우
+		for (int i = 0; i < variable.length(); i++) {
+			if (variable.charAt(i) == ' ') {
+				return false;
+			}
+		}
+
+		// # _를 제외한 특수문자를 포함하는 경우
+		if (variable.matches("^[^a-zA-Z_].*")) {
+			// [^a-zA-Z] -> a~z, A~Z가 아닌 경우
+			// ^[~] -> ~로 시작하는 경우
+			// ^[^a-zA-Z_] -> a~z, A~Z, _가 아닌 경우(특수 문자, 숫자)로 시작하는 경우
+			// . -> 임의의 단일 문자
+			// [~]* ~ 문자가 0개에서 n개까지
+			return false;
+		}
+
+		return true;
+	}
+
+	public static boolean variableValidOtherSol(String variable) {
+		return variable.matches("^[a-zA-Z_][a-zA-Z0-9_]*$");
+		// [~]$ -> ~로 종료되는 경우
+		// ^[~][~~]$ -> 시작하는 문자의 패턴[~], 종료하는 문자의 패턴[~~]
+		// ^[a-zA-Z_][a-zA-Z0-9_]*$ -> [a-zA-Z_]로 시작하면서, 그 다음 문자가 [a-zA-Z0-9_]인 경우이고
+		// 0개에서 n개일 수 있고 [a-zA-Z0-9]인 경우로 끝남.
 	}
 }

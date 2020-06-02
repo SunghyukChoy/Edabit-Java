@@ -44,9 +44,10 @@ public class Test {
     System.out.println(reverseNum);
    */
 
-   int a = 0 /2;
+   /* int a = 0 /2;
    int ra = 0 % 2;
    System.out.println(a);
-   System.out.println(ra);
+   System.out.println(ra); */
+
   }
 }
