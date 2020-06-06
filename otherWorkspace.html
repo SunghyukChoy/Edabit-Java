@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+</head>
+
+<body>
+  <div id="reply">
+
+    <c:if test="${member == null }">
+      <p>소감을 남기시려면 <a href="/member/signin">로그인</a>해주세요</p>
+    </c:if>
+
+    <c:if test="${member != null}">
+    <section class="replyForm">
+      <form role="form" method="POST" autocomplete="off">
+        <div class="inputArea">
+          <textarea name="repCon" id="repCon"></textarea>
+        </div>
+
+        <div class="inputArea">
+          <button type="submit" id="reply_btn">소감 남기기</button>
+        </div>
+      </form>
+    </section>
+  </c:if>
+
+    <section class="replyList">
+      <ol>
+        <li>댓글 목록</li>
+      </ol>
+    </section>
+
+  </div>
+
+  <div class="replyModal">
+
+    <div class="modalContent">
+
+      <div>
+        <textarea class="modal_repCon" name="reply_repCon"></textarea>
+      </div>
+
+      <div>
+        <button type="button" class="modal_modify_btn">수정</button>
+        <button type="button" class="modal_cancel">취소</button>
+      </div>
+
+    </div>
+
+    <div class="modalBackground"></div>
+    
+  </div>
+</body>
+
+</html>

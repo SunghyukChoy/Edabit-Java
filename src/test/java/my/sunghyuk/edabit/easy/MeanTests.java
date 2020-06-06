@@ -39,4 +39,9 @@ public class MeanTests {
   public void test7() {
   	assertThat(Challenge.mean(12345), is(3));
 	}
+
+	@Test
+  public void test8() {
+  	assertThat(Challenge.mean(0), is(0));
+	}
 }

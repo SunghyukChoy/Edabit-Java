@@ -29,7 +29,7 @@ public class Challenge {
 				flag = false;
 				break; // 어떠한 숫자에서 나누어저 false를 반환하면 더 이상 진행할 필요가 없으므로 break
 
-			} else if (num % num == 0) { // 자기 자신으로만 나누어지면 소수
+			} else { // 자기 자신으로만 나누어지면 소수
 				flag = true;
 			}
 		}
@@ -271,8 +271,9 @@ public class Challenge {
 				return num1 * num2;
 			case '/':
 				return (num2 != 0) ? num1 / num2 : 0;
+			default:
+				return 0;
 		}
-		return 0; // 잘못된 operator 입력 시 0으로 리턴.
 	}
 
 	/**
@@ -323,7 +324,6 @@ public class Challenge {
 				case 'i':
 				case 'o':
 				case 'u':
-
 					vowelsCount++;
 					break;
 			}
@@ -1259,10 +1259,6 @@ public class Challenge {
 		// # 나눈 횟수는 숫자의 길이가 됨.
 		// # 몫이 0이 아닌 동안 반복
 
-		if (a < 10) {
-			return a;
-		}
-
 		// # 321의 몫과 나머지 -> 32 and 1, 3 and 2, 0 and 3
 		// while(quotient != 0) {
 		// remainder = a % 10; // 1, 2, 3
@@ -1275,9 +1271,11 @@ public class Challenge {
 		while (a != 0) {
 			sumRemainder += a % 10;
 			a /= 10;
+
 			length++;
 		}
-		return sumRemainder / length;
+
+		return sumRemainder / length == 0 ? 1 : length;
 	}
 
 	/**
@@ -1745,5 +1743,28 @@ public class Challenge {
 		// ^[~][~~]$ -> 시작하는 문자의 패턴[~], 종료하는 문자의 패턴[~~]
 		// ^[a-zA-Z_][a-zA-Z0-9_]*$ -> [a-zA-Z_]로 시작하면서, 그 다음 문자가 [a-zA-Z0-9_]인 경우이고
 		// 0개에서 n개일 수 있고 [a-zA-Z0-9]인 경우로 끝남.
+	}
+
+	/**
+	 * Solving Exponential Equations With Logarithms
+	 * 
+	 * @see https://edabit.com/challenge/oB67n674gwdTi33P4
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	// 1. b는 a의 몇 제곱인가?
+	public static int solveForExp(int a, int b) {
+		// # b가 a로 pow번 나누어지면 b는 a의 pow제곱
+		// a = 2, b = 16; pow = 0;
+		// pow = 1, b = 8 // 2, 4 // 3, 2 // 4, 1
+		
+		int pow = 0;
+		while(b != 1) {
+			b /= a;
+			pow++;
+		}
+
+		return pow;
 	}
 }
