@@ -1758,13 +1758,47 @@ public class Challenge {
 		// # b가 a로 pow번 나누어지면 b는 a의 pow제곱
 		// a = 2, b = 16; pow = 0;
 		// pow = 1, b = 8 // 2, 4 // 3, 2 // 4, 1
-		
+
 		int pow = 0;
-		while(b != 1) {
+		while (b != 1) {
 			b /= a;
 			pow++;
 		}
 
 		return pow;
+	}
+
+	public static int solveForExpOtherSol(int a, int b) {
+		return (int) (Math.log(b) / Math.log(a));
+	}
+
+	/**
+	 * Check if One Array can be Nested in Another
+	 * 
+	 * @see https://edabit.com/challenge/xkD7RBBDiWuDHTiXE
+	 * @param arr1
+	 * @param arr2
+	 * @return
+	 */
+	// 1. arr1 배열의 값들이 arr2 배열 값들의 사이에 들어가는가
+	// 2. [1, 2, 3, 4], [0, 6]) ➞ true
+	// 2. [3, 1], [4, 0]) ➞ true
+	// 2. [9, 9, 8], [8, 9]) ➞ false
+	// 2. [1, 2, 3, 4], [2, 3]) ➞ false
+	public static boolean canNest(int[] arr1, int[] arr2) {
+		// # arr1의 값들은 arr2에서 작은 값과 큰 값의 범위에 들어가는가
+		// # arr2의 작은 값과 큰 값 구하기
+		// # arr1의 값들을 arr2의 값들과 크기 비교하기
+		Arrays.sort(arr2);
+
+		int minRange = arr2[0];
+		int maxRange = arr2[arr2.length - 1];
+
+		for (int i = 0; i < arr1.length; i++) {
+			if (minRange >= arr1[i] || maxRange <= arr1[i]) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
