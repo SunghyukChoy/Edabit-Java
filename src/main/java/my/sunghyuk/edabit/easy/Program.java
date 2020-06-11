@@ -1,6 +1,7 @@
 package my.sunghyuk.edabit.easy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 // refacor : rename
 public class Program {
@@ -379,5 +380,30 @@ public class Program {
       }
     }
     return cnt;
+  }
+
+  /**
+   * Capitalize the First Letter of Each Word
+   * 
+   * @see https://edabit.com/challenge/mkxS3CnW98Ci3kwCh
+   * @param s
+   * @return
+   */
+  // 1. 문자열에서 각 단어의 첫 번째 문자를 대문자로 변환
+  // # 변환 # split # substring #toUpperCase # 문자열
+  public static String makeTitle(String s) {
+
+    String[] words = s.split(" ");
+
+    for (int i = 0; i < words.length; i++) {
+      words[i] = Character.toUpperCase(words[i].charAt(0)) + words[i].substring(1, words[i].length());
+    }
+
+    String capWords = words[0];
+    // 위의 for문에서 변환한 요소를 초기값으로 저장
+    for (int i = 1; i < words.length; i++) {
+      capWords += " " + words[i];
+    }
+    return capWords;
   }
 }
