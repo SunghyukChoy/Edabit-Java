@@ -6,20 +6,6 @@
   "configurations": [
     {
       "type": "java",
-      "name": "CodeLens (Launch) - Test",
-      "request": "launch",
-      "mainClass": "my.sunghyuk.edabit.Test",
-      "projectName": "practice-edabit"
-    },
-    {
-      "type": "java",
-      "name": "CodeLens (Launch) - Teset",
-      "request": "launch",
-      "mainClass": "my.sunghyuk.edabit.Teset",
-      "projectName": "practice-edabit"
-    },
-    {
-      "type": "java",
       "name": "Debug (Launch) - Current File",
       "request": "launch",
       "mainClass": "${file}"
@@ -29,6 +15,13 @@
       "name": "Debug (Launch)-App<practice-edabit>",
       "request": "launch",
       "mainClass": "my.sunghyuk.edabit.App",
+      "projectName": "practice-edabit"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-Test<practice-edabit>",
+      "request": "launch",
+      "mainClass": "my.sunghyuk.edabit.Test",
       "projectName": "practice-edabit"
     }
   ]

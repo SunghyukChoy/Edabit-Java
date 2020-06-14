@@ -406,4 +406,71 @@ public class Program {
     }
     return capWords;
   }
+
+  
+  /**
+   * Are Letters in the Second String Present in the First?
+   * 
+   * @see https://edabit.com/challenge/mDM9eJXqjL7kJc3hh
+   * @param s
+   * @return
+   */
+  // 1. 배열의 1번째 인덱스 문자열의 문자가 0번째 인덱스 문자열 안에 다 들어가는가 들어가면 true 아니면 false
+  // 2. 대문자와 소문자 같은 문자로 봄
+  // 3. 정규표현식 이용하지 말고 풀기
+  public static boolean letterCheck(String[] s) {
+    
+    String chars = s[0].toLowerCase();
+    String text = s[1].toLowerCase();
+
+    for (int i = 0; i < text.length(); i++) {
+      if (!(chars.contains(text.charAt(i) + ""))) {
+        return false;
+      }
+    }
+
+    return true;
+
+  }
+
+  public static boolean letterCheckOtherSol(String[] s) {
+    String a = s[0].toLowerCase();
+    String b = s[1].toLowerCase();
+
+    for (char c : b.toCharArray()) {
+      if (!a.contains(String.valueOf(c))) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  /**
+   * Capitalize the Names
+   * 
+   * @see https://edabit.com/challenge/pKmR5HRabYPkdGunz
+   * @param s
+   * @return
+   */
+  // 1. 각 요소의 첫 문자를 대문자로
+  // 2. 나머지 요소들은 소문자로
+  // # 변환 # toUpperCase # toLowerCase
+  public static String[] capMe(String[] s) {
+
+    for (int i = 0; i < s.length; i++) {
+      char firstLetter = Character.toUpperCase(s[i].charAt(0));
+      String lowerLetters = s[i].substring(1, s[i].length()).toLowerCase();
+      s[i] = firstLetter + lowerLetters;
+    }
+    return s;
+  }
+
+  public static String[] capMeOtherSol(String[] s) {
+
+    for (int i = 0; i < s.length; i++) {
+      s[i] = Character.toUpperCase(s[i].charAt(0)) + s[i].substring(1).toLowerCase();
+    }
+    return s;
+  }
 }

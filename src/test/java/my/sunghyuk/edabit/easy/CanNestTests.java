@@ -2,7 +2,6 @@ package my.sunghyuk.edabit.easy;
 
 import static org.hamcrest.core.Is.is;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 public class CanNestTests {
