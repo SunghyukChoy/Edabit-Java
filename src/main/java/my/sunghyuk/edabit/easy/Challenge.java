@@ -1,8 +1,9 @@
 package my.sunghyuk.edabit.easy;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * Challenge
@@ -760,9 +761,7 @@ public class Challenge {
 		}
 		return false;
 	}
-
-	/************** 다시 풀 것 ********************************/
-	// 모르겠다.. 근본없는 문법...
+	
 	/**
 	 * Even Number Generator
 	 * 
@@ -774,22 +773,19 @@ public class Challenge {
 	// num까지 짝수가 없으면 비어있는 배열로 리턴
 	public static int[] findEvenNums(int num) {
 
-		int[] evenArray = new int[] {};
-		if (num == 1) {
-			return evenArray;
-		}
-
 		// num : 2 --> value : 2
 		// num : 3 --> value : 2
 		// num : 4 --> value : 2, 4
 		// num : 5 --> value : 2, 4
 		// num : 6 --> value : 2, 4, 6
 
-		for (int i = 1; i <= num / 2; i++) {
-			evenArray[i] = i * 2;
+		int[] evens = new int[num / 2];
+		// num이 1 이하라면 배열의 길이가 0이므로 빈 배열 리턴
+		
+		for (int i = 0; i < evens.length; i++) {
+			evens[i] = (i + 1) * 2 ;
 		}
-		evenArray[0] = 2;
-		return evenArray;
+		return evens;
 	}
 
 	/**
