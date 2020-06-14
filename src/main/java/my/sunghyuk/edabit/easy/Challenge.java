@@ -327,6 +327,8 @@ public class Challenge {
 				case 'u':
 					vowelsCount++;
 					break;
+				default	:
+				break;
 			}
 		}
 		return vowelsCount;

@@ -1,6 +1,7 @@
 package my.sunghyuk.edabit.easy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -291,12 +292,12 @@ public class Program {
   // 2. suffix가 word의 어미이면 true, 아니면 false
   public static boolean isPrefix(String word, String prefix) {
 
-    return word.startsWith(prefix.replaceAll("-", ""));
+    return word.startsWith(prefix.replace("-", ""));
   }
 
   public static boolean isSuffix(String word, String suffix) {
 
-    return word.endsWith(suffix.replaceAll("-", ""));
+    return word.endsWith(suffix.replace("-", ""));
   }
 
   public static boolean isPrefixOtherSol(String word, String prefix) {
@@ -488,4 +489,21 @@ public class Program {
 
     return month == 12 && day == 24;
   }
+
+  /**
+   * Sort Numbers in Ascending Order
+   * 
+   * @see https://edabit.com/challenge/WM5s7vuHnXdcKCEjS
+   * @param nums
+   * @return
+   */  
+  public static int[] sortNumsAscending(int[] nums) {
+    // 1. 숫자를 오름차순으로 정렬
+    if(nums == null) {
+      return new int[0];
+    }
+
+    Arrays.sort(nums);
+    return nums;
+	}
 }
