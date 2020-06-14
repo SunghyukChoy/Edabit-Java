@@ -1,7 +1,8 @@
 package my.sunghyuk.edabit.easy;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 // refacor : rename
 public class Program {
@@ -407,7 +408,6 @@ public class Program {
     return capWords;
   }
 
-  
   /**
    * Are Letters in the Second String Present in the First?
    * 
@@ -419,7 +419,7 @@ public class Program {
   // 2. 대문자와 소문자 같은 문자로 봄
   // 3. 정규표현식 이용하지 말고 풀기
   public static boolean letterCheck(String[] s) {
-    
+
     String chars = s[0].toLowerCase();
     String text = s[1].toLowerCase();
 
@@ -472,5 +472,20 @@ public class Program {
       s[i] = Character.toUpperCase(s[i].charAt(0)) + s[i].substring(1).toLowerCase();
     }
     return s;
+  }
+
+  /**
+   * Is it Time for Milk and Cookies?
+   * 
+   * @see https://edabit.com/challenge/n6bgfrTFfNZt4yWkJ
+   * @param date
+   * @return
+   */
+  public static boolean timeForMilkAndCookies(GregorianCalendar date) {
+
+    int month = date.get(Calendar.MONTH) + 1;
+    int day = date.get(Calendar.DATE);
+
+    return month == 12 && day == 24;
   }
 }
