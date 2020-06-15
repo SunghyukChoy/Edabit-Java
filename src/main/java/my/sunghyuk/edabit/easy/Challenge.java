@@ -129,7 +129,7 @@ public class Challenge {
 		return maxNum - minNum;
 	}
 
-	public static int programmersOtherSol(int one, int two, int three) {
+	public static int programmersOtherSol1(int one, int two, int three) {
 		int min = Math.min(one, Math.min(two, three));
 		int max = Math.max(one, Math.max(two, three));
 		return max - min;
@@ -137,10 +137,10 @@ public class Challenge {
 		// three));
 	}
 
-	public static int programmersOtherSol2(int one, int two, int three) {
+	public static int programmerOtherSol2(int one, int two, int three) {
 		int[] arr = { one, two, three };
-		Arrays.sort(arr); // 내림차순으로 정렬
-		return arr[0] - arr[2];
+		Arrays.sort(arr); // 오름차순으로 정렬. 값이 뒤로 갈수록 커짐.
+		return arr[2] - arr[0];
 	}
 
 	/**
@@ -1856,15 +1856,14 @@ public class Challenge {
 	}
 
 	/**
-	 * Alternating Ones and Zeroes
-	 * 1. 주어진 0과 1을 가지고 하나씩 교차하면서 다시 적을 수 있으면 true 아니면 false
-	 * 2. 0001111 ➞ true. Can make: 1010101 // 010001 ➞ false
+	 * Alternating Ones and Zeroes 1. 주어진 0과 1을 가지고 하나씩 교차하면서 다시 적을 수 있으면 true 아니면
+	 * false 2. 0001111 ➞ true. Can make: 1010101 // 010001 ➞ false
 	 * 
 	 * @see https://edabit.com/challenge/D7PZ7rcKGRiCvcm7C
 	 * @param str
 	 * @return
 	 */
-	
+
 	public static boolean canAlternate(String str) {
 
 		int zeroCnt = 0;
@@ -1891,5 +1890,31 @@ public class Challenge {
 		int zeros = str.replace("1", "").length();
 		int ones = str.replace("0", "").length();
 		return Math.abs(zeros - ones) <= 1;
+	}
+
+	/**
+	 * Semantic Versioning
+	 *  1. 문자열에서 세 숫자는 각 Major, Minor, Patch의 수를 의미. 각 숫자 리턴
+	 * 
+	 * @see https://edabit.com/challenge/H4smHFuL5wn58imFK
+	 * @param semver
+	 * @return
+	 */
+	public static String retrieveMajor(String semver) {
+		String[] numbers = semver.split("\\.");
+		// "."으로 안 잘림. "\\."로 해야 잘림.
+		System.out.println(Arrays.toString(numbers));
+		return numbers[0];
+
+	}
+
+	public static String retrieveMinor(String semver) {
+		String[] numbers = semver.split("\\.");
+		return numbers[1];
+	}
+
+	public static String retrievePatch(String semver) {
+		String[] numbers = semver.split("\\.");
+		return numbers[2];
 	}
 }
