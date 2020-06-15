@@ -327,8 +327,8 @@ public class Challenge {
 				case 'u':
 					vowelsCount++;
 					break;
-				default	:
-				break;
+				default:
+					break;
 			}
 		}
 		return vowelsCount;
@@ -763,7 +763,7 @@ public class Challenge {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Even Number Generator
 	 * 
@@ -783,9 +783,9 @@ public class Challenge {
 
 		int[] evens = new int[num / 2];
 		// num이 1 이하라면 배열의 길이가 0이므로 빈 배열 리턴
-		
+
 		for (int i = 0; i < evens.length; i++) {
-			evens[i] = (i + 1) * 2 ;
+			evens[i] = (i + 1) * 2;
 		}
 		return evens;
 	}
@@ -1853,5 +1853,43 @@ public class Challenge {
 		// }
 		// }
 		// }
+	}
+
+	/**
+	 * Alternating Ones and Zeroes
+	 * 1. 주어진 0과 1을 가지고 하나씩 교차하면서 다시 적을 수 있으면 true 아니면 false
+	 * 2. 0001111 ➞ true. Can make: 1010101 // 010001 ➞ false
+	 * 
+	 * @see https://edabit.com/challenge/D7PZ7rcKGRiCvcm7C
+	 * @param str
+	 * @return
+	 */
+	
+	public static boolean canAlternate(String str) {
+
+		int zeroCnt = 0;
+		int oneCnt = 0;
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) == '0') {
+				zeroCnt++;
+			} else if (str.charAt(i) == '1') {
+				oneCnt++;
+			}
+		}
+
+		return Math.abs(zeroCnt - oneCnt) == 1 || Math.abs(zeroCnt - oneCnt) == 0;
+	}
+
+	public static boolean canAlternateOtherSol1(String str) {
+		long zeroCnt = str.chars().filter(ch -> ch == '0').count();
+		long oneCnt = str.chars().filter(ch -> ch == '1').count();
+
+		return zeroCnt - oneCnt >= -1 && zeroCnt - oneCnt <= 1;
+	}
+
+	public static boolean canAlternateOtherSol2(String str) {
+		int zeros = str.replace("1", "").length();
+		int ones = str.replace("0", "").length();
+		return Math.abs(zeros - ones) <= 1;
 	}
 }

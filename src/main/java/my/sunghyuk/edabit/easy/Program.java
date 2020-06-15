@@ -496,14 +496,14 @@ public class Program {
    * @see https://edabit.com/challenge/WM5s7vuHnXdcKCEjS
    * @param nums
    * @return
-   */  
+   */
   public static int[] sortNumsAscending(int[] nums) {
     // 1. 숫자를 오름차순으로 정렬
-    if(nums == null) {
+    if (nums == null) {
       return new int[0];
     }
 
     Arrays.sort(nums);
     return nums;
-	}
+  }
 }
