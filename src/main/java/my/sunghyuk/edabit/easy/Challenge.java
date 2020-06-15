@@ -1919,8 +1919,7 @@ public class Challenge {
 	}
 
 	/**
-	 * Fix the Spacing
-	 * 1. 불필요한 공백 다 지우기
+	 * Fix the Spacing 1. 불필요한 공백 다 지우기
 	 * 
 	 * @see https://edabit.com/challenge/LJh54oryEc3tkagzD
 	 * @param sentence
@@ -1977,5 +1976,80 @@ public class Challenge {
 				s.append(" ");
 		}
 		return s.toString();
+	}
+
+	/*********************************not finished */
+	/**
+	 * The Fibonacci Number // 피보나치 수열에서 a번째 수의 값 구하기 // 수열은 1로 시작함
+	 * 
+	 * @see https://edabit.com/challenge/t3NThQjrcbjhiF5zt
+	 * @param a
+	 * @return
+	 */
+	public static int Fibonacci(int a) {
+		// 피보나치 수열 : 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 .....
+
+		int res;
+		for (int i = 1; i <= a; i++) {
+			// i = 1,
+			res = i;
+
+			// i = 2;
+			res = i + 1;
+
+			// i = 3;
+			res = i + (i + 1);
+
+			// i = 4
+			res = i + (i + 1) + (i + (i + 1));
+
+		}
+
+		return a;
+	}
+
+	/**
+	 * Same ASCII?
+	 *  1. 각 문자열의 문자들이 갖는 아스키 코드값의 합이 갖은가
+	 * 
+	 * @see https://edabit.com/challenge/P4sy69B7cqggNmtmm
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	public static boolean sameAscii(String a, String b) {
+
+		int sumAsciiA = 0;
+		int sumAsciiB = 0;
+
+		for (int i = 0; i < a.length(); i++) {
+			int asciiVal = a.charAt(i);
+			sumAsciiA += asciiVal;
+		}
+		for (int i = 0; i < b.length(); i++) {
+			int asciiVal = b.charAt(i);
+			sumAsciiB += asciiVal;
+		}
+		return sumAsciiA == sumAsciiB;
+	}
+
+	public static Boolean sameAsciiOtherSol1(String a, String b) {
+		return getAsciiSum(a) == getAsciiSum(b);
+	}
+
+	private static int getAsciiSum(String s) {
+		return s.chars().sum();
+	}
+
+	public static boolean sameAsciiOtherSol2(String a, String b) {
+		return getSum(a) == getSum(b);
+	}
+
+	private static int getSum(String s) {
+		int sum = 0;
+		for (int i = 0; i < s.length(); i++) {
+			sum += s.charAt(i);
+		}
+		return sum;
 	}
 }
