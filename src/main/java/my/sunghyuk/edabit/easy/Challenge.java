@@ -1,9 +1,8 @@
 package my.sunghyuk.edabit.easy;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
+import java.util.StringTokenizer;
 
 /**
  * Challenge
@@ -1724,6 +1723,7 @@ public class Challenge {
 
 		// # _를 제외한 특수문자를 포함하는 경우
 		if (variable.matches("^[^a-zA-Z_].*")) {
+			// 정규표현식
 			// [^a-zA-Z] -> a~z, A~Z가 아닌 경우
 			// ^[~] -> ~로 시작하는 경우
 			// ^[^a-zA-Z_] -> a~z, A~Z, _가 아닌 경우(특수 문자, 숫자)로 시작하는 경우
@@ -1737,6 +1737,7 @@ public class Challenge {
 
 	public static boolean variableValidOtherSol(String variable) {
 		return variable.matches("^[a-zA-Z_][a-zA-Z0-9_]*$");
+		// 정규표현식
 		// [~]$ -> ~로 종료되는 경우
 		// ^[~][~~]$ -> 시작하는 문자의 패턴[~], 종료하는 문자의 패턴[~~]
 		// ^[a-zA-Z_][a-zA-Z0-9_]*$ -> [a-zA-Z_]로 시작하면서, 그 다음 문자가 [a-zA-Z0-9_]인 경우이고
@@ -1893,8 +1894,7 @@ public class Challenge {
 	}
 
 	/**
-	 * Semantic Versioning
-	 *  1. 문자열에서 세 숫자는 각 Major, Minor, Patch의 수를 의미. 각 숫자 리턴
+	 * Semantic Versioning 1. 문자열에서 세 숫자는 각 Major, Minor, Patch의 수를 의미. 각 숫자 리턴
 	 * 
 	 * @see https://edabit.com/challenge/H4smHFuL5wn58imFK
 	 * @param semver
@@ -1916,5 +1916,66 @@ public class Challenge {
 	public static String retrievePatch(String semver) {
 		String[] numbers = semver.split("\\.");
 		return numbers[2];
+	}
+
+	/**
+	 * Fix the Spacing
+	 * 1. 불필요한 공백 다 지우기
+	 * 
+	 * @see https://edabit.com/challenge/LJh54oryEc3tkagzD
+	 * @param sentence
+	 * @return
+	 */
+	public static String correctSpacing(String sentence) {
+
+		String[] splitedWords = sentence.split(" ");
+		// Arrays.toString(splitedWords) = [, A, , glittering, , gem, , , , , is, , , ,
+		// not, , , enough.] 등의 결과 출력
+		// 쉼표 사이들의 공백은 " "이 아니라 각 요소들을 구분하기 위한 공백임...쉼표 사이에 값이 없는 것들임. ""을 의미.
+		String correctSpace = "";
+		for (int i = 0; i < splitedWords.length; i++) {
+			if (!(splitedWords[i].equals(" ")) && splitedWords[i].length() != 0) {
+				// 요소가 " "이 아니거나 요소의 길이가 0이 아닌 경우(요소는 있으나 값이 없는 경우)
+				// == 문자열을 포함하는 경우
+				String word = " " + splitedWords[i];
+				// 앞 문자열과 뒷 문자열에 공백을 만들어 줌.
+				correctSpace += word;
+			}
+		}
+
+		return correctSpace.substring(1);
+		// 문자열의 맨 앞에 붙은 공백 제거하기 위해 인덱스 1번 문자열부터 출력
+		// substring 사용 시 시작 인덱스만 입력하면 끝 인덱스 넣지 않아도 문자열 마지막까지 출력
+		// 문자 하나하나 붙일 때 반복문 사용하지 말고 substring 사용할 것.
+	}
+
+	public static String correctSpacingOtherSol1(String sentence) {
+		while (true) {
+			String tmp = sentence;
+			// 반복문을 돌고 변환된 문자열을 tmp에 넣어줌.
+			sentence = sentence.replace("  ", " ");
+			// 문자열에서 공백 두 개를 한 개로 변환
+			if (tmp.equals(sentence))
+				// 변환된 문자열이 tmp와 같으면 == 더 이상 변환될 문자가 없다면.
+				break;
+			// while문 탈출.
+		}
+		return sentence.trim();
+		// .trim() : 문자열에서 맨 앞과 맨 뒤의 공백 제거.
+	}
+
+	public static String correctSpacingOtherSol2(String sentence) {
+		return sentence.replaceAll("[ ]+", " ").trim();
+	}
+
+	public static String correctSpacingOtherSol3(String sentence) {
+		StringTokenizer tokenizer = new StringTokenizer(sentence, " ");
+		StringBuilder s = new StringBuilder();
+		while (tokenizer.hasMoreTokens()) {
+			s.append(tokenizer.nextToken());
+			if (tokenizer.hasMoreTokens())
+				s.append(" ");
+		}
+		return s.toString();
 	}
 }
