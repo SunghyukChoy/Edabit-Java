@@ -506,4 +506,34 @@ public class Program {
     Arrays.sort(nums);
     return nums;
   }
+
+  /**
+   * Maskify the String
+   * 1. 문자열에서 마지막 4개의 문자만 빼고 #으로 변환
+   * 
+   * @see https://edabit.com/challenge/ce3CbX2KwdwaJxxra
+   * @param s
+   * @return
+   */
+  public static String maskify(String s) {
+
+    if (s.length() <= 4) {
+      return s;
+    }
+
+    String toHash = s.substring(0, s.length() - 4);
+    // String lastFour = s.substring(s.length() - 4);
+
+    toHash = toHash.replaceAll("[^#]", "#");
+
+    return toHash + s.substring(s.length() - 4);
+  }
+
+  public static String maskifyOtherSol(String s) {
+    StringBuilder sb = new StringBuilder(s);
+    for (int i = 0; i < s.length() - 4; i++) {
+      sb.replace(i, i + 1, "#");
+    }
+    return sb.toString();
+  }
 }
