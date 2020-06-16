@@ -1978,7 +1978,7 @@ public class Challenge {
 		return s.toString();
 	}
 
-	/*********************************not finished */
+	/********************************* not finished */
 	/**
 	 * The Fibonacci Number // 피보나치 수열에서 a번째 수의 값 구하기 // 수열은 1로 시작함
 	 * 
@@ -2009,8 +2009,7 @@ public class Challenge {
 	}
 
 	/**
-	 * Same ASCII?
-	 *  1. 각 문자열의 문자들이 갖는 아스키 코드값의 합이 갖은가
+	 * Same ASCII? 1. 각 문자열의 문자들이 갖는 아스키 코드값의 합이 갖은가
 	 * 
 	 * @see https://edabit.com/challenge/P4sy69B7cqggNmtmm
 	 * @param a
@@ -2051,5 +2050,52 @@ public class Challenge {
 			sum += s.charAt(i);
 		}
 		return sum;
+	}
+
+	/**
+	 * Move Capital Letters to the Front
+	 * 
+	 * @see https://edabit.com/challenge/vs7xj6PwALtfpjkmX
+	 * @param str
+	 * @return
+	 */
+	public static String capToFront(String str) {
+		// 1. 문자열에서 대문자는 문자열의 앞으로 보내기
+		// 2. 문자의 원래 순서 지킬 것. 첫 번째 대문자는 문자열의 첫 번째, 두 번째는 두 번째..
+		
+		// 아스키코드 값으로 대소문자 구분해서 문자열 만든 후 붙이기
+
+		String upperWord = "";
+		String lowerWord = "";
+		for (int i = 0; i < str.length(); i++) {
+			int asciiVal = str.charAt(i);
+			if (asciiVal >= 65 && asciiVal <= 90) {
+				upperWord += str.charAt(i);
+			} else if (asciiVal >= 97 && asciiVal <= 122) {
+				lowerWord += str.charAt(i);
+			}
+		}
+		return upperWord + lowerWord;
+	}
+
+	public static String capToFrontOtherSol1(String str) {
+		return str.replaceAll("[a-z]", "") + str.replaceAll("[A-Z]", "");
+		// str.replaceAll("[a-z]", "") : 문자열의 소문자를 모두 제거. 대문자만 남음.
+		// str.replaceAll("[a-z]", "") : 문자열의 대문자를 모두 제거. 소문자만 남음.
+	}
+
+	public static String capToFrontOtherSol2(String str) {
+		String s = "";
+		String s2 = "";
+		for (int i = 0; i < str.length(); i++) {
+			if (Character.isUpperCase(str.charAt(i))) {
+				// Character.isUpperCase(ch) : ch가 대문자인가
+				// Character.isLowerCase(ch) : ch가 소문자인가
+				s += str.charAt(i);
+			} else {
+				s2 += str.charAt(i);
+			}
+		}
+		return s + s2;
 	}
 }

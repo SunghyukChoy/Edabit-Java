@@ -536,4 +536,20 @@ public class Program {
     }
     return sb.toString();
   }
+
+  /**
+   * Recursion: Fibonacci Numbers
+   * 1. 피보나치 수열에서 n번째 수의 값 구하기
+   * 2. 수열은 0으로 시작함
+   * 
+   * @see https://edabit.com/challenge/H5Tabm7omS9ia8Rce
+   * @param n
+   * @return
+   */
+  public static int fib(int n) {
+    // 피보나치 수열 : 0, 1, 1, 2, 3, 5, 8, 13, 21, 34...
+    // F(0) = 0, F(1) = 1, F(n) = F(n-2) + F(n-1)    
+
+		return n;
+  }
 }
