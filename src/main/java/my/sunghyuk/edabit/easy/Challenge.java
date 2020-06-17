@@ -2062,7 +2062,7 @@ public class Challenge {
 	public static String capToFront(String str) {
 		// 1. 문자열에서 대문자는 문자열의 앞으로 보내기
 		// 2. 문자의 원래 순서 지킬 것. 첫 번째 대문자는 문자열의 첫 번째, 두 번째는 두 번째..
-		
+
 		// 아스키코드 값으로 대소문자 구분해서 문자열 만든 후 붙이기
 
 		String upperWord = "";
@@ -2097,5 +2097,47 @@ public class Challenge {
 			}
 		}
 		return s + s2;
+	}
+
+	/**
+	 * Format Number with Comma(s) Separating Thousands
+	 * 
+	 * @see https://edabit.com/challenge/BN7hYwzFACGoDZux7
+	 * @param num
+	 * @return
+	 */
+	public static String formatNum(int num) {
+
+		String numStr = String.valueOf(num); // num을 문자열로 변환
+
+		if (numStr.length() < 4) {
+			return numStr;
+		}
+
+		String revNumStr = "";
+		int count = 0; // for문 실행 횟수. == 문자 하나씩 추가되는 횟수.
+
+		// 틀린 로직. 길이를 조건식으로 사용하는데 길이 조작하지 말 것.
+		// for (int i = numStr.length() - 1; i >= 0; i--) {
+		// if (revNumStr.length() != 0 && revNumStr.length() % 3 == 0) {
+		// revNumStr = revNumStr + ',';
+		// }
+		// revNumStr += numStr.charAt(i);
+		// }
+		for (int i = numStr.length() - 1; i >= 0; i--) { // 문자열을 거꾸로 저장하면서
+			revNumStr += numStr.charAt(i);
+			count++;
+			if (count % 3 == 0) { // 천 단위마다. 문자 3개 찍은 후
+				revNumStr = revNumStr + ","; // 콤마 추가
+			}
+		}
+
+		String formatNum = "";
+
+		for (int i = revNumStr.length() - 1; i >= 0; i--) { // 문자열을 다시 거꾸로 저장 == 원래 순서
+			formatNum += revNumStr.charAt(i);
+		}
+
+		return formatNum;
 	}
 }
