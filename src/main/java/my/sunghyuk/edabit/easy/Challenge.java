@@ -2214,7 +2214,7 @@ public class Challenge {
 		// 1. 문자열에서 문자 'a'는 버튼을 한 번 눌러야 함.
 		// 'b'는 버튼 두 번, 'e'는 다섯 번....
 		// 문자열이 "abde"라면 12번 눌러야 함.
-		// 2. 문자열 msg는 버튼을 몇 번 눌러야 하는가. 공백 무시.		
+		// 2. 문자열 msg는 버튼을 몇 번 눌러야 하는가. 공백 무시.
 
 		int times = 0;
 
@@ -2243,4 +2243,13 @@ public class Challenge {
 		// 문자의 길이만큼 반복문 돌릴 필요 없이 각 문자가 갖는 수의 규칙을 수식으로 표현하여 값 리턴
 	}
 
+	public static int howManyTimesOtherSol(String msg) {
+		if (msg.length() == 0)
+			return 0;
+		return ((int) msg.charAt(0)) - 96 + howManyTimes(msg.substring(1));
+		// (int) msg.charAt(0) : 0번 인덱스 문자의 아스키코드 값
+		// (int) msg.charAt(0) - 96 : 문자가 갖는 버튼 횟수.
+		// a의 아스키코드 값은 97이므로 -96 해주면 누르는 버튼 횟수가 나옴.
+		// howManyTimes(msg.substring(1)) : 0번 인덱스를 제외한 나머지 문자들 다시 메소드 돌림
+	}
 }
