@@ -2252,4 +2252,26 @@ public class Challenge {
 		// a의 아스키코드 값은 97이므로 -96 해주면 누르는 버튼 횟수가 나옴.
 		// howManyTimes(msg.substring(1)) : 0번 인덱스를 제외한 나머지 문자들 다시 메소드 돌림
 	}
+
+	/**
+	 * Fraction Greater Than One
+	 * 
+	 * @see https://edabit.com/challenge/tgcyRZECD5tqHvTWi
+	 * @param frac
+	 * @return
+	 */
+	public static boolean greaterThanOne(String frac) {
+		// 1. 문자열의 숫자를 계산했을 때 1보다 크냐 frac > 1
+		// 구분자로 문자를 나눈 후 숫자로 변환
+
+		String[] fracArray = frac.split("\\/");
+		return Double.parseDouble(fracArray[0]) / Double.parseDouble(fracArray[1]) > 1;
+		// return Integer.parseInt(fracArray[0]) / Integer.parseInt(fracArray[1]) > 1;
+		// parseInt() 사용 시 정수형을 리턴하므로 1.x의 값들을 1로 리턴함.
+	}
+
+	public static boolean greaterThanOneOtherSol(String frac) {
+		String[] fracs = frac.split("/");
+		return Integer.parseInt(fracs[0]) > Integer.parseInt(fracs[1]);
+	}
 }
