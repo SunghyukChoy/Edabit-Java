@@ -2210,52 +2210,37 @@ public class Challenge {
 	 * @param msg
 	 * @return
 	 */
-	// public static int howManyTimes(String msg) {
-	// 	// 1. 문자열에서 문자 'a'는 버튼을 한 번 눌러야 함.
-	// 	// 'b'는 버튼 두 번, 'e'는 다섯 번....
-	// 	// 문자열이 "abde"라면 12번 눌러야 함.
-	// 	// 2. 문자열 msg는 버튼을 몇 번 눌러야 하는가. 공백 무시.
-	// 	msg = "abde";
-	// 	int times = 0;
-	// 	int cnt = 0;
-	// 	for (int i = 0; i < msg.length(); i++) {
-	// 		// for (int j = 'a'; j <= msg.charAt(i); j++) {
-	// 		// cnt++;
-	// 		// System.out.println("count = " + cnt);
-	// 		// }
-	// 		// times += cnt;
-
-	// 		times += value(msg.charAt(i));
-	// 	}
-	// 	System.out.println(times);
-
-	// 	return 0;
-	// }
-
 	public static int howManyTimes(String msg) {
 		// 1. 문자열에서 문자 'a'는 버튼을 한 번 눌러야 함.
 		// 'b'는 버튼 두 번, 'e'는 다섯 번....
 		// 문자열이 "abde"라면 12번 눌러야 함.
-		// 2. 문자열 msg는 버튼을 몇 번 눌러야 하는가. 공백 무시.
+		// 2. 문자열 msg는 버튼을 몇 번 눌러야 하는가. 공백 무시.		
 
 		int times = 0;
 
 		for (int i = 0; i < msg.length(); i++) {
-
-			times += value(msg.charAt(i));
+			for (int j = 'a'; j <= msg.charAt(i); j++) {
+				times++;
+				// 기존 변수 cnt 삭제. cnt가 곧 times
+			}
 		}
-
 		return times;
 	}
 
-	private static int value(char ch) {
+	public static int howManyTimesDevelop(String msg) {
 
-		int count = 0;
-		for (int i = 'a'; i <= ch; i++) {
-			count++;
+		int times = 0;
 
+		for (int i = 0; i < msg.length(); i++) {
+			times += getCharactersValue(msg.charAt(i));
 		}
-		return count;
+		return times;
+	}
+
+	private static int getCharactersValue(char ch) {
+		// 의미 전달이 확실한 메소드명으로 수정
+		return ch - 'a' + 1;
+		// 문자의 길이만큼 반복문 돌릴 필요 없이 각 문자가 갖는 수의 규칙을 수식으로 표현하여 값 리턴
 	}
 
 }
