@@ -573,4 +573,52 @@ public class Program {
     }
     return sum;
   }
+
+  /**
+   * Check if the String is a Palindrome
+   * 
+   * @see https://edabit.com/challenge/DfaTrBDZKjso6HBXs
+   * @param str
+   * @return
+   */
+  public static boolean isPalindrome(String str) {
+    // 1. str은 앞뒤가 똑같은 문자열인가
+    // Palindrome : madam, kayak 같은 역으로 정렬해도 원본과 같은 문자열
+    // 2. 대소문자 무시, 특수문자, 공백은 모두 무시
+
+    str = str.toLowerCase().replaceAll("[^a-zA-Z]", "");
+
+    // 되는 코드. 아래에 다른 코드로 수정함.
+    // String reverseStr = "";
+    // for (int i = str.length() - 1; i >= 0; i--) {
+    // reverseStr += str.charAt(i);
+    // }
+    // return str.equals(reverseStr);
+
+    // 되는 코드. 아래에 다른 코드로 수정함.
+    // for (int i = 0; i <= str.length() / 2; i++) {
+    // if (str.charAt(i) == str.charAt(str.length() - i - 1)) {
+
+    // continue;
+    // } else {
+    // return false;
+    // }
+    // }
+    // return true;
+
+    for (int i = 0; i <= str.length() / 2; i++) {
+      if (str.charAt(i) != str.charAt(str.length() - i - 1)) {
+        // str.charAt(str.length() - i - 1 :
+        // 인덱스(앞문자)가 앞에서 뒤로 진행될수록 비교하는 뒷문자도 앞으로 진행되어야 하므로
+        // 진행하는 i만큼 더 빼줌.
+        return false;
+      }
+    }
+    return true;
+  }
+
+  public static boolean isPalindromeOtherSol(String str) {
+    str = str.toLowerCase().replaceAll("[^a-z]", "");
+    return str.equals(new StringBuilder(str).reverse().toString());
+  }
 }
