@@ -508,8 +508,7 @@ public class Program {
   }
 
   /**
-   * Maskify the String
-   * 1. 문자열에서 마지막 4개의 문자만 빼고 #으로 변환
+   * Maskify the String 1. 문자열에서 마지막 4개의 문자만 빼고 #으로 변환
    * 
    * @see https://edabit.com/challenge/ce3CbX2KwdwaJxxra
    * @param s
@@ -538,9 +537,7 @@ public class Program {
   }
 
   /**
-   * Recursion: Fibonacci Numbers
-   * 1. 피보나치 수열에서 n번째 수의 값 구하기
-   * 2. 수열은 0으로 시작함
+   * Recursion: Fibonacci Numbers 1. 피보나치 수열에서 n번째 수의 값 구하기 2. 수열은 0으로 시작함
    * 
    * @see https://edabit.com/challenge/H5Tabm7omS9ia8Rce
    * @param n
@@ -548,8 +545,32 @@ public class Program {
    */
   public static int fib(int n) {
     // 피보나치 수열 : 0, 1, 1, 2, 3, 5, 8, 13, 21, 34...
-    // F(0) = 0, F(1) = 1, F(n) = F(n-2) + F(n-1)    
+    // F(0) = 0, F(1) = 1, F(n) = F(n-2) + F(n-1)
 
-		return n;
+    return n;
+  }
+
+  /**
+   * Get Sum of People's Budget
+   * 
+   * @see https://edabit.com/challenge/XsJnE47kiTt39t3da
+   * @param persons
+   * @return
+   */
+  public static double getBudgets(Person[] persons) {
+
+    Person p1 = persons[0];
+    // 생성자 메소드가 배열에 담겨 파라미터로 들어오므로 각 배열의 값으로 객체 생성하면 됨.Test 파일 참조
+    Person p2 = persons[1];
+    Person p3 = persons[2];
+    return p1.getBudget() + p2.getBudget() + p3.getBudget();
+  }
+
+  public static double getBudgetsOtherSol(Person[] persons) {
+    double sum = 0.0;
+    for (int i = 0; i < persons.length; i++) {
+      sum += persons[i].getBudget();
+    }
+    return sum;
   }
 }
