@@ -2274,4 +2274,28 @@ public class Challenge {
 		String[] fracs = frac.split("/");
 		return Integer.parseInt(fracs[0]) > Integer.parseInt(fracs[1]);
 	}
+
+	/**
+	 * How Many Decimal Places?
+	 * 
+	 * @see https://edabit.com/challenge/kQZH2EDsn7LYvXk9S
+	 * @param num
+	 * @return
+	 */
+	public static int getDecimalPlaces(String num) {
+		// 1. 소수점 이하 자릿수 리턴. 소수점 이하 자리가 없다면 0 리턴
+
+		// 소수점 이하 자리가 없다 == 정수 == 소수점 없음
+		// == 구분자로 나뉘지 않는다 == 배열 값은 한 개만 가진다
+		String[] numArr = num.split("\\.");
+		// 구분자로 나누어지지 않는 문자열은 그 문자열 자체로 배열에 저장됨.
+
+		return numArr.length == 1 ? 0 : numArr[1].length();
+	}
+
+	public static int getDecimalPlacesOtherSol(String num) {
+		return num.contains(".") ? (num.length() - (num.indexOf(".") + 1)) : 0;
+		// indexOf(str) : str의 인덱스 번호 리턴. 문자가 존재하지 않으면 -1 리턴
+		// (num.indexOf(".") + 1) : .까지의 길이.
+	}
 }
