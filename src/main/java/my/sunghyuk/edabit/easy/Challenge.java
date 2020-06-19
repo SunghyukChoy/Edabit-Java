@@ -1,8 +1,12 @@
 package my.sunghyuk.edabit.easy;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.StringTokenizer;
+import java.util.concurrent.RecursiveAction;
 
 /**
  * Challenge
@@ -2106,7 +2110,7 @@ public class Challenge {
 	 * @param num
 	 * @return
 	 */
-	public static String formatNum(int num) {
+	public static String numFormat(int num) {
 
 		String numStr = String.valueOf(num); // num을 문자열로 변환
 
@@ -2140,4 +2144,86 @@ public class Challenge {
 
 		return formatNum;
 	}
+
+	public static String numFormatDevelop(int num) {
+		// 문자열을 거꾸로 저장할 필요 없이 원래 순서대로 저장하면서 콤마 추가
+
+		String numStr = String.valueOf(num);
+		String formatNum = "";
+
+		for (int i = numStr.length() - 1, cnt = 1; i >= 0; i--, cnt++) {
+			// for문 조건식에 인덱스 아닌 다른 변수 추가 가능.
+			// cnt는 for문 안에서만 사용되므로 for문 안에서 선언
+			formatNum = (cnt % 3 == 0 ? "," : "") + numStr.charAt(i) + formatNum;
+			// 조건식이 하나인 조건문( a or b) 삼항연산자로 수정
+
+			// formatNum += numStr.charAt(i);
+			// 문자를 정순으로 저장 (왼쪽에서 오른쪽으로)
+			// numStr="abcd"라면 formatNum = "abcd" 순
+			// formatNum = numStr.charAt(i) + formatNum;
+			// 문자를 역순으로 저장 (오른쪽에서 왼쪽으로)
+			// numStr="abcd"라면 formatNum = "dcba" 순
+			// 현재 인덱스의 문자가 문자열 맨 앞에 오고 뒤에 그 전의 문자열들을 붙임.
+		}
+		return formatNum;
+	}
+
+	public static String numFormatOtherSol(int num) {
+		return String.format("%,d", num);
+	}
+
+	public static String numFormatOtherSol2(int num) {
+		String out = "";
+		int length = String.valueOf(num).length();
+		for (int i = 0; i < length; i++) {
+			if ((length - i) % 3 == 0)
+				out += ",";
+			out += Integer.toString(num).charAt(i);
+		}
+		return out;
+	}
+
+	public static String numFormatOtherSol3(int num) {
+		return new DecimalFormat(",###").format(num);
+	}
+
+	public static String numFormatOtherSol4(int num) {
+		return (NumberFormat.getNumberInstance(Locale.US).format(num));
+	}
+
+	public static String numFormatOtherSol5(int num) {
+		StringBuilder sb = new StringBuilder();
+		do {
+			int digit3 = num % 1000;
+			num /= 1000;
+			String format = num == 0 ? "%d" : "%03d";
+			String strDigit3 = String.format(format, digit3);
+			sb.insert(0, (num == 0 ? "" : ",") + strDigit3);
+		} while (num > 0);
+		return sb.toString();
+	}
+
+	/**
+	 * One Button Messaging Device
+	 * 
+	 * @see https://edabit.com/challenge/CCRmCv3huDnBsqmR7
+	 * @param msg
+	 * @return
+	 */
+	public static int howManyTimes(String msg) {
+		// 1. 문자열에서 문자 'a'는 버튼을 한 번 눌러야 함.
+		// 'b'는 버튼 두 번, 'e'는 다섯 번....
+		// 문자열이 "abde"라면 12번 눌러야 함.
+		// 2. 문자열 msg는 버튼을 몇 번 눌러야 하는가. 공백 무시.
+
+		
+
+		int count = 0;
+		for (int i = 0; i < msg.length(); i++) {
+
+		}
+
+		return 0;
+	}
+
 }
