@@ -2210,20 +2210,52 @@ public class Challenge {
 	 * @param msg
 	 * @return
 	 */
+	// public static int howManyTimes(String msg) {
+	// 	// 1. 문자열에서 문자 'a'는 버튼을 한 번 눌러야 함.
+	// 	// 'b'는 버튼 두 번, 'e'는 다섯 번....
+	// 	// 문자열이 "abde"라면 12번 눌러야 함.
+	// 	// 2. 문자열 msg는 버튼을 몇 번 눌러야 하는가. 공백 무시.
+	// 	msg = "abde";
+	// 	int times = 0;
+	// 	int cnt = 0;
+	// 	for (int i = 0; i < msg.length(); i++) {
+	// 		// for (int j = 'a'; j <= msg.charAt(i); j++) {
+	// 		// cnt++;
+	// 		// System.out.println("count = " + cnt);
+	// 		// }
+	// 		// times += cnt;
+
+	// 		times += value(msg.charAt(i));
+	// 	}
+	// 	System.out.println(times);
+
+	// 	return 0;
+	// }
+
 	public static int howManyTimes(String msg) {
 		// 1. 문자열에서 문자 'a'는 버튼을 한 번 눌러야 함.
 		// 'b'는 버튼 두 번, 'e'는 다섯 번....
 		// 문자열이 "abde"라면 12번 눌러야 함.
 		// 2. 문자열 msg는 버튼을 몇 번 눌러야 하는가. 공백 무시.
 
-		
+		int times = 0;
 
-		int count = 0;
 		for (int i = 0; i < msg.length(); i++) {
 
+			times += value(msg.charAt(i));
 		}
 
-		return 0;
+		return times;
+	}
+
+	private static int value(char ch) {
+
+		int count = 0;
+		for (int i = 'a'; i <= ch; i++) {
+			count++;
+
+		}
+		return count;
 	}
 
 }
