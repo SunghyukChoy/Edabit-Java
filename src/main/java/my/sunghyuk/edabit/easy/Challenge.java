@@ -2350,4 +2350,24 @@ public class Challenge {
 	public static boolean isIsogramOtherSol2(String str) {
 		return (int) str.toLowerCase().chars().distinct().count() == str.length();
 	}
+
+	/**
+	 * Increment to Top
+	 * 
+	 * @see https://edabit.com/challenge/HtruskPio7ricRvuG
+	 * @param arr
+	 * @return
+	 */
+	public static int incrementToTop(int[] arr) {
+
+		Arrays.sort(arr);
+
+		int increment = 0;
+		for (int i = 0; i < arr.length - 1; i++) {
+			for (int j = i; j < arr.length - 1; j++) {
+				increment += (arr[j + 1] - arr[j]);
+			}
+		}
+		return increment;
+	}
 }
