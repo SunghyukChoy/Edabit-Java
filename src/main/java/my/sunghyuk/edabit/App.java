@@ -99,10 +99,15 @@ public class App {
         printElapsedTime(start, end); 
         */
         
-        System.out.println(Double.MIN_VALUE < -99999999);
-        System.out.println(Double.NEGATIVE_INFINITY < -99999999);
-        System.out.println(Double.MIN_NORMAL < -99999999);
-        System.out.println(Double.MIN_EXPONENT < -99999999);
+        // System.out.println(Double.MIN_VALUE < -99999999);
+        // System.out.println(Double.NEGATIVE_INFINITY < -99999999);
+        // System.out.println(Double.MIN_NORMAL < -99999999);
+        // System.out.println(Double.MIN_EXPONENT < -99999999);
+
+        String str = "##112ab233z";
+        str = str.replaceAll("([^0-9]+)([0-9]+)([^0-9]+)([0-9]+)([^0-9]+)", "$1$4$3$2$5");
+        System.out.println(str);
+        // System.out.println(str.matches("^#+.*[a-z]$"));
     }
 
     private static void printElapsedTime(long start, long end) {
