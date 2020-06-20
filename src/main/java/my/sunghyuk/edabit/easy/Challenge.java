@@ -5,8 +5,8 @@ import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
 import java.util.StringTokenizer;
-import java.util.concurrent.RecursiveAction;
 
 /**
  * Challenge
@@ -2314,8 +2314,40 @@ public class Challenge {
 
 		// return Math.sqrt(num) % 1 == 0 ? "odd" : "even";
 
-		int rootNum = (int)Math.sqrt(num);
+		int rootNum = (int) Math.sqrt(num);
 		return rootNum * rootNum == num ? "odd" : "even";
 
+	}
+
+	/**
+	 * Is the Word an Isogram?
+	 * 문자열에 중복되는 문자가 있는가. 중복되면 false 리턴. 대소문자 무시
+	 * @see https://edabit.com/challenge/AYQPBDjDbrrvJtjjc
+	 * @param str
+	 * @return
+	 */
+	public static boolean isIsogram(String str) {
+		str = str.toLowerCase();
+		for (int i = 0; i < str.length() - 1; i++) {
+			for (int j = i + 1; j < str.length(); j++) {
+				if (str.charAt(i) == str.charAt(j)) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	public static boolean isIsogramOtherSol1(String str) {
+		Set<Character> set = new HashSet<>();
+		for (int i = 0; i < str.length(); ++i) {
+			if (!set.add(Character.toLowerCase(str.charAt(i))))
+				return false;
+		}
+		return true;
+	}
+
+	public static boolean isIsogramOtherSol2(String str) {
+		return (int) str.toLowerCase().chars().distinct().count() == str.length();
 	}
 }
