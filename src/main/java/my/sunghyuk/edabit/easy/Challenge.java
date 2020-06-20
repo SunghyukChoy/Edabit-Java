@@ -2298,4 +2298,24 @@ public class Challenge {
 		// indexOf(str) : str의 인덱스 번호 리턴. 문자가 존재하지 않으면 -1 리턴
 		// (num.indexOf(".") + 1) : .까지의 길이.
 	}
+
+	/**
+	 * Even or Odd Number of Factors
+	 * num의 약수 갯수가 짝수인가 홀수인가 "even", "odd" 리턴 
+	 * 
+	 * @see https://edabit.com/challenge/N3ZBDe99aq8Piar8n
+	 * @param num
+	 * @return
+	 */
+	public static String factorGroup(int num) {
+
+		// double rootNum = Math.sqrt(num);
+		// return rootNum == (int) rootNum ? "odd" : "even";
+
+		// return Math.sqrt(num) % 1 == 0 ? "odd" : "even";
+
+		int rootNum = (int)Math.sqrt(num);
+		return rootNum * rootNum == num ? "odd" : "even";
+
+	}
 }
