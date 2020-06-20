@@ -545,9 +545,27 @@ public class Program {
    */
   public static int fib(int n) {
     // 피보나치 수열 : 0, 1, 1, 2, 3, 5, 8, 13, 21, 34...
-    // F(0) = 0, F(1) = 1, F(n) = F(n-2) + F(n-1)
+    // F(0) = 0, 
+    // F(1) = 1, 
+    // F(n) = F(n-2) + F(n-1)
+    // if (n == 0)
+    //   return 0;
 
-    return n;
+    // if (n == 1)
+    //   return 1;
+
+    // return fib(n-2) + fib(n-1);
+
+    int nMinus2 = 0;
+    int nMinus1 = 1;
+
+    for (int i = 2; i < n + 2; i++) {
+      int tmp = nMinus2 + nMinus1;
+      nMinus2 = nMinus1;
+      nMinus1 = tmp;
+    }
+
+    return nMinus2;
   }
 
   /**
