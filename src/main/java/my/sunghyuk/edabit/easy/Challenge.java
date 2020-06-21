@@ -2389,4 +2389,22 @@ public class Challenge {
 		return secret;
 	}
 
+	/**
+	 * Maximum Possible Total
+	 * 1. 배열에는 10개의 숫자만 주어짐.
+	 * 2. 10개의 숫자 중 큰 5개의 숫자를 더해서 리턴
+	 * 
+	 * @see https://edabit.com/challenge/TM5f33Mpu52m2jcat
+	 * @param nums
+	 * @return
+	 */
+	public static int maxTotal(int[] nums) {
+		Arrays.sort(nums);
+		int total = 0;
+		for (int i = nums.length - 5; i < nums.length; i++) {
+			total += nums[i];
+		}
+		return total;
+	}
+
 }
