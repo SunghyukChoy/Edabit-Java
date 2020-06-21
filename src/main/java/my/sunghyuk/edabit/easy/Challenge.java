@@ -2370,4 +2370,23 @@ public class Challenge {
 		}
 		return increment;
 	}
+
+	/**
+	 * Secret Society
+	 * 
+	 * 배열의 각 요소에서 첫 문자만 딴 뒤 알파벳순으로 정렬한 문자열 리턴
+	 * @see https://edabit.com/challenge/zr7BBJbeYikNBN2hf
+	 * @param friends
+	 * @return
+	 */
+	public static String societyName(String[] friends) {
+
+		Arrays.sort(friends);
+		String secret = "";
+		for (int i = 0; i < friends.length; i++) {
+			secret += friends[i].charAt(0);
+		}
+		return secret;
+	}
+
 }
