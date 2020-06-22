@@ -2407,4 +2407,30 @@ public class Challenge {
 		return total;
 	}
 
+	/**
+	 * Stretched Words
+	 * 
+	 * 중복되는 글자 제거해기 tttiiiiiiiiitlllleee -> title 리턴
+	 * @see https://edabit.com/challenge/vENakDEYEDKFGPSEb
+	 * @param word
+	 * @return
+	 */
+	public static String unstretch(String word) {
+
+		// 1. 결과를 담을 변수를 빈값으로 만들고
+		// 2. word를 반복돌리는데.. 결과 담은 변수 맨 마지막애랑, word의 글자랑 비교
+		// 3. 다르면 변수에 넣고, 같으면 그냥넘어감
+		// 4. 결과 변수 출력 끗
+
+		StringBuilder sb = new StringBuilder(" ");
+	
+		for (int i = 0; i < word.length(); i++) {
+			if(sb.charAt(sb.length() - 1) != word.charAt(i)) {
+				sb.append(word.charAt(i));
+			} 
+		}
+
+		return sb.toString().trim();
+	}
+
 }
