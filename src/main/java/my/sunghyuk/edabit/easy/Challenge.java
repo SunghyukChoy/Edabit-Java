@@ -2,8 +2,10 @@ package my.sunghyuk.edabit.easy;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import java.util.StringTokenizer;
@@ -2423,14 +2425,34 @@ public class Challenge {
 		// 4. 결과 변수 출력 끗
 
 		StringBuilder sb = new StringBuilder(" ");
-	
+
 		for (int i = 0; i < word.length(); i++) {
-			if(sb.charAt(sb.length() - 1) != word.charAt(i)) {
+			if (sb.charAt(sb.length() - 1) != word.charAt(i)) {
 				sb.append(word.charAt(i));
-			} 
+			}
 		}
 
 		return sb.toString().trim();
+	}
+
+	/**
+	 * Check if the Same Case
+	 * 
+	 * @see https://edabit.com/challenge/kADGssuyM6vTEwS8p
+	 * @param str
+	 * @return
+	 */
+	public static boolean sameCase(String str) {
+
+		boolean firstCharUpperCase = Character.isUpperCase(str.charAt(0));
+
+		for (int i = 1; i < str.length(); i++) {
+			if (firstCharUpperCase && Character.isLowerCase(str.charAt(i))
+			|| !firstCharUpperCase && Character.isUpperCase(str.charAt(i))) {
+					return false;
+			}
+		}
+		return true;
 	}
 
 }
