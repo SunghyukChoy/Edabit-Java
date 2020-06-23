@@ -639,4 +639,28 @@ public class Program {
     str = str.toLowerCase().replaceAll("[^a-z]", "");
     return str.equals(new StringBuilder(str).reverse().toString());
   }
+
+  /**
+   * Return the Index of All Capital Letters
+   * 문자열 s에서 대문자인 문자의 인덱스를 배열로 리턴
+   * 대문자가 없으면 빈 배열 리턴, 문자열에는 특수문자, 숫자가 포함됨.
+   * 
+   * @see https://edabit.com/challenge/3ZooM5R5P63w5bPCv
+   * @param s
+   * @return
+   */
+  public static int[] indexOfCaps(String s) {
+
+    String capital = s.replaceAll("[^A-Z]", "");
+    // 대문자만 담을 배열의 길이
+    int[] capIndex = new int[capital.length()];
+
+    for (int i = 0, j = 0; i < s.length(); i++) {
+      if (Character.isUpperCase(s.charAt(i))) {
+        capIndex[j] = i;
+        j++;
+      }
+    }
+    return capIndex;
+  }
 }
