@@ -663,4 +663,18 @@ public class Program {
     }
     return capIndex;
   }
+
+  /**
+   * Is the Phone Number Formatted Correctly?
+   * 문자열 s의 형식이 "(123) 456-7890"의 형식을 갖는가 
+   * 
+   * @see https://edabit.com/challenge/NWtZJ2wHGB7hz9iSd
+   * @param s
+   * @return
+   */
+  public static boolean isValidPhoneNumber(String s) {
+
+    // return s.matches("\\(\\d{3}\\)\\s\\d{3}-\\d{4}");
+    return s.matches("^[(]{1}[0-9]{3}[)]{1}[ ]{1}[0-9]{3}[-]{1}[0-9]{4}");
+  }
 }
