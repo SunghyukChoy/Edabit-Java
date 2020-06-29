@@ -651,9 +651,9 @@ public class Program {
    */
   public static int[] indexOfCaps(String s) {
 
-    String capital = s.replaceAll("[^A-Z]", "");
+    // String capital = s.replaceAll("[^A-Z]", "");
     // 대문자만 담을 배열의 길이
-    int[] capIndex = new int[capital.length()];
+    int[] capIndex = new int[s.replaceAll("[^A-Z]", "").length()];
 
     for (int i = 0, j = 0; i < s.length(); i++) {
       if (Character.isUpperCase(s.charAt(i))) {

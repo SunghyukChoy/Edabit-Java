@@ -30,4 +30,22 @@ public class Program {
     return String.join("", letters);
   }
 
+  /**
+  * Array of Multiples
+  * 매개변수 num의 배수를 갖고, 길이는 매개변수 length인 배열 리턴
+  * 
+  * @see https://edabit.com/challenge/rzpucPyoyEtXPo2BG
+  * @param num
+  * @param length
+  * @return
+  */
+  public static int[] arrayOfMultiples(int num, int length) {
+    int[] multiplesArr = new int[length];
+
+    for (int i = 0; i < length; i++) {
+      multiplesArr[i] = num * (i + 1);
+    }
+    return multiplesArr;
+  }
+
 }

@@ -1983,8 +1983,7 @@ public class Challenge {
 		}
 		return s.toString();
 	}
-
-	/********************************* not finished */
+	
 	/**
 	 * The Fibonacci Number // 피보나치 수열에서 a번째 수의 값 구하기 // 수열은 1로 시작함
 	 * 
@@ -1993,25 +1992,13 @@ public class Challenge {
 	 * @return
 	 */
 	public static int Fibonacci(int a) {
-		// 피보나치 수열 : 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 .....
-
-		int res;
-		for (int i = 1; i <= a; i++) {
-			// i = 1,
-			res = i;
-
-			// i = 2;
-			res = i + 1;
-
-			// i = 3;
-			res = i + (i + 1);
-
-			// i = 4
-			res = i + (i + 1) + (i + (i + 1));
-
-		}
-
-		return a;
+		// 피보나치 수열 : 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 .....
+		// f(0) = 1;	
+		// f(1) = 1;
+		// f(2) = 2;	f(0) + f(1)
+		// f(3) = 3;	f(1) + f(2)
+	
+		return a == 0 || a == 1 ? 1 : Fibonacci(a - 2) + Fibonacci(a - 1);
 	}
 
 	/**
@@ -2448,8 +2435,8 @@ public class Challenge {
 
 		for (int i = 1; i < str.length(); i++) {
 			if (firstCharUpperCase && Character.isLowerCase(str.charAt(i))
-			|| !firstCharUpperCase && Character.isUpperCase(str.charAt(i))) {
-					return false;
+					|| !firstCharUpperCase && Character.isUpperCase(str.charAt(i))) {
+				return false;
 			}
 		}
 		return true;

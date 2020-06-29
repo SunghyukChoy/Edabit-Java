@@ -1,5 +1,7 @@
 package my.sunghyuk.edabit.very_easy;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -88,4 +90,10 @@ public class Challenge {
 
     return portion1.replace("/", "") + "/" + portion2.replace("/", "");
   }
+
+  public static String[] addEnding(String[] arr, String ending) {
+    List<String> list = new ArrayList<>();
+    
+    return arr;
+	}
 }
