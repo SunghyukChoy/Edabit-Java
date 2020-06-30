@@ -90,10 +90,4 @@ public class Challenge {
 
     return portion1.replace("/", "") + "/" + portion2.replace("/", "");
   }
-
-  public static String[] addEnding(String[] arr, String ending) {
-    List<String> list = new ArrayList<>();
-    
-    return arr;
-	}
 }

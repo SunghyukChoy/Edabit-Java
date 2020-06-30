@@ -1,5 +1,10 @@
 package my.sunghyuk.edabit.very_easy;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class Program {
 
   /**
@@ -17,6 +22,15 @@ public class Program {
       }
     }
     return false;
+  }
+
+  public static int getLastItem(int[] nums) {
+    List<Integer> list = new ArrayList<>();
+    
+    for(int num : nums){
+      list.add(num);
+    }
+    return list.get(list.size() - 1);
   }
   
 }

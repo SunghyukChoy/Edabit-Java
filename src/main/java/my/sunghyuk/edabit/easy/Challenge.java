@@ -1983,7 +1983,7 @@ public class Challenge {
 		}
 		return s.toString();
 	}
-	
+
 	/**
 	 * The Fibonacci Number // 피보나치 수열에서 a번째 수의 값 구하기 // 수열은 1로 시작함
 	 * 
@@ -1997,7 +1997,7 @@ public class Challenge {
 		// f(1) = 1;
 		// f(2) = 2;	f(0) + f(1)
 		// f(3) = 3;	f(1) + f(2)
-	
+
 		return a == 0 || a == 1 ? 1 : Fibonacci(a - 2) + Fibonacci(a - 1);
 	}
 
@@ -2442,4 +2442,33 @@ public class Challenge {
 		return true;
 	}
 
+	/**
+	 * Factor Chain
+	 * 배열이 약수의 연속으로 이어지는가. i-1번째의 요소가 i번째의 약수인가
+	 * 
+	 * @see https://edabit.com/challenge/SvptD77rYQJgjDvZY
+	 * @param arr
+	 * @return
+	 */
+	public static boolean factorChain(int[] arr) {
+
+		for (int i = 1; i < arr.length; i++) {
+			if (arr[i] % arr[(i - 1)] != 0) {
+				return false;
+			}
+		}
+		return true;
+
+		// List<Integer> list = new ArrayList<>();
+		// for (int num : arr) {
+		// 	list.add(num);
+		// }
+
+		// for (int i = 1; i < list.size(); i++) {
+		// 	if (list.get(i) % list.get(i - 1) != 0) {
+		// 		return false;
+		// 	}
+		// }
+		// return true;
+	}
 }
