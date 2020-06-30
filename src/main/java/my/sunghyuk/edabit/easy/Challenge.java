@@ -1,5 +1,6 @@
 package my.sunghyuk.edabit.easy;
 
+import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -2470,5 +2471,25 @@ public class Challenge {
 		// 	}
 		// }
 		// return true;
+	}
+
+	/**
+	 * Automorphic Numbers
+	 * n의 제곱수 끝자리에 n을 포함하는가
+	 * ex) 5*5 = 25 25의 끝자리에 5를 포함하므로 true. 76*76 = 5776 -> true
+	 * 
+	 * @see https://edabit.com/challenge/GobCTBruAvA3ZDr4J
+	 * @param n
+	 * @return
+	 */
+	public static boolean isAutomorphic(int n) {
+		// 방법 1.
+		String nStr = String.valueOf(n);
+		String nsqStr = String.valueOf((long) Math.pow(n, 2));
+		// n^2의 범위가 int형을 벗어날 수 있으므로 long으로 형변환
+		return nStr.matches(nsqStr.substring(nsqStr.length() - nStr.length()));
+
+		// 방법 2.
+		// return nsqStr.endsWith(nStr);
 	}
 }
