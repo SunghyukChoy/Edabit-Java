@@ -1,5 +1,9 @@
 package my.sunghyuk.edabit.medium;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Challenge {
   /**
    * Algorithms II: The Euclidean Algorithm
@@ -77,5 +81,53 @@ public class Challenge {
     // [\\da-fA-F] : \\d : 0에서 9, a에서 f, A에서 F까지
     // {6} : 앞 조건식의 문자가 6개
     return str.matches("^#[\\da-fA-F]{6}");
+  }
+
+  /**
+   * Filter Repeating Character Strings   
+   * 배열의 요소 중 문자가 반복되는 요소만 배열로 리턴
+   * 요소의 길이가 1이라면 그대로 리턴    
+   * @see https://edabit.com/challenge/tunTJAdBeLgc8s4ap
+   * @param arr
+   * @return
+   */
+  public static String[] identicalFilter(String[] arr) {
+    List<String> list = new ArrayList<>();
+
+    for (int i = 0; i < arr.length; i++) {
+      list.add(arr[i]);
+      // list.addAll(Arrays.asList(arr));
+      // 컬렉션에 배열 요소 넣는 메소드. 
+
+      for (int j = 1; j < arr[i].length(); j++) {
+        if (arr[i].charAt(0) != arr[i].charAt(j)) {
+          list.remove(arr[i]);
+        }
+      }
+    }
+    String[] filterArr = list.toArray(new String[0]);
+    // .toArray(배열 객체[배열의 길이])
+    // 컬렉션을 배열로 변환하는 메소드. 컬렉션의 크기 > 지정한 배열의 길이 -> 컬렉션의 크기로 저장되고,
+    // 지정한 배열의 길이 > 컬렉션의 크기 -> 지정한 배열의 길이로 배열 생성, 비어있는 인덱스에는 null 저장
+    return filterArr;
+
+    // Other Solution
+    /*  String result = "";
+    for (String str : arr) { // str은 배열의 각 요소      
+      if (str.replaceAll("" + str.charAt(0), "").length() == 0) {
+        // 문자열의 첫 문자와 같은 문자를 모두 제거했을 때 길이가 0이라면
+        // == 첫 문자와 다른 문자가 같다면
+        result += str + " "; // 그 문자를 결과 문자열에 더함
+      }
+    }
+    return result.length() == 0 ? new String[] {} : result.split(" "); */
+
+    // Other Solution
+    /* ArrayList<String> arrList = new ArrayList<>();
+    for (String i : arr) {
+      if (i.matches("(\\w)\\1*"))
+        arrList.add(i);
+    }
+    return arrList.toArray(new String[arrList.size()]); */
   }
 }
