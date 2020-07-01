@@ -130,4 +130,26 @@ public class Challenge {
     }
     return arrList.toArray(new String[arrList.size()]); */
   }
+
+  /**
+   * How Many Solutions Does This Quadratic Have?
+   * (매개변수로 주어지는 a,b,c) ax^2 + bx + c에서 x의 값은 몇 개인가.
+   * 
+   * @see https://edabit.com/challenge/Rs23pTNpM6k5M2ThH
+   * @param a
+   * @param b
+   * @param c
+   * @return
+   */
+  public static int solutions(int a, int b, int c) {    
+    // 근의 개수 구하는 공식. b^2-4ac > 0 -> 2, // == 0 -> 1, // < 0 -> 0
+    // 문제 의도 모르겠음. 참고할 만한 다른 답안 없음.
+    if ((int) Math.pow(b, 2) - 4 * a * c > 0) {
+      return 2;
+    } else if ((int) Math.pow(b, 2) - 4 * a * c == 0) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
 }
