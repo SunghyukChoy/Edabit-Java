@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 // refacor : rename
 public class Program {
@@ -676,5 +679,27 @@ public class Program {
 
     // return s.matches("\\(\\d{3}\\)\\s\\d{3}-\\d{4}");
     return s.matches("^[(]{1}[0-9]{3}[)]{1}[ ]{1}[0-9]{3}[-]{1}[0-9]{4}");
+  }
+
+  /**
+   * Total Number of Unique Characters
+   * 문자열 s1 + s2는 문자 몇 개로 이루어져 있는가.
+   * countUnique("sore", "zebra") ➞ 7
+   * @see https://edabit.com/challenge/FHJ7SPdj7hChTS5LW
+   * @param s1
+   * @param s2
+   * @return
+   */
+  public static int countUnique(String s1, String s2) {
+    Set<Character> set = new HashSet<>();
+    char[] charArr = (s1 + s2).toCharArray();
+
+    for (char ch : charArr) {
+      set.add(ch);
+    }
+    return set.size();
+
+    // Other Solution
+    //return (int) (s1 + s2).chars().distinct().count();
   }
 }
