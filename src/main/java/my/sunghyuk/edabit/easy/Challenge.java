@@ -2492,4 +2492,27 @@ public class Challenge {
 		// 방법 2.
 		// return nsqStr.endsWith(nStr);
 	}
+
+	/**
+	 * The Reverser!
+	 * 문자열 거꾸로 출력하되 대문자는 소문자로, 소문자는 대문자로 바꿔서
+	 * 
+	 * @see https://edabit.com/challenge/gPWZDe6rciBzYdz3B
+	 * @param text
+	 * @return
+	 */
+	public static String theReverser(String text) {
+		StringBuilder sb = new StringBuilder();
+
+		for (int i = 0; i < text.length(); i++) {
+			if (Character.isUpperCase(text.charAt(i))) {
+				sb.append(Character.toLowerCase(text.charAt(i)));
+			} else if (Character.isLowerCase(text.charAt(i))) {
+				sb.append(Character.toUpperCase(text.charAt(i)));
+			} else {
+				sb.append(text.charAt(i));
+			}
+		}
+		return sb.reverse().toString();
+	}
 }
