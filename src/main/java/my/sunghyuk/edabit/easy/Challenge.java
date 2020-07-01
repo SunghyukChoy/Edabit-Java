@@ -2515,4 +2515,30 @@ public class Challenge {
 		}
 		return sb.reverse().toString();
 	}
+
+	/**
+	 * The Collatz Conjecture
+	 * 1. n이 짝수이면 n = n / 2, n이 홀수이면 n = n*3 + 1
+	 * 2. n이 1이 되기까지 몇 번 계싼해야 하는가
+	 * 콜라츠 추측이라고 함...
+	 * @see https://edabit.com/challenge/8s2jBHWKXCrT5oQ63
+	 * @param n
+	 * @return
+	 */
+	public static int collatzConjecture(int n) {
+
+		int count = 0;
+		while (n != 1) {
+			n = n % 2 == 0 ? n / 2 : n * 3 + 1;
+			count++;
+		}
+		return count;
+
+		// Other Solution
+		// return n < 2 ? 0 : 1 + collatzConjecture(n % 2 == 0 ? n / 2 : n * 3 + 1);
+		// n이 4라면 return 1 + collatzConjecture(2)
+		//   							  1 + 1 + collatzConjecture(1)
+		// 								  1 + 1 + 0
+		// return 2;
+	}
 }
