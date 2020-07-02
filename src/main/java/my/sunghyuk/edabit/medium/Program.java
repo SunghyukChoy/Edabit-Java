@@ -2,6 +2,7 @@ package my.sunghyuk.edabit.medium;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.IntSummaryStatistics;
 import java.util.Iterator;
 import java.util.List;
 
@@ -63,6 +64,22 @@ public class Program {
     // return arr[0] + arr.length == 0 ? 0 : sum(Arrays.copyOfRange(arr, 1, arr.length));
     // 둘 다 틀림. ArrayIndexOutOfBoundsException: 0 에러. 배열의 길이가 0인 경우 0번 인덱스를 찾을 수 없기 때문
     return arr.length == 0 ? 0 : sum(Arrays.copyOfRange(arr, 1, arr.length)) + arr[0];
+
+    // Other Solution
+    // return Arrays.stream(arr).sum();
   }
 
+  /**
+   * Calculate the Mean
+   * 배열 요소 값들의 평균 구하기. 소수점 아래 2자리까지
+   * @see https://edabit.com/challenge/W64jA8hmGCmjbR7Fb
+   * @param nums
+   * @return
+   */
+  public static double mean(int[] nums) {
+    return Double.valueOf(String.format("%.2f", (double) Arrays.stream(nums).sum() / nums.length));
+
+    // Other Solution
+    // return Math.round(Arrays.stream(nums).summaryStatistics().getAverage() * 100) / 100.0;
+  }
 }

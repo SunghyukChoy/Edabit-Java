@@ -32,5 +32,16 @@ public class Note {
     // 인덱스 1부터 4까지 (copyOfTest.length = 5)
     System.out.println(Arrays.toString(rangeCopyArr)); // {2, 3, 4, 5}
     System.out.println("==============================================");
+
+    //String.format("%.nf", 변환할 값)
+    double pie = 3.14159265358979;
+    System.out.println((String.format("%.2f", pie))); // 3.14
+    System.out.println((String.format("%.3f", pie))); // 3.142
+    // Math.round(변환할 값)
+    int roundNum = Math.round(10.45f); // 소수점 첫째 자리에서 반올림 하여 정수로 리턴
+    System.out.println(roundNum);
+    System.out.println(Math.round(pie * 100) / 100.0); // 3.14
+    System.out.println(Math.round(pie * 1000) / 1000.0); // 3.142
+    // Math.round() : 소수점 아래 0 절삭, String.format() : 절삭하지 않음.
   }
 }
