@@ -141,7 +141,7 @@ public class Challenge {
    * @param c
    * @return
    */
-  public static int solutions(int a, int b, int c) {    
+  public static int solutions(int a, int b, int c) {
     // 근의 개수 구하는 공식. b^2-4ac > 0 -> 2, // == 0 -> 1, // < 0 -> 0
     // 문제 의도 모르겠음. 참고할 만한 다른 답안 없음.
     if ((int) Math.pow(b, 2) - 4 * a * c > 0) {
@@ -151,5 +151,37 @@ public class Challenge {
     } else {
       return 0;
     }
+  }
+
+  /**
+   * Perfect Square Patch
+   * n x n 이차원 배열 만들기  ex : {{3, 3, 3}, {3, 3, 3}, {3, 3, 3}}
+   * 
+   * @see https://edabit.com/challenge/7Tb7qMDQHtz3xpydd
+   * @param n
+   * @return
+   */
+  public static int[][] squarePatch(int n) {
+    // My Solution
+    /*  int[][] squareArr = new int[n][n];
+    // new int[이차원배열 길이(그 일차원 배열을 몇개 갖고 있느냐)][일차원배열 길이(일차원 배열 요소의 수)]
+    for (int i = 0; i < n; i++) { // 바깥 배열. 이차원 배열
+      for (int j = 0; j < n; j++) { // 안쪽 배열. 일차원 배열
+        squareArr[i][j] = n;
+      }
+    }
+    return squareArr; */
+
+    // Other Solution
+    /* return Stream.generate(() -> n).limit(n)
+        .map(size -> Stream.generate(() -> size).limit(size).mapToInt(Integer::intValue).toArray())
+        .toArray(int[][]::new); */
+
+    // Other Solution
+    int[][] result = new int[n][n];
+    for (int[] is : result) {
+      Arrays.fill(is, n);
+    }
+    return result;
   }
 }
