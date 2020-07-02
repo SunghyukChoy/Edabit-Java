@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 // refacor : rename
 public class Program {
@@ -701,5 +702,27 @@ public class Program {
 
     // Other Solution
     //return (int) (s1 + s2).chars().distinct().count();
+  }
+
+  /**
+   * Convenience Store
+   * 매개변수 int 배열 change는 가지고 있는 화폐 단위별 금액, amountDue는 지불할 금액. 
+   * 배열은 {quarter, dime, nickel, penny}순. 각각 25/10/5/1 센트. 
+   * 주어진 금액으로 지불할 수 있는가
+   * IntStream 사용 문제..
+   * @see https://edabit.com/challenge/jfquehNLzpXW5ZQu5
+   * @param change
+   * @param amountDue
+   * @return
+   */
+  public static boolean changeEnough(int[] change, double amountDue) {
+
+    // My Solution
+    /* amountDue = amountDue * 100;
+    return change[0] * 25 + change[1] * 10 + change[2] * 5 + change[3] >= amountDue; */
+
+    // Other Solution
+    double[] value = new double[] { 0.25, 0.10, 0.05, 0.01 };
+    return IntStream.range(0, change.length).mapToDouble(i -> change[i] * value[i]).sum() >= amountDue;
   }
 }
