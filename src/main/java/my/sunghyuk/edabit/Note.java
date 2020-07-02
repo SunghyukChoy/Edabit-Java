@@ -1,5 +1,6 @@
 package my.sunghyuk.edabit;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Note {
@@ -21,6 +22,15 @@ public class Note {
     // [20, 20, 50, 50, 20]
     // [20, 20, 50, 50, 20]
     // [20, 20, 50, 50, 20]
+    System.out.println("==============================================");
 
+    // Arrays.copyOf(원본 배열, 생성할 배열의 길이), Arrays.copyOfRange(원본배열, 시작인덱스, 종료인덱스)
+    int[] copyOfTest = new int[] { 1, 2, 3, 4, 5 };
+    int[] copyArr = Arrays.copyOf(copyOfTest, copyOfTest.length);
+    System.out.println(Arrays.toString(copyArr)); // {1, 2, 3, 4, 5}
+    int[] rangeCopyArr = Arrays.copyOfRange(copyOfTest, 1, copyOfTest.length);
+    // 인덱스 1부터 4까지 (copyOfTest.length = 5)
+    System.out.println(Arrays.toString(rangeCopyArr)); // {2, 3, 4, 5}
+    System.out.println("==============================================");
   }
 }

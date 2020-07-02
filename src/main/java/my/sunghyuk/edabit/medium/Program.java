@@ -51,4 +51,18 @@ public class Program {
     return multiplesArr;
   }
 
+  /**
+   * Recursion: Array Sum
+   * 배열 요소의 합. 재귀함수로 풀기
+   * @see https://edabit.com/challenge/hf2THAoQRQbAx2jc9
+   * @param arr
+   * @return
+   */
+  public static int sum(int[] arr) {
+    // return arr[0] + sum(Arrays.copyOfRange(arr, 1, arr.length));
+    // return arr[0] + arr.length == 0 ? 0 : sum(Arrays.copyOfRange(arr, 1, arr.length));
+    // 둘 다 틀림. ArrayIndexOutOfBoundsException: 0 에러. 배열의 길이가 0인 경우 0번 인덱스를 찾을 수 없기 때문
+    return arr.length == 0 ? 0 : sum(Arrays.copyOfRange(arr, 1, arr.length)) + arr[0];
+  }
+
 }
