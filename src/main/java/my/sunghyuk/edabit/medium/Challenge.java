@@ -2,7 +2,9 @@ package my.sunghyuk.edabit.medium;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Challenge {
   /**
@@ -183,5 +185,78 @@ public class Challenge {
       Arrays.fill(is, n);
     }
     return result;
+  }
+
+  private enum Rps {
+    PAPER, SCISSORS, ROCK
+  }
+
+  /**
+   * Simulate the Game "Rock, Paper, Scissors"
+   * 가위바위보 게임
+   * @see https://edabit.com/challenge/3S8XppR6Yf5mXPxij
+   * @param s1
+   * @param s2
+   * @return
+   */
+  public static String rps(String s1, String s2) {
+    /* if (s1.equals("rock")) {
+      switch (s2) {
+        case "paper":
+          return "Player 2 wins";
+        case "scissors":
+          return "Player 1 wins";
+        default:
+          return "TIE";
+      }
+    }
+    if (s1.equals("scissors")) {
+      switch (s2) {
+        case "paper":
+          return "Player 1 wins";
+        case "rock":
+          return "Player 2 wins";
+        default:
+          return "TIE";
+      }
+    }
+    if (s1.equals("paper")) {
+      switch (s2) {
+        case "rock":
+          return "Player 1 wins";
+        case "scissors":
+          return "Player 2 wins";
+        default:
+          return "TIE";
+      }
+    }
+    return ""; */
+
+    // Other Solution
+    /* int p1 = Rps.valueOf(s1.toUpperCase()).ordinal();
+    int p2 = Rps.valueOf(s2.toUpperCase()).ordinal();
+    return (p1 == p2) ? "TIE"
+        : (p1 - p2 == 1 || p1 - p2 == 1 - Rps.values().length) ? "Player 1 wins" : "Player 2 wins"; */
+
+    // Other Solution
+    /* Map<String, String> rules = new HashMap<>();
+    rules.put("rock", "scissors");
+    rules.put("paper", "rock");
+    rules.put("scissors", "paper");
+    if (s1.equals(s2)) {
+      return "TIE";
+    }
+    return String.format("Player %d wins", rules.get(s1).equals(s2) ? 1 : 2); */
+
+    // Other Solution
+    if (s1.equals(s2)) {
+      return "TIE";
+    } else if ((s1.equals("rock") && s2.equals("scissors")) || (s1.equals("scissors") && s2.equals("paper"))
+        || (s1.equals("paper") && s2.equals("rock"))) {
+      return "Player 1 wins";
+    } else {
+      return "Player 2 wins";
+    }
+
   }
 }
