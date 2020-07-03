@@ -259,4 +259,30 @@ public class Challenge {
     }
 
   }
+
+  /**
+   * The Empty Square Sequence
+   * 주어지는 step은 사각형 한 변 길이의 반. step이 1이라면 사각형은 2 x 2의 크기를 가짐
+   * 2 x 2 크기의 사각형은 4칸으로 나뉘어져 있고 각 칸에는 점이 하나씩 들어감
+   * step = 2일 때 사각형의 크기는 4 x 4이고 점은 2 x 2에 찍힌 점에서 모서리 방향으로 하나씩 더 찍힘
+   * 즉 한 단계씩 진행할 때마다 4개의 점이 더 찍힘. 그 외의 점이 찍히지 않는 칸은 empty square라고 함.
+   * step이 n일 때 empty square의 갯수 리턴
+   * 
+   * @see https://edabit.com/challenge/3GvRKZPF2NRPz3DgQ
+   * @param step
+   * @return
+   */
+  public static int emptySq(int step) {
+    // int area; // 사각형의 넓이. == 칸의 갯수
+    // int dot = 4;
+    // int emptySquare;
+
+    // step 1 : area = 4; dot = 4; empty = 0;
+    // step 2 : area = 16; dot = 8; empty = 8;
+    // step 3 : area = 36; dot = 12; empty = 24;
+    // step 4 : area = 64; dot = 16; empty = 48;
+    // step n : area = n*2 * n*2 dot = 4n empty = area - 4n;
+
+    return (int) Math.pow(step * 2, 2) - 4 * step;
+  }
 }
