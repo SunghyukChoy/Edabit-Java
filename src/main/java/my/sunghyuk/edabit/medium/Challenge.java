@@ -2,9 +2,9 @@ package my.sunghyuk.edabit.medium;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 public class Challenge {
   /**
@@ -284,5 +284,34 @@ public class Challenge {
     // step n : area = n*2 * n*2 dot = 4n empty = area - 4n;
 
     return (int) Math.pow(step * 2, 2) - 4 * step;
+  }
+
+  /**
+   * Count the Number of Duplicate Characters
+   * 중복되는 문자 갯수(중복 횟수) 리턴, 공백도 문자로 포함   
+   * @see https://edabit.com/challenge/zmbR8SKveCgJ6KB5G
+   * @param str
+   * @return
+   */
+  public static int duplicates(String str) {
+    char[] chArr = str.toCharArray();
+    Set<Character> set = new HashSet<>();
+    for (Character character : chArr) {
+      set.add(character);
+    }
+    return str.length() - set.size();
+
+    // Other Solution
+    // int counter = 0;
+    // int n = str.length();
+    // for (int i = 0; i < n - 1; i++) {
+    //   for (int j = i + 1; j < n; j++) {
+    //     if (str.charAt(i) == str.charAt(j)) {
+    //       counter++;
+    //       break;
+    //     }
+    //   }
+    // }
+    // return counter;
   }
 }
