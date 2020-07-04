@@ -406,4 +406,19 @@ public class Challenge {
     // Other Solution
     return Math.pow(w, 2) + Math.pow(h, 2) <= Math.pow(2 * radius, 2); // 이게 뭔데..
   }
+
+  /**
+   * Magic Date
+   * "d m yyyy" 형식의 문자열 str에서 d * m 했을 때 나오는 수가 yyyy의 마지막 1또는 2 또는 3 자리와 일치하는가
+   * @see https://edabit.com/challenge/g7dRyiCi5dpKxuFRa
+   * @param str
+   * @return
+   */
+  public static boolean magic(String str) {
+    String[] strArr = str.split(" ");
+    // int day = Integer.parseInt(strArr[0]);
+    // int month = Integer.parseInt(strArr[1]);
+    // String dm = String.valueOf(day * month);
+    return strArr[2].endsWith(String.valueOf(Integer.parseInt(strArr[0]) * Integer.parseInt(strArr[1])));
+  }
 }
