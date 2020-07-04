@@ -364,4 +364,32 @@ public class Challenge {
     // Other Solution
     return (Math.sqrt(1 + 8 * total) - 1) / 2.0 % 1 == 0; // 이게 뭔데...
   }
+
+  /**
+   * GCD and LCM ( Part 1)
+   * 최대 공약수 리턴
+   * @see https://edabit.com/challenge/FsgEcZdjC4BYG9gLj
+   * @param a
+   * @param b
+   * @return
+   */
+  public static int gcd(int a, int b) {
+
+    int smallerNum = b >= a ? a : b;
+    int gcd = 1;
+    for (int i = smallerNum; i > 0; i--) {
+      if (a % i == 0 && b % i == 0) {
+        gcd = i;
+        break;
+      }
+    }
+    return gcd;
+
+    // Other Solution
+    /*   if (b == 0) {
+      return a;
+    } else {
+      return gcd(b, a % b);
+    } */
+  }
 }
