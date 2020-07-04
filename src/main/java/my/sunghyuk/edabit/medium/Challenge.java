@@ -314,4 +314,22 @@ public class Challenge {
     // }
     // return counter;
   }
+
+  /**
+   * Change Every Letter to the Next Letter
+   * 문자를 다음 알파벳순의 문자로 바꾸기 bye -> czf. 문자열에 z는 없음.
+   * @see https://edabit.com/challenge/2Cbbs3pvH2gCMZMsg
+   * @param word
+   * @return
+   */
+  public static String move(String word) {
+
+    int[] charAscii = word.chars().toArray(); // 문자열의 문자들을 정수형 배열(ascii값 배열)로 변환
+    String moveStr = "";
+    for (int i = 0; i < charAscii.length; i++) {
+      char moveCh = (char) (charAscii[i] + 1); // 아스키 값을 그냥 형변환 해주면 아스키 값에 해당하는 문자 출력됨...
+      moveStr += moveCh;
+    }
+    return moveStr;
+  }
 }
