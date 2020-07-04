@@ -332,4 +332,36 @@ public class Challenge {
     }
     return moveStr;
   }
+
+  /**
+   * Pages in a Book
+   * 책의 각 페이지에는 해당하는 쪽의 숫자가 있고 total은 그 쪽의 숫자를 더한 값을 의미함
+   * 책이 6 페이지의 책이라면 total = 1 + ... + 6 = 21이 됨.
+   * 주어진 total이 25라면 false를 반환해야함. 나올 수 없는 total이므로 (21 + 7 = 28)
+   * 단순히 숫자를 더해서 푸는 것보다 효율적인 방법 생각해보기
+   * @see https://edabit.com/challenge/kZZDAMCjekgBdWgJy
+   * @param total
+   * @return
+   */
+  public static boolean pagesInBook(int total) {
+    /*  int sum = 0;
+    int page = 1;
+    // while (true) {
+    //   sum += page;
+    //   page++;
+    //   if (sum == total) {
+    //     return true;
+    //   } else if (sum > total) {
+    //     return false;
+    //   }
+    // }
+    while (sum < total) {
+      sum += page;
+      page++;
+    }
+    return sum == total; */
+
+    // Other Solution
+    return (Math.sqrt(1 + 8 * total) - 1) / 2.0 % 1 == 0; // 이게 뭔데...
+  }
 }
