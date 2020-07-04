@@ -421,4 +421,33 @@ public class Challenge {
     // String dm = String.valueOf(day * month);
     return strArr[2].endsWith(String.valueOf(Integer.parseInt(strArr[0]) * Integer.parseInt(strArr[1])));
   }
+
+  /**
+   * Find the Second Occurrence of "zip" in a String
+   * 문자열에서 "zip"이란 단어가 두 번째 등장하는 위치(인덱스) 리턴
+   * 다시 등장하지 않으면 -1 리턴. Zip != zip
+   * @see https://edabit.com/challenge/px8DTp5gTmojeBLve
+   * @param str
+   * @return
+   */
+  public static int findZip(String str) {
+
+    int secondZip;
+    for (int i = 0; i < str.length() - 2; i++) {
+      if (str.charAt(i) == 'z' && str.charAt(i + 1) == 'i' && str.charAt(i + 2) == 'p') {
+        for (int j = i + 3; j < str.length() - 2; j++) { // 첫 zip 찾고 그 시점에서 두 번쨰 zip 찾는 반복문 시작
+          if (str.charAt(j) == 'z' && str.charAt(j + 1) == 'i' && str.charAt(j + 2) == 'p') {
+            secondZip = j;
+            return secondZip; // 두 번째 zip 찾은 시점에 바로 리턴
+          }
+        }
+      }
+    }
+    return -1;
+
+    // Other Solution
+    /* int pos1 = str.indexOf("zip");
+    	int pos2 = str.indexOf("zip", pos1 + 1);
+    	return pos2; */
+  }
 }

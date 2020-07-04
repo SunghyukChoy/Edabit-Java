@@ -43,5 +43,21 @@ public class Note {
     System.out.println(Math.round(pie * 100) / 100.0); // 3.14
     System.out.println(Math.round(pie * 1000) / 1000.0); // 3.142
     // Math.round() : 소수점 아래 0 절삭, String.format() : 절삭하지 않음.
+
+    System.out.println("==============================================");
+    // .indexOf("찾을 문자열")  .indexOf("찾을 문자열", 시작 인덱스)
+    // .lastIndexOf("찾을 문자열")  .lastIndexOf("찾을 문자열", 시작 인덱스)
+    String indexOfTest = "Hello world";
+    System.out.println(indexOfTest.indexOf("z")); // -1
+    // 찾는 문자열이 없는 경우 -1 리턴
+    System.out.println(indexOfTest.indexOf("o")); // 4
+    System.out.println(indexOfTest.indexOf("o", 5)); // 7
+    // 시작점 미입력 시 0번부터 시작
+    // 시작점을 바꾼다고 하여 indexOfTest의 인덱스가 바뀌지는 않음. 원래의 인덱스 출력
+    System.out.println(indexOfTest.lastIndexOf("z")); // -1
+    System.out.println(indexOfTest.lastIndexOf("o")); // 7
+    System.out.println(indexOfTest.lastIndexOf("o", 5)); // 4
+    // 뒤에서부터 찾기 시작하지만 반환하는 인덱스는 원래의 인덱스 번호
+    // 즉 왼쪽에서 몇 번째 위치하는지를 인덱스로 반환. 시작 인덱스 또한 원래의 인덱스 번호 기준
   }
 }
