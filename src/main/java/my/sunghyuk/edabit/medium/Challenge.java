@@ -392,4 +392,18 @@ public class Challenge {
       return gcd(b, a % b);
     } */
   }
+
+  /**
+   * Rectangle in Circle
+   * 직사각형의 너비(w)와 높이(h). 원의 반지름(radius). 직사각형이 원 안에 들어가는가
+   * @see https://edabit.com/challenge/XFhvhZhfA7TfPk87D
+   * @param w
+   * @param h
+   * @param radius
+   * @return
+   */
+  public static boolean rectangleInCircle(int w, int h, int radius) {
+    // Other Solution
+    return Math.pow(w, 2) + Math.pow(h, 2) <= Math.pow(2 * radius, 2); // 이게 뭔데..
+  }
 }
