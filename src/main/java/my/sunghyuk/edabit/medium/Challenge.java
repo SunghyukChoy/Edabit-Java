@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 public class Challenge {
   /**
@@ -449,5 +450,31 @@ public class Challenge {
     /* int pos1 = str.indexOf("zip");
     	int pos2 = str.indexOf("zip", pos1 + 1);
     	return pos2; */
+  }
+
+  /**
+   * Factorize a Number
+   * num의 약수들을 배열로 리턴
+   * @see https://edabit.com/challenge/G9tAPeGEhR8r2DkH5
+   * @param num
+   * @return
+   */
+  public static int[] factorize(int num) {
+    List<Integer> list = new ArrayList<>();
+    for (int i = 1; i <= num; i++) {
+      if (num % i == 0) {
+        list.add(i);
+      }
+    }
+    int[] factors = new int[list.size()];
+    int i = 0;
+    for (int factor : list) {
+      factors[i] = factor;
+      i++;
+    }
+    return factors;
+
+    // Other Solution
+    // return IntStream.range(1, num + 1).filter(n -> num % n == 0).toArray();
   }
 }
