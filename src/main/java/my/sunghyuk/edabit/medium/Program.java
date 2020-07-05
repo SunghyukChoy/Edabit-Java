@@ -129,4 +129,15 @@ public class Program {
     // Other Solution
     // return java.util.Arrays.stream(nums).distinct().sorted().toArray();
   }
+
+  /**
+   * Recursion: Reverse a String
+   * 문자열 거꾸로 출력. 재귀함수로 풀기
+   * @see https://edabit.com/challenge/zSqXDoWS8PuhbbPrL
+   * @param str
+   * @return
+   */
+  public static String reverse(String str) {
+    return str.length() == 0 ? "" : str.charAt(str.length() - 1) + reverse(str.substring(0, str.length() - 1));
+  }
 }
