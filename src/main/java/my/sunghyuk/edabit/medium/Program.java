@@ -140,4 +140,23 @@ public class Program {
   public static String reverse(String str) {
     return str.length() == 0 ? "" : str.charAt(str.length() - 1) + reverse(str.substring(0, str.length() - 1));
   }
+
+  /**
+   * Recursion: Count Vowels
+   * 문자열에서 모음 개수 리턴. 재귀함수로 풀기
+   * @see https://edabit.com/challenge/DtTdXqwFQYTf6ZE3J
+   * @param str
+   * @return
+   */
+  public static int countVowels(String str) {
+    int count = 0;
+    if (str.isEmpty()) {
+      return 0;
+    }
+    if (String.valueOf(str.charAt(0)).matches("[aeiou]")) {
+      count++;
+    }
+
+    return count + countVowels(str.substring(1));
+  }
 }
