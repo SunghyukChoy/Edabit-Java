@@ -1,11 +1,11 @@
 package my.sunghyuk.edabit.medium;
 
-import java.text.Format;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.IntSummaryStatistics;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class Program {
 
@@ -96,5 +96,37 @@ public class Program {
     return Double.parseDouble(String.format(format, Math.PI));
     // Other Solution
     // return Math.round(Math.PI * Math.pow(10, num)) / Math.pow(10, num);
+  }
+
+  /**
+   * Purge and Organize
+   * 
+   * 배열의 요소들을 중복 없이, 오름차순으로 정렬된 배열로 리턴
+   * @see https://edabit.com/challenge/kgMghy3omychqLnXv
+   * @param nums
+   * @return
+   */
+  public static int[] uniqueSort(int[] nums) {
+    // Arrays.sort(nums); // 원래의 배열 정렬할 필요 없음. 컬렉션에 담으면서 순서 유지 안 됨.    
+    Set<Integer> set = new HashSet<>();
+    for (Integer num : nums) {
+      set.add(num);
+    }
+    int[] uniqueArr = new int[set.size()];
+    Iterator<Integer> iterator = set.iterator();
+    int i = 0;
+    while (iterator.hasNext()) {
+      uniqueArr[i] = iterator.next();
+      // System.out.println(iterator.next());
+      // 배열에 들어가는 요소와 출력문에서의 요소는 다른 요소임. 
+      // .next()로 요소 호출 시마다 다음 요소가 호출됨
+      // 들어가는 요소 확인하고 싶으면 변수 선언해서 확인할 것.
+      i++;
+    }
+    Arrays.sort(uniqueArr);
+    return uniqueArr;
+
+    // Other Solution
+    // return java.util.Arrays.stream(nums).distinct().sorted().toArray();
   }
 }
