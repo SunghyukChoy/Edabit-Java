@@ -1,5 +1,6 @@
 package my.sunghyuk.edabit.medium;
 
+import java.text.Format;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.IntSummaryStatistics;
@@ -81,5 +82,19 @@ public class Program {
 
     // Other Solution
     // return Math.round(Arrays.stream(nums).summaryStatistics().getAverage() * 100) / 100.0;
+  }
+
+  /**
+   * Pi to N Decimal Places
+   * Pi 값을 소수점 아래 num 자리수로 리턴
+   * @see https://edabit.com/challenge/MX8ikyoCnDWr33saY
+   * @param num
+   * @return
+   */
+  public static double myPi(int num) {
+    String format = "%." + num + "f";
+    return Double.parseDouble(String.format(format, Math.PI));
+    // Other Solution
+    // return Math.round(Math.PI * Math.pow(10, num)) / Math.pow(10, num);
   }
 }
