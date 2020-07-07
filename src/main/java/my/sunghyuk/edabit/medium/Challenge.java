@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.IntStream;
 
 public class Challenge {
   /**
@@ -476,5 +475,28 @@ public class Challenge {
 
     // Other Solution
     // return IntStream.range(1, num + 1).filter(n -> num % n == 0).toArray();
+  }
+
+  /**
+   * Reverse the Number
+   * 정수 n을 거꾸로된 문자열로 출력.
+   * 음수는 양수 값으로 리턴, 나눗셈에 관련된 연산자를 사용해서 풀 것
+   * @see https://edabit.com/challenge/tiyPFonvAJ8e6H9jS
+   * @param n
+   * @return
+   */
+  public static String rev(int n) {
+    n = Math.abs(n);
+    String reverseNum = "";
+    int remainder;
+    while (n != 0) {
+      remainder = n % 10;
+      n = n / 10;
+      reverseNum += String.valueOf(remainder);
+    }
+    return reverseNum;
+
+    // Other Solution
+    // return new StringBuilder(Math.abs(n) + "").reverse().toString();
   }
 }

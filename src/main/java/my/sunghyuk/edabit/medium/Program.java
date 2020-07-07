@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -107,7 +108,7 @@ public class Program {
    * @return
    */
   public static int[] uniqueSort(int[] nums) {
-    // Arrays.sort(nums); // 원래의 배열 정렬할 필요 없음. 컬렉션에 담으면서 순서 유지 안 됨.    
+    // Arrays.sort(nums); // HashSet()으로 객체 생성 시 원래의 배열 정렬할 필요 없음. 컬렉션에 담으면서 순서 유지 안 됨. LinkedHashSet()으로 객체 생성 시에는 순서 유지 가능.  
     Set<Integer> set = new HashSet<>();
     for (Integer num : nums) {
       set.add(num);
@@ -127,7 +128,7 @@ public class Program {
     return uniqueArr;
 
     // Other Solution
-    // return java.util.Arrays.stream(nums).distinct().sorted().toArray();
+    // return java.util.Arrays.stream(nums).distinct().sorted().toArray();    
   }
 
   /**
