@@ -533,4 +533,61 @@ public class Challenge {
   /* private static int uniqueNum(int[] arr) {
     return (int) Arrays.stream(arr).distinct().count();
   } */
+
+  /**
+   * State Names and Abbreviations
+   * type에 따라 arr에서 요소를 분류하여 배열로 리턴
+   * type이 full이라면 주(state)의 full name 그대로를 배열로 리턴
+   * type이 abb라면 주의 축약형을 배열로 리턴
+   * 
+   * @see https://edabit.com/challenge/3mCJ3idbMqueRTa7b
+   * @param arr
+   * @param type
+   * @return
+   */
+  public static String[] filterStateNames(String[] arr, String type) {
+    // 축약형의 이름은 모두 대문자로 이루어져 있음.
+    List<String> fullNameList = new ArrayList<>();
+    List<String> abbreviationList = new ArrayList<>();
+
+    for (int i = 0; i < arr.length; i++) {
+      if (arr[i].replaceAll("[A-Z]", "").length() == 0) {
+        abbreviationList.add(arr[i]);
+      } else {
+        fullNameList.add(arr[i]);
+      }
+    }
+
+    // String[] abbreviationArr = abbreviationList.toArray(new String[0]);
+    // String[] fullNameArr = fullNameList.toArray(new String[0]);
+    return type.equals("abb") ? abbreviationList.toArray(new String[0]) : fullNameList.toArray(new String[0]);
+
+    // Other Solution
+    /* int abbreviationLength = 0;
+    int fullNameLength = 0;
+    for (int i = 0; i < arr.length; i++) {
+      if (arr[i].replaceAll("[A-Z]", "").length() == 0) {
+        abbreviationLength++;
+      } else {
+        fullNameLength++;
+      }
+    }
+    
+    String[] abbreviationArr = new String[abbreviationLength];
+    String[] fullNameArr = new String[fullNameLength];
+    for (int i = 0, abbreviationIndex = 0, fullNameIndex = 0; i < arr.length; i++) {
+      if (arr[i].replaceAll("[A-Z]", "").length() == 0) {
+        abbreviationArr[abbreviationIndex] = arr[i];
+        abbreviationIndex++;
+      } else {
+        fullNameArr[fullNameIndex] = arr[i];
+        fullNameIndex++;
+      }
+    }
+    return type.equals("abb") ? abbreviationArr : fullNameArr; */
+
+    // Other Solution
+    /* return Arrays.stream(arr).filter(name -> "full".equals(type) ? name.length() > 2 : name.length() == 2)
+        .toArray(String[]::new); */
+  }
 }
