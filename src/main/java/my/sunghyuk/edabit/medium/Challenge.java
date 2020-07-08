@@ -499,4 +499,38 @@ public class Challenge {
     // Other Solution
     // return new StringBuilder(Math.abs(n) + "").reverse().toString();
   }
+
+  /**
+   * Same Number of Unique Elements
+   * 두 배열의 중복되지 않는 요소의 수가 같은가
+   * 
+   * @see https://edabit.com/challenge/u4YLReJ9Q3vAYJkCm
+   * @param a1
+   * @param a2
+   * @return
+   */
+  public static boolean same(int[] a1, int[] a2) {
+    Set<Integer> setA1 = getSetCollection(a1);
+    Set<Integer> setA2 = getSetCollection(a2);
+    return setA1.size() == setA2.size();
+  }
+
+  private static Set<Integer> getSetCollection(int[] arr) {
+    Set<Integer> set = new HashSet<>();
+    for (Integer i : arr) {
+      set.add(i);
+    }
+    return set;
+
+    // Other Solution
+    // return Arrays.stream(a1).distinct().count() == Arrays.stream(a2).distinct().count();   
+
+    // Other Solution
+    // return uniqueNum(a1) == uniqueNum(a2);
+  }
+
+  // Other Solution
+  /* private static int uniqueNum(int[] arr) {
+    return (int) Arrays.stream(arr).distinct().count();
+  } */
 }
