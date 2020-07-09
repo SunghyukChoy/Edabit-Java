@@ -1,12 +1,11 @@
 package my.sunghyuk.edabit.medium;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 public class Program {
 
@@ -159,5 +158,42 @@ public class Program {
     }
 
     return count + countVowels(str.substring(1));
+  }
+
+  /**
+   * Remove Duplicates from an Array
+   * 배열의 순서는 유지하면서 종복 요소 제거
+   * @see https://edabit.com/challenge/KESQCRf5mJd7x6Rfh
+   * @param nums
+   * @return
+   */
+  public static int[] removeDups(int[] nums) {
+    Set<Integer> set = new LinkedHashSet<>();
+    for (Integer num : nums) {
+      set.add(num);
+    }
+    int[] removeDupArr = new int[set.size()];
+    Iterator<Integer> iterator = set.iterator();
+    int i = 0;
+    while (iterator.hasNext()) {
+      removeDupArr[i] = iterator.next();
+      i++;
+    }
+    return removeDupArr;
+
+    // Other Solutions
+    // return Arrays.stream(nums).boxed().mapToInt(Integer::intValue).distinct().toArray();
+    // return IntStream.of(nums).distinct().toArray();
+  }
+
+  public static String[] removeDups(String[] str) {
+    Set<String> set = new LinkedHashSet<>();
+    for (String string : str) {
+      set.add(string);
+    }
+    return set.toArray(new String[0]);
+
+    // Other Solution
+    // return Arrays.asList(str).stream().distinct().toArray(String[]::new);
   }
 }
