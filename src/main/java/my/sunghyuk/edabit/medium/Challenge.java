@@ -601,4 +601,27 @@ public class Challenge {
     }
     return sumFactors == num;
   }
+
+  /**
+   * Capital Split
+   * 카멜 케이스로 된 문자열에 공백 넣고 대문자를 소문자로 바꾸기
+   * @see https://edabit.com/challenge/Xbrab5yY9zaknqDjQ
+   * @param txt
+   * @return
+   */
+  public static String capSpace(String txt) {
+    /* String addSpace = "";
+    for (int i = 0; i < txt.length(); i++) {
+      if (txt.charAt(i) < 'a') {
+        addSpace += " ";
+      }
+      addSpace += txt.charAt(i);
+    }
+    return addSpace.toLowerCase(); */
+
+    // Other Solution    
+    return txt.replaceAll("[A-Z]", " $0").toLowerCase();
+    // A에서 Z까지의 문자를 공백 넣고 매칭되는 문자열로 변환
+    // $0 : 매칭된 전체 문자열
+  }
 }
