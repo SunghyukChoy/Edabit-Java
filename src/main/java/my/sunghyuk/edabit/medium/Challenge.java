@@ -523,16 +523,8 @@ public class Challenge {
     return set;
 
     // Other Solution
-    // return Arrays.stream(a1).distinct().count() == Arrays.stream(a2).distinct().count();   
-
-    // Other Solution
-    // return uniqueNum(a1) == uniqueNum(a2);
+    // return Arrays.stream(a1).distinct().count() == Arrays.stream(a2).distinct().count();
   }
-
-  // Other Solution
-  /* private static int uniqueNum(int[] arr) {
-    return (int) Arrays.stream(arr).distinct().count();
-  } */
 
   /**
    * State Names and Abbreviations
@@ -589,5 +581,24 @@ public class Challenge {
     // Other Solution
     /* return Arrays.stream(arr).filter(name -> "full".equals(type) ? name.length() > 2 : name.length() == 2)
         .toArray(String[]::new); */
+  }
+
+  /**
+   * Perfect Number
+   * num이 perfect number인가?
+   * perfect number : 자기 자신을 제외한 약수들의 합이 자신이 나오는 수.
+   * 1 + 2 + 3 = 6 true 리턴. 1 + 2 + 4 + 7 + 14 = 28 true 리턴.
+   * @see https://edabit.com/challenge/vXYP24qRoQQijc834
+   * @param num
+   * @return
+   */
+  public static boolean checkPerfect(int num) {
+    int sumFactors = 0;
+    for (int i = 1; i < num; i++) {
+      if (num % i == 0) {
+        sumFactors += i;
+      }
+    }
+    return sumFactors == num;
   }
 }
