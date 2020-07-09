@@ -638,6 +638,7 @@ public class Challenge {
    */
   public static boolean rightTriangle(int x, int y, int z) {
     /* int[] lengthOfSides = new int[] { x, y, z };
+    Arrays.sort(lengthOfSides);
     for (int side : lengthOfSides) {
       if (side <= 0) {
         return false;
