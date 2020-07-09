@@ -681,4 +681,19 @@ public class Challenge {
     // Other Solution
     /* return ("" + num).chars().map(cp -> Character.getNumericValue(cp)).sum() % 2 == 0 ? "Evenish" : "Oddish"; */
   }
+
+  /**
+   * Quadratic Equation
+   * @see https://edabit.com/challenge/sBRPyEAjBfWKsnTaZ
+   * @param a
+   * @param b
+   * @param c
+   * @return
+   */
+  public static int quadraticEquation(int a, int b, int c) {
+    // Other Solution
+    int x1 = (-b + (int) Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / (2 * a);
+    int x2 = (-b - (int) Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / (2 * a);
+    return (x1 < 0) ? x2 : x1;
+  }
 }
