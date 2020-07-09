@@ -624,4 +624,40 @@ public class Challenge {
     // A에서 Z까지의 문자를 공백 넣고 매칭되는 문자열로 변환
     // $0 : 매칭된 전체 문자열
   }
+
+  /**
+   * Is This a Right Angled Triangle?
+   * 세 변의 길이가 주어졌을 때 삼각형이 이루어지는가
+   * 삼각형이 되기 위한 조건 1) 피타고라스 정리 2) 가장 긴 변 < 나머지 두 변 길이의 합
+   * 본 문제에서는 피타고라스의 정리를 만족하는 문제만 나옴.
+   * @see https://edabit.com/challenge/q3hu6xr7eqBB3EKaB
+   * @param x
+   * @param y
+   * @param z
+   * @return
+   */
+  public static boolean rightTriangle(int x, int y, int z) {
+    /* int[] lengthOfSides = new int[] { x, y, z };
+    for (int side : lengthOfSides) {
+      if (side <= 0) {
+        return false;
+      }
+    }
+    return Math.pow(lengthOfSides[0], 2) + Math.pow(lengthOfSides[1], 2) == Math.pow(lengthOfSides[2], 2); */
+
+    // Other Solution
+    if (x <= 0 || y <= 0 || z <= 0) {
+      return false;
+    }
+
+    int max = Math.max(Math.max(x, y), z);
+    int min = Math.min(Math.min(x, y), z);
+    // int median = Math.min(Math.max(x, y), (Math.max(y, z)));
+    // 3 개의 작은 2개 값 중에 더 큰 값. 혹은 큰 2개의 값 중에 더 작은 값
+    // 하지만 안 됨.. 만약 애초에 y가 제일 큰 수였다면? 중갑값을 y로 리턴함.
+    int median = x + y + z - max - min;
+    // 세 수를 더한 후 최댓값, 최솟값을 빼면 중간값 남음..
+
+    return Math.pow(min, 2) + Math.pow(median, 2) == Math.pow(max, 2);
+  }
 }
