@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 public class Challenge {
   /**
@@ -660,5 +661,24 @@ public class Challenge {
     // 세 수를 더한 후 최댓값, 최솟값을 빼면 중간값 남음..
 
     return Math.pow(min, 2) + Math.pow(median, 2) == Math.pow(max, 2);
+  }
+
+  /**
+   * Oddish vs. Evenish
+   * 각 자리의 수를 더해서 짝수면 "Evenish", 홀수면 "Oddish"리턴
+   * @see https://edabit.com/challenge/r2csEmtFvoa3tDWB4
+   * @param num
+   * @return
+   */
+  public static String oddishOrEvenish(int num) {
+    int sumDigit = 0;
+    while (num > 0) {
+      sumDigit += num % 10;
+      num = num / 10;
+    }
+    return sumDigit % 2 == 0 ? "Evenish" : "Oddish";
+
+    // Other Solution
+    /* return ("" + num).chars().map(cp -> Character.getNumericValue(cp)).sum() % 2 == 0 ? "Evenish" : "Oddish"; */
   }
 }
