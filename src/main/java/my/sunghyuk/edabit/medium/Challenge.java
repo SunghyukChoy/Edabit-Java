@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.IntStream;
+import java.util.stream.Collectors;
 
 public class Challenge {
   /**
@@ -730,5 +730,25 @@ public class Challenge {
       }
     }
     return reverseCaseStr;
+  }
+
+  /**
+   * Convert to Hex
+   * 
+   * @see https://edabit.com/challenge/ijNrhCjfS2ZMtNkXS
+   * @param str
+   * @return
+   */
+  public static String toHex(String str) {
+    StringBuilder toHexStr = new StringBuilder(Integer.toHexString((int) str.charAt(0)));
+    // (int) str.chatAt() : 문자열의 문자 아스키값 출력
+    // .toHexString() : 정수를 16진수 문자열로 출력
+    for (int i = 1; i < str.length(); i++) {
+      toHexStr.append(" " + Integer.toHexString((int) str.charAt(i)));
+    }
+    return toHexStr.toString();
+
+    // Other Solution
+    // return str.chars().mapToObj(Integer::toHexString).collect(Collectors.joining(" "));
   }
 }

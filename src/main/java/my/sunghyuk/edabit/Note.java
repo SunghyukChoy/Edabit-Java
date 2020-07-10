@@ -59,5 +59,17 @@ public class Note {
     System.out.println(indexOfTest.lastIndexOf("o", 5)); // 4
     // 뒤에서부터 찾기 시작하지만 반환하는 인덱스는 원래의 인덱스 번호
     // 즉 왼쪽에서 몇 번째 위치하는지를 인덱스로 반환. 시작 인덱스 또한 원래의 인덱스 번호 기준
+    System.out.println("==============================================");
+    // Integer.toHexString(). 10진수를 16진수로 변환하는 방법
+    System.out.printf("%02X%n", 255); // FF
+    System.out.printf("%02x%n", 255); // ff
+    System.out.printf("%X%n", 10); // A
+    // %X : 16진수를 대문자로 // %x : 16진수를 소문자로
+    // %02X : 2자리 16진수 값을 대문자로, 16진수 값이 1자리이면 앞에 0을 붙임 // %n : 개행
+    String hexStr = String.format("%02X%n", 10);
+    System.out.print(hexStr); // 0A
+    System.out.println(Integer.toHexString(255)); // ff
+    System.out.println(Integer.toHexString(255).toUpperCase()); // FF
+    System.out.println(Integer.toHexString(10).toUpperCase()); // A
   }
 }
