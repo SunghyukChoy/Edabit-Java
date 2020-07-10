@@ -244,4 +244,36 @@ public class Program {
     // Other Solution
     // return Arrays.stream(nums).filter(n -> n % 2 == 0).toArray();
   }
+
+  /**
+   * Return the Highest and Lowest Numbers
+   * 숫자로 이루어진 문자열에서 가장 큰 수와 작은 수를 "highst lowest" 문자열 형태로 리턴.
+   * 배열 요소가 하나면 같은 값으로 리턴
+   * @see https://edabit.com/challenge/iaCSbqngin2AXriyB
+   * @param s
+   * @return
+   */
+  public static String highLow(String s) {
+    String[] sArr = s.split(" ");
+    int[] sNumArr = new int[sArr.length];
+    for (int i = 0; i < sArr.length; i++) {
+      sNumArr[i] = Integer.parseInt(sArr[i]);
+    }
+    Arrays.sort(sNumArr);
+    return String.valueOf(sNumArr[sNumArr.length - 1] + " " + sNumArr[0]);
+
+    // Other Solution
+    /* String[] sArr = s.split(" ");
+    int highestNum = Integer.MIN_VALUE;
+    int lowestNum = Integer.MAX_VALUE;
+    for (String str : sArr) {
+      if (Integer.parseInt(str) > highestNum) {
+        highestNum = Integer.parseInt(str);
+      }
+      if (Integer.parseInt(str) < lowestNum) {
+        lowestNum = Integer.parseInt(str);
+      }
+    }
+    return String.valueOf(highestNum) + " " + String.valueOf(lowestNum); */
+  }
 }
