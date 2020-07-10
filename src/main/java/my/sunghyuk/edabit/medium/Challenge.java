@@ -696,4 +696,39 @@ public class Challenge {
     int x2 = (-b - (int) Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / (2 * a);
     return (x1 < 0) ? x2 : x1;
   }
+
+  /**
+   * Reverse the Case
+   * 문자열의 대문자를 소문자로, 소문자를 대문자로 변환
+   * @see https://edabit.com/challenge/fCkawrffCeWEH5xja
+   * @param str
+   * @return
+   */
+  public static String reverseCase(String str) {
+    /*  StringBuilder reverseCaseStr = new StringBuilder();
+    for (int i = 0; i < str.length(); i++) {
+      if (str.charAt(i) >= 'A' && str.charAt(i) <= 'Z') {
+        reverseCaseStr.append(Character.toLowerCase(str.charAt(i)));
+      } else if (str.charAt(i) >= 'a' && str.charAt(i) <= 'z') {
+        reverseCaseStr.append(Character.toUpperCase(str.charAt(i)));
+      } else {
+        reverseCaseStr.append(str.charAt(i));
+      }
+    }
+    return reverseCaseStr.toString(); // StringBuilder 타입을 String 타입으로. */
+
+    // Other Solution
+    char[] charArr = str.toCharArray();
+    String reverseCaseStr = "";
+    for (char ch : charArr) {
+      if (Character.isUpperCase(ch)) {
+        reverseCaseStr += Character.toLowerCase(ch);
+      } else if (Character.isLowerCase(ch)) {
+        reverseCaseStr += Character.toUpperCase(ch);
+      } else {
+        reverseCaseStr += ch;
+      }
+    }
+    return reverseCaseStr;
+  }
 }
