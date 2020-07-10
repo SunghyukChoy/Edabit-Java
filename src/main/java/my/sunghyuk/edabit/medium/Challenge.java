@@ -778,4 +778,29 @@ public class Challenge {
     }
     return inv + "inator " + length + "000";
   }
+
+  /**
+   * Pandigital Numbers
+   * Pandigital Number : 한 번이라도 0에서 9까지의 숫자를 포함하는 숫자
+   * num이 Pandigital Number인가?
+   * @see https://edabit.com/challenge/WHuKTT4wm6vnr8o3n
+   * @param num
+   * @return
+   */
+  public static boolean isPandigital(long num) {
+    String numStr = String.valueOf(num);
+    Set<Character> set = new HashSet<>();
+    for (int i = 0; i < numStr.length(); i++) {
+      set.add(numStr.charAt(i));
+    }
+    return set.size() == 10;
+
+    // Other Solution
+    /* HashSet set = new HashSet();
+    for (char c : Long.toString(num).toCharArray()) {
+      set.add(c);
+    }
+    return set.size() == 10; */
+  }
+
 }
