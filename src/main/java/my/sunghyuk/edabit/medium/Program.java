@@ -1,11 +1,12 @@
 package my.sunghyuk.edabit.medium;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
-import java.util.stream.IntStream;
 
 public class Program {
 
@@ -113,14 +114,18 @@ public class Program {
       set.add(num);
     }
     int[] uniqueArr = new int[set.size()];
-    Iterator<Integer> iterator = set.iterator();
+    // Iterator<Integer> iterator = set.iterator();
     int i = 0;
-    while (iterator.hasNext()) {
+    /*  while (iterator.hasNext()) {
       uniqueArr[i] = iterator.next();
       // System.out.println(iterator.next());
       // 배열에 들어가는 요소와 출력문에서의 요소는 다른 요소임. 
       // .next()로 요소 호출 시마다 다음 요소가 호출됨
       // 들어가는 요소 확인하고 싶으면 변수 선언해서 확인할 것.
+      i++;
+    } */
+    for (int uniqueNum : set) {
+      uniqueArr[i] = uniqueNum;
       i++;
     }
     Arrays.sort(uniqueArr);
@@ -195,5 +200,48 @@ public class Program {
 
     // Other Solution
     // return Arrays.asList(str).stream().distinct().toArray(String[]::new);
+  }
+
+  /**
+   * Eliminate Odd Numbers within an Array
+   * 홀수를 제거한 배열 리턴. 원래의 배열 순서 유지
+   * @see https://edabit.com/challenge/A7mDjLb7DZL5bk8oz
+   * @param nums
+   * @return
+   */
+  public static int[] noOdds(int[] nums) {
+    List<Integer> list = new ArrayList<>();
+    for (Integer num : nums) {
+      if (num % 2 == 0) {
+        list.add(num);
+      }
+    }
+    int[] evenArr = new int[list.size()];
+    int i = 0;
+    for (int evenNum : list) {
+      evenArr[i] = evenNum;
+      i++;
+    }
+    return evenArr;
+
+    // Other Solution
+    /* int evenArrLength = 0;
+    for (int num : nums) {
+      if (num % 2 == 0) {
+        evenArrLength++;
+      }
+    }
+    int[] evenArr = new int[evenArrLength];
+    int i = 0;
+    for (int num : nums) {
+      if (num % 2 == 0) {
+        evenArr[i] = num;
+        i++;
+      }
+    }
+    return evenArr; */
+
+    // Other Solution
+    // return Arrays.stream(nums).filter(n -> n % 2 == 0).toArray();
   }
 }
