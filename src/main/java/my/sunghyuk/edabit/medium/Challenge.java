@@ -751,4 +751,31 @@ public class Challenge {
     // Other Solution
     // return str.chars().mapToObj(Integer::toHexString).collect(Collectors.joining(" "));
   }
+
+  /**
+   * Functioninator 8000
+   * 문자열 inv가 자음으로 끝나는 경우 문자열에 inator를 붙이고 모음으로 끝나는 경우 -inator를 붙임
+   * 그 다음 만든 문자열에 원래 문자열의 길이 + 000의 숫자를 붙임.
+   * inatorInator("EvilClone") ➞ "EvilClone-inator 9000"
+   * @see https://edabit.com/challenge/ynzo3DeHCmAXLtpwe
+   * @param inv
+   * @return
+   */
+  public static String inatorInator(String inv) {
+    /* String inatorStr = "";
+    if (String.valueOf(inv.charAt(inv.length() - 1)).matches("[aeiouAEIOU]")) {
+      inatorStr = inv + "-inator";
+    } else { // String.valueOf(inv.charAt(inv.length() - 1)).matches("[^aeiouAEIOU]")
+      inatorStr = inv + "inator";
+    }
+    return inatorStr + " " + inv.length() + "000"; */
+
+    // Other Solution    
+    int length = inv.length();
+    if ("aeiouAEIOU".contains(inv.substring(length - 1))) {
+      // 마지막 문자가 aeiouAEIOU 대신에 aeiouAEIOU가 마지막 문자를 표현하느냐라고 표현
+      inv += "-";
+    }
+    return inv + "inator " + length + "000";
+  }
 }
