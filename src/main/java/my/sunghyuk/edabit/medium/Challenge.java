@@ -803,4 +803,47 @@ public class Challenge {
     return set.size() == 10; */
   }
 
+  /**
+   * Odds vs. Evens
+   * 주어진 숫자에서 각 자리가 홀수인 것과 짝수인 수를 각각 더하여 더 큰 값을 문자열("even", "odd")로 리턴
+   * 같으면 "eqaul" 리턴
+   * @see https://edabit.com/challenge/nC9oD566JRp9cnth9
+   * @param num
+   * @return
+   */
+  public static String oddsVsEvens(int num) {
+    int evenSum = 0;
+    int oddSum = 0;
+    while (num != 0) {
+      if ((num % 10) % 2 == 0) {
+        evenSum += num % 10;
+        num = num / 10;
+      } else {
+        oddSum += num % 10;
+        num = num / 10;
+      }
+    }
+    return evenSum > oddSum ? "even" : evenSum == oddSum ? "equal" : "odd";
+
+    // Other Solution
+    /* String numStr = String.valueOf(num);
+    int evenSum = 0;
+    int oddSum = 0;
+    for (int i = 0; i < numStr.length(); i++) {
+      if (Integer.parseInt(String.valueOf(numStr.charAt(i))) % 2 == 0) {
+        evenSum += Integer.parseInt(String.valueOf(numStr.charAt(i)));
+      } else {
+        oddSum += Integer.parseInt(String.valueOf(numStr.charAt(i)));
+      }
+    }
+    // return evenSum > oddSum ? "even" : evenSum == oddSum ? "equal" : "odd";
+    if (evenSum > oddSum) {
+      return "even";
+    } else if (oddSum > evenSum) {
+      return "odd";
+    } else {
+      return "equal";
+    } */
+  }
+
 }
