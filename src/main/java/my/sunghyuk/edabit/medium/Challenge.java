@@ -773,7 +773,7 @@ public class Challenge {
     // Other Solution    
     int length = inv.length();
     if ("aeiouAEIOU".contains(inv.substring(length - 1))) {
-      // 마지막 문자가 aeiouAEIOU 대신에 aeiouAEIOU가 마지막 문자를 표현하느냐라고 표현
+      // 마지막 문자가 aeiouAEIOU를 포함하느냐는 표현 대신에 aeiouAEIOU가 마지막 문자를 표함하느냐라고 표현
       inv += "-";
     }
     return inv + "inator " + length + "000";
@@ -892,4 +892,41 @@ public class Challenge {
   /* private static int sumNumDigits(int n) {
     return ("" + (int) Math.abs(n)).chars().map(cp -> Character.getNumericValue(cp)).sum();
   } */
+
+  /**
+   * GCD and LCM (Part 2)
+   * 최소 공배수 리턴. 더 쉽게 풀기 위해 GCD를 이용할 수도 있음.
+   * @see https://edabit.com/challenge/5oJXKYGnG5hqbaaxK
+   * @param a
+   * @param b
+   * @return
+   */
+  public static int lcm(int a, int b) {
+    // 최소공배수 : 더 큰 수의 배수 중에 수와 더 작은 수의 배수 중에 수가 처음으로 일치하는 수
+    /* int biggerNum = Math.max(a, b);
+    int smallerNum = Math.min(a, b);
+    int biggerNumMultiple;
+    int smallerNumMultiple;
+    int i = 1;
+    while (true) {
+      biggerNumMultiple = biggerNum * i;
+      for (int j = 1; j <= biggerNum; j++) {
+        // 최소공배수는 두 수의 곱보다 커질 수 없으므로 j의 범위를 더 큰 수까지만으로 한정
+        smallerNumMultiple = smallerNum * j;
+        if (biggerNumMultiple == smallerNumMultiple) {
+          return smallerNumMultiple;
+        }
+      }
+      i++;
+    } */
+
+    // Other Solution
+    /* for (int i = a;; i += a) { // i는 a의 배수. for문에서 범위 한정 없어도 됨.
+      if (i % b == 0) // a의 배수(i)가 b로 나뉜다는 것은 a의 배수와 b의 1배수가 같다는 뜻. 즉 최소공배수
+        return i;
+    } */
+
+    // Other Solution
+    return (a * b) / gcd(a, b);
+  }
 }
