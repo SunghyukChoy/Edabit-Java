@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Challenge {
   /**
@@ -846,4 +846,50 @@ public class Challenge {
     } */
   }
 
+  /**
+   * Sum of Digits Between Two Numbers
+   * 두 숫자 사이의 모든 수의 각 자리 수의 합 리턴
+   * a = 19, b = 22라면 (1 + 9) + (2 + 0) + (2 + 1) + (2 + 2) = 19
+   * @see https://edabit.com/challenge/Sj3pLPPLpnF8DNGQD
+   * @param a
+   * @param b
+   * @return
+   */
+  public static int sumDigits(int a, int b) {
+    // 
+    /* int[] rangeNum = new int[Math.abs(b - a) + 1];
+    for (int i = 0, value = Math.min(a, b); i < rangeNum.length; i++, value++) {
+      rangeNum[i] = value;
+    }
+    int sumDigit = 0;
+    for (int i = 0; i < rangeNum.length; i++) {
+      while (rangeNum[i] != 0) {
+        sumDigit += rangeNum[i] % 10;
+        rangeNum[i] = rangeNum[i] / 10;
+      }
+    }
+    return sumDigit; */
+
+    // Other Solution
+    int sumDigit = 0;
+    int minNum = Math.min(a, b);
+    int maxNum = Math.max(a, b);
+    while (minNum <= maxNum) {
+      int num = minNum;
+      while (num != 0) {
+        sumDigit += num % 10;
+        num = num / 10;
+      }
+      minNum++;
+    }
+    return sumDigit;
+
+    // Other Solution
+    // 추가한 테스트 케이스 6번, 7번 (a가 b보다 더 큰 경우)에는 안 맞는 답.
+    // return IntStream.rangeClosed(a, b).map(n -> sumNumDigits(n)).sum();
+  }
+
+  /* private static int sumNumDigits(int n) {
+    return ("" + (int) Math.abs(n)).chars().map(cp -> Character.getNumericValue(cp)).sum();
+  } */
 }
