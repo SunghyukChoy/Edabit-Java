@@ -276,4 +276,31 @@ public class Program {
     }
     return String.valueOf(highestNum) + " " + String.valueOf(lowestNum); */
   }
+
+  /**
+   * Is the Number a Prime?
+   * 주어진 수가 소수인가. 문제에서 1은 소수로 포함하지 않음.
+   * 홀수는 짝수로 나누어질 수 없음.
+   * @see https://edabit.com/challenge/GXpmy3RRpxH2EwiT6
+   * @param num
+   * @return
+   */
+  public static boolean isPrime(int num) {
+    if (num == 1) { // 1은 소수에서 제외
+      return false;
+    }
+    if (num == 2) { // 짝수이지만 2는 소수
+      return true;
+    }
+    if (num % 2 == 0) { // 짝수인 경우 (2로 나누어지므로 소수가 아님)
+      return false;
+    }
+    for (int i = 3; i <= Math.sqrt(num); i = i + 2) { // 홀수 중에 소수가 아닌 경우 
+      // x가 어떤 수로 나뉜다는 것은 x^2 또한 어떤 수로 나뉜다는 뜻이므로 x^2까지 연산할 필요 없음
+      if (num % i == 0) {
+        return false;
+      }
+    }
+    return true;    
+  }
 }
