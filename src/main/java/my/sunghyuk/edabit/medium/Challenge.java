@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Challenge {
@@ -997,5 +998,39 @@ public class Challenge {
       result += "-" + process.toUpperCase() + new String(new char[i]).replace("\0", process);
     }
     return result; */
+  }
+
+  /**
+   * Convert String to camelCase
+   * 문자열을 카멜 케이스로 변환
+   * "the-stealth-warrior" ➞ "theStealthWarrior"
+   * "The_Stealth_Warrior" ➞ "TheStealthWarrior"
+   * @see https://edabit.com/challenge/sF6Lm5LQsy6u2ZKeZ
+   * @param str
+   * @return
+   */
+  public static String toCamelCase(String str) {
+    /* StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < str.length(); i++) {
+      if (String.valueOf(str.charAt(i)).equals("-") || String.valueOf(str.charAt(i)).equals("_")) {
+        str = str.replace(str.charAt(i + 1), Character.toUpperCase(str.charAt(i + 1)));
+      }
+      sb.append(str.charAt(i));
+    }
+    return sb.toString().replaceAll("[-_]", ""); */
+
+    // Other Solution
+    String[] words = str.split("[-_]");
+    StringBuilder sb = new StringBuilder(words[0]);
+    for (int i = 1; i < words.length; i++) {
+      sb.append(Character.toUpperCase(words[i].charAt(0)) + words[i].substring(1));
+    }
+    return sb.toString();
+
+    // Other Solution
+    /* String[] strs = str.split("[_-]");
+    String camelized = IntStream.range(1, strs.length)
+    .mapToObj(i -> Character.toUpperCase(strs[i].charAt(0)) + strs[i].substring(1)).collect(Collectors.joining());
+    return strs[0] + camelized; */
   }
 }
