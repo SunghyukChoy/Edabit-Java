@@ -5,7 +5,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Program {
@@ -301,6 +303,40 @@ public class Program {
         return false;
       }
     }
-    return true;    
+    return true;
+  }
+
+  /**
+   * Return the Objects Keys and Values
+   * Entry 객체에서 value들만 배열로 리턴
+   * @see https://edabit.com/challenge/7eoAWhG46SrA3tvLK
+   * @param dict
+   * @return
+   */
+  public static String[] getValues(Map<String, String> dict) {
+    return dict.values().toArray(new String[0]);
+
+    // Other Solution
+    /* Set<String> keySet = dict.keySet(); // Map.Entry 객체에서 key를 가저와 Set 컬렉션으로 저장
+    Iterator<String> keyIterator = keySet.iterator(); // Iterator 객체 생성
+    List<String> values = new ArrayList<>(); // value들을 담을 변수 생성. 같은 value 중복 저장 가능
+    while (keyIterator.hasNext()) {
+      values.add(dict.get(keyIterator.next()));
+      // keyIterator.next() : key를 하나씩 꺼내옴.
+      // dict.get(key) : key로 value를 얻음.
+    }
+    return values.toArray(new String[0]); */
+
+    // Other Solution
+    /* Set<Map.Entry<String, String>> entrySet = dict.entrySet();
+    // Map.Entry 객체를 Set 컬렉션에 저장 (Iterator 돌리기 위한..)
+    Iterator<Map.Entry<String, String>> entryIterator = entrySet.iterator(); // Iterator 객체 생성
+    List<String> values = new ArrayList<>();  // value들을 담을 변수 생성. 같은 value 중복 저장 가능
+    while (entryIterator.hasNext()) {
+      Map.Entry<String, String> entry = entryIterator.next(); // Map.Entry 객체 하나씩 가져옴
+      values.add(entry.getValue()); 
+      // entry.getValue() : Map.Entry 객체에서 value를 얻음.
+    }
+    return values.toArray(new String[0]); */
   }
 }
