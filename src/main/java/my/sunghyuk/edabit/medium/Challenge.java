@@ -965,4 +965,37 @@ public class Challenge {
     /* int[] posNums = Arrays.stream(arr).filter(n -> n > 0).sorted().toArray();
     return (posNums.length >= 2) ? posNums[0] + posNums[1] : 0; */
   }
+
+  /**
+   * Compounding Letters
+   * 첫 번째 문자는 한 번 반복, 두 번째 문자는 두 번 반복.."-"로 연결. 첫 문자는 대문자
+   * "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+   * @see https://edabit.com/challenge/tgjFboGwDEHY4Wn5S   
+   * @param str
+   * @return
+   */
+  public static String accum(String str) {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < str.length(); i++) {
+      for (int j = 0; j <= i; j++) {
+        if (j == 0) {
+          sb.append(Character.toUpperCase(str.charAt(i)));
+        } else {
+          sb.append(Character.toLowerCase(str.charAt(i)));
+        }
+      }
+      if (i != str.length() - 1) {
+        sb.append("-");
+      }
+    }
+    return sb.toString();
+
+    // Other Solution
+    /* String result = str.substring(0, 1).toUpperCase();    
+    for (int i = 1; i < str.length(); i++) {
+      String process = str.substring(i, i + 1).toLowerCase();
+      result += "-" + process.toUpperCase() + new String(new char[i]).replace("\0", process);
+    }
+    return result; */
+  }
 }
