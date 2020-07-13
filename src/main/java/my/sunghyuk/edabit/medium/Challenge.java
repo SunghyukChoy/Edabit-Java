@@ -929,4 +929,40 @@ public class Challenge {
     // Other Solution
     return (a * b) / gcd(a, b);
   }
+
+  /**
+   * Return the Sum of the Two Smallest Numbers
+   * 배열에서 양수의 값들 중 가장 작은 2개 값의 합 리턴
+   * @see https://edabit.com/challenge/u7prkNxFxqartAfiG
+   * @param arr
+   * @return
+   */
+  public static int sumTwoSmallestNums(int[] arr) {
+    /* Arrays.sort(arr);
+    List<Integer> positiveNums = new ArrayList<>();
+    for (Integer num : arr) {
+      if (num > 0) {
+        positiveNums.add(num);
+      }
+    }
+    return positiveNums.get(0) + positiveNums.get(1); */
+
+    // Other Solution
+    Arrays.sort(arr);
+    int sum = 0;
+    for (int i = 0, plusTimes = 0; i < arr.length; i++) {
+      if (arr[i] > 0) {
+        sum += arr[i];
+        plusTimes++;
+      }
+      if (plusTimes == 2) {
+        break;
+      }
+    }
+    return sum;
+
+    // Other Solution
+    /* int[] posNums = Arrays.stream(arr).filter(n -> n > 0).sorted().toArray();
+    return (posNums.length >= 2) ? posNums[0] + posNums[1] : 0; */
+  }
 }
