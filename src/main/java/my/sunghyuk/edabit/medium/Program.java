@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 public class Program {
 
@@ -338,5 +339,25 @@ public class Program {
       // entry.getValue() : Map.Entry 객체에서 value를 얻음.
     }
     return values.toArray(new String[0]); */
+  }
+
+  /**
+   * Find the Missing Number
+   * 배열의 수 중 1 ~ 10(연속적인 수) 사이의 없어진 수 리턴
+   * @see https://edabit.com/challenge/GJh9FraKutcnHoruX
+   * @param nums
+   * @return
+   */
+  public static int missingNum(int[] nums) {
+    // 1부터 10까지의 합 - 배열의 합 = 없어진 값
+    // return 55 - Arrays.stream(nums).sum();
+
+    // Other Solution
+    Arrays.sort(nums);
+    int sumConsecutiveNum = 0;
+    for (int i = nums[0]; i <= nums[nums.length - 1]; i++) {
+      sumConsecutiveNum += i;
+    }
+    return sumConsecutiveNum - Arrays.stream(nums).sum();
   }
 }
