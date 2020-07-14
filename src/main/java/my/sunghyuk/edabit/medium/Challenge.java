@@ -1188,4 +1188,17 @@ public class Challenge {
     }
     return sb.toString().trim();
   }
+
+  /**
+   * First N Vowels
+   * 문자열에서 모음 처음 n개까지 리턴. 문자열의 모음 개수보다 n이 크면 "invalid" 리턴.
+   * @see https://edabit.com/challenge/ev5oH5FSzb9oF6skT
+   * @param str
+   * @param n
+   * @return
+   */
+  public static String firstNVowels(String str, int n) {
+    str = str.replaceAll("[^aeiou]", "");
+    return str.length() < n ? "invalid" : str.substring(0, n);
+  }
 }
