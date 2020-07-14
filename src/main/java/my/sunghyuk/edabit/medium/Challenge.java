@@ -1111,4 +1111,25 @@ public class Challenge {
       return Integer.parseInt(arr[4]) + Integer.parseInt(arr[2]);
     } */
   }
+
+  /**
+   * Sum of Missing Numbers
+   * 배열에서 중간에 없어진 수들의 합 구하기. 배열의 가장 큰 값과 작은 값은 배열 안에 있음.
+   * @see https://edabit.com/challenge/NYq5PTgKa6C97qdLw
+   * @param arr
+   * @return
+   */
+  public static int sumMissing(int[] arr) {
+    /* Arrays.sort(arr);
+    int sumConsecutiveNum = 0;
+    for (int i = arr[0]; i <= arr[arr.length - 1]; i++) {
+      sumConsecutiveNum += i;
+    }
+    return sumConsecutiveNum - Arrays.stream(arr).sum(); */
+
+    // Other Solution
+    Arrays.sort(arr);
+    int sumConsecutiveNum = IntStream.range(arr[0], arr[arr.length - 1] + 1).sum();
+    return sumConsecutiveNum - Arrays.stream(arr).sum();
+  }
 }
