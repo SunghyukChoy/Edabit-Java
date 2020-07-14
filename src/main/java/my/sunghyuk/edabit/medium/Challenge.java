@@ -1201,4 +1201,22 @@ public class Challenge {
     str = str.replaceAll("[^aeiou]", "");
     return str.length() < n ? "invalid" : str.substring(0, n);
   }
+
+  /**
+   * Longest Sequence of Consecutive Zeroes
+   * 0과 1로 이루어진 문자열에서 0이 가장 길게 연속되는 부분을 문자열로 리턴
+   * @see https://edabit.com/challenge/Stu2gesXeETdxxGBY
+   * @param str
+   * @return
+   */
+  public static String longestZero(String str) {
+    String[] zeroStr = str.split("[^0]");
+    String longestZero = "";
+    for (String string : zeroStr) {
+      if (string.length() >= longestZero.length()) {
+        longestZero = string;
+      }
+    }
+    return longestZero;
+  }
 }
