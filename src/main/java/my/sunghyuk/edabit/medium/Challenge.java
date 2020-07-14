@@ -1153,4 +1153,39 @@ public class Challenge {
     nest = nest.replaceAll(word, "");
     return nest.length() / word.length();
   }
+
+  /**
+   * Capitalize the Last Letter
+   * 각 단어에서 마지막 문자만 대문자로. 나머지 문자는 그대로.
+   * "My Name Is Edabit" ➞ "MY NamE IS EdabiT"
+   * @see https://edabit.com/challenge/CYm9fzo63bQNbWfnN
+   * @param str
+   * @return
+   */
+  public static String capLast(String str) {
+    /* String[] words = str.split(" ");
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < words.length; i++) {
+      for (int j = 0; j < words[i].length() - 1; j++) { // 각 단어에서 마지막 문자 빼고 sb에 넣음
+        sb.append(words[i].charAt(j));
+      }
+    
+      sb.append(Character.toUpperCase(words[i].charAt(words[i].length() - 1)));
+      // 각 단어의 마지막 문자를 대문자로 변환 후 넣음
+      if (i != words.length - 1) {
+        // 마지막 단어 전까지만 공백 넣음. 조건문 없으면 결과물 + " " 형태로 출력됨.
+        sb.append(" ");
+      }
+    }
+    return sb.toString(); */
+
+    // Other Solution
+    String[] words = str.split(" ");
+    StringBuilder sb = new StringBuilder();
+    for (String string : words) {
+      sb.append(string.substring(0, string.length() - 1)).append(string.toUpperCase().charAt(string.length() - 1))
+          .append(" ");
+    }
+    return sb.toString().trim();
+  }
 }
