@@ -1033,4 +1033,37 @@ public class Challenge {
     .mapToObj(i -> Character.toUpperCase(strs[i].charAt(0)) + strs[i].substring(1)).collect(Collectors.joining());
     return strs[0] + camelized; */
   }
+
+  /**
+   * Find the Largest Numbers in a Group of Arrays
+   * 각 일차원 배열에서 가장 큰 값 하나씩을 뽑아 배열로 리턴
+   * @see https://edabit.com/challenge/QLz5aGfChHhndKWMv
+   * @param arr
+   * @return
+   */
+  public static double[] findLargestNums(double[][] arr) {
+    /* double[] largestNums = new double[arr.length];
+    // arr.length : 이차원 배열의 길이(일차원 배열의 개수)
+    for (int i = 0; i < arr.length; i++) {
+      double largestNum = Double.NEGATIVE_INFINITY;
+      for (int j = 0; j < arr[i].length; j++) {
+        if (arr[i][j] >= largestNum) {
+          largestNum = arr[i][j];
+        }
+      }
+      largestNums[i] = largestNum;
+    }
+    return largestNums; */
+
+    // Other Solution
+    // return Arrays.stream(arr).mapToDouble(sa -> Arrays.stream(sa).max().orElse(0)).toArray();
+
+    // Other Solution
+    double[] largestNums = new double[arr.length];
+    for (int i = 0; i < arr.length; i++) {
+      Arrays.sort(arr[i]);
+      largestNums[i] = arr[i][arr[i].length - 1];
+    }
+    return largestNums;
+  }
 }
