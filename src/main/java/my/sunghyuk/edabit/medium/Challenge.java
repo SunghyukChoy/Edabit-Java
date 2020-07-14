@@ -1066,4 +1066,26 @@ public class Challenge {
     }
     return largestNums;
   }
+
+  /**
+   * Same Parity?
+   * Same Parity : num의 각 자리 합과 num 자신이 둘 다 짝수 혹은 둘 다 홀수인 수
+   * @see https://edabit.com/challenge/auwAWq4MXmXFwWrHf
+   * @param copyNum
+   * @return
+   */
+  public static boolean parityAnalysis(int num) {
+    /* int sumDigit = 0;
+    int copyNum = num;
+    // 조작되는 값을 담을 변수 선언. 그냥 num으로 조작하면 리턴 조건문에서 num은 원래의 num이 아님..
+    while (copyNum != 0) {
+      sumDigit += copyNum % 10;
+      copyNum = copyNum / 10;
+    }
+    return (sumDigit % 2 == 0 && num % 2 == 0) || (sumDigit % 2 != 0 && num % 2 != 0); */
+
+    // Other Soluion
+    return (num % 2) == String.valueOf(num).chars().sum() % 2;
+    // 2로 나누었을 때 나머지가 같으면(0이면 둘 다 짝수, 1이면 둘 다 홀수) same parity.
+  }
 }
