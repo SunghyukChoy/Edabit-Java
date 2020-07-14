@@ -360,4 +360,27 @@ public class Program {
     }
     return sumConsecutiveNum - Arrays.stream(nums).sum();
   }
+
+  /**
+   * Positive Count / Negative Sum
+   * 배열에서 양수 개수와 음수의 합을 배열로 리턴 [양수 개수, 음수들의 합]
+   * @see https://edabit.com/challenge/n7kbvMp5zHRmRbFQF
+   * @param input
+   * @return
+   */
+  public static int[] countPositivesSumNegatives(int[] input) {
+    if (input != null) { // input == null 이라는 조건을 전제로 코드를 짜면 틀림.. 왜...?
+      int[] countPositivesSumNegatives = new int[2];
+      for (int num : input) {
+        if (num > 0) {
+          countPositivesSumNegatives[0]++;
+        } else if (num < 0) {
+          countPositivesSumNegatives[1] += num;
+        }
+      }
+      return input.length == 0 ? new int[] {} : countPositivesSumNegatives;
+    } else {
+      return new int[] {};
+    }
+  }
 }
