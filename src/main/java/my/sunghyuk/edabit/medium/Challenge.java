@@ -1088,4 +1088,27 @@ public class Challenge {
     return (num % 2) == String.valueOf(num).chars().sum() % 2;
     // 2로 나누었을 때 나머지가 같으면(0이면 둘 다 짝수, 1이면 둘 다 홀수) same parity.
   }
+
+  /**
+   * Solve a Linear Equation
+   * 일차방정식에서 x 값 구하기.
+   * @see https://edabit.com/challenge/4DKpZPfSgyEx dwirC
+   * @param equation
+   * @return
+   */
+  public static int solveEquation(String equation) {
+    // ax + b = c 에서 x = c + b*(-1);
+    equation = equation.replaceAll("[ ]", "");
+    String[] values = equation.split("[x\\+\\=]");
+    return Integer.parseInt(values[values.length - 1]) + Integer.parseInt(values[values.length - 2]) * -1;
+
+    // Other Solution
+    /* String[] arr = equation.split(" ");
+    String sign = arr[1];
+    if (sign.equals("+")) {
+      return Integer.parseInt(arr[4]) - Integer.parseInt(arr[2]);
+    } else {
+      return Integer.parseInt(arr[4]) + Integer.parseInt(arr[2]);
+    } */
+  }
 }
