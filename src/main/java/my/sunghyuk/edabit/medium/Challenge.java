@@ -1132,4 +1132,25 @@ public class Challenge {
     int sumConsecutiveNum = IntStream.range(arr[0], arr[arr.length - 1] + 1).sum();
     return sumConsecutiveNum - Arrays.stream(arr).sum();
   }
+
+  /**
+   * Word Nests
+   * word는 nest에 몇 겹으로 쌓여있냐.
+   * "code", "cocodccococodededeodeede") ➞ 5
+   * "code", "co cod c co co code de de ode e de") ➞ 5. 중간에 code 외에 다른 문자들로 5겹으로 쌓임.
+   * @see https://edabit.com/challenge/nXkhpafB9e5c7fNcg
+   * @param word
+   * @param nest
+   * @return
+   */
+  public static int wordNest(String word, String nest) {
+    // 한 번 쌓임 : nest 길이는 word 길이의 2배
+    // 두 번 쌓임 : nest 길이는 word 길이의 3배
+    // 쌓인 횟수 : (nest 길이 / word 길이) - 1
+    // return (nest.length() / word.length()) - 1;
+
+    // Other Solution
+    nest = nest.replaceAll(word, "");
+    return nest.length() / word.length();
+  }
 }
