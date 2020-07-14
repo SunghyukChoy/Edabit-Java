@@ -3,6 +3,7 @@ package my.sunghyuk.edabit.medium;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -1218,5 +1219,29 @@ public class Challenge {
       }
     }
     return longestZero;
+  }
+
+  /**
+   * Broken Keyboard
+   * str1을 입력하려고 했는데 str2이 입력됨. 원래 입력하려던 문자를 배열로 리턴
+   * findBrokenKeys("starry night", "starrq light") ➞ ["y", "n"]
+   * 배열은 출현순, 잘못된 문자 하나만 입력, 소문자로
+   * @see https://edabit.com/challenge/6THnWXvQrhRrEErtb
+   * @param str1
+   * @param str2
+   * @return
+   */
+  public static String[] findBrokenKeys(String str1, String str2) {
+    Set<String> brokenKeySet = new LinkedHashSet<>();
+    for (int i = 0; i < str1.length(); i++) {
+      if (str1.charAt(i) != str2.charAt(i)) {
+        brokenKeySet.add(String.valueOf(str1.charAt(i)));
+      }
+    }
+    return brokenKeySet.toArray(new String[brokenKeySet.size()]);
+
+    // Other Solution
+    /* return IntStream.range(0, str1.length()).filter(i -> str1.charAt(i) != str2.charAt(i))
+        .mapToObj(i -> "" + str1.charAt(i)).distinct().toArray(String[]::new); */
   }
 }
