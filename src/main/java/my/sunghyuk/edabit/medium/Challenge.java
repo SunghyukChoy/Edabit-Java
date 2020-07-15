@@ -1293,4 +1293,27 @@ public class Challenge {
     }
     return num;
   }
+
+  /**
+   * Smallest N Digit Number
+   * value의 배수 중에 digits 자리수를 갖는 가장 작은 배수
+   * smallest(5, 12) ➞ 10008
+   * @see https://edabit.com/challenge/a5onNYqzuKiGjWMQu
+   * @param digits
+   * @param value
+   * @return
+   */
+  public static int smallest(int digits, int value) {
+    int i = 1;
+    while (true) {
+      int multiple = value * i;
+      if (multiple >= Math.pow(10, digits - 1)) {
+        return multiple;
+      }
+      i++;
+    }
+
+    // Other Solution    
+    // return (int) Math.ceil(Math.pow(10, digits - 1) / value) * value;
+  }
 }
