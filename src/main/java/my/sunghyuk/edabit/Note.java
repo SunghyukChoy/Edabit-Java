@@ -71,5 +71,11 @@ public class Note {
     System.out.println(Integer.toHexString(255)); // ff
     System.out.println(Integer.toHexString(255).toUpperCase()); // FF
     System.out.println(Integer.toHexString(10).toUpperCase()); // A
+    System.out.println("==============================================");
+    // Math.ceil(), Math.floor(), Math.round()
+    System.out.println(Math.ceil(Math.PI)); // 올림 // 4.0
+    System.out.println(Math.floor(3.7564)); // 내림 // 3.0
+    System.out.println(Math.round(3.7564)); // 반올림 // 소수점 버림  // 4
+    System.out.println(Math.round(3.1234)); // 반올림 // 소수점 버림  // 3
   }
 }

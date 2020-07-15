@@ -1274,4 +1274,23 @@ public class Challenge {
     String header = IntStream.range(0, format.length()).mapToObj(i -> specialCh).collect(Collectors.joining());
     return new String[] { header, format, header }; */
   }
+
+  /**
+   * Next Prime
+   * num 다음에 오는 소수 리턴, num이 소수라면 num리턴
+   * @see https://edabit.com/challenge/vYQogxrcQBEMr7y3F
+   * @param num
+   * @return
+   */
+  public static int nextPrime(int num) {
+    // num이 소수인지 검사 :
+    // 소수가 아니면 num + 1 해서 검사
+    // 조건문을 통과하면 num은 소수
+    for (int i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i == 0) {
+        return nextPrime(num + 1);
+      }
+    }
+    return num;
+  }
 }
