@@ -1244,4 +1244,34 @@ public class Challenge {
     /* return IntStream.range(0, str1.length()).filter(i -> str1.charAt(i) != str2.charAt(i))
         .mapToObj(i -> "" + str1.charAt(i)).distinct().toArray(String[]::new); */
   }
+
+  /**
+   * Birthday Cake
+   * 나이와 이름에 맞춰 케이크 모양 문자열 배열 리턴
+   * {age} Happy Birthday {name}! {age}
+   * 나이에 따라 # 또는 *로 입력. # : 짝수. * : 홀수.
+   * "##############################",
+   * "# 10 Happy Birthday Jack! 10 #",
+   * "##############################"   * 
+   * @see https://edabit.com/challenge/diiEDD4JQyysFR7zh
+   * @param name
+   * @param age
+   * @return
+   */
+  // "# 10 Happy Birthday Jack! 10 #"
+  public static String[] getBirthdayCake(String name, int age) {
+    String specialCh = age % 2 == 0 ? "#" : "*";
+    String middleStr = specialCh + " " + age + " Happy Birthday " + name + "! " + age + " " + specialCh;
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < middleStr.length(); i++) {
+      sb.append(specialCh);
+    }
+    return new String[] { sb.toString(), middleStr, sb.toString() };
+
+    // Other Solution
+    /* String specialCh = age % 2 == 0 ? "#" : "*";
+    String format = String.format("%s %d Happy Birthday %s! %d %s", specialCh, age, name, age, specialCh);
+    String header = IntStream.range(0, format.length()).mapToObj(i -> specialCh).collect(Collectors.joining());
+    return new String[] { header, format, header }; */
+  }
 }
