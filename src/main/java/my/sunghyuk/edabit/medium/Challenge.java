@@ -1316,4 +1316,26 @@ public class Challenge {
     // Other Solution    
     // return (int) Math.ceil(Math.pow(10, digits - 1) / value) * value;
   }
+
+  /**
+   * Palindromic Dates
+   * Palindromic Dates : 아래의 두 조건을 모두 만족하는 날짜
+   * 1) dd/mm/yyyy 와 mm/dd/yyyy 이 같은 날짜. dd와 mm이 같은 날짜.
+   * 2) 일월과 년도가 거울을 보듯 대칭이 되는 날짜. 
+   * ex) 02/02/2020, 12/02/2021, 12/12/2121 등
+   * @see https://edabit.com/challenge/EatQ3W5eg39FmvGAf
+   * @param date
+   * @return
+   */
+  public static boolean palindromicDate(String date) {
+    String[] dateArr = date.split("\\/");
+    if (!dateArr[0].equals((dateArr[1]))) { // 내용을 비교하기 위해 equals() 메소드를 사용해야 함.
+      return false;
+    }
+    StringBuilder sb = new StringBuilder(dateArr[0] + dateArr[1]);
+    if (!sb.reverse().toString().equals(dateArr[2])) {
+      return false;
+    }
+    return true;
+  }
 }

@@ -77,5 +77,36 @@ public class Note {
     System.out.println(Math.floor(3.7564)); // 내림 // 3.0
     System.out.println(Math.round(3.7564)); // 반올림 // 소수점 버림  // 4
     System.out.println(Math.round(3.1234)); // 반올림 // 소수점 버림  // 3
+    System.out.println("==============================================");
+    // .equal()과 == 비교
+    // == :
+    // - 항등 연산자이다.
+    // - 참조 비교 (주소 비교) : 두 객체가 같은 메모리 공간을 가리키는지 확인한다.
+    // - 모든 기본 유형(Privitive types)에 대해 적용할 수 있다.
+    // - 객체 유형(Object type)에 대해서도 적용할 수 있다.
+    // 이 때, 넘어온 객체 유형 간에 호환성이 있어야 한다 (부모-자식 관계, 동일한 유형)
+    // .equals() : 
+    // - 객체 비교 메서드이다.
+    // - 내용 비교 : 두 객체의 값이 같은지 확인한다. 즉 문자열의 데이터/내용을 기반으로 비교한다.
+    // - 기본 유형에 대해서는 적용할 수 없다.    
+    String equalTest1 = "equal";
+    String equalTest2 = equalTest1;
+    String equalTest3 = new String("equal");
+    String equalTest4 = new String("equal");
+    // eqaulTest1, 3, 4는 각각 다른 주소를 갖는 다른 객체.
+    System.out.println(equalTest1 == equalTest2); // true. 주소값 같음
+    System.out.println(equalTest1.equals(equalTest2)); // true. 값 같음
+    System.out.println(equalTest1.equals(equalTest3)); // true. 값 같음
+    System.out.println(equalTest1 == equalTest4); // false. 주소값 다름.
+    System.out.println(equalTest3 == equalTest4); // false. 주소값 다름.
+
+    String[] strArr = new String[3]; // 배열은 참조형 변수 (객체를 가리키는 주소값을 가짐)
+    strArr[0] = "Java";
+    strArr[1] = "Java";
+    strArr[2] = new String("Java");
+    System.out.println(strArr[1] == strArr[2]); // false. 주소값 다름.
+    System.out.println(strArr[0] == strArr[1]);
+    // true. 다른 주소값을 가져 false를 반환할 것 같지만 JVM의 판단 하에 true를 반환함..더 알아볼 것... 
+
   }
 }
