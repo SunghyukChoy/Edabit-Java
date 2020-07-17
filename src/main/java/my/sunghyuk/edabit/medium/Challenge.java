@@ -1383,4 +1383,22 @@ public class Challenge {
       return false;
     }
   }
+
+  /**
+   * Smooth Sentences
+   * Smooth Sentences : 문장에서 단어의 마지막 문자와 다음 단어의 첫 문자가 같은 문장.
+   * @see https://edabit.com/challenge/FtoNXq7DTCAiZ3z9T
+   * @param sentence
+   * @return
+   */
+  public static boolean isSmooth(String sentence) {
+    sentence = sentence.toLowerCase();
+    String[] words = sentence.split(" ");
+    for (int i = 0; i < words.length - 1; i++) {
+      if (words[i].charAt(words[i].length() - 1) != words[i + 1].charAt(0)) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
