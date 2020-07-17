@@ -1338,4 +1338,18 @@ public class Challenge {
     }
     return true;
   }
+
+  /**
+   * Reversing a Binary String
+   * 10진수를 2진수로 바꾼 후 그 2진수의 역순을 10진수로 출력
+   * reversedBinaryInteger(10) ➞ 5 // 10 = 1010 -> 0101 = 5
+   * @see https://edabit.com/challenge/yPQ26h7KYpqsftRPY
+   * @param n
+   * @return
+   */
+  public static int reversedBinaryInteger(int n) {
+    String binaryStr = Integer.toBinaryString(n); // 문자열을 2진수로 변환
+    StringBuilder sb = new StringBuilder(binaryStr).reverse();
+    return Integer.valueOf(sb.toString(), 2); // 2진수인 문자열을 10진수로 변환
+  }
 }

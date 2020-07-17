@@ -107,6 +107,16 @@ public class Note {
     System.out.println(strArr[1] == strArr[2]); // false. 주소값 다름.
     System.out.println(strArr[0] == strArr[1]);
     // true. 다른 주소값을 가져 false를 반환할 것 같지만 JVM의 판단 하에 true를 반환함..더 알아볼 것... 
-
+    System.out.println("==============================================");
+    // Integer.toBinaryString(10진수), Integer.toOctalString(10진수), Integer.toHexString(10진수)
+    // 10진수 숫자를 각각 2진수, 8진수, 16진수 String으로 변환하는 메소드
+    System.out.println(Integer.toBinaryString(2)); // 10
+    System.out.println(Integer.toOctalString(8)); // 10
+    System.out.println(Integer.toHexString(16)); // 10
+    // Integer.valueOf("문자열", 넣는 문자열의 진수);
+    // 각각의 진수값을 10진수 int로 변환
+    System.out.println(Integer.valueOf("11", 2)); // 3
+    System.out.println(Integer.valueOf("20", 8)); // 16
+    System.out.println(Integer.valueOf("100", 16)); // 256
   }
 }
