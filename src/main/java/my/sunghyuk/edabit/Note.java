@@ -114,9 +114,14 @@ public class Note {
     System.out.println(Integer.toOctalString(8)); // 10
     System.out.println(Integer.toHexString(16)); // 10
     // Integer.valueOf("문자열", 넣는 문자열의 진수);
-    // 각각의 진수값을 10진수 int로 변환
+    // 각각의 진수값을 10진수 Integer로 변환
     System.out.println(Integer.valueOf("11", 2)); // 3
     System.out.println(Integer.valueOf("20", 8)); // 16
-    System.out.println(Integer.valueOf("100", 16)); // 256
+    System.out.println(Integer.valueOf("10", 16)); // 16
+    // Integer.valueOf("문자열", 넣는 문자열의 진수);
+    // 각각의 진수값을 10진수 int로 변환
+    System.out.println(Integer.parseInt("11", 2)); // 3
+    System.out.println(Integer.parseInt("20", 8)); // 16
+    System.out.println(Integer.parseInt("10", 16)); // 16
   }
 }

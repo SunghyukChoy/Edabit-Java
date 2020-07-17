@@ -1348,8 +1348,39 @@ public class Challenge {
    * @return
    */
   public static int reversedBinaryInteger(int n) {
-    String binaryStr = Integer.toBinaryString(n); // 문자열을 2진수로 변환
+    /* String binaryStr = Integer.toBinaryString(n); // 문자열을 2진수로 변환
     StringBuilder sb = new StringBuilder(binaryStr).reverse();
-    return Integer.valueOf(sb.toString(), 2); // 2진수인 문자열을 10진수로 변환
+    return Integer.valueOf(sb.toString(), 2); // 2진수인 문자열을 10진수로 변환. 리턴 타입 Integer */
+
+    // Other Solutioin
+    return Integer.parseInt(new StringBuilder(Integer.toBinaryString(n)).reverse().toString(), 2);
+    // 리턴 타입 int
+  }
+
+  /**
+   * Substituting the The
+   * 문장에서 the를 a/an으로 바꾸기. 다음 단어가 모음으로 시작하면 an으로 바꾸기.
+   * @see https://edabit.com/challenge/2rJAhXLRaRB3gjwaC
+   * @param str
+   * @return
+   */
+  public static String replaceThe(String str) {
+    String[] words = str.split(" ");
+    for (int i = 0; i < words.length; i++) {
+      if (words[i].equals("the") && isVowel(words[i + 1].charAt(0))) {
+        words[i] = "an";
+      } else if (words[i].equals("the") && !isVowel(words[i + 1].charAt(0))) {
+        words[i] = "a";
+      }
+    }
+    return String.join(" ", words);
+  }
+
+  private static boolean isVowel(char ch) {
+    if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
