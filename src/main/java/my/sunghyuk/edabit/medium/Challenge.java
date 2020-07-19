@@ -1419,4 +1419,38 @@ public class Challenge {
     }
     return num == sumDigit;
   }
+
+  /**
+   * Perfect or Amicable?
+   * perfect number (완전수) : 자기 자신을 제외한 양의 약수를 더했을 때 자기 자신이 되는 양의 정수를 말한다.
+   * amicable number (친화수) : 두 수의 쌍에서 어느 한 수의 진약수를 모두 더하면 다른 수가 되는 수를 말한다.
+   * ex) 220과 284. 220의 진약수는 1, 2, 4, 5, 10, 11, 20, 22, 44, 55, 110로 모두 더하면 284가 된다. 반대로  284의 모든 진약수 1, 2, 4, 71, 142를 모두 더하면 220이 된다.
+   * 주어진 num이 perfect number면 "Perfect", amicable number면 "Amicable", 둘 다 아니면 "Neither" 리턴
+   * @see https://edabit.com/challenge/qY9s6qK4WpbPBxQES
+   * @param num
+   * @return
+   */
+  public static String numType(int num) {
+    int sumFactors = 0;
+    for (int i = 1; i < num; i++) {
+      if (num % i == 0) {
+        sumFactors += i;
+      }
+    }
+    if (sumFactors == num) {
+      return "Perfect";
+    }
+    // 이 sumFactors(num 약수들의 합)가 다른 수(쌍을 이루는 친화수 중 하나)의 약수의 합이고 다른 수의 약수의 합이 num이면 Amicable
+    int otherAmicableNum = sumFactors; // 다른 수는 num 약수들의 합이면서
+    int otherSumFactors = 0;
+    for (int i = 1; i < otherAmicableNum; i++) {
+      if (otherAmicableNum % i == 0) {
+        otherSumFactors += i;
+      }
+    }
+    if (otherSumFactors == num) { // 그 다른 수 약수들의 합이 num이면 
+      return "Amicable";
+    }
+    return "Neither";
+  }
 }
