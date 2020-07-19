@@ -1,5 +1,6 @@
 package my.sunghyuk.edabit.medium;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -1450,6 +1451,45 @@ public class Challenge {
     }
     if (otherSumFactors == num) { // 그 다른 수 약수들의 합이 num이면 
       return "Amicable";
+    }
+    return "Neither";
+  }
+
+  /**
+   * Moran Numbers
+   * Harshad Number : 각 자리 값의 합으로 나누어지는 수 ex) 132 -> 132 / (1 + 3 + 2) 
+   * Moran Number : 각 자리 값의 합으로 나누었을 때 몫으로 소수를 내놓는 수 
+   * ex) 133 -> 133 / (1 + 3 + 3) = 19. 19는 소수.
+   * 주어진 수에 따라 "M","H", 둘 다 아니면 "Neither" 리턴. Moran number는 Harshad number의 부분집합으로 Moran number 먼저 테스트 후 리턴. 그 다음 Harshad number(non-Moran) 리턴
+   * @see https://edabit.com/challenge/iLwdf4yJjrSv9Pg25
+   * @param n
+   * @return
+   */
+  private static boolean isPrime(int num) {
+    if (num < 2) {
+      return false;
+    }
+    for (int i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i == 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  public static String moran(int n) {
+    int sumDigits = 0;
+    int copyNum = n;
+    while (copyNum != 0) {
+      sumDigits += copyNum % 10;
+      copyNum = copyNum / 10;
+    }
+    int yield = n / sumDigits; // 몫
+    if (isPrime(yield)) {
+      return "M";
+    }
+    if (n % sumDigits == 0) {
+      return "H";
     }
     return "Neither";
   }
