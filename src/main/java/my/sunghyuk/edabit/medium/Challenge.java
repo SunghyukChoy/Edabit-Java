@@ -1401,4 +1401,22 @@ public class Challenge {
     }
     return true;
   }
+
+  /**
+   * Narcissistic Numbers
+   * 153 ➞ 3 digits ➞ 1³ + 5³ + 3³ = 1 + 125 + 27 = 153 ➞ Narcissistic
+   * 84 ➞ 2 digits ➞ 8² + 4² = 64 + 16 = 80 ➞ Not narcissistic
+   * @see https://edabit.com/challenge/qPtcAMm4RhBmGG7XE
+   * @param num
+   * @return
+   */
+  public static boolean isNarcissistic(int num) {
+    int sumDigit = 0;
+    int copyNum = num;
+    while (copyNum != 0) {
+      sumDigit += Math.pow(copyNum % 10, String.valueOf(num).length());
+      copyNum = copyNum / 10;
+    }
+    return num == sumDigit;
+  }
 }
