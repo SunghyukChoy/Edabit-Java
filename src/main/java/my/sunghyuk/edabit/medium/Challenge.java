@@ -1493,4 +1493,19 @@ public class Challenge {
     }
     return "Neither";
   }
+
+  /**
+   * Check if a String is a Mathematical Expression
+   * 문자열이 수학식의 형태가 맞는지 확인. 수학 기호는 +, -, *, /, %. 두 개의 수는 0 ~ 9.
+   * @see https://edabit.com/challenge/FTWQaZdMqYph5umsu
+   * @param expr
+   * @return
+   */
+  public static boolean mathExpr(String expr) {
+    // return expr.replaceAll("\\s", "").matches("[0-9][\\+\\-*/%][0-9]");
+    // 문자열에서 공백 제거 후 정규표현식과 비교
+    // "[0-9][+-*/%][0-9]"는 틀림.
+    // Other Solution
+    return expr.matches("\\d+\\s?[\\+\\*/%-]\\s?\\d+");
+  }
 }
