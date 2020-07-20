@@ -1508,4 +1508,34 @@ public class Challenge {
     // Other Solution
     return expr.matches("\\d+\\s?[\\+\\*/%-]\\s?\\d+");
   }
+
+  /**
+   * C*ns*r*d Str*ngs
+   * str은 원래의 문자열에서 모음이 *로 가려진 상태, vowels는 가려진 모음들. 원래 문자열로 돌리기
+   * "Wh*r* d*d my v*w*ls g*?", "eeioeo" ➞ "Where did my vowels go?"
+   * @see https://edabit.com/challenge/jt6TWkTcYdWcRXbds
+   * @param str
+   * @param vowels
+   * @return
+   */
+  public static String uncensor(String str, String vowels) {
+    /* StringBuilder sb = new StringBuilder();
+    for (int i = 0, j = 0; i < str.length(); i++) {
+      if (str.charAt(i) != '*') {
+        sb.append(str.charAt(i));
+      } else {
+        sb.append(vowels.charAt(j));
+        j++;
+      }
+    }
+    return sb.toString(); */
+
+    // Other Solution
+    for (String vowel : vowels.split("")) {
+      str = str.replaceFirst("[*]", vowel);
+      // str에서 정규식에 해당하는 첫 번째 문자를 vowel로 바꾸고 다시 str에 저장함.
+      // vowel이 하나씩 나올 때마다 저장된 str을 다시 변환 후 저장. 반복.
+    }
+    return str;
+  }
 }

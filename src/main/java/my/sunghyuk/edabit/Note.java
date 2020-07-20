@@ -123,5 +123,21 @@ public class Note {
     System.out.println(Integer.parseInt("11", 2)); // 3
     System.out.println(Integer.parseInt("20", 8)); // 16
     System.out.println(Integer.parseInt("10", 16)); // 16
+    System.out.println("==============================================");
+    String replaceTest = "Uno. Dos. Tres.";
+    // replaceTest.replace(CharSequence target, CharSequence replacement)
+    // CharSequence 객체는 String 객체를 상속하는 객체이므로 다형성에 의해 String 객체를 인자로 주어도 됨.
+    System.out.println(replaceTest.replace("Uno", "One")); // One. Dos. Tres.    
+    // replaceTest.replace(oldChar, newChar)
+    System.out.println(replaceTest.replace('o', 'x')); // "Unx. Dxs. Tres."
+    // replaceTest.replaceAll(regex, replacement)
+    System.out.println(replaceTest.replaceAll("[.]", "/")); // "Uno/ Dos/ Tres/"
+    System.out.println(replaceTest.replaceAll(".", "/")); // "///////////////"
+    System.out.println(replaceTest.replace(".", "/")); // "Uno/ Dos/ Tres/"
+    // replace()와 replaceAll()의 차이점은 인자값의 타입이 문자열이냐 정규식이냐의 차이.
+    // replaceAll() 메소드에서 인자값으로 "."을 넣으면 정규식으로 인식하여 정규식에 해당하는 문자들을 바꿀 문자로 바꿈. 정규식에서 .은 모든 문자(any character)를 의미하므로 위의 출력문에서 해당하는 문자들을 "/"로 바꿈.
+    // replaceTest.replaceFirst(regex, replacement)
+    System.out.println(replaceTest.replaceFirst("[.]", "/")); // "Uno/ Dos. Tres."
+    // 정규식에 해당하는 첫 번째 문자만 바꿀 문자로 바꿈.
   }
 }
