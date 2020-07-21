@@ -1538,4 +1538,29 @@ public class Challenge {
     }
     return str;
   }
+
+  /**
+   * Pentagonal Number
+   * step = 1일 때 dot = 1, step = 2일 때, 점 하나를 중심으로 오각형 모양의 점 찍힘, 그 다음 스텝에서도 오각형 모양으로 점이 찍히고 모서리 점들 사이에도 점들이 찍힘. 웹 페이지에서 그림 직접 확인.
+   * num 단계에서의 점 개수 리턴
+   * @see https://edabit.com/challenge/H6eTNH6NW36MHqkjb
+   * @param num
+   * @return
+   */
+  public static int pentagonal(int num) {
+    // step = 1, dot = 1
+    // ste= = 2, dot = 6 (1 + 5)  F(1) + step * 5 - 5
+    // step = 3, dot = 16 (6 + 10)
+    // step = 4, dot = 31 (16 + 15) F(num - 1) + num * 5 - 5 // F(num - 1) + 5 * (num - 1)
+    int dot = 1;
+    int step = 1;
+    while (num != step) {
+      step++;
+      dot += step * 5 - 5;
+    }
+    return dot;
+
+    // Other Solution
+    // return (num == 1) ? 1 : 5 * (num - 1) + pentagonal(num - 1);
+  }
 }
