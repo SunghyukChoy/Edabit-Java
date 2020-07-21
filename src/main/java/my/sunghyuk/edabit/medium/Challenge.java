@@ -1563,4 +1563,22 @@ public class Challenge {
     // Other Solution
     // return (num == 1) ? 1 : 5 * (num - 1) + pentagonal(num - 1);
   }
+
+  /**
+   * Kaprekar Numbers
+   * Kaprekar Numbers : 주어진 수 n을 제곱해서 제곱수의 자리수에 따라 left, right로 쪼갬. 그 그 쪼갠 두 수를 더했을 때 다시 n이 나오는 수.
+   * 제곱수가 한 자리 숫자라면 left : 0 right : 제곱수.
+   * 제곱수의 자리수가 홀수라면 left가 right보다 한 자리 작은 수로.
+   * isKaprekar(297) ➞ true  // n² = "88209" // Left + Right = 88 + 209 = 297 ➞ 297 == 297
+   * @see https://edabit.com/challenge/M9eXE68jj9pxvmiuj
+   * @param n
+   * @return
+   */
+  public static boolean isKaprekar(int n) {
+    long squareNum = (long) Math.pow(n, 2);
+    String squareNumStr = String.valueOf(squareNum);
+    String leftNum = squareNumStr.length() == 1 ? "0" : squareNumStr.substring(0, squareNumStr.length() / 2);
+    String rightNum = squareNumStr.length() == 1 ? squareNumStr : squareNumStr.substring(squareNumStr.length() / 2);
+    return Integer.parseInt(leftNum) + Integer.parseInt(rightNum) == n;
+  }
 }
