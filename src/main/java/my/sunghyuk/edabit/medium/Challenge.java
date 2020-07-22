@@ -3,11 +3,12 @@ package my.sunghyuk.edabit.medium;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Challenge {
@@ -1580,5 +1581,114 @@ public class Challenge {
     String leftNum = squareNumStr.length() == 1 ? "0" : squareNumStr.substring(0, squareNumStr.length() / 2);
     String rightNum = squareNumStr.length() == 1 ? squareNumStr : squareNumStr.substring(squareNumStr.length() / 2);
     return Integer.parseInt(leftNum) + Integer.parseInt(rightNum) == n;
+  }
+
+  /**
+   * One Plus One
+   * 문자열로 된 수식 풀기. 문자열로 리턴. 기호는 +, -만, 수는 0, 1, 2만.
+   * wordedMath("zero Plus one") ➞ "One"
+   * @see https://edabit.com/challenge/yLjnDk7bJ3GYeSX9f
+   * @param expr
+   * @return
+   */
+  public static String wordedMath(String expr) {
+    /* expr = expr.toLowerCase();
+    String[] words = expr.split(" ");
+    int firstNum;
+    int secondNum;
+    if (words[0].equals("zero")) {
+      firstNum = 0;
+    } else if (words[0].equals("one")) {
+      firstNum = 1;
+    } else {
+      firstNum = 2;
+    }
+    
+    if (words[2].equals("zero")) {
+      secondNum = 0;
+    } else if (words[2].equals("one")) {
+      secondNum = 1;
+    } else {
+      secondNum = 2;
+    }
+    
+    int result;
+    if (words[1].equals("plus")) {
+      result = firstNum + secondNum;
+    } else {
+      result = firstNum - secondNum;
+    }
+    
+    if (result == 0) {
+      return "Zero";
+    } else if (result == 1) {
+      return "One";
+    } else {
+      return "Two";
+    } */
+
+    // Other Solution
+    /* expr = expr.toLowerCase();
+    expr = expr.replace("one", "1");
+    expr = expr.replace("zero", "0");
+    expr = expr.replace("two", "2");
+    String[] parts = expr.split("plus|minus");
+    int n1 = Integer.parseInt(parts[0].trim());
+    int n2 = Integer.parseInt(parts[1].trim());
+    
+    int res = expr.contains("plus") ? n1 + n2 : n1 - n2;
+    
+    switch (res) {
+      case 1:
+        return "One";
+      case 2:
+        return "Two";
+      default:
+        return "Zero";
+    } */
+
+    // Other Solution
+    /* String[] words = expr.toLowerCase().split(" ");
+    int n1 = words[0].equals("zero") ? 0 : words[0].equals("one") ? 1 : 2;
+    int n2 = words[2].equals("zero") ? 0 : words[2].equals("one") ? 1 : 2;
+    int res = words[1].equals("plus") ? n1 + n2 : n1 - n2;
+    return res == 0 ? "Zero" : res == 1 ? "One" : "Two"; */
+
+    // Other Solution
+    /* expr = expr.toLowerCase();
+    String[] words = expr.split(" ");
+    Map<String, Integer> strToInt = new HashMap<>(); // 문자열로 숫자를 가져오기 위한 map
+    strToInt.put("zero", 0);
+    strToInt.put("one", 1);
+    strToInt.put("two", 2);
+    
+    Map<Integer, String> intToStr = new HashMap<>(); // 숫자로 문자열을 가져오기 위한 map
+    intToStr.put(0, "Zero");
+    intToStr.put(1, "One");
+    intToStr.put(2, "Two");
+    intToStr.put(3, "Three");
+    intToStr.put(4, "Four");
+    
+    if (words[1].equalsIgnoreCase("minus")) {
+      int result = strToInt.get(words[0]) - strToInt.get(words[2]);
+      // key를 넣고 value를 가져옴.
+      return intToStr.get(result);
+    } else {
+      int result = strToInt.get(words[0]) + strToInt.get(words[2]);
+      return intToStr.get(result);
+    } */
+
+    // Other Solution
+    String[] words = expr.toLowerCase().split("\\s");
+    String[] result = { "Zero", "One", "Two" };
+    Map<String, Integer> map = new HashMap<>();
+    map.put("zero", 0);
+    map.put("one", 1);
+    map.put("two", 2);
+    if (words[1].equals("plus")) {
+      return result[map.get(words[0]) + map.get(words[2])];
+    } else {
+      return result[map.get(words[0]) - map.get(words[2])];
+    }
   }
 }
