@@ -1712,12 +1712,34 @@ public class Challenge {
         break;
       }
       i++;
-    }    
+    }
     StringBuilder sb = new StringBuilder();
     for (int j = squareOfTwo; j > 1; j = j / 2) {
       sb.append("2");
     }
     sb.append(String.valueOf(num - squareOfTwo));
     return Integer.parseInt(sb.toString());
+  }
+
+  /**
+   * Converting One Binary String to Another
+   * s1에서 s2가 되기 위해 0과 1의 스왑(자리를 바꿈)해야 하는 횟수 출력.
+   * minSwaps("110011", "010111") ➞ 1
+   * // s1에서 s2가 되기 위해 0번 인덱스와 3번 인덱스를 스왑 해주면 됨.(스왑 횟수 : 1)
+   * 두 문자열의 길이는 같음. 0과 1의 개수는 변하지 않음. 스왑하려는 0과 1은 인접하지 않아도 됨.
+   * @see https://edabit.com/challenge/bzgkfePPbHyAyTdN3
+   * @param s1
+   * @param s2
+   * @return
+   */
+  public static int minSwaps(String s1, String s2) {
+    // 문자가 2개 다를 때마다 스왑 한 번 일어남.
+    int count = 0;
+    for (int i = 0; i < s1.length(); i++) {
+      if (s1.charAt(i) != s2.charAt(i)) {
+        count++;
+      }
+    }
+    return count / 2;
   }
 }
