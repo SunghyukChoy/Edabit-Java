@@ -383,4 +383,34 @@ public class Program {
       return new int[] {};
     }
   }
+
+  /**
+   * Reverse the Order of Words with Five Letters or More
+   * 문장에서 단어의 문자가 5개 이상인 것만 거꾸로 바꿔서 출력.
+   * "This is a typical sentence." ➞ "This is a lacipyt .ecnetnes"
+   * @see https://edabit.com/challenge/aG8byPZcEj9yLKxA3
+   * @param s
+   * @return
+   */
+  public static String reverseFiveLettersWord(String s) {
+    String[] words = s.split(" ");
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < words.length; i++) {
+      if (words[i].length() < 5) {
+        sb.append(words[i] + " ");
+      } else {
+        // sb.append(getReverseStr(words[i]) + " ");
+        sb.append(new StringBuilder(words[i]).reverse() + " ");
+      }
+    }
+    return sb.toString().trim();
+  }
+
+  private static String getReverseStr(String str) {
+    StringBuilder sb = new StringBuilder();
+    for (int i = str.length() - 1; i >= 0; i--) {
+      sb.append(str.charAt(i));
+    }
+    return sb.toString();
+  }
 }
