@@ -5,11 +5,11 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.IntStream;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Program {
 
@@ -413,4 +413,39 @@ public class Program {
     }
     return sb.toString();
   }
+
+  /**
+   * Basic E-Mail Validation
+   * abc@abc.com 문자열이 올바른 이메일 형식을 갖는가. 정규식 사용하지 않고 풀기
+   * 1) 문자열은 반드시 하나의 @를 포함하여야 함
+   * 2) 문자열은 만드시 하나 이상의 .을 포함하여야 함
+   * 3) 문자열은 반드시 @ 앞에 하나 이상의 문자를 갖고 있어야 함
+   * 4) @과 .은 반드시 적절한 위치에 있어야 함. (.은 @ 뒤에 위치)
+   * @see https://edabit.com/challenge/7r4Hz8MvJq4sbHhXB
+   * @param s
+   * @return
+   */
+  public static boolean validateEmail(String s) {
+    int atCnt = 0;
+    int dotCnt = 0;
+    for (int i = 0; i < s.length(); i++) {
+      if (s.charAt(i) == '@') {
+        atCnt++;
+      } else if (s.charAt(i) == '.') {
+        dotCnt++;
+      }
+    }
+    // s.indexOf('@') > s.lastIndexOf('.') - 2 : adsfadsfasd@a.com의 형식 검사
+    // 삼항 연산자에서 조건식이 true일 때 false를 반환하는 식 : !(조건식)으로 수정.
+    return !(atCnt != 1 || dotCnt < 1 || s.charAt(0) == '@' || s.indexOf('@') > s.lastIndexOf('.') - 2);
+
+    /* Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(s); // 입력 캐릭터 시퀀스에서 패턴을 찾는 Matcher 객체 생성
+    return matcher.matches(); // 입력된 캐릭터 시퀀스에서 특정 패턴을 찾음.
+    // .matches() : 주어진 문자열 전체가 특정 패턴과 일치하는가를 판단한다. 
+    // .find() : 주어진 문자열에서 특정 패턴을 찾아낸다. */
+  }
+
+  private static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]+$",
+      Pattern.CASE_INSENSITIVE);
+  // 정규표현식으로부터 패턴을 만든다. Pattern.CASE_INSENSITIVE : 대소문자 구분하지 않음.
 }
