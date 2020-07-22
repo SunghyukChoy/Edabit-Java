@@ -1691,4 +1691,33 @@ public class Challenge {
       return result[map.get(words[0]) - map.get(words[2])];
     }
   }
+
+  /**
+   * Reverse Coding Challenge #2
+   * // 3 ➞ 21 // 9 ➞ 2221 // 17 ➞ 22221 // 24 ➞ 22228
+   * 위의 결과를 보고 num을 넣었을 때 결과값 리턴
+   * @see https://edabit.com/challenge/crZ8ADEeMticeNjBo
+   * @param num
+   * @return
+   */
+  public static int mysteryFunc(int num) {
+    // num ➞ 2^n + 나머지 값. 2^n은 num보다 클 수 없음. 나머지 값은 num - 2^n.
+    // 2^n ➞ 2를 n번 나열.
+    int squareOfTwo = 1;
+    int i = 0;
+    while (squareOfTwo <= num) {
+      squareOfTwo = (int) Math.pow(2, i);
+      if (squareOfTwo >= num) {
+        squareOfTwo = squareOfTwo / 2;
+        break;
+      }
+      i++;
+    }    
+    StringBuilder sb = new StringBuilder();
+    for (int j = squareOfTwo; j > 1; j = j / 2) {
+      sb.append("2");
+    }
+    sb.append(String.valueOf(num - squareOfTwo));
+    return Integer.parseInt(sb.toString());
+  }
 }
