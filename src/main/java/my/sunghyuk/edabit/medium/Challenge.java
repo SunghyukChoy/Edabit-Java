@@ -1,6 +1,5 @@
 package my.sunghyuk.edabit.medium;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -1741,5 +1740,46 @@ public class Challenge {
       }
     }
     return count / 2;
+  }
+
+  /**
+   * Double Character Swap
+   * @see https://edabit.com/challenge/n2haqkZN529Rr67vg
+   * 문자열 str에서 문자 c1과 c2를 서로 바꾼 문자열 출력
+   * doubleSwap("random w#rds writt&n h&r&", '#', '&') ➞ "random w&rds writt#n h#r#"
+   * @param str
+   * @param c1
+   * @param c2
+   * @return
+   */
+  public static String doubleSwap(String str, char c1, char c2) {
+    /* List<Integer> c1IndexList = new ArrayList<>();
+    List<Integer> c2IndexList = new ArrayList<>();
+    for (int i = 0; i < str.length(); i++) {
+      if (str.charAt(i) == c1) {
+        c1IndexList.add(i);
+      } else if (str.charAt(i) == c2) {
+        c2IndexList.add(i);
+      }
+    }
+    char[] charArr = str.toCharArray();
+    for (Integer index : c1IndexList) {
+      charArr[index] = c2;
+    }
+    for (Integer index : c2IndexList) {
+      charArr[index] = c1;
+    }
+    return String.valueOf(charArr); */
+
+    // Other Solution
+    char[] charArr = str.toCharArray();
+    for (int i = 0; i < charArr.length; i++) {
+      if (charArr[i] == c1) {
+        charArr[i] = c2;
+      } else if (charArr[i] == c2) {
+        charArr[i] = c1;
+      }
+    }
+    return String.valueOf(charArr);
   }
 }
