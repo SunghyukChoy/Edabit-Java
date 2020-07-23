@@ -33,10 +33,12 @@ public class Note {
     System.out.println(Arrays.toString(rangeCopyArr)); // {2, 3, 4, 5}
     System.out.println("==============================================");
 
-    //String.format("%.nf", 변환할 값)
+    //String.format("%.nf", 변환할 값(실수)), String.format("%자릿수d, 변환할 값(정수))
     double pie = 3.14159265358979;
-    System.out.println((String.format("%.2f", pie))); // 3.14
-    System.out.println((String.format("%.3f", pie))); // 3.142
+    System.out.println(String.format("%.2f", pie)); // 3.14
+    System.out.println(String.format("%.3f", pie)); // 3.142
+    System.out.println(String.format("%010d", 12345)); // 0000012345 10자리 수. 앞을 0으로 채움
+    System.out.println(String.format("%10d", 12345)); //      12345 앞을 공백으로 채움.
     // Math.round(변환할 값)
     int roundNum = Math.round(10.45f); // 소수점 첫째 자리에서 반올림 하여 정수로 리턴
     System.out.println(roundNum);
@@ -138,6 +140,6 @@ public class Note {
     // replaceAll() 메소드에서 인자값으로 "."을 넣으면 정규식으로 인식하여 정규식에 해당하는 문자들을 바꿀 문자로 바꿈. 정규식에서 .은 모든 문자(any character)를 의미하므로 위의 출력문에서 해당하는 문자들을 "/"로 바꿈.
     // replaceTest.replaceFirst(regex, replacement)
     System.out.println(replaceTest.replaceFirst("[.]", "/")); // "Uno/ Dos. Tres."
-    // 정규식에 해당하는 첫 번째 문자만 바꿀 문자로 바꿈.
+    // 정규식에 해당하는 첫 번째 문자만 바꿀 문자로 바꿈.    
   }
 }

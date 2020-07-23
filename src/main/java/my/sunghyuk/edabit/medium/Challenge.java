@@ -1782,4 +1782,54 @@ public class Challenge {
     }
     return String.valueOf(charArr);
   }
+
+  /**
+   * Return the Sum of Two Numbers (on the Moon)
+   * number1과 number2의 각 자리에서 더 큰 수롤 뽑아 정수로 리턴. 자릿수가 달라 비어있는 자리는 0으로 간주
+   * 1  3  4  +    5  4  = 1  5  4   //  1 > 0 | 5 > 3 | 4 == 4
+   * @see https://edabit.com/challenge/zSjd2EbBzBCuMjgrr
+   * @param number1
+   * @param number2
+   * @return
+   */
+  public static int lunarSum(int number1, int number2) {
+    /* int maxNum = Math.max(number1, number2);
+    int minNum = Math.min(number1, number2);
+    int maxNumDigit;
+    int minNumDigit;
+    StringBuilder sb = new StringBuilder();
+    while (maxNum != 0) {
+      maxNumDigit = maxNum % 10;
+      maxNum = maxNum / 10;
+      minNumDigit = minNum % 10;
+      minNum = minNum / 10;
+      sb.append(String.valueOf(Math.max(maxNumDigit, minNumDigit)));
+    }
+    return Integer.parseInt(sb.reverse().toString()); */
+
+    // Other Solution
+    /* int maxLength = Math.max(String.valueOf(number1).length(), String.valueOf(number2).length());
+    String num1Str = String.format("%0" + maxLength + "d", number1);
+    String num2Str = String.format("%0" + maxLength + "d", number2);
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < maxLength; i++) {
+      if (num1Str.charAt(i) >= num2Str.charAt(i)) { // 정수의 값이 더 크면 아스키 값도 더 큼
+        sb.append(num1Str.charAt(i));
+      } else {
+        sb.append(num2Str.charAt(i));
+      }
+    }
+    return Integer.parseInt(sb.toString()); */
+
+    // Other Solution
+    String numStr = "";
+    while (number1 > 0 || number2 > 0) {
+      // 둘 중 하나의 조건이라도 만족하면 while문 계속 실행
+      // 즉 더 큰 수가 0보다 크지 않을 때까지 계속 실행
+      numStr = String.valueOf(Math.max(number1 % 10, number2 % 10)) + numStr;
+      number1 /= 10;
+      number2 /= 10;
+    }
+    return Integer.parseInt(numStr);
+  }
 }
