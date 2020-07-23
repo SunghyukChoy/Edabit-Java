@@ -1832,4 +1832,34 @@ public class Challenge {
     }
     return Integer.parseInt(numStr);
   }
+
+  /**
+   * Numbers in Strings
+   * 문자열 배열에서 숫자가 포함된 문자열만 배열로 리턴. 정규식 쓰지 않고 풀기
+   * ["this is a test", "test1"] ➞ ["test1"]
+   * @see https://edabit.com/challenge/KGhmvXpF6iK8mAqgj
+   * @param arr
+   * @return
+   */
+  public static String[] numInStr(String[] arr) {
+    List<String> list = new ArrayList<>();
+    for (int i = 0; i < arr.length; i++) {
+      for (int j = 0; j < arr[i].length(); j++) {
+        if (Character.isDigit(arr[i].charAt(j))) { // 또는 아스키 값으로 비교
+          list.add(arr[i]);
+          break;
+        }
+      }
+    }
+    return list.toArray(new String[list.size()]);
+
+    // Other Solution
+    /* ArrayList<String> results = new ArrayList<>();
+    for (String s : arr) {
+      if (s.matches(".*\\d+.*"))
+      // .* : 아무 문자나 0 ~ n 개. \\d+ : 숫자 한 개 이상
+        results.add(s);
+    }
+    return results.toArray(new String[results.size()]); */
+  }
 }
