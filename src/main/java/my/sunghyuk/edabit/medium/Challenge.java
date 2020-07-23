@@ -1862,4 +1862,67 @@ public class Challenge {
     }
     return results.toArray(new String[results.size()]); */
   }
+
+  /**
+   * Replace Letters With Position In Alphabet
+   * 문자열의 각 문자를 해당하는 숫자로 바꿔서 출력. 대소문자는 같은 값을 가짐. 문자가 아닌 것 무시.
+   * a = 1, b = 2, c = 3....
+   * "The river stole the gods." ➞ "20 8 5 18 9 22 5 18 19 20 15 12 5 20 8 5 7 15 4 19"
+   * @see https://edabit.com/challenge/Djo98NonxGxvDgPde
+   * @param str
+   * @return
+   */
+  private static String getMatchingNumStr(int num) {
+    num = num - 96;
+    return String.valueOf(num);
+  }
+
+  private static HashMap<Character, Integer> getAlphabetMap() {
+    String alphabet = "abcdefghijklmnopqrstuvwxyz";
+    HashMap<Character, Integer> map = new HashMap<>();
+    for (int i = 0; i < alphabet.length(); i++) {
+      map.put(alphabet.charAt(i), i + 1);
+      // map.put('a', 1), map.put('b', 2), map.put('c', 3)....map 컬렉션 생성
+    }
+    return map;
+  }
+
+  public static String alphabetIndex(String str) {
+    /* str = str.toLowerCase();
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < str.length(); i++) {
+      if (Character.isLetter(str.charAt(i))) {
+        sb.append(getMatchingNumStr(str.charAt(i)) + " ");
+      }
+    }
+    return sb.toString().trim(); */
+
+    // Other Solution
+    /* HashMap<Character, Integer> alphabetMap = getAlphabetMap();
+    StringBuilder sb = new StringBuilder();
+    char[] arr = str.replaceAll("[^a-zA-Z]", "").toLowerCase().toCharArray();
+    for (int i = 0; i < arr.length; i++) {
+      for (Map.Entry<Character, Integer> pair : alphabetMap.entrySet()) {
+        if (arr[i] == pair.getKey()) { // 문자열의 각 문자와 Map 객체의 key와 비교
+          if (i == arr.length - 1) { // 마지막 문자에는 " " 안 넣음.
+            sb.append(pair.getValue());
+          } else {
+            sb.append(pair.getValue()).append(" ");
+          }
+        }
+      }
+    }
+    return sb.toString(); */
+
+    // Other Solution
+    String alphabet = "abcdefghijklmnopqrstuvwxyz";
+    StringBuilder sb = new StringBuilder();
+    for (char ch : str.toLowerCase().toCharArray()) {
+      if (Character.isAlphabetic(ch)) {
+        sb.append(alphabet.indexOf(ch) + 1).append(" ");
+        // alphabet.indexOf(ch) + 1 : 리턴 타입 int. 정수를 넣어도 문자열로 바뀌어서 들어감.
+      }
+    }
+    return sb.toString().trim();
+  }
 }
