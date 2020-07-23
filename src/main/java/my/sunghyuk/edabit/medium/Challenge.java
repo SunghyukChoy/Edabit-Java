@@ -1888,14 +1888,15 @@ public class Challenge {
   }
 
   public static String alphabetIndex(String str) {
-    /* str = str.toLowerCase();
+    str = str.toLowerCase();
     StringBuilder sb = new StringBuilder();
     for (int i = 0; i < str.length(); i++) {
       if (Character.isLetter(str.charAt(i))) {
-        sb.append(getMatchingNumStr(str.charAt(i)) + " ");
+        // sb.append(getMatchingNumStr(str.charAt(i)) + " ");
+        sb.append(str.charAt(i) - 96).append(" ");
       }
     }
-    return sb.toString().trim(); */
+    return sb.toString().trim();
 
     // Other Solution
     /* HashMap<Character, Integer> alphabetMap = getAlphabetMap();
@@ -1915,7 +1916,7 @@ public class Challenge {
     return sb.toString(); */
 
     // Other Solution
-    String alphabet = "abcdefghijklmnopqrstuvwxyz";
+    /* String alphabet = "abcdefghijklmnopqrstuvwxyz";
     StringBuilder sb = new StringBuilder();
     for (char ch : str.toLowerCase().toCharArray()) {
       if (Character.isAlphabetic(ch)) {
@@ -1923,6 +1924,6 @@ public class Challenge {
         // alphabet.indexOf(ch) + 1 : 리턴 타입 int. 정수를 넣어도 문자열로 바뀌어서 들어감.
       }
     }
-    return sb.toString().trim();
+    return sb.toString().trim(); */
   }
 }

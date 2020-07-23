@@ -448,4 +448,24 @@ public class Program {
   private static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]+$",
       Pattern.CASE_INSENSITIVE);
   // 정규표현식으로부터 패턴을 만든다. Pattern.CASE_INSENSITIVE : 대소문자 구분하지 않음.
+
+  /**
+   * Number of Boomerangs
+   * 정수 배열에서 한 요소를 중심으로 양쪽의 요소가 같은 값인가. 그러한 배열은 몇 개인가
+   * 가운데 요소의 값과 양쪽 요소의 값은 달라야 함.
+   * [3, 7, 3, 2, 1, 5, 1, 2, 2, -2, 2] 은 [3, 7, 3], [1, 5, 1], [2, -2, 2] 3개
+   * [1, 7, 1, 7, 1, 7, 1] 은 [1, 7, 1], [7, 1, 7], [1, 7, 1], [7, 1, 7], [7, 1, 7] 5개
+   * @see https://edabit.com/challenge/WzE2id9w5mNfXozKL
+   * @param arr
+   * @return
+   */
+  public static int countBoomerangs(int[] arr) {    
+    int count = 0;
+    for (int i = 0; i < arr.length - 2; i++) {
+      if (arr[i] == arr[i + 2] && arr[i] != arr[i + 1]) {
+        count++;
+      }
+    }
+    return count;
+  }
 }
