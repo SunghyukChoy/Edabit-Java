@@ -1926,4 +1926,33 @@ public class Challenge {
     }
     return sb.toString().trim(); */
   }
+
+  /**
+   * What's the Missing Letter?
+   * 문자열 str은 알파벳을 순서대로 나열한 것 중에 일부. 이 문자열에서 없어진 문자 리턴
+   * "abdefg" ➞ "c". 없어진 문자가 없으면 No Missing Letter 리턴.
+   * @see https://edabit.com/challenge/sRC7wLW7g6gw24Muq
+   * @param str
+   * @return
+   */
+  public static String missingLetter(String str) {
+    /* StringBuilder sb = new StringBuilder();
+    for (char i = str.charAt(0); i <= str.charAt(str.length() - 1); i = (char) (i + 1)) {
+      sb.append(i);
+    }
+    for (int i = 0; i < sb.length(); i++) {
+      if (sb.charAt(i) != str.charAt(i)) {
+        return String.valueOf(sb.charAt(i));
+      }
+    }
+    return "No Missing Letter"; */
+
+    // Other Solution
+    for (int i = 0; i < str.length() - 1; i++) {
+      if (str.charAt(i + 1) - str.charAt(i) != 1) {
+        return String.valueOf((char) (str.charAt(i) + 1));
+      }
+    }
+    return "No Missing Letter";
+  }
 }
