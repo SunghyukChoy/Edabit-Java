@@ -459,7 +459,7 @@ public class Program {
    * @param arr
    * @return
    */
-  public static int countBoomerangs(int[] arr) {    
+  public static int countBoomerangs(int[] arr) {
     int count = 0;
     for (int i = 0; i < arr.length - 2; i++) {
       if (arr[i] == arr[i + 2] && arr[i] != arr[i + 1]) {
@@ -467,5 +467,30 @@ public class Program {
       }
     }
     return count;
+  }
+
+  /**
+   * Check for Anagrams
+   * Anagram : 단어나 문장을 구성하고 있는 문자의 순서를 바꾸어 다른 단어나 문장을 만드는 놀이. 대소문자 무시   
+   * @see https://edabit.com/challenge/yeewrR3MB9PZprwPT
+   * @param s1
+   * @param s2
+   * @return
+   */
+  public static boolean isAnagram(String s1, String s2) {
+    // s1, s2 둘 다 공통된 문자를 같은 개수 갖고 있어야 함.
+    char[] s1CharArr = s1.replaceAll("\\s", "").toLowerCase().toCharArray();
+    char[] s2CharArr = s2.replaceAll("\\s", "").toLowerCase().toCharArray();
+    Arrays.sort(s1CharArr);
+    Arrays.sort(s2CharArr);
+    /* for (int i = 0; i < s1CharArr.length; i++) {
+      if (s1CharArr[i] != s2CharArr[i]) {
+        return false;
+      }
+    }
+    return true; */
+
+    // Other Solution
+    return Arrays.equals(s1CharArr, s2CharArr);
   }
 }
