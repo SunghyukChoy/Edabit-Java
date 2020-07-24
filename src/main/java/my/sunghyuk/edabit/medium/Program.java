@@ -493,4 +493,27 @@ public class Program {
     // Other Solution
     return Arrays.equals(s1CharArr, s2CharArr);
   }
+
+  /**
+   * Recursion: String Palindromes
+   * Palindromes : 문자열의 처음과 끝이 거울을 보듯 대칭되는 문자열
+   * isPalindrome("abcba") ➞ true
+   * @see https://edabit.com/challenge/99k6HcWYvvbZirkDW
+   * @param str
+   * @return
+   */
+  public static boolean isPalindrome(String str) {
+    if (str.length() < 2) {
+      return true;
+    }
+    return str.charAt(0) == str.charAt(str.length() - 1) ? isPalindrome(str.substring(1, str.length() - 1)) : false;
+
+    // Other Solution
+    /* for (int i = 0; i < str.length() / 2; i++) {
+      if (str.charAt(i) != str.charAt(str.length() - 1 - i)) {
+        return false;
+      }
+    }
+    return true; */
+  }
 }
