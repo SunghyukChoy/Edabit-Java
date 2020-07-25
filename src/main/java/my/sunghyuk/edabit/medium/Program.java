@@ -516,4 +516,15 @@ public class Program {
     }
     return true; */
   }
+
+  /**
+   * Recursion: Length of a String
+   * 문자열의 길이를 리턴. 
+   * @see https://edabit.com/challenge/dGK2bxcojgLzbEZjp
+   * @param str
+   * @return
+   */
+  public static int length(String str) {
+    return str.length() == 0 ? 0 : 1 + length(str.substring(1));
+  }
 }

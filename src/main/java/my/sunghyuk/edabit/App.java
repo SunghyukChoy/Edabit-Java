@@ -36,16 +36,17 @@ public class App {
     }
 
     public static void main(String[] args) {
+        bubbleSortTest();
 
-        Integer val = Integer.valueOf(99);
+        // Integer val = Integer.valueOf(99);
 
-        if (IntegerHelper.isPrimeNumber(val)) {
-            // TODO
-        }
+        // if (IntegerHelper.isPrimeNumber(val)) {
+        //     // TODO
+        // }
 
-        if (IntegerHelper.isEven(val)) {
+        // if (IntegerHelper.isEven(val)) {
 
-        }
+        // }
         /*
          * 정수만큼 별 찍는 로직 final String FULL_STAR = "★"; final String FULL_EMPTY_STAR =
          * "☆"; final String HALF_STAR = "별 반개";
@@ -111,6 +112,26 @@ public class App {
         // System.out.println(str);
         // System.out.println(str.matches("^#+.*[a-z]$"));
 
+    }
+
+    private static void bubbleSortTest() {
+        int[] words = {9, 8, 7, 6, 5};
+        for (int i = 0; i < words.length - 1; i++) {
+            for (int j = 0; j < words.length - i - 1; j++) {
+              int w1 = words[j];
+              int w2 = words[j + 1];
+      
+              if (w1 > w2) {
+                int tmp = w2;
+                words[j + 1] = w1;
+                words[j] = tmp;
+              }
+            }
+          }
+
+        for (int i = 0; i < words.length; i++) {
+            System.out.printf("%d ", words[i]);
+        }
     }
 
     private static void printElapsedTime(long start, long end) {

@@ -1955,4 +1955,74 @@ public class Challenge {
     }
     return "No Missing Letter";
   }
+
+  private static boolean compareWord(String w1, String w2) {
+
+    // 1. 문장의 단어 길이순 비교
+    if (w1.length() > w2.length()) {
+      return true;
+    }
+
+    System.out.printf("%s vs %s = %d%n", w1, w2, w1.compareTo(w2));
+    // 2. 단어의 길이가 같다면 알파벳 순으로 정렬
+    if (w1.length() == w2.length() && w1.compareTo(w2) > 0) {
+      return true;
+    }
+
+    return false;
+  }
+
+  /**
+  * Sort by Length
+  * 문장을 단어의 길이순으로 정렬하여 리턴. 단어의 길이가 같다면 알바펫 순으로 정렬. 문장부호도 문자로 포함
+  * "Have a wonderful day" ➞ "a day Have wonderful"
+  * @see https://edabit.com/challenge/6RStzK9uub9vHDt53
+  * @param str
+  * @return
+  */
+  public static String sortByLength(String str) {
+    String[] words = str.split(" ");
+
+    for (int i = 0; i < words.length - 1; i++) {
+      for (int j = 0; j < words.length - i - 1; j++) {
+        String w1 = words[j];
+        String w2 = words[j + 1];
+
+        if (compareWord(w1, w2)) {
+          String tmp = w2;
+          words[j + 1] = w1;
+          words[j] = tmp;
+        }
+      }
+    }
+
+    // System.out.println("배열 생성 초기값 : " + Arrays.toString(words));
+    // Arrays.sort(words);
+
+    // System.out.println("배열 알파벳순 정렬 : " + Arrays.toString(words));
+
+    // List<String> list = new ArrayList<>();
+    // System.out.println("list 사이즈 : " + list.size());
+    // System.out.println("words 길이 : " + words.length);
+
+    // for (int length = 1;; length++) {
+    //   for (int i = 0; i < words.length; i++) {
+    //     if (words[i].length() == length) {
+    //       list.add(words[i]);
+    //     }
+    //   }
+    //   if (list.size() == words.length) {
+    //     break;
+    //   }
+    // }
+    // StringBuilder sb = new StringBuilder();
+    // for (String word : list) {
+    //   System.out.println("list에서 나온 word : " + word);
+    //   sb.append(word + " ");
+    // }
+    // System.out.println("sb.toString() : " + sb.toString());
+    // return sb.toString().trim();
+
+    return String.join(" ", words);
+  }
 }
