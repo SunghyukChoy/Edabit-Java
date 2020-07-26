@@ -2025,4 +2025,29 @@ public class Challenge {
 
     return String.join(" ", words);
   }
+
+  /**
+   * War of Numbers
+   * 배열의 요소 중 홀수들의 합과 짝수들의 합의 차 리턴
+   * @see https://edabit.com/challenge/7fHsizQrTLXsPWMyH
+   * @param numbers
+   * @return
+   */
+  public static int warOfNumbers(int[] numbers) {
+    int oddSum = 0;
+    int evenSum = 0;
+    for (int i = 0; i < numbers.length; i++) {
+      if (numbers[i] % 2 == 0) {
+        evenSum += numbers[i];
+      } else {
+        oddSum += numbers[i];
+      }
+    }
+    return Math.abs(evenSum - oddSum);
+
+    // Other Solution
+    /* int evenSum = Arrays.stream(numbers).filter(x -> x % 2 == 0).sum();
+    int oddSum = Arrays.stream(numbers).filter(x -> x % 2 != 0).sum();
+    return Math.abs(evenSum - oddSum); */
+  }
 }

@@ -525,6 +525,7 @@ public class Program {
    * @return
    */
   public static int length(String str) {
-    return str.length() == 0 ? 0 : 1 + length(str.substring(1));
+    // return str.length() == 0 ? 0 : 1 + length(str.substring(1));
+    return str.equals("") ? 0 : 1 + length(str.substring(1));
   }
 }
