@@ -1,5 +1,6 @@
 package my.sunghyuk.edabit.medium;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -2049,5 +2050,20 @@ public class Challenge {
     /* int evenSum = Arrays.stream(numbers).filter(x -> x % 2 == 0).sum();
     int oddSum = Arrays.stream(numbers).filter(x -> x % 2 != 0).sum();
     return Math.abs(evenSum - oddSum); */
+  }
+
+  /**
+   * Apocalyptic Numbers
+   * 2^number의 값에서 666부분이 들어가는 횟수에 따라 문자열 리턴
+   * 0번 : Safe 1번 : Single 2번 : Double 3번 이상 : Triple
+   * @see https://edabit.com/challenge/ujzBDWymfJ9fzSnfH
+   * @param number
+   * @return
+   */
+  public static String isApocalyptic(int number) {
+    // Other Solution
+    String[] results = { "", "Safe", "Single", "Double", "Triple" };
+    int size = new java.math.BigInteger("2").pow(number).toString().split("666").length;
+    return results[size];
   }
 }
