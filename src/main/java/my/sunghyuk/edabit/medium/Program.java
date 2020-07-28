@@ -528,4 +528,46 @@ public class Program {
     // return str.length() == 0 ? 0 : 1 + length(str.substring(1));
     return str.equals("") ? 0 : 1 + length(str.substring(1));
   }
+
+  /**
+   * Sum of an Array of Times
+   * "시:분:초"의 문자열을 갖는 배열에서 각 요소의 시, 분, 초를 더한 배열 리턴
+   * timeSum(["5:39:42", "10:02:08", "8:26:33"]) ➞ [24, 8, 23]
+   * @see https://edabit.com/challenge/g7mkKpAtZZ7mnuFQX
+   * @param s
+   * @return
+   */
+  public static int[] timeSum(String[] s) {
+    /* int hourSum = 0;
+    int minuteSum = 0;
+    int secondSum = 0;
+    for (int i = 0; i < s.length; i++) {
+      String[] timeArr = s[i].split(":");
+      hourSum += Integer.parseInt(timeArr[0]);
+      minuteSum += Integer.parseInt(timeArr[1]);
+      secondSum += Integer.parseInt(timeArr[2]);
+    }
+    while (minuteSum > 60 || secondSum > 60) {
+      if (secondSum > 60) {
+        minuteSum++;
+        secondSum -= 60;
+      }
+      if (minuteSum > 60) {
+        hourSum++;
+        minuteSum -= 60;
+      }
+    }
+    return new int[] { hourSum, minuteSum, secondSum }; */
+
+    // Other Solution
+    int[] timeArr = new int[3];
+    for (String str : s) {
+      timeArr[2] += Integer.parseInt(str.split(":")[2]);
+      timeArr[1] += Integer.parseInt(str.split(":")[1]) + timeArr[2] / 60;
+      timeArr[2] %= 60;
+      timeArr[0] += Integer.parseInt(str.split(":")[0]) + timeArr[1] / 60;
+      timeArr[1] %= 60;
+    }
+    return timeArr;
+  }
 }
