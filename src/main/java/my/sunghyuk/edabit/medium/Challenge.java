@@ -2171,4 +2171,22 @@ public class Challenge {
     }
     return cnt; */
   }
+
+  /**
+   * Censor Words Longer Than Four Characters
+   * 문자열 str에서 4글자가 넘는 단어는 *로 변환
+   * "aaaa aaaaa 1234 12345" ➞ "aaaa ***** 1234 *****"
+   * @see https://edabit.com/challenge/xix4GjLCpXmetXGca
+   * @param str
+   * @return
+   */
+  public static String censor(String str) {
+    String[] words = str.split(" ");
+    for (int i = 0; i < words.length; i++) {
+      if (words[i].length() > 4) {
+        words[i] = words[i].replaceAll(".", "*");
+      }
+    }
+    return String.join(" ", words);
+  }
 }
