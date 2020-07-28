@@ -2139,4 +2139,36 @@ public class Challenge {
         return '2';
     }
   }
+
+  /**
+   * Count a Specific Digit
+   * min에서 시작하여 max로 끝나는 수열에서 숫자 digit이 등장하는 횟수 리턴
+   * digitOccurrences(51, 55, 5) ➞ 6   // [51, 52, 53, 54, 55] : 5 occurs 6 times
+   * @see https://edabit.com/challenge/DPyBbBDqziAdo9DRJ
+   * @param min
+   * @param max
+   * @param digit
+   * @return
+   */
+  public static int digitOccurrences(int min, int max, int digit) {
+    StringBuilder sb = new StringBuilder();
+    for (int i = min; i <= max; i++) {
+      sb.append(String.valueOf(i));
+    }
+    String nonDigit = sb.toString().replace(String.valueOf(digit), "");
+    return sb.length() - nonDigit.length();
+
+    // Other Solution
+    /* StringBuilder sb = new StringBuilder();
+    for (int i = min; i <= max; i++) {
+      sb.append(String.valueOf(i));
+    }
+    int cnt = 0;
+    for (int i = 0; i < sb.length(); i++) {
+      if (String.valueOf(sb.charAt(i)).equals(String.valueOf(digit))) {
+        cnt++;
+      }
+    }
+    return cnt; */
+  }
 }
