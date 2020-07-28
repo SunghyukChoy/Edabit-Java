@@ -570,4 +570,17 @@ public class Program {
     }
     return timeArr;
   }
+
+  /**
+   * Wurst Is Better
+   * 해당하는 문자열을 "Wurst"로 바꾸기
+   * @see https://edabit.com/challenge/o9nESkofDnfXJ5m7a
+   * @param s
+   * @return
+   */
+  public static String wurstIsBetter(String s) {
+    return s.replaceAll("(?i)Kielbasa|Chorizo|Moronga|Salami|Sausage|Andouille|Naem|Merguez|Gurka|Snorkers|Pepperoni",
+        "Wurst");
+    // (?i) : 정규식. 대소문자 구별하지 않음.
+  }
 }
