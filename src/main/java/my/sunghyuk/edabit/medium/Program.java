@@ -583,4 +583,21 @@ public class Program {
         "Wurst");
     // (?i) : 정규식. 대소문자 구별하지 않음.
   }
+
+  /**
+   * Sort Numbers in Descending Order
+   * 정수 num 자릿수의 숫자들을 내림차순 수로 리턴
+   * @see https://edabit.com/challenge/JfertgG5phtnvDNpD
+   * @param num
+   * @return
+   */
+  public static int sortDesc(final int num) {
+    char[] numCharArr = String.valueOf(num).toCharArray();
+    Arrays.sort(numCharArr);
+    StringBuilder sb = new StringBuilder();
+    for (int i = numCharArr.length - 1; i >= 0; i--) {
+      sb.append(numCharArr[i]);
+    }
+    return Integer.parseInt(sb.toString());
+  }
 }
