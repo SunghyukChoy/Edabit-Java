@@ -2189,4 +2189,46 @@ public class Challenge {
     }
     return String.join(" ", words);
   }
+
+  /**
+   * Count Palindrome Numbers in a Range
+   * Palindromes : 문자열의 처음과 끝이 거울을 보듯 대칭되는 문자열. 범위 안의 palindrome 개수 리턴.
+   * @see https://edabit.com/challenge/cAyse5aq4n4MagmYA
+   * @param num1
+   * @param num2
+   * @return
+   */
+  public static int countPalindromes(int num1, int num2) {
+    int cnt = 0;
+    for (int i = num1; i <= num2; i++) {
+      if (Helper.isPalindrome(String.valueOf(i))) {
+        cnt++;
+      }
+    }
+    return cnt;
+
+    // Other Solution
+    /* int cnt = 0;
+    while (num1 <= num2) {
+      int copyNum1 = num1;
+      int reverseNum = 0;
+    
+      while (copyNum1 != 0) {
+        reverseNum = (reverseNum * 10) + (copyNum1 % 10);
+        copyNum1 /= 10;
+        // 숫자를 역순으로 출력. 값이 12321라면
+        // reverseNum = (reverseNum * 10) + (copyNum1 % 10);
+        // 0 = 0 + 1 copyNum1 = 1232
+        // 12 = 10 + 2 copyNum1 = 123
+        // 123 = 120 + 3 copyNum1 = 12
+        // 1232 = 1230 + 2 copyNum1 = 1
+        // 12321 = 12320 + 1 copyNum1 = 0
+      }
+      if (reverseNum == num1) {
+        cnt++;
+      }
+      num1++;
+    }
+    return cnt; */
+  }
 }
