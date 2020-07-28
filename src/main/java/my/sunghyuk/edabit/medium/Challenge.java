@@ -11,6 +11,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.IntStream;
 
+import my.sunghyuk.edabit.Helper;
+
 public class Challenge {
   /**
    * Algorithms II: The Euclidean Algorithm
@@ -2063,7 +2065,78 @@ public class Challenge {
   public static String isApocalyptic(int number) {
     // Other Solution
     String[] results = { "", "Safe", "Single", "Double", "Triple" };
-    int size = new java.math.BigInteger("2").pow(number).toString().split("666").length;
+    int size = new BigInteger("2").pow(number).toString().split("666").length;
     return results[size];
+
+    // Other Solution
+    /* String numStr = new BigInteger("2").pow(number).toString();
+    int length = numStr.length();
+    int count = (length - numStr.replace("666", "").length()) / 3;
+    switch (count) {
+      case 1:
+        return "Single";
+      case 2:
+        return "Double";
+      case 3:
+        return "Triple";
+      default:
+        return "Safe"; 
+    } */
+  }
+
+  /**
+   * The Karaca's Encryption Algorithm
+   * 1) 문자열 word를 거꾸로 출력
+   * 2) 그 문자열에서 모음을 해당하는 숫자로 변환 (a, e, i, o, u를 각각 0, 1, 2, 2, 3으로 변환)
+   * 3) 그 문자열 끝에 "aca" 붙임.
+   * encrypt("burak") ➞ "k0r3baca"
+   * @see https://edabit.com/challenge/SmL32HnRnmsCqGC5g
+   * @param word
+   * @return
+   */
+  public static String encrypt(String word) {
+    /* char[] charArr = word.toCharArray();
+    for (int i = 0; i < charArr.length; i++) {
+      if (Helper.isVowel(charArr[i])) {
+        charArr[i] = vowelToNumChar(charArr[i]);
+      }
+    }
+    return new StringBuilder(String.valueOf(charArr)).reverse().append("aca").toString(); */
+
+    // Other Solution
+    /* Map<String, String> map = new HashMap<>();
+    map.put("a", "0");
+    map.put("e", "1");
+    map.put("i", "2");
+    map.put("o", "2");
+    map.put("u", "3");
+    
+    StringBuilder sb = new StringBuilder();
+    for (int i = word.length() - 1; i >= 0; i--) {
+      if (Helper.isVowel(word.charAt(i))) {
+        sb.append(map.get(String.valueOf(word.charAt(i))));
+      } else {
+        sb.append(word.charAt(i));
+      }
+    }
+    return sb.append("aca").toString(); */
+
+    // Other Solution
+    String newWord = new StringBuilder(word).reverse().toString();
+    newWord = newWord.replace("a", "0").replace("e", "1").replace("i", "2").replace("o", "2").replace("u", "3");
+    return newWord.concat("aca");
+  }
+
+  private static char vowelToNumChar(char ch) {
+    switch (ch) {
+      case 'a':
+        return '0';
+      case 'e':
+        return '1';
+      case 'u':
+        return '3';
+      default:
+        return '2';
+    }
   }
 }

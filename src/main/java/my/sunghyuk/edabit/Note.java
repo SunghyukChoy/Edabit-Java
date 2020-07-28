@@ -1,6 +1,7 @@
 package my.sunghyuk.edabit;
 
 import java.lang.reflect.Array;
+import java.math.BigInteger;
 import java.util.Arrays;
 
 public class Note {
@@ -141,5 +142,29 @@ public class Note {
     // replaceTest.replaceFirst(regex, replacement)
     System.out.println(replaceTest.replaceFirst("[.]", "/")); // "Uno/ Dos. Tres."
     // 정규식에 해당하는 첫 번째 문자만 바꿀 문자로 바꿈.    
+
+    System.out.println("==============================================");
+    // BigInteger 객체 생성 방법 세 가지
+    BigInteger two = new BigInteger("2"); // 문자열로 생성
+    BigInteger bi = new BigInteger("FFFF", 16); // n진수의 문자열로 생성
+    BigInteger bigNum = BigInteger.valueOf(1234567890); // 숫자로 생성
+    // 기본 사칙 연산
+    // .add(), .subtract(), .multiply(), .divide(), .remainder()
+    BigInteger addResult = two.add(BigInteger.valueOf(10));
+    System.out.println(addResult); // 12
+    // toString() : 문자열로 변환
+    String addResultStr = addResult.toString();
+    System.out.println(addResultStr); // "12"
+    // 기본 타입으로 변환
+    // .intValue(), .longValue(), .floatValue(), .doubleValue()
+    int intValue = bigNum.intValue();
+    System.out.println(intValue); // 1234567890
+
+    System.out.println("==============================================");
+    // char 배열을 String으로 변환
+    char[] charArr = new char[] { 'h', 'e', 'l', 'l', 'o' };
+    System.out.println(String.valueOf(charArr)); // hello
+    System.out.println(new String(charArr)); // hello
+    System.out.println(String.copyValueOf(charArr)); // hello
   }
 }
