@@ -2541,4 +2541,35 @@ public class Challenge {
 		// 								  1 + 1 + 0
 		// return 2;
 	}
+
+	/**
+	 * Total Volume
+	 * 각각의 일차원 요소들의 값들끼리 곱한 후 그 일차원 요소들의 곱한 값들끼리의 합 리턴
+	 * ([2, 3, 2], [6, 6, 7], [1, 2, 1]) ➞ 266
+	 * (2 x 3 x 2) + (6 x 6 x 7) + (1 x 2 x 1) = 12 + 252 + 2 = 266.
+	 * 일차원 배열의 길이는 3. 이차원 배열의 길이는 최소 1.
+	 * @see https://edabit.com/challenge/ibJLbwfkTbP9229Kt
+	 * @param part
+	 * @return
+	 */
+	public static int totalVolume(int[][] part) {
+		int multiplySum = 1;
+		int sumOfMultipleSum = 0;
+		for (int[] oneDemensionArr : part) { // 이차원 배열에서 일차원 배열 하나씩 꺼내옴
+			for (int value : oneDemensionArr) { // 일차원 배열에서 요소 하나씩 꺼내옴
+				multiplySum *= value;
+			}
+			sumOfMultipleSum += multiplySum; // 일차원 배열 요소끼리 곱의 결과를 합 변수에 저장하고
+			multiplySum = 1;
+			// 일차원에서 요소가 다 나온 후 multiplySum 변수 다시 초기화. 미 초기화 시 값을 그대로 가지고 다음 일차원 요소의 값과 곱함.
+		}
+		return sumOfMultipleSum;
+
+		// Other Solution
+		/* int result = 0;
+		for (int[] parts : part) {
+			result += parts[0] * parts[1] * parts[2];
+		}
+		return result; */
+	}
 }
