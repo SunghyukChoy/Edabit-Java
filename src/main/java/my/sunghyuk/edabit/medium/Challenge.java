@@ -2231,4 +2231,35 @@ public class Challenge {
     }
     return cnt; */
   }
+
+  /**
+   * Counting Adverbs
+   * 문장에서 부사(-ly로 끝나는 단어) 개수 리턴
+   * @see https://edabit.com/challenge/ZrsjThqzcwJYT95PQ
+   * @param sentence
+   * @return
+   */
+  public static int countAdverbs(String sentence) {
+    /* String[] words = sentence.replaceAll("[^a-zA-Z\\s]", "").split(" ");
+    int cnt = 0;
+    for (String word : words) {
+      if (word.endsWith("ly")) {
+        cnt++;
+      }
+    }
+    return cnt; */
+
+    // Other Solution
+    // String[] words = sentence.trim().split("\\p{Punct}?\\s");
+    String[] words = sentence.split(" ");
+    int count = 0;
+    for (int i = 0; i < words.length; i++) {
+      if (words[i].matches("\\w+ly\\p{Punct}?")) {
+        count++;
+        // \\w+ : [0-9a-zA-Z_] 문자 1개 이상
+        // p{Punct}? : 키보드로 입력 가능한 특수문자 0개 이상
+      }
+    }
+    return count;
+  }
 }
