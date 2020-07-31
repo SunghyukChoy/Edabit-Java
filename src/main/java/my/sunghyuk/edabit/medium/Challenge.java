@@ -2262,4 +2262,28 @@ public class Challenge {
     }
     return count;
   }
+
+  /**
+   * Split a String Based on Vowels and Consonants
+   * 문자열에서 모음을 문자열의 앞으로, 자음은 그 뒤에 붙임. 특수문자, 공백은 자음 취급
+   * split("What's the time?") ➞ "aeieWht's th tm?"
+   * @see https://edabit.com/challenge/jfRHGwHMZcnzZm9JL
+   * @param str
+   * @return
+   */
+  public static String split(String str) {
+    /* String nonVowel = str.replaceAll("[aeiou]", "");
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < str.length(); i++) {
+      if (Helper.isVowel(str.charAt(i))) {
+        sb.append(str.charAt(i));
+      }
+    }
+    return String.valueOf(sb.append(nonVowel)); */
+
+    // Other Solution
+    // String vowel = str.replaceAll("[^aeiou]", "");
+    // String nonVowel = str.replaceAll("[aeiou]", "");
+    return str.replaceAll("[^aeiou]", "") + str.replaceAll("[aeiou]", "");
+  }
 }
