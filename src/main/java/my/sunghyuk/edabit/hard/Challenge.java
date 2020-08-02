@@ -38,4 +38,24 @@ public class Challenge {
     // Other Solution
     return Arrays.toString(arr).contains("7") ? "Boom!" : "there is no 7 in the array";
   }
+
+  /**
+   * Consecutive Numbers
+   * 배열의 요소가 연속된 숫자인가. 연속적인 요소가 아니거나 중복 요소가 있으면 false반환.
+   * @see https://edabit.com/challenge/Md6usCHQ7Xsj2fQi3
+   * @param arr
+   * @return
+   */
+  public static boolean cons(int[] arr) {
+    Arrays.sort(arr);
+    if (arr[arr.length - 1] - arr[0] != arr.length - 1) {
+      return false;
+    }
+    for (int i = 0; i < arr.length - 1; i++) {
+      if (arr[i + 1] - arr[i] != 1) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
