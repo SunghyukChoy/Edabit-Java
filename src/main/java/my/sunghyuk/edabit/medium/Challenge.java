@@ -2286,4 +2286,20 @@ public class Challenge {
     // String nonVowel = str.replaceAll("[aeiou]", "");
     return str.replaceAll("[^aeiou]", "") + str.replaceAll("[aeiou]", "");
   }
+
+  /**
+   * Instant JAZZ
+   * 문자열 배열 요소에 "7" 붙여서 출력. 이미 붙어있는 문자열이라면 그대로 출력.
+   * @see https://edabit.com/challenge/r7JegKpMpntfDyy6D
+   * @param arr
+   * @return
+   */
+  public static String[] jazzify(String[] arr) {
+    for (int i = 0; i < arr.length; i++) {
+      if (!arr[i].endsWith("7")) {
+        arr[i] += "7";
+      }
+    }
+    return arr;
+  }
 }
