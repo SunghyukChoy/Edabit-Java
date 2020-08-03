@@ -24,6 +24,26 @@ public class Helper {
     return true;
   }
 
+  // 이전 소수 구하기 메소드
+  public static int getPreviousPrime(int num) {
+    while (true) {
+      num--;
+      if (isPrime(num)) {
+        return num;
+      }
+    }
+  }
+
+  // 다음 소수 구하기 메소드
+  public static int getNextPrime(int num) {
+    while (true) {
+      num++;
+      if (isPrime(num)) {
+        return num;
+      }
+    }
+  }
+
   // Palindrome 검사 메소드
   public static boolean isPalindrome(String str) {
     for (int i = 0; i < str.length() / 2; i++) {

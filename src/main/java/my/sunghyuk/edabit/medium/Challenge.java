@@ -2302,4 +2302,49 @@ public class Challenge {
     }
     return arr;
   }
+
+  /**
+   * Primal Strength
+   * 주어진 소수와 이전 소수의 차, 주어진 소수와 다음 소수의 차가 같으면 "Balanced"
+   * 주어진 소수와 이전 소수의 차, 주어진 소수와 다음 소수의 차에서 후자의 경우가 더 크면 "Weak"
+   * 주어진 소수와 이전 소수의 차, 주어진 소수와 다음 소수의 차에서 전자의 경우가 더 크면 "Strong"
+   * @see https://edabit.com/challenge/ted7T8hrioompcZAn
+   * @param n
+   * @return
+   */
+  public static String primalStrength(int n) {
+
+    /* if (Helper.getNextPrime(n) - n > n - Helper.getPreviousPrime(n)) {
+      return "Weak";
+    }
+    if (Helper.getNextPrime(n) - n < n - Helper.getPreviousPrime(n)) {
+      return "Strong";
+    }
+    return "Balanced"; */
+
+    // Other Solution
+    /* for (int nextNum = n + 1, previousNum = n - 1; true; previousNum--, nextNum++) {
+      if (Helper.isPrime(nextNum) && Helper.isPrime(previousNum)) {
+        // 두 조건이 모두 참인 경우 == 두 소수 모두 같은 거리에 있음
+        return "Balanced";
+      } else if (Helper.isPrime(nextNum) && !Helper.isPrime(previousNum)) {
+        // 다음 수가 소수이고 이전 수는 소수가 아닌 경우 == 다음 소수가 더 가까운 거리에 있음
+        return "Strong";
+      } else if (!Helper.isPrime(nextNum) && Helper.isPrime(previousNum)) {
+        // 다음 수가 소수가 아니고 이전 수는 소수인 경우 == 이전 소수가 더 가까운 거리에 있음
+        return "Weak";
+      }
+    } */
+
+    // Other Solution
+    int nextPrime = n + 1;
+    int previousPrime = n - 1;
+    while (!Helper.isPrime(nextPrime)) {
+      nextPrime++;
+    }
+    while (!Helper.isPrime(previousPrime)) {
+      previousPrime--;
+    }
+    return (nextPrime - n > n - previousPrime) ? "Weak" : (n - previousPrime > nextPrime - n) ? "Strong" : "Balanced";
+  }
 }

@@ -5,6 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Test {
+
+  private static int calculateGugudan(int i, int j) {
+    return (i + 1) * (j + 1);
+  }
+
   public static void main(String[] ar) {
 
     // int a = 4 / 10;
@@ -85,23 +90,21 @@ public class Test {
     // }
 
     // Arrays.sort(test);
-    Integer[] test = { 7, 3, 5, 1 };
+    /* Integer[] test = { 7, 3, 5, 1 };
     List<Integer> list = Arrays.asList(7, 3, 5, 1);
     
     List<Integer> list2 = Arrays.asList(test);
     
-
     for (Integer item : list) {
       System.out.println(item);
     }
-
+    
     for (Integer item : list2) {
       System.out.println(item);
-    }
+    } */
 
-  }
-
-  private static int calculateGugudan(int i, int j) {
-    return (i + 1) * (j + 1);
+    int prime = 751;
+    System.out.println(prime + " 이전 소수 : " + Helper.getPreviousPrime(prime));
+    System.out.println(prime + " 다음 소수 : " + Helper.getNextPrime(prime));
   }
 }
