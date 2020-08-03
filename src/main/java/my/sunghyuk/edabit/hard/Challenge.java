@@ -1,5 +1,7 @@
 package my.sunghyuk.edabit.hard;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 public class Challenge {
@@ -47,12 +49,51 @@ public class Challenge {
    * @return
    */
   public static boolean cons(int[] arr) {
-    Arrays.sort(arr);    
+    Arrays.sort(arr);
     for (int i = 0; i < arr.length - 1; i++) {
       if (arr[i + 1] - arr[i] != 1) {
         return false;
       }
     }
     return true;
+  }
+
+  /**
+   * 24-Hour Time
+   * 12시간 표시 문자열을 24시간 표시 문자열로 변환.
+   * convertTime(“07:05:45PM”) ➞ “19:05:45”
+   * @see https://edabit.com/challenge/bPSi354LyfXhA6RXf
+   * @param s
+   * @return
+   */
+  public static String convertTime(String s) {
+    /* String hour = s.substring(0, 2);
+    if (s.endsWith("AM")) {
+      if (hour.equals("12")) {
+        hour = String.format("%02d", Integer.parseInt(hour) - 12);
+      } else {
+        return s.substring(0, s.length() - 2);
+      }
+    }
+    if (s.endsWith("PM")) {
+      if (hour.equals("12")) {
+        return s.substring(0, s.length() - 2);
+      } else {
+        hour = String.valueOf(Integer.parseInt(hour) + 12);
+      }
+    }
+    return hour + s.substring(2, s.length() - 2); */
+
+    // Other Solution
+    /* DateTimeFormatter form = DateTimeFormatter.ofPattern("hh:mm:ssa");
+    return LocalTime.parse(s, form).toString(); */
+
+    // Other Solution
+    int hour = Integer.parseInt(s.substring(0, 2)) % 12;
+    boolean isAM = s.substring(8).equals("AM");
+    return String.format("%02d%s", (hour + (isAM ? 0 : 12)) % 24, s.substring(2, 8));
+    // String.format("%02d%s", 정수, 문자열) 
+    // "%02d" : 해당 위치의 정수를 앞은 0으로 채우는 2자리수 정수로 변환
+    // "%s" : 해당 위치의 문자열을 문자열로 변환.
   }
 }
