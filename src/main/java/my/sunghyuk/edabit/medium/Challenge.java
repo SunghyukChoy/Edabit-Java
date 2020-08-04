@@ -2347,4 +2347,25 @@ public class Challenge {
     }
     return (nextPrime - n > n - previousPrime) ? "Weak" : (n - previousPrime > nextPrime - n) ? "Strong" : "Balanced";
   }
+
+  /**
+   * Find the Primorial
+   * n번째 소수까지 곱한 값 리턴
+   * @see https://edabit.com/challenge/Tyzp6S67dtXPAAQan
+   * @param n
+   * @return
+   */
+  public static int primorial(int n) {
+    int multiplyPrimes = 1;
+    int multiplyCnt = 0;
+    int num = 1;
+    while (multiplyCnt != n) {
+      if (Helper.isPrime(num)) {
+        multiplyPrimes *= num;
+        multiplyCnt++;
+      }
+      num++;
+    }
+    return multiplyPrimes;
+  }
 }
