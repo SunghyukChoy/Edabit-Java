@@ -2368,4 +2368,80 @@ public class Challenge {
     }
     return multiplyPrimes;
   }
+
+  /**
+   * Is a String Stretched?
+   * str1은 str2의 Stretched String인가. Stretched String은 str2의 각 문자가 같은 개수로 반복된 문자열.
+   * ("pppaaannndddaaa", "panda") ➞ true. ("sssshhiipp", "ship") ➞ false
+   * @see https://edabit.com/challenge/Cqemt6ySdA883Td2F
+   * @param str1
+   * @param str2
+   * @return
+   */
+  public static boolean isStretched(String str1, String str2) {
+
+    // 오답. 문자의 정확한 반복횟수를 알아야 함.
+    /* if (str2.length() == 1) {
+      return true;
+    }
+    
+    int firstCharRepeatCount = 0;
+    int secondCharRepeatCount = 0;
+    
+    for (int i = 0; i < str1.length();i++) {
+      if (str1.charAt(i) == str2.charAt(0)) {
+        firstCharRepeatCount++;
+      } else if (str1.charAt(i) == str2.charAt(1)) {
+        secondCharRepeatCount++;
+      } else {
+        break;
+      }
+    }
+    if (firstCharRepeatCount != secondCharRepeatCount) {
+      return false;
+    }    
+    return isStretched(str1.substring(firstCharRepeatCount), str2.substring(1)); */
+
+    // Other Solution
+    /* int i = 0;
+    while (str1.charAt(i) == str1.charAt(++i));
+    String removeRepeat = str1.replaceAll("([\\w]){" + i + "}", "$1");    
+    return removeRepeat.equals(str2); */
+
+    // Other Solution    
+    int firstCharRepeatCount = 1;
+    int i = 0;
+
+    // 첫 번째 문자의 반복 횟수를 구함
+    while (str1.charAt(i) == str1.charAt(i + 1)) {
+      firstCharRepeatCount++;
+      i++;
+    }
+
+    // str2의 첫번째 문자의 반복 횟수를 구하고 str1이 그 반복 횟수만큼 진행되지 않으면 false를 반환하는 로직.
+    // 반복 횟수가 일정하다면 str2.charAt(j) == str1.charAt(str2.charAt(j)가 시작되는 인덱스 ~ 반복 종료되는 인덱스)임.
+    for (int j = 1; j < str2.length(); j++) {
+      for (int k = 0; k < firstCharRepeatCount; k++) {
+        // k = str1에서 반복되는 문자의 인덱스
+
+        //      012345678   v는 if에서 체크하는 부분
+        // str1 pppaaannn   str2  pan
+        // j=0  vvv               v
+        // j=1     vvv             v
+        // j=2        vvv           v
+        if (str2.charAt(j) != str1.charAt(j * firstCharRepeatCount + k)) {
+          // 첫 번째 문자의 반복 횟수가 3이라고 가정했을 때
+          // str2.charAt(1) == str1.charAt(4), str1.charAt(5), str1.charAt(6) 이어야 stretched string임
+          return false;
+        }
+      }
+    }
+
+    if (str2.length() * firstCharRepeatCount < str1.length()) {
+      return false;
+    }
+    // str1의 길이 >  (str2 * 일정한 반복 횟수) 는 str1이 Stretched String이 아님을 의미.
+
+    return true;    
+  }
 }
