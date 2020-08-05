@@ -2419,7 +2419,7 @@ public class Challenge {
     }
 
     // str2의 첫번째 문자의 반복 횟수를 구하고 str1이 그 반복 횟수만큼 진행되지 않으면 false를 반환하는 로직.
-    // 반복 횟수가 일정하다면 str2.charAt(j) == str1.charAt(str2.charAt(j)가 시작되는 인덱스 ~ 반복 종료되는 인덱스)임.
+    // 반복 횟수가 일정하다면 str2.charAt(j) == str1.charAt(str2.charAt(j)가 시작되어야할 인덱스 ~ 반복 종료되는 인덱스)임.
     for (int j = 1; j < str2.length(); j++) {
       for (int k = 0; k < firstCharRepeatCount; k++) {
         // k = str1에서 반복되는 문자의 인덱스
@@ -2431,7 +2431,7 @@ public class Challenge {
         // j=2        vvv           v
         if (str2.charAt(j) != str1.charAt(j * firstCharRepeatCount + k)) {
           // 첫 번째 문자의 반복 횟수가 3이라고 가정했을 때
-          // str2.charAt(1) == str1.charAt(4), str1.charAt(5), str1.charAt(6) 이어야 stretched string임
+          // str2.charAt(1) == str1.charAt(3), str1.charAt(4), str1.charAt(5) 이어야 stretched string임
           return false;
         }
       }

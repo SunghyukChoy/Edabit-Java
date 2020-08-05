@@ -4,6 +4,8 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
+import my.sunghyuk.edabit.Helper;
+
 public class Challenge {
 
   /**
@@ -95,5 +97,22 @@ public class Challenge {
     // String.format("%02d%s", 정수, 문자열) 
     // "%02d" : 해당 위치의 정수를 앞은 0으로 채우는 2자리수 정수로 변환
     // "%s" : 해당 위치의 문자열을 문자열로 변환.
+  }
+
+  /**
+   * How Many "Prime Numbers" Are There?
+   * 주어진 정수 num까지의 소수 개수 리턴
+   * @see https://edabit.com/challenge/z8vvSdWjAPu5ufBuR
+   * @param num
+   * @return
+   */
+  public static int primeNumbers(int num) {
+    int primeCnt = 0;
+    for (int i = 0; i <= num; i++) {
+      if (Helper.isPrime(i)) {
+        primeCnt++;
+      }
+    }
+    return primeCnt;
   }
 }
