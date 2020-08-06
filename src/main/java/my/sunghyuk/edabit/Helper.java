@@ -53,4 +53,14 @@ public class Helper {
     }
     return true;
   }
+
+  // 정수의 각 자리의 값을 곱한 값 구하기 메소드
+  public static long getMultiplyDigit(long num) {
+    long multiplyDigit = 1;
+    while (num != 0) {
+      multiplyDigit *= num % 10;
+      num /= 10;
+    }
+    return multiplyDigit;
+  }
 }

@@ -2442,6 +2442,42 @@ public class Challenge {
     }
     // str1의 길이 >  (str2 * 일정한 반복 횟수) 는 str1이 Stretched String이 아님을 의미.
 
-    return true;    
+    return true;
   }
+
+  /**
+   * Persistence
+   * 정수 num의 각 자리의 값을 곱했을 때 num보다 작은 수를 반환함. 반환된 수를 다시 똑같은 과정을 거쳐서 계속해서 작아지는 값을 구할 때, 한 자리수가 되는 값이 나오기까지의 step을 리턴
+   * persistence(347) ➞ 3 // 3*4*7 = 84. 8*4 = 32. 3*2 = 6. 6이 나오기까지 3 step.
+   * @see https://edabit.com/challenge/4JMgg8Fbmb3qnzS8B
+   * @param num
+   * @return
+   */
+  public static int persistence(long num) {
+    // num의 값을 가지고 조작할 변수. 나머지값끼리 곱함. 곱한 값을 담을 변수. 그 과정을 거치면 step++. (num > multiplyDigit). 그 multiplyDigit을 다시 돌림. 조작하는 값에 multiplyDigit 대입. 조작하는 값이 한 자리면 break.
+    /* int step = 0;
+    long copyNum = num;
+    while (copyNum >= 10) {
+      long multiplyDigit = 1;
+      // 나머지값들끼리 곱하고 난 뒤 다음 단계로 넘어갈 때 다시 초기화.
+      // 큰 수를 조작하므로 long으로 선언
+      while (copyNum != 0) {
+        multiplyDigit *= copyNum % 10;
+        copyNum /= 10;
+      }      
+      step++;
+      copyNum = multiplyDigit;
+    }
+    return step; */
+
+    int step = 0;
+    long copyNum = num;
+    long multiplyDigit = 1;
+    while (copyNum >= 10) {
+      multiplyDigit = Helper.getMultiplyDigit(copyNum);
+      step++;
+      copyNum = multiplyDigit;
+    }
+    return step;
+  } 
 }
