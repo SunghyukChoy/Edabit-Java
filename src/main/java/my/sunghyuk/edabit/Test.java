@@ -106,5 +106,9 @@ public class Test {
     int prime = 751;
     System.out.println(prime + " 이전 소수 : " + Helper.getPreviousPrime(prime));
     System.out.println(prime + " 다음 소수 : " + Helper.getNextPrime(prime));
+
+    char ch = ' ';
+    System.out.println(Character.isUpperCase(ch));
+    System.out.println(Character.isLowerCase(ch));
   }
 }

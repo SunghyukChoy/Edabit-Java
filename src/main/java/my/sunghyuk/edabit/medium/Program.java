@@ -600,4 +600,26 @@ public class Program {
     }
     return Integer.parseInt(sb.toString());
   }
+
+  /**
+  * AlTeRnAtInG cApS
+  * 문자열을 "대소대소대소" 형태로 리턴. 첫 문자는 대문자로 시작. 공백은 "대소대소" 조건에 포함하지 않음. 
+  * alternatingCaps("OMG this website is awesome!") ➞ "OmG tHiS wEbSiTe Is AwEsOmE!"
+  * @see https://edabit.com/challenge/9Y83kppxQeMbvtDtF
+  * @param s
+  * @return
+  */
+  public static String alternatingCaps(String s) {
+    StringBuilder sb = new StringBuilder();
+    int idx = 0;
+    for (int i = 0; i < s.length(); i++) {
+      if (!Character.isLetter(s.charAt(i))) {
+        sb.append(s.charAt(i));
+        continue;
+      }
+      idx++; // 공백 등을 제외한 알파벳만 관리하는 인덱스
+      sb.append(idx % 2 != 0 ? Character.toUpperCase(s.charAt(i)) : Character.toLowerCase(s.charAt(i)));
+    }
+    return sb.toString();
+  }
 }
