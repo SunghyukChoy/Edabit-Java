@@ -2507,4 +2507,24 @@ public class Challenge {
     }
     return sb.toString().trim();
   }
+
+  /**
+   * Letter Distance
+   * 두 문자열에서 같은 자리에 있는 문자들의 차를 구한 후 그 차들의 합을 리턴
+   * 두 문자열의 길이가 다르다면 길이의 차도 위의 결과에 더하여 리턴
+   * 대문자 존재할 수 있음.
+   * @see https://edabit.com/challenge/Wr5YbkQakb6qh8Gax
+   * @param str1
+   * @param str2
+   * @return
+   */
+  public static int letterDistance(String str1, String str2) {
+    int distanceSum = 0;
+    for (int i = 0; i < Math.min(str1.length(), str2.length()); i++) {
+      if (str1.charAt(i) != str2.charAt(i)) {
+        distanceSum += Math.abs(str1.charAt(i) - str2.charAt(i));
+      }
+    }
+    return distanceSum + Math.abs(str1.length() - str2.length());
+  }
 }
