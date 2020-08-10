@@ -2479,5 +2479,32 @@ public class Challenge {
       copyNum = multiplyDigit;
     }
     return step;
-  } 
+  }
+
+  /**
+   * String Flips
+   * 1 )매개변수 spec이 "word"이면 str 문장을 이루는 단어의 순서는 유지하면서 단어의 문자들을 역순으로,
+   * 2) 매개변수 spec이 "sentence"이면 str 문장을 이루는 단어의 순서는 역순, 단어를 이루는 문자들은 그대로
+   * @see https://edabit.com/challenge/uemLKqbbbfqvwB8ke
+   * @param str
+   * @param spec
+   * @return
+   */
+  public static String flip(String str, String spec) {
+    String[] wordsArr = str.split(" ");
+
+    if (spec.equals("word")) {
+      StringBuilder sb = new StringBuilder();
+      for (String word : wordsArr) {
+        sb.append(new StringBuilder(word).reverse().toString()).append(" ");
+      }
+      return sb.toString().trim();
+    }
+
+    StringBuilder sb = new StringBuilder();
+    for (int i = wordsArr.length - 1; i >= 0; --i) {
+      sb.append(wordsArr[i]).append(" ");
+    }
+    return sb.toString().trim();
+  }
 }
