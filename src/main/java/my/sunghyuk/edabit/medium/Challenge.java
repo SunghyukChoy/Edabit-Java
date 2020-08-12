@@ -2546,4 +2546,37 @@ public class Challenge {
     }
     return multiplyNums;
   }
+
+  /**
+   * Remove Trailing and Leading Zeros
+   * 문자열로 주어진 숫자에서 숫자 앞의 0과 소수점 아래의 의미 없는 0 제거
+   * @see https://edabit.com/challenge/mc6KcMGkrSWP88dGu
+   * @param n
+   * @return
+   */
+  public static String removeLeadingTrailing(String n) {
+
+    int dotIndex = n.indexOf(".");
+    if (dotIndex == -1) {
+      return String.valueOf(Integer.parseInt(n));
+    }
+
+    String[] splitNum = n.split("\\.");
+    splitNum[0] = String.valueOf(Integer.parseInt(splitNum[0]));
+
+    if (Integer.parseInt(splitNum[1]) == 0) {
+      n = splitNum[0];
+      // return String.valueOf(Integer.parseInt(n));
+      return n;
+    } else {
+      n = String.join(".", splitNum);
+      return String.valueOf(Double.parseDouble(n));
+    }
+
+    // System.out.println("revisded n : " + n);
+    // System.out.println("Double form of n : " + Double.parseDouble(n));
+    // System.out.println("submit result : " + String.valueOf(Double.parseDouble(n)));
+    // return String.valueOf(Double.parseDouble(n));
+
+  }
 }
