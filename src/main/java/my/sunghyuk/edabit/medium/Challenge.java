@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -2526,5 +2527,23 @@ public class Challenge {
       }
     }
     return distanceSum + Math.abs(str1.length() - str2.length());
+  }
+
+  /**
+   * Combinations
+   * 주어진 num은 각 그룹의 아이템 개수. 이 아이템들을 나열할 수 있는 방법의 수 리턴
+   * @see https://edabit.com/challenge/wp3vZEmhEgCY42WAZ
+   * @param num
+   * @return
+   */
+  public static int combinations(int... num) {
+    // type... : 가변인자. 매개변수를 불러오는 방법은 배열과 똑같음.
+    int multiplyNums = 1;
+    for (int i = 0; i < num.length; i++) {
+      if (num[i] != 0) {
+        multiplyNums *= num[i];
+      }
+    }
+    return multiplyNums;
   }
 }
