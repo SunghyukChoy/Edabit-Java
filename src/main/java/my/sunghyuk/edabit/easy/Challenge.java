@@ -18,34 +18,31 @@ public class Challenge {
 
 	/**
 	 * Check if a Number is Prime
-	 * 
+	 * num이 소수인가. 숫자 1은 소수에서 제외
 	 * @see https://edabit.com/challenge/ePj2zup56kZrRbhDX
 	 * @param num
 	 * @return
 	 */
-	public static boolean isPrimeByChoi(int num) {
-		// 1. num이 소수이면 return true;
-		// 2. 숫자 1은 소수에서 제외
-		boolean flag = true;
+	public static boolean isPrime(int num) {
+		/* boolean flag = true;
 		if (num == 1) {
 			return false;
 		}
-
+		
 		for (int i = 2; i < num; i++) {
 			if (num % i == 0) { // num이 어떠한 숫자(i)로 나누어지면 소수가 아님.
 				flag = false;
 				break; // 어떠한 숫자에서 나누어저 false를 반환하면 더 이상 진행할 필요가 없으므로 break
-
 			} else { // 자기 자신으로만 나누어지면 소수
 				flag = true;
 			}
 		}
-		return flag;
-	}
+		return flag; */
 
-	public static boolean isPrime(int num) {
-		if (num == 1)
+		// Other Solution
+		if (num == 1) {
 			return false;
+		}
 
 		for (int i = 2; i <= Math.sqrt(num); i++) {
 			// Math.sqrt(100.0) -> 10.0 반환 double 타입.
@@ -60,49 +57,43 @@ public class Challenge {
 
 	/**
 	 * The 3 Programmers Problem
-	 * 
+	 * 세 개의 수 중 가장 큰 값 - 가장 작은 값 리턴
 	 * @see https://edabit.com/challenge/akHQKSkHT26TuA7Ka
 	 * @param one
 	 * @param two
 	 * @param three
 	 * @return
 	 */
-
-	// 첫 답안 제출.
-	// public static int programmers(int one, int two, int three) {
-	// int maxNum = 0;
-	// int minNum = 0;
-
-	// if (one >= two && one >= three) {
-	// maxNum = one;
-	// if (two >= three) {
-	// minNum = three;
-	// } else {
-	// minNum = two;
-	// }
-	// } else if (two >= one && two >= three) {
-	// maxNum = two;
-	// if (one >= three) {
-	// minNum = three;
-	// } else {
-	// minNum = one;
-	// }
-	// } else if (three >= one && three >= two) {
-	// maxNum = three;
-	// if (one >= two) {
-	// minNum = two;
-	// } else {
-	// minNum = one;
-	// }
-	// }
-	// return maxNum - minNum;
-	// }
-
-	// 두 번째 제출 답안
 	public static int programmers(int one, int two, int three) {
-		// 1. 세 수 중 가장 큰 수와 가장 작은 수의 차.
+		/* int maxNum = 0;
+		int minNum = 0;
+		
+		if (one >= two && one >= three) {
+			maxNum = one;
+			if (two >= three) {
+				minNum = three;
+			} else {
+				minNum = two;
+			}
+		} else if (two >= one && two >= three) {
+			maxNum = two;
+			if (one >= three) {
+				minNum = three;
+			} else {
+				minNum = one;
+			}
+		} else if (three >= one && three >= two) {
+			maxNum = three;
+			if (one >= two) {
+				minNum = two;
+			} else {
+				minNum = one;
+			}
+		}
+		return maxNum - minNum; */
 
-		int[] arr = new int[] { one, two, three };
+		// Other Solution
+		/* int[] arr = new int[] { one, two, three };
 		int maxNum = Integer.MIN_VALUE;
 		// 0으로 초기화 시 매개변수 값으로 음수를 받게 되면 최대값은 0으로 출력될 수 있음.
 		// 정수형 값 중 제일 작은 값 : Integer.MIN_VALUE;
@@ -120,10 +111,20 @@ public class Challenge {
 			minNum = Math.min(minNum, arr[i]);
 			// 인덱스 돌면서 maxNum, minNum과의 비교, 각각 더 큰 수와 작은 수 반환
 		}
-		return maxNum - minNum;
+		return maxNum - minNum; */
+
+		// Other Solution
+		/* int[] arr = { one, two, three };
+		Arrays.sort(arr); // 오름차순으로 정렬. 값이 뒤로 갈수록 커짐.
+		return arr[2] - arr[0]; */
+
+		// Other Solution
+		int min = Math.min(one, Math.min(two, three));
+		int max = Math.max(one, Math.max(two, three));
+		return max - min;
+		// return Math.max(one, Math.max(two, three)) - Math.min(one, Math.min(two, three));
 	}
 
-	// by Seon
 	public static int programmers(int... arr) {
 		// ... : 가변인자. 전달 받는 매겨 변수의 개수 유동적.
 		int maxNum = Integer.MIN_VALUE;
@@ -135,55 +136,37 @@ public class Challenge {
 		return maxNum - minNum;
 	}
 
-	public static int programmersOtherSol1(int one, int two, int three) {
-		int min = Math.min(one, Math.min(two, three));
-		int max = Math.max(one, Math.max(two, three));
-		return max - min;
-		// return Math.max(one, Math.max(two, three)) - Math.min(one, Math.min(two,
-		// three));
-	}
-
-	public static int programmerOtherSol2(int one, int two, int three) {
-		int[] arr = { one, two, three };
-		Arrays.sort(arr); // 오름차순으로 정렬. 값이 뒤로 갈수록 커짐.
-		return arr[2] - arr[0];
-	}
-
 	/**
 	 * Equality of 3 Values
-	 * 
+	 * 세 개의 수 중 같은 수의 개수 리턴
 	 * @see https://edabit.com/challenge/nfc7H9CQFqJp54uEh
 	 * @param a
 	 * @param b
 	 * @param c
 	 * @return
 	 */
-	// public static int equal(int a, int b, int c) {
-	// // 1. 몇 개의 수가 같은 숫자인가..
-	// // 2. a,b 가 같으면 2 리턴, 같은 수가 없으면 0 리턴..
-
-	// boolean aEqualB = (a == b) ? true : false;
-	// boolean aEqualC = (a == c) ? true : false;
-	// boolean bEqaulC = (b == c) ? true : false;
-
-	// int result = 0;
-	// if (aEqualB || aEqualC) {
-	// if (aEqualC || aEqualB) {
-	// result = 3;
-	// } else {
-	// result = 2;
-	// }
-	// }
-	// if (bEqaulC) {
-	// result = 2;
-	// }
-	// return result;
-	// }
-
-	// by Seon
 	public static int equal(int a, int b, int c) {
-		int equalCount = a == b ? 2 : 0;
+		/* boolean aEqualB = a == b;
+		boolean aEqualC = a == c;
+		boolean bEqaulC = b == c;
+		
+		if (aEqualB && bEqaulC) {
+			return 3;
+		}
+		if (aEqualC && bEqaulC) {
+			return 3;
+		}
+		if (aEqualB && !aEqualC) {
+			return 2;
+		}
+		if (aEqualC && !bEqaulC) {
+			return 2;
+		}
+		return 0; */
 
+		// Other Solution
+		/* int equalCount = a == b ? 2 : 0;
+		
 		if (equalCount == 2 && b == c) {
 			equalCount = 3;
 		} else if (equalCount == 0 && b == c) {
@@ -191,84 +174,79 @@ public class Challenge {
 		} else if (equalCount == 0 && a == c) {
 			equalCount = 2;
 		}
-		return equalCount;
-	}
+		return equalCount; */
 
-	public static int equalOtherSol(int a, int b, int c) {
-		HashSet<Integer> equals = new HashSet<Integer>();
-
+		// Other Solution
+		/* HashSet<Integer> equals = new HashSet<>();
+		
 		equals.add(a);
 		equals.add(b);
 		equals.add(c);
-
+		
 		if (equals.size() == 1) {
 			return 3;
 		} else if (equals.size() == 2) {
 			return 2;
 		} else {
 			return 0;
+		} */
+
+		// Other Solution
+		if (a == b && b == c) {
+			return 3;
 		}
+		if (a == b || a == c || b == c) {
+			return 2;
+			// 위의 조건식에서 두 개의 식이 참인 경우 3을 리턴하므로 이 식에서는 참인 식은 1개밖에 나올 수 없음.
+		}
+		return 0;
 	}
 
 	/**
 	 * Repeating Letters N Times
-	 * 
+	 * 문자열 str에서 각 문자를 n번 반복
 	 * @see https://edabit.com/challenge/HDk4PC9w6KPS3X25W
 	 * @param str
 	 * @param n
 	 * @return
 	 */
 	public static String repeat(String str, int n) {
-		// 1. 문자열의 각 문자를 n번만큼 반복.
-		String repeatWord = "";
+		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < str.length(); i++) {
 			for (int j = 0; j < n; j++) {
-				repeatWord += str.charAt(i);
+				sb.append(str.charAt(i));
 			}
 		}
-		return repeatWord;
-	}
-
-	public static String repeatOtherSol(String str, int n) {
-		String[] splitedWord = str.split("");
-		StringBuilder builder = new StringBuilder();
-		for (String ch : splitedWord) {
-			for (int i = 0; i < n; i++) {
-				builder.append(ch);
-			}
-		}
-		return builder.toString();
+		return sb.toString();
 	}
 
 	/**
 	 * Basic Calculator
-	 * 
+	 * 주어진 num1, num2를 operator를 이용하여 계산
 	 * @see https://edabit.com/challenge/gyfsGx7KrGLscxFrD
 	 * @param num1
 	 * @param operator
 	 * @param num2
 	 * @return
 	 */
-	// public static int calculator(int num1, char operator, int num2) {
-	// int result = 0;
-	// if (operator == '+') {
-	// result = num1 + num2;
-	// } else if (operator == '-') {
-	// result = num1 - num2;
-	// } else if (operator == '*') {
-	// result = num1 * num2;
-	// } else if (operator == '/') {
-	// if (num2 == 0) {
-	// result = 0;
-	// } else {
-	// result = num1 / num2;
-	// }
-	// }
-	// return result;
-	// }
-
 	public static int calculator(int num1, char operator, int num2) {
-		// 1. operator를 이용하여 num1과 num2 연산.
+		/* int result = 0;
+		if (operator == '+') {
+			result = num1 + num2;
+		} else if (operator == '-') {
+			result = num1 - num2;
+		} else if (operator == '*') {
+			result = num1 * num2;
+		} else if (operator == '/') {
+			if (num2 == 0) {
+				result = 0;
+			} else {
+				result = num1 / num2;
+			}
+		}
+		return result; */
+
+		// Other Solution
 		switch (operator) {
 			case '+':
 				return num1 + num2;
@@ -285,15 +263,13 @@ public class Challenge {
 
 	/**
 	 * How Many Vowels?
-	 * 
+	 * 문자열에 있는 모음 개수 리턴
 	 * @see https://edabit.com/challenge/GBKphScsmDi9ek3ra
 	 * @param str
 	 * @return
 	 */
-	public static int getVowelsCount2(String str) {
-		// 1. 문자열에 있는 모음 갯수 리턴
+	public static int getVowelsCount(String str) {
 		int vowelsCount = 0;
-
 		for (int i = 0; i < str.length(); i++) {
 			if (str.charAt(i) == 'a' || str.charAt(i) == 'e' || str.charAt(i) == 'i' || str.charAt(i) == 'o'
 					|| str.charAt(i) == 'u') {
@@ -301,11 +277,9 @@ public class Challenge {
 			}
 		}
 		return vowelsCount;
-	}
 
-	// 반복되는 부분 반복문 이용하여 풀어보기
-	public static int getVowelsCount(String str) {
-		char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
+		// Other Solution
+		/* char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
 		int vowelsCount = 0;
 		for (int i = 0; i < str.length(); i++) {
 			for (int j = 0; j < vowels.length; j++) {
@@ -314,16 +288,13 @@ public class Challenge {
 				}
 			}
 		}
-		return vowelsCount;
-	}
+		return vowelsCount; */
 
-	public static int getVowelsCountOtherSol(String str) {
-		return str.replaceAll("[^aeiouAEIOU]", "").length();
-	}
+		// Other Solution
+		// return str.replaceAll("[^aeiouAEIOU]", "").length();
 
-	public static int getVowelsCountOtherSol2(String str) {
-		int vowelsCount = 0;
-
+		// Other Solution
+		/* int vowelsCount = 0;
 		for (int i = 0; i < str.length(); i++) {
 			switch (str.charAt(i)) {
 				case 'a':
@@ -331,30 +302,31 @@ public class Challenge {
 				case 'i':
 				case 'o':
 				case 'u':
-					vowelsCount++;
+					vowelsCount++; // case들이 같은 값을 갖는다면 한 줄로 써줌. case 조건절에 break.
 					break;
-				default:
+				default: // 모음이 아닌 경우
 					break;
 			}
 		}
-		return vowelsCount;
+		return vowelsCount; */
 	}
 
 	/**
 	 * Scoring System
-	 * 
+	 * A, B, C 각 문자의 갯수를 배열 형태로 리턴. "ABBACCCCAC" -> [3, 2, 5] 리턴
 	 * @see https://edabit.com/challenge/FRtmuYD26pcQWFR7k
 	 * @param str
 	 * @return
 	 */
-	// 1. A, B, C 각 문자의 갯수를 배열 형태로 리턴, A는 배열의 0번, B는 1번, C는 2번 인덱스
-	// 2. str = "ABBACCCCAC" -> [3, 2, 5] 리턴
-	public static int[] calculateScores(String str) {
+	private static final int INDEX_OF_A = 0;
+	private static final int INDEX_OF_B = 1;
+	private static final int INDEX_OF_C = 2;
 
-		int aCount = 0;
+	public static int[] calculateScores(String str) {
+		/* int aCount = 0;
 		int bCount = 0;
 		int cCount = 0;
-
+		
 		for (int i = 0; i < str.length(); i++) {
 			if (str.charAt(i) == 'A') {
 				aCount++;
@@ -364,21 +336,15 @@ public class Challenge {
 				cCount++;
 			}
 		}
-
-		int[] result = { aCount, bCount, cCount };
-		// call by value로 값 '0' 복사.
+		
+		int[] result = { aCount, bCount, cCount };				
 		// 자료형이 기본형인 경우 call by value
 		// 자료형이 클래스형인 경우 call by ref.
-		return result;
-	}
+		return result; */
 
-	private static final int INDEX_OF_A = 0;
-	private static final int INDEX_OF_B = 1;
-	private static final int INDEX_OF_C = 2;
-
-	public static int[] calculateScoresDevelop(String str) {
-		int[] result = { 0, 0, 0 };
-
+		// Other Solution
+		/* int[] result = { 0, 0, 0 };
+		
 		for (int i = 0; i < str.length(); i++) {
 			char ch = str.charAt(i);
 			switch (ch) {
@@ -395,12 +361,11 @@ public class Challenge {
 					break;
 			}
 		}
-		return result;
-	}
+		return result; */
 
-	public static int[] calculateScoresOtherSol(String s) {
-		return new int[] { s.replaceAll("[^A]", "").length(), s.replaceAll("[^B]", "").length(),
-				s.replaceAll("[^C]", "").length() };
+		// Other Solution
+		return new int[] { str.replaceAll("[^A]", "").length(), str.replaceAll("[^B]", "").length(),
+				str.replaceAll("[^C]", "").length() };
 	}
 
 	/**
