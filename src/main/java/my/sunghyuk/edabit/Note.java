@@ -1,6 +1,7 @@
 package my.sunghyuk.edabit;
 
 import java.lang.reflect.Array;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Arrays;
 
@@ -147,7 +148,11 @@ public class Note {
     // BigInteger 객체 생성 방법 세 가지
     BigInteger two = new BigInteger("2"); // 문자열로 생성
     BigInteger bi = new BigInteger("FFFF", 16); // n진수의 문자열로 생성
-    BigInteger bigNum = BigInteger.valueOf(1234567890); // 숫자로 생성
+    BigInteger biNum = BigInteger.valueOf(1234567890); // 숫자로 생성
+    // BigInger 기본 상수
+    BigInteger zero = BigInteger.ZERO;
+    BigInteger one = BigInteger.ONE;
+    BigInteger ten = BigInteger.TEN;
     // 기본 사칙 연산
     // .add(), .subtract(), .multiply(), .divide(), .remainder()
     BigInteger addResult = two.add(BigInteger.valueOf(10));
@@ -157,8 +162,39 @@ public class Note {
     System.out.println(addResultStr); // "12"
     // 기본 타입으로 변환
     // .intValue(), .longValue(), .floatValue(), .doubleValue()
-    int intValue = bigNum.intValue();
+    int intValue = biNum.intValue();
     System.out.println(intValue); // 1234567890
+
+    System.out.println("==============================================");
+    // 소수점을 저장할 수 있는 가장 크기가 큰 타입인 double은 소수점의 정밀도에 있어 한계가 있어 값이 유실될 수 있다. BigDecimal은 Java 언어에서 숫자를 정밀하게 저장하고 표현할 수 있는 유일한 방법이다.
+
+    // BigDecimal 객체 생성 방법 세 가지
+    BigDecimal bdNum1 = new BigDecimal(0.01);
+    // double 타입의 값으로 그대로 초기화 하면 이진수의 근사치를 가지에 되어 예상과 다른 값이 나올 수 있다
+    // 0.01000000000000000020816681711721685132943093776702880859375
+    BigDecimal bdNum2 = new BigDecimal("0.01"); // 문자열로 초기화 하면 정상 인식
+    BigDecimal bdNum3 = BigDecimal.valueOf(0.01); // 정상 인식
+
+    // BigDecimal 비교 연산
+    // == : 주소 비교. equals() : 값 비교
+    BigDecimal a = new BigDecimal("2.01");
+    BigDecimal b = new BigDecimal("2.010");
+    System.out.println(a == b); // false
+    System.out.println(a.equals(b)); // false. 소수점 맨 끝자리까지 완전히 동일해야 true.
+    System.out.println(a.compareTo(b)); // 0
+    // compareTo() : 값 비교. 같으면 0, 작으면 -1, 크면 1 리턴
+
+    // BigDecimal 사직 연산
+    BigDecimal c = new BigDecimal("10.000");
+    BigDecimal d = new BigDecimal("7.00");
+    System.out.println(c.add(d)); // 17.000
+    System.out.println(c.subtract(d)); // 3.000
+    System.out.println(c.multiply(d));  // 70.00000
+    System.out.println(c.divide(d, 3)); // 1.428
+    System.out.println(c.divide(d, 4)); // 1.429
+    // c.divide(d)는 1.4285714285714285714285714285714.... 무한소수로 에러 발생
+    // c.divde(d, n) : n은 반올림 자리값.
+    // divide() 메서드는 나중에 더 알아볼 것...
 
     System.out.println("==============================================");
     // char 배열을 String으로 변환

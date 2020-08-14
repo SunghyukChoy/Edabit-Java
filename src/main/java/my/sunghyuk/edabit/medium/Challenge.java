@@ -1,11 +1,11 @@
 package my.sunghyuk.edabit.medium;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -2555,28 +2555,78 @@ public class Challenge {
    * @return
    */
   public static String removeLeadingTrailing(String n) {
-
-    int dotIndex = n.indexOf(".");
-    if (dotIndex == -1) {
+    // 정수 처리
+    if (!n.contains(".")) {
       return String.valueOf(Integer.parseInt(n));
     }
 
-    String[] splitNum = n.split("\\.");
-    splitNum[0] = String.valueOf(Integer.parseInt(splitNum[0]));
+    String[] numParts = n.split("\\.");
+    numParts[0] = String.valueOf(Integer.parseInt(numParts[0]));
+    // 소수점 위의 수를 정수로 변환
 
-    if (Integer.parseInt(splitNum[1]) == 0) {
-      n = splitNum[0];
-      // return String.valueOf(Integer.parseInt(n));
-      return n;
+    int zeroCnt = 0;
+    for (int i = numParts[1].length() - 1; i >= 0; i--) { // 소수점 아래 잘라낼 0 개수 구하기
+      if (numParts[1].charAt(i) == '0') {
+        zeroCnt++;
+      } else {
+        break;
+      }
+    }
+    int lengthOfPartsOne = numParts[1].length() - zeroCnt;
+    // 소수점 아래 의미없는 0을 잘라낸 후 갖는 길이
+    numParts[1] = numParts[1].substring(0, lengthOfPartsOne);
+
+    if (numParts[1].equals("")) {
+      return numParts[0];
     } else {
-      n = String.join(".", splitNum);
-      return String.valueOf(Double.parseDouble(n));
+      return String.join(".", numParts);
     }
 
-    // System.out.println("revisded n : " + n);
-    // System.out.println("Double form of n : " + Double.parseDouble(n));
-    // System.out.println("submit result : " + String.valueOf(Double.parseDouble(n)));
-    // return String.valueOf(Double.parseDouble(n));
+    // Other Solution
+    // return new BigDecimal(n).stripTrailingZeros().toPlainString();
+    // stripTrailingZeros() : 소수점 아래에서 오른쪽의 0을 제거한 값 리턴
+    // toPlainString() : 전달받은 값을 지수 표현 없이 리턴.
 
+    // Other Solution
+    /* String[] numParts = n.split("\\.");
+    if (numParts.length == 1) {
+      return String.valueOf(Integer.parseInt(n));
+    }
+    
+    numParts[1] = "." + numParts[1];
+    String belowPoint = numParts[1].replace("0", " ").trim().replace(" ", "0").trim();
+    // numParts[1].replace("0", " ").trim() : 소수점 아래 모든 0을 공백으로 바꾼 후 문자열의 앞,뒤 공백을 잘라냄
+    // numParts[1].replace("0", " ").trim().replace(" ", "0").trim() :
+    // 그 문자열에서 소수점과 0이 아닌 숫자 사이에 있던 공백을 다시 0으로 바꿈
+    
+    int abovePoint = Integer.parseInt(numParts[0]);
+    return String.valueOf(abovePoint) + (belowPoint.length() > 1 ? belowPoint : "");
+    // 소수점 아래의 길이가 2 이상이라면 (.x) abovePoint + belowPoint */
+
+    // Other Solution
+    /* while (n.length() > 0 && n.charAt(0) == '0') {
+      n = n.substring(1);
+      // 문자열의 첫 번째 문자가 0이면 잘라냄
+    }
+    if (n.length() == 0) {
+      return "0";
+      // 그렇게 잘라내서 길이가 0이되면 그 문자는 "0"
+    }
+    if (n.charAt(0) == '.') {
+      n = "0" + n;
+      // 그렇게 잘라내서 소수점을 만나면 n = 0 + .xxxxx
+    }
+    if (n.indexOf('.') < 0) {
+      return n;
+      // 문자열 앞의 0들을 잘라내고 그 문자가 정수의 형태이면 그대로 리턴
+    }
+    while (n.length() > 0 && n.charAt(n.length() - 1) == '0') {
+      n = n.substring(0, n.length() - 1);
+      // 문자열 뒤의 0들을 잘라냄
+    }
+    if (n.charAt(n.length() - 1) == '.')
+      n = n.substring(0, n.length() - 1);
+    // 문자열 마지막 문자가 "."이면 잘라낸 후 리턴
+    return n; */
   }
 }
