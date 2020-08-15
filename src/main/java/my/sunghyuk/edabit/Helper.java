@@ -63,4 +63,34 @@ public class Helper {
     }
     return multiplyDigit;
   }
+
+  // 짝수 검사 메서드
+  public static boolean isEven(int num) {
+    return num % 2 == 0;
+  }
+
+  // 홀수 검사 메서드
+  public static boolean isOdd(int num) {
+    return !isEven(num);
+  }
+
+  // 문자열에 공백 존재 여부
+  public static boolean hasBlank(String str) {
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) == ' ') {
+				return true;
+			}
+		}
+		return false;
+  }
+
+  // 문자열에 숫자 외의 다른 문자 존재 여부
+  public static boolean hasNonNumber(String str) {
+		for (int i = 0; i < str.length(); i++) {
+			if (!Character.isDigit(str.charAt(i))) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

@@ -189,7 +189,7 @@ public class Note {
     BigDecimal d = new BigDecimal("7.00");
     System.out.println(c.add(d)); // 17.000
     System.out.println(c.subtract(d)); // 3.000
-    System.out.println(c.multiply(d));  // 70.00000
+    System.out.println(c.multiply(d)); // 70.00000
     System.out.println(c.divide(d, 3)); // 1.428
     System.out.println(c.divide(d, 4)); // 1.429
     // c.divide(d)는 1.4285714285714285714285714285714.... 무한소수로 에러 발생
@@ -202,5 +202,19 @@ public class Note {
     System.out.println(String.valueOf(charArr)); // hello
     System.out.println(new String(charArr)); // hello
     System.out.println(String.copyValueOf(charArr)); // hello
+
+    System.out.println("==============================================");
+    // 불변객체 : Immutable Object => String, LocalDateTime : 대표적인 불변객체
+    String x = "1234";
+    x += "567"; // 1234567
+    x += "777";
+    x += "888";
+    // 문자열 추가할 때마다 메모리 할당, 메모리 해제 작업 반복. 문자열이 길어질수록 자원 소모 심해짐.
+    /*     
+     * [ String x ] #12 <-- memory address <-- Release(메모리 해제) : Garbage Collector 가 회수
+     * memory value [1][2][3][4] + [5][6][7] // wrong. 기존 주소가 갖고 있던 값에 추가하는 것 아님.
+     * x에 문자열 추가 시 #12 메모리 해제 #223 // 메모리 할당 다시. 새로운 주소 memory value [1][2][3][4][5][6][7]
+     * StringBuffer, StringBuilder 클래스 객체는 메모리를 다시 할당하지 않고도 문자열 추가 가능.
+     */
   }
 }

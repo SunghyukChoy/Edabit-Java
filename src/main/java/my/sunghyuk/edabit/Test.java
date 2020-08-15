@@ -110,5 +110,9 @@ public class Test {
     char ch = ' ';
     System.out.println(Character.isUpperCase(ch));
     System.out.println(Character.isLowerCase(ch));
+
+    String word = "apple";
+    word = word.substring(1, word.length() - 1);
+    System.out.println(word);
   }
 }

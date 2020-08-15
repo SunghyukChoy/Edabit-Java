@@ -57,11 +57,11 @@ public class IsValidTests {
 
 	@Test 
 	public void test10() {
-		assertEquals(true, Challenge.isValid("-6609"));
+		assertEquals(false, Challenge.isValid("-6609"));
 	}
 
 	@Test 
 	public void test11() {
-		assertEquals(true, Challenge.isValid("0x123"));
+		assertEquals(false, Challenge.isValid("0x123"));
 	}
 }

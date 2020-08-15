@@ -11,6 +11,8 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.StringTokenizer;
 
+import my.sunghyuk.edabit.Helper;
+
 /**
  * Challenge
  */
@@ -370,70 +372,42 @@ public class Challenge {
 
 	/**
 	 * Reverse the Order of a String
-	 * 
+	 * 문자열을 거꾸로 출력
 	 * @see https://edabit.com/challenge/5gPCp7v7iDWZvb4YQ
 	 * @param str
 	 * @return
 	 */
-	// 1. 문자열을 반대로 출력.
 	public static String reverse(final String str) {
 		// str을 char 하나씩 뽑아 배열로 저장 # 필요없음
 		// char[] words = str.toCharArray(); // 문자열을 char 배열로 저장하는 방법
 
-		// 그 배열을 역순으로 출력
-		String reverse = "";
-
-		// #1 방법 // example : str = Hello World!
+		/* String reversedWord = "";
 		for (int i = str.length() - 1; i >= 0; i--) {
-			reverse += str.charAt(i);
+			reversedWord += str.charAt(i);
 		}
-		// #2 방법
-		for (int i = 0; i < str.length(); i++) {
-			reverse += str.charAt(str.length() - i - 1);
-		}
+		// for (int i = 0; i < str.length(); i++) {
+		// 	reversedWord += str.charAt(str.length() - i - 1);
+		// }
+		return reversedWord; */
 
-		// #2-1 방법 : StringBuffer
-		StringBuffer buffer = new StringBuffer();
+		// Other Solution
+		/* StringBuffer buffer = new StringBuffer();
 		for (int i = 0; i < str.length(); i++) {
 			buffer.append(str.charAt(str.length() - i - 1));
 		}
+		return buffer.toString(); // <-- 이 시점에 String 형으로 메모리로 할당되서 사용 가능 */
 
-		return buffer.toString(); // <-- 이 시점에 String 형으로 메모리로 할당되서 사용 가능
-
-		// #3 방법
-		// StringBuffer bufReverse = new StringBuffer(str);
-		// return bufReverse.reverse().toString();
-	}
-
-	public static void exampleImmutable() {
-		// 번외
-		// StringBuffer, StringBuilder
-
-		// 불변객체 : Immutable Object => String, LocalDateTime : 대표적인 불변객체
-		String x = "1234";
-		x += "567"; // 1234567
-		x += "777";
-		x += "888";
-		// 문자열 추가할 때마다 메모리 할당, 메모리 해제 작업 반복. 문자열이 길어질수록 자원 소모 심해짐.
-
-		// char[]
-		/*
-		 * 
-		 * [ String x ] #12 <-- memory address <-- Release(메모리 해제) : Garbage Collector 가
-		 * 회수 index 0 1 2 3 memory value [1][2][3][4] + [5][6][7] // wrong. 기존 주소가 갖고 있던
-		 * 값에 추가하는 것 아님.
-		 * 
-		 * // x에 문자열 추가 시 #12 메모리 해제 #223 // 메모리 할당 다시. 새로운 주소. index 0 1 2 3 4 5 6
-		 * memory value [1][2][3][4][5][6][7]
-		 * 
-		 * // StringBuffer, StringBuilder 클래스 객체는 메모리를 다시 할당하지 않고도 문자열 추가 가능.
-		 */
+		// Other Solution
+		StringBuilder sb = new StringBuilder(str);
+		return sb.reverse().toString();
 	}
 
 	/**
 	 * Shapes With N Sides
-	 * 
+	 * 배열에서 n번째 문자열 리턴
 	 * @see https://edabit.com/challenge/odJPfYRD3kSpE45Jf
+	 * @param n
+	 * @return
 	 */
 	public static String nSidedShape(int n) {
 		String[] result = { "circle", "semi-circle", "triangle", "square", "pentagon", "hexagon", "heptagon", "octagon",
@@ -443,11 +417,13 @@ public class Challenge {
 
 	/**
 	 * Hashes and Pluses
-	 * 
+	 * 문자열 s에서 #와 +의 개수를 정수 배열로 리턴
 	 * @see https://edabit.com/challenge/s8RHRY9hfmvYMuaeC
+	 * @param s
+	 * @return
 	 */
 	public static int[] hashPlusCount(String s) {
-		int hashCount = 0;
+		/* int hashCount = 0;
 		int plusCount = 0;
 		for (int i = 0; i < s.length(); i++) {
 			if (s.charAt(i) == '#') {
@@ -457,50 +433,33 @@ public class Challenge {
 			}
 		}
 		int[] result = { hashCount, plusCount };
-		return result;
+		return result; */
+
+		// Other Solution
+		/* int[] hashAndPlus = new int[2];
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) == '#') {
+				hashAndPlus[0]++;
+			} else if (s.charAt(i) == '+') {
+				hashAndPlus[1]++;
+			}
+		}
+		return hashAndPlus; */
+
+		// Other Solution
+		return new int[] { s.replaceAll("[^#]", "").length(), s.replaceAll("[^\\+]", "").length() };
 	}
 
 	/**
 	 * Special Arrays
-	 * 
+	 * 정수 배열에서 짝수 인덱스의 요소가 짝수이면서 홀수 인덱스의 요소가 홀수이면 true, 아니면 false
+	 * 인덱스 0은 짝수 인덱스.
 	 * @see https://edabit.com/challenge/YmeiRhzaiR3MCPBiT
 	 * @param arr
-	 * @return all element are special (boolean)
+	 * @return
 	 */
-	public static boolean isSpecialArray(int[] arr) {
-		// 배열의 짝수 인덱스 == 짝수 && 홀수 인덱스 == 홀수 return true
-		// otherwise return false. 인덱스 0은 짝수 인덱스.
-
-		/*
-		 * boolean evenFlag, oddFlag;
-		 * 
-		 * for (int i = 0; i < arr.length; i++) { if (arr[i] % 2 == 0) { evenFlag =
-		 * true; i++; } else if (arr[i] % 2 != 0) { evenFlag = false; i++; } }
-		 * 
-		 * return isEven(arr) && isOdd(arr);
-		 */
-
-		for (int i = 0; i < arr.length; i++) {
-			if (isEven(i) && !isEven(arr[i])) { // if index is even and element is not even
-				return false;
-			} else if (isOdd(i) && !isOdd(arr[i])) { // if index is odd and element is not odd
-				return false;
-			}
-		}
-
-		return true;
-	}
-
-	private static boolean isEven(int value) {
-		return value % 2 == 0;
-	}
-
-	private static boolean isOdd(int value) {
-		return !isEven(value);
-	}
-
-	private static boolean isEven(int[] arr) {
-
+	private static boolean isEvenIndexIsEven(int[] arr) {
+		// 배열에서 짝수 인덱스 요소의 값이 짝수인지 검사하는 메서드
 		for (int i = 0; i < arr.length; i += 2) {
 			if (arr[i] % 2 != 0) {
 				return false;
@@ -509,8 +468,8 @@ public class Challenge {
 		return true;
 	}
 
-	private static boolean isOdd(int[] arr) {
-
+	private static boolean isOddIndexIsOdd(int[] arr) {
+		// 배열에서 홀수 인덱스 요소의 값이 홀수인지 검사하는 메서드
 		for (int i = 1; i < arr.length; i += 2) {
 			if (arr[i] % 2 == 0) {
 				return false;
@@ -519,125 +478,110 @@ public class Challenge {
 		return true;
 	}
 
+	public static boolean isSpecialArray(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			if (Helper.isEven(i) && Helper.isOdd(arr[i])) { // 인덱스가 짝수이면서 요소의 값은 홀수인 경우
+				return false;
+			} else if (Helper.isOdd(i) && Helper.isEven(arr[i])) {// 인덱스가 홀수이면서 요소의 값은 짝수인 경우
+				return false;
+			}
+		}
+		return true;
+
+		// Other Solution
+		// return isEvenIndexIsEven(arr) && isOddIndexIsOdd(arr);
+	}
+
 	/**
 	 * Valid Zip Code
-	 * 
+	 * 올바른 우편번호인가 검사. 1) 문자열은 숫자로만 구성 2) 공백이 있으면 안 됨. 3) 문자열은 5글자
 	 * @see https://edabit.com/challenge/SmKPaHy5uY2gMk9na
 	 * @param zip
 	 * @return
 	 */
+	// 메시지 출력 메서드
+	/* public static String getErrorMessage(String zip) {
+		String message = "";
+		if (Helper.hasBlank(zip)) {
+			message += "문자열에 공백이 있습니다.\n";
+		}
+		if (Helper.hasNonNumber(zip)) {
+			message += "문자열에 숫자가 아닌 문자가 있습니다.\n";
+		}
+		if (zip.length() != 5) {
+			message += "문자열이 5자리가 아닙니다.\n";
+		}
+		return message;
+	} */
 	public static boolean isValid(String zip) {
-		// 1. 문자열이 다 숫자인가?
-		// 2. 공백이 있는가?
-		// 3. 5자리인가?
-		// 문자열 zip이 다섯자리의 숫자인가 return true; otherwise return false;
-		try { // zip 문자열에 숫자가 아닌 문자 존재 시 NumberFormatException 에러 발생
-			int zipNum = Integer.parseInt(zip); // 문자열을 정수로 변환.
-
-			// if (!(zipNum >= 10000 && zipNum <= 99999)) {
-			// "06636"의 경우 "6636"과 구분 불가.
-			// return false;
-			// }
-			if (zip.length() != 5) { // 문자열의 길이가 5가 아니면 false return
+		// 오답
+		/* try {
+			int zipNum = Integer.parseInt(zip);
+			// 문자열을 정수로 변환.
+			// zip 문자열에 숫자가 아닌 문자 존재 시 NumberFormatException 에러 발생
+		
+			if (zip.length() != 5) {
 				return false;
 			}
+		
+			if (!(zipNum >= 10000 && zipNum <= 99999)) {
+				// 문자열이 "06609"인 경우 (test case 9번의 경우) 유효한 우편번호이지만
+				// parseInt() 시에 6609를 반환하게 되고 현재의 if절의 조건에 따라 return false를 하게 됨.
+				// 즉 try-catch 구문에서 parseInt()를 사용한 유효성 검사는 틀린 로직.
+				return false;
+			}
+		
 			return true; // 위의 경우들에 해당하지 않으면 true
+		
+		} catch (NumberFormatException e) { // zip 문자열에 문자가 존재한 경우
+			return false; */
 
-		} catch (NumberFormatException e) {
+		// 유효성 검사를 하는 일반적인 형태, 방법
+		// 조건을 하나씩 적용하여 조건에 따라 return 값 설정
+		if (Helper.hasNonNumber(zip)) {
 			return false;
 		}
-	}
-
-	// 유효성 검사를 하는 일반적인 형태, 방법
-	// 조건을 하나씩 적용하여 조건에 따라 return 값 설정
-	public static boolean isValidation(String zip) {
-
-		if (isAnyNotNumberCharacter(zip))
+		if (zip.length() != 5) {
 			return false;
-
-		if (isAnyEmptySpaceCharacter(zip))
-			return false;
-
-		if (zip.length() != 5)
-			return false;
-
+		}
 		return true; // 위의 경우가 아닐 때 true 리턴
-	}
 
-	private static boolean isAnyEmptySpaceCharacter(String zip) {
-		// TODO: 구현 필요 -> 문자들에 공백(" ")이 존재하는가
-		return true;
-	}
-
-	private static boolean isAnyNotNumberCharacter(String zip) {
-		// TODO: 구현 필요 -> 문자열이 숫자가 아닌게 존재하는가
-		return true;
-	}
-
-	// 메시지 출력 메서드
-	public static String isValidationStr(String zip) {
-
-		String message = "";
-
-		if (isAnyEmptySpaceCharacter(zip))
-			message += "문자열이 다 숫자가 아닙니다.\n";
-
-		if (isAnyNotNumberCharacter(zip))
-			message += "문자열에 공백이 있습니다.\n";
-
-		if (zip.length() != 5)
-			message += "문자열이 5자리가 아닙니다.\n";
-
-		return message;
+		// Other Solution		
+		// return zip.matches("\\d{5}");	
+		// return zip.matches("[0-9]{5}");
 	}
 
 	/**
 	 * Vowel Replacer
-	 * 
+	 * str 문자열에서 모음을 ch 문자로.
 	 * @see https://edabit.com/challenge/iW7rtor54mbFQ2RrZ
 	 * @param str
 	 * @param ch
 	 * @return
 	 */
 	public static String replaceVowels(String str, char ch) {
-		// str 문자열에서 모음을 ch 문자로.
-
 		char[] charArray = str.toCharArray();
 		for (int i = 0; i < charArray.length; i++) {
-			if (isVowel(charArray[i])) {
+			if (Helper.isVowel(charArray[i])) {
 				charArray[i] = ch;
 			}
 		}
-		// String result = "";
-		// for (int i = 0; i < charArray.length; i++) {
-		// result += charArray[i];
-		// }
-		// return result;
-
+		// return String.valueOf(charArray); // char 배열을 문자열로 반환
 		return new String(charArray); // char 배열을 문자열로 반환
-	}
 
-	private static boolean isVowel(char ch) {
-		char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
-		for (int i = 0; i < vowels.length; i++) {
-			if (vowels[i] == ch)
-				return true;
-		}
-		return false;
+		// Other Solution
+		// return str.replaceAll("[aeiou]", String.valueOf(ch));
 	}
 
 	/**
 	 * Capture the Rook
-	 * 
+	 * 1. 각 요소의 같은 인덱스를 비교.
+	 * 2. 요소의 첫번째 인덱스(문자)가 같거나 두번째 인덱스(숫자)가 같으면 true
 	 * @see https://edabit.com/challenge/rYD9NTBmNhaPM6wx2
 	 * @param rooks
 	 * @return
 	 */
 	public static boolean canCapture(String[] rooks) {
-		// 1. 배열의 0번과 1번 인덱스의 문자열을 비교
-		// 2. 문자열의 첫번째 문자(문자)가 같거나 두번째 문자(숫자)가 같으면 true
-		// 3. otherwise false
-
 		if (rooks[0].charAt(0) == rooks[1].charAt(0) || rooks[0].charAt(1) == rooks[1].charAt(1)) {
 			return true;
 		}
@@ -646,48 +590,63 @@ public class Challenge {
 
 	/**
 	 * Check if String Ending Matches Second String
-	 * 
+	 * str1이 str2의 문자열로 끝나는가
 	 * @see https://edabit.com/challenge/PZnwXraqBPYv7w4Sm
 	 * @param str1
 	 * @param str2
 	 * @return
 	 */
 	public static boolean checkEnding(String str1, String str2) {
-		// 1. str1과 str2의 마지막 문자가 같으면 true. otherwise false
-		if (str1.charAt(str1.length() - 1) == str2.charAt(str2.length() - 1)) {
-			return true;
+		return str1.endsWith(str2);
+
+		// Other Solution
+		/* for (int i = str2.length() - 1, j = str1.length() - 1; i >= 0; i--, j--) {
+			if(str2.charAt(i) != str1.charAt(j)) {
+				return false;
+			}
 		}
-		return false;
+		return true; */
+
+		// Other Solution
+		// return str2.equals(str1.substring(str1.length() - str2.length()));
 	}
 
 	/**
 	 * Spaces Between Each Character
-	 * 
+	 * str의 각 문자 사이에 공백 넣기
 	 * @see https://edabit.com/challenge/ryEdPW2eqyngyWayy
 	 * @param str
 	 * @return
 	 */
 	public static String spaceMeOut(String str) {
-		// str 문자열 사이에 공백 넣기
-		char[] characters = str.toCharArray();
-		String spaceWord = "";
-
+		/* char[] characters = str.toCharArray();
+		String spaceWord = "";		
 		for (int i = 1; i < characters.length; i++) {
 			spaceWord += characters[i - 1] + " ";
 		}
 		spaceWord = spaceWord + str.charAt(str.length() - 1);
-		return spaceWord;
+		return spaceWord; */
+
+		// Other Solution
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < str.length(); i++) {
+			sb.append(str.charAt(i)).append(" ");
+		}
+		return sb.toString().trim();
+
+		// Other Solution
+		// return str.replace("", " ").trim();
 	}
 
 	/**
 	 * Difference of Max and Min Numbers in Array
-	 * 
+	 * 배열에서 가장 큰 수와 가장 작은 수의 차 리턴
 	 * @see https://edabit.com/challenge/hymPkXdhmDQLe87QT
 	 * @param arr
 	 * @return
 	 */
 	public static int differenceMaxMin(int[] arr) {
-		int maxValue = Integer.MIN_VALUE;
+		/* int maxValue = Integer.MIN_VALUE;
 		int minValue = Integer.MAX_VALUE;
 		for (int i = 0; i < arr.length; i++) {
 			if (arr[i] >= maxValue) {
@@ -697,35 +656,21 @@ public class Challenge {
 				minValue = arr[i];
 			}
 		}
-		return maxValue - minValue;
+		return maxValue - minValue; */
 
-		// 이거 왜 안 되는지 모르겠음..
-		// int maxValue = arr[0];
-		// int minValue = arr[0];
-		// for (int i = 1; i < arr.length; i++) {
-		// if (arr[i] >= arr[i - 1]) {
-		// maxValue = arr[i];
-		// }
-		// if (arr[i] <= arr[i - 1]) {
-		// minValue = arr[i];
-		// } else {
-		// minValue = arr[0];
-		// }
-		// }
-		// System.out.println(maxValue);
-		// System.out.println(minValue);
-		// return maxValue - minValue;
+		// Other Solution
+		Arrays.sort(arr);
+		return arr[arr.length - 1] - arr[0];
 	}
 
 	/**
 	 * Double Letters
-	 * 
+	 * 문자열에 연속되는 두 개의 문자가 있으면 return true; otherwise false;
 	 * @see https://edabit.com/challenge/EaWY5d2pYBckrkAnS
 	 * @param word
 	 * @return
 	 */
 	public static boolean doubleLetters(String word) {
-		// 문자열에 중복되는 문자가 있으면 return true; otherwise false;
 		char[] charArray = word.toCharArray();
 		for (int i = 1; i < charArray.length; i++) {
 			if (charArray[i] == charArray[i - 1]) {
@@ -737,109 +682,103 @@ public class Challenge {
 
 	/**
 	 * Even Number Generator
-	 * 
+	 * 1부터 num까지의 짝수를 배열로 리턴. num까지 짝수가 없으면 비어있는 배열로 리턴
 	 * @see https://edabit.com/challenge/jwXx478haGbZpRCWQ
 	 * @param num
 	 * @return
 	 */
-	// 1부터 num까지의 짝수를 배열로 리턴
-	// num까지 짝수가 없으면 비어있는 배열로 리턴
 	public static int[] findEvenNums(int num) {
-
-		// num : 2 --> value : 2
-		// num : 3 --> value : 2
-		// num : 4 --> value : 2, 4
-		// num : 5 --> value : 2, 4
-		// num : 6 --> value : 2, 4, 6
-
-		int[] evens = new int[num / 2];
-		// num이 1 이하라면 배열의 길이가 0이므로 빈 배열 리턴
-
-		for (int i = 0; i < evens.length; i++) {
-			evens[i] = (i + 1) * 2;
+		int[] evenArr = new int[num / 2];
+		for (int i = 1, j = 0; i <= num; i++) {
+			if (i % 2 == 0) {
+				evenArr[j] = i;
+				j++;
+			}
 		}
-		return evens;
+		return evenArr;
+
+		// Other Solution
+		/* List<Integer> list = new ArrayList<>();
+		for (int i = 1; i <= num; i++) {
+			if (Helper.isEven(i)) {
+				list.add(i);
+			}
+		}
+		int[] evenArr = new int[list.size()];
+		int i = 0;
+		for (int even : list) {
+			evenArr[i] = even;
+			i++;
+		}
+		return evenArr; */
 	}
 
 	/**
 	 * Triangular Number Sequence
-	 * 
+	 * 삼각수 : 1, 3, 6, 10, 15... 순으로 나가는 수. 각 항은 이전 항의 +2, +3, +4, +5...의 값을 가짐
+	 * n번째 항의 값 리턴
 	 * @see https://edabit.com/challenge/4kEHkvobTA4i6AQRE
 	 * @param n
 	 * @return
 	 */
 	public static int triangle(int n) {
-		// 1. 0번쨰 인덱스 값 : 1
-		// 2. 0번째 인덱스부터 2,3,4,5,6... 더해서 n번쨰 인덱스 값 구하기
-		// 3. {1, 3, 6, 10, 15, 21.....} 순
-		// 4. 0 {1, 3, 6, 10, ...}
+		// 1, 3, 6, 10, 15....
+		// 1항의 값은 1, 2항의 값은 3, 1항에서 2항으로 : 1항의 값 + 현재 항의 수 + 1
+		// 2항의 값은 3, 3항의 값은 6, 2항에서 3항으로 : 2항의 값 + 현재 항의 수 + 1
+		// 3항의 값은 6, 4항의 값은 10, 3항에서 4항으로: 3항의 값 + 현재 항의 수 + 1
+		// n-1항의 값 x, n항의 값 y, n-1항에서 n항으로 : n-1항의 값 + (n-1) + 1
+		// 현재 항의 수 : 현재 항이 몇 번째 항인가
 
-		// start value 'result' with 1
-		int result = 1;
-
-		// first loop add 2
-		// add value to result
-		// second loop add 3
-		// add value to result
-		// ..
-		// n loop add n + 1
-		// add value to result
-		for (int i = 2; i < n + 1; i++) {
-			result += i;
+		int triangularNum = 1; // 첫 번째 삼각수
+		for (int i = 1; i < n; i++) {
+			// i : 항의 수. 1항부터 시작하여 n-1항까지.
+			triangularNum = triangularNum + i + 1;
+			// n항의 삼각수 = n-1의 삼각수 + (n-1) + 1;
 		}
+		return triangularNum;
 
-		return result;
-
-		// int result = 0;
-
-		// for (int i = 0; i < n; i++) {
-		// result += 1 + i;
-		// }
-		// return result;
 	}
 
 	/**
 	 * Return the Middle Character(s) of a String
-	 * 
+	 * 문자열의 가운데 문자 출력. 가운데 문자가 2개면 2개, 1개면 1개 출력
 	 * @see https://edabit.com/challenge/NrMGhrarTfpYSbr84
 	 * @param word
 	 * @return
 	 */
-	// 원시적인 방법으로 풀음..
 	public static String getMiddle(String word) {
-		// 1. 문자열의 가운데 문자 출력
-		// 2. 문자열의 길이가 짝수면 가운데 문자 2개 출력
-		// 3. 문자열의 길이가 홀수면 가운데 문자 1개 출력
-		String middleCharacter = "";
-
-		if (word.length() % 2 == 0) {
-			middleCharacter = "" + word.charAt((word.length() / 2) - 1) + word.charAt(word.length() / 2);
-		} else if (word.length() % 2 != 0) {
-			middleCharacter = "" + word.charAt((word.length() - 1) / 2);
+		/* if (word.length() % 2 == 0) {
+			return String.valueOf(word.charAt((word.length() / 2) - 1)) + String.valueOf(word.charAt(word.length() / 2));
 		}
-		return middleCharacter;
+		return String.valueOf(word.charAt((word.length() - 1) / 2)); */
+
+		// Other Solution
+		while (true) {
+			if (word.length() == 2) {
+				return word;
+			}
+			if (word.length() == 1) {
+				return word;
+			}
+			word = word.substring(1, word.length() - 1);
+		}
 	}
 
-	/************** 다시 풀 것 ********************************/
 	/**
 	 * Nth Smallest Element
-	 * 
+	 * arr 배열에서 n번째로 작은 수 출력. n이 배열의 길이보다 클 켱우 return -1
 	 * @see https://edabit.com/challenge/zgBjnxQw9MHTBHLED
 	 * @param arr
 	 * @param n
 	 * @return
 	 */
-	// 배열 버블 정렬 몰라서 메서드 씀.
-	// import java.util.Arrays; 제출 시 추가
 	public static int nthSmallest(int[] arr, int n) {
-		// 1. arr 배열에서 n번째로 작은 수 출력
-		// 2. n이 배열의 길이보다 클 켱우 return -1
-		try {
-			Arrays.parallelSort(arr);
-			return arr[n - 1];
-		} catch (Exception e) {
+		if (arr.length < n) {
 			return -1;
 		}
+		Arrays.parallelSort(arr);
+		// parallelSort() : 배열의 크기가 크고 요소의 순서가 들쑥날쑥하다면 sort()보다 빠름.
+		return arr[n - 1];
 	}
 
 	/**
