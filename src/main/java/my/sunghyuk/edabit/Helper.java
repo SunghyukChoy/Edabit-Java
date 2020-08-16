@@ -2,9 +2,14 @@ package my.sunghyuk.edabit;
 
 public class Helper {
 
+  private Helper() {
+
+  }
+
   // 모음 검사 메소드
   public static boolean isVowel(char ch) {
-    if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+    if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I'
+        || ch == 'O' || ch == 'U') {
       return true;
     } else {
       return false;
@@ -76,21 +81,21 @@ public class Helper {
 
   // 문자열에 공백 존재 여부
   public static boolean hasBlank(String str) {
-		for (int i = 0; i < str.length(); i++) {
-			if (str.charAt(i) == ' ') {
-				return true;
-			}
-		}
-		return false;
+    for (int i = 0; i < str.length(); i++) {
+      if (str.charAt(i) == ' ') {
+        return true;
+      }
+    }
+    return false;
   }
 
   // 문자열에 숫자 외의 다른 문자 존재 여부
   public static boolean hasNonNumber(String str) {
-		for (int i = 0; i < str.length(); i++) {
-			if (!Character.isDigit(str.charAt(i))) {
-				return true;
-			}
-		}
-		return false;
-	}
+    for (int i = 0; i < str.length(); i++) {
+      if (!Character.isDigit(str.charAt(i))) {
+        return true;
+      }
+    }
+    return false;
+  }
 }

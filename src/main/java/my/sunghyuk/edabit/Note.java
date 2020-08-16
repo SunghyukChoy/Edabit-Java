@@ -216,5 +216,55 @@ public class Note {
      * x에 문자열 추가 시 #12 메모리 해제 #223 // 메모리 할당 다시. 새로운 주소 memory value [1][2][3][4][5][6][7]
      * StringBuffer, StringBuilder 클래스 객체는 메모리를 다시 할당하지 않고도 문자열 추가 가능.
      */
+
+    System.out.println("==============================================");
+    // compareTo() 숫자 비교
+    Integer compareToTestNum = 10;
+    System.out.println(compareToTestNum.compareTo(20)); // -1
+    // 현재 객체가 인자 객체보다 작으면 -1 리턴
+    System.out.println(compareToTestNum.compareTo(10)); // 0
+    // 현재 객체가 인자 객체와 같으면 0 리턴
+    System.out.println(compareToTestNum.compareTo(0)); // 1
+    // 현재 객체가 인자 객체보다 크면 1 리턴
+
+    // System.out.println(compareToTestNum.compareTo(10.0));  // 컴파일 에러
+    // 같은 타입의 객체끼리만 비교할 수 있음. Integer는 Integer, Double은 Double, Float은 Float..
+    Double compareToTestNum2 = 10.0;
+    System.out.println(compareToTestNum2.compareTo(20.0)); // -1
+
+    // 참조형 타입의 객체를 사용하지 않고도 비교할 수 있음.
+    int compareToTestNum3 = 10;
+    int compareToTestNum4 = 20;
+    System.out.println(Integer.compare(compareToTestNum3, compareToTestNum4)); // -1
+    // Integer.compare(x, y)에서 x가 더 작으면 -1, 같으면 0, 더 크면 1 리턴
+    System.out.println(Double.compare(20.0, 20.00)); // 0
+
+    // compareTo() 문자열 비교
+    // 현재 객체와 인자 객체를 첫 번째 문자부터 비교
+    // 1) 같은 인덱스의 문자가 다르다면 두 문자의 아스키값 차를 리턴.
+    // 2) 같은 인덱스끼리의 비교가 끝난 뒤 길이가 다르다면 길이의 차를 리턴
+    String compareToTestStr = "abcd";
+    System.out.println(compareToTestStr.compareTo("abcd")); // 0
+    // 현재 객체가 인자 객체와 같은 경우 0 리턴
+    System.out.println(compareToTestStr.compareTo("ab")); // 2
+    System.out.println(compareToTestStr.compareTo("a")); // 3
+    System.out.println(compareToTestStr.compareTo("abcdefgh")); // -4
+    System.out.println("".compareTo(compareToTestStr)); // -4
+    // 각 인덱스의 문자 같음, 길이가 다른 경우. 둘의 길이 차이를 리턴
+    // 두 객체 중 길이가 0인 문자열이 있다면 둘의 길이 차이를 리턴
+    // 현재 객체의 길이 - 인자 객체의 길이 리턴
+
+    System.out.println(compareToTestStr.compareTo("bcde")); // -1
+    System.out.println(compareToTestStr.compareTo("cdz")); // -2
+    System.out.println(compareToTestStr.compareTo("wxyz")); // -22
+    System.out.println(compareToTestStr.compareTo("zcd")); // -25
+    System.out.println(compareToTestStr.compareTo("abce")); // -1
+    System.out.println(compareToTestStr.compareTo("abcefghijk")); // -1
+    // 각 인덱스의 문자가 다름. 서로 다른 문자의 아스키값 차이를 리턴
+    // 현재 객체의 다른 문자 아스키값 - 인자 객체의 다른 문자 아스키값 리턴    
+    System.out.println(compareToTestStr.compareTo("ABCD")); // 32
+    // 대소문자가 다른 경우 다른 문자
+    System.out.println(compareToTestStr.compareToIgnoreCase("ABCD")); // 0
+    // 대소문자 무시 메서드    
   }
 }

@@ -1,15 +1,13 @@
 package my.sunghyuk.edabit.easy;
 
-import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import java.util.StringTokenizer;
+import java.util.stream.IntStream;
 
 import my.sunghyuk.edabit.Helper;
 
@@ -783,65 +781,61 @@ public class Challenge {
 
 	/**
 	 * Say "Hello" Say "Bye"
-	 * 
+	 * num이 1이면 Hello, 0이면 Bye. 인사말 + name. name의 첫문자는 대문자로
 	 * @see https://edabit.com/challenge/zFccarRuia5zq4rhP
 	 * @param name
 	 * @param num
 	 * @return
 	 */
 	public static String sayHelloBye(String name, int num) {
-		// num이 1이면 Hello 0이면 Bye
-		// 인사말 + name. name의 첫문자는 대문자로
-		String HelloBye = (num == 1) ? "Hello" : "Bye";
+		String greeting = (num == 1) ? "Hello" : "Bye";
 		char firstCh = Character.toUpperCase(name.charAt(0));
 		// char 타입은 기본 자료형. 클래스에 접근하여 메서드 사용.
 		// int -> Integer, boolean -> Boolean .....
 		String upperCaseName = firstCh + name.substring(1, name.length());
-
-		return HelloBye + " " + upperCaseName;
+		return greeting + " " + upperCaseName;
 	}
 
 	/**
 	 * Is the Average of All Elements a Whole Number?
-	 * 
+	 * 배열의 평균값이 정수이면 true. 실수이면 false 
 	 * @see https://edabit.com/challenge/yk7GqGcCpFgQrk8fH
 	 * @param arr
 	 * @return
 	 */
 	public static boolean isAvgWhole(int[] arr) {
-		// 배열의 평균값이 정수이면 true. 실수이면 false
-		int arrSum = 0;
+		/* int arrSum = 0;
 		for (int i = 0; i < arr.length; i++) {
 			arrSum += arr[i];
 		}
-		double avg = (double) arrSum / arr.length;
-		// 캐스팅 없이 연산 시 결과로 int 값이 나오기 때문에 그 값을 double 타입의 변수에 담아도 .00 값으로 담기게 됨.
-
+		double doubleAvg = (double) arrSum / arr.length;
+		// (double) arrSum / arr.length; != (double) (arrSum / arr.length);
+		// int 타입의 값들을 먼저 연산하고 double로 캐스팅 하면 연산 과정에서 소수점 값들이 반올림 되어 실제는 실수 타입의 값들이 정수로 변환됨. 여기서 오차 발생.
+		// double 타입의 변수에 값을 담기 위해선 연산하려는 값들 중 하나를 담을 변수의 타입과 같게 캐스팅 하여 값의 유실을 막을 수 있음. 두 피연산자 중 하나만 캐스팅 하면 나머지 하나는 자동으로 캐스팅 됨.
 		// 타입이 다른 수를 연산할 때 범위가 더 큰 타입으로 캐스팅 됨.
 		// arr.length의 타입이 double로 캐스팅
 		// int, double --> double
 		// long, double --> double
 		// float, double --> double
+		
+		int IntAvg = (int) doubleAvg;
+		
+		return doubleAvg - IntAvg == 0;
+		// 연산 결과의 실제 값이 정수로 변환한 값보다 크다면 실제의 값은 실수 타입이 맞음. 그렇지 않고 두 값이 같다면 실제 값은 처음부터 정수임. */
 
-		int avgInt = (int) avg;
-		// if(avg - avgInt > 0) {
-		// return false;
-		// }
-		// return true;
-
-		return avg - avgInt == 0;
+		// Other Solution
+		return Arrays.stream(arr).sum() % arr.length == 0;
 	}
 
 	/**
 	 * Return the Index of the First Vowel
-	 * 
+	 * 첫 번째 모음 인덱스 번호 출력
 	 * @see https://edabit.com/challenge/MsJzAHPmmmcwF4iCr
 	 * @param str
 	 * @return
 	 */
 	public static int firstVowel(String str) {
-		// 첫 번째 모음 인덱스 번호 출력
-		char[] vowels = new char[] { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
+		/* char[] vowels = new char[] { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
 		for (int i = 0; i < str.length(); i++) {
 			for (int j = 0; j < vowels.length; j++) {
 				if (str.charAt(i) == vowels[j]) {
@@ -851,50 +845,62 @@ public class Challenge {
 		}
 		return -1;
 		// if문의 조건에 부합하지 않는 경우에도 return이 필요하므로 return 작성.
-		// 인덱스가 가질 수 없는 숫자인 -1로 작성하였음..
+		// 인덱스가 가질 수 없는 숫자인 -1로 작성하였음.. */
 
+		// Other Solution
+		/* String vowels = "aeiou";
+		str = str.toLowerCase();
+		for (int i = 0; i < str.length(); i++) {
+			if (vowels.indexOf(str.charAt(i)) != -1) {
+				return i;
+			}
+		}
+		return -1; */
+
+		for (int i = 0; i < str.length(); i++) {
+			if (Helper.isVowel(str.charAt(i))) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	/**
 	 * Re-Form the Word
-	 * 
+	 * 문자열 두 개 붙이기. left의 첫문자는 대문자로
 	 * @see https://edabit.com/challenge/R3PnRquBPADEqDxZg
 	 * @param left
 	 * @param right
 	 * @return
 	 */
 	public static String getWord(String left, String right) {
-		// 문자열 두 개 붙이기. left의 첫문자는 대문자로
 		String leftUpperCase = Character.toUpperCase(left.charAt(0)) + left.substring(1, left.length());
 		return leftUpperCase + right;
 	}
 
 	/**
 	 * Index Shuffle
-	 * 
+	 * 짝수 번째 인덱스와 홀수 번째 인덱스 문자끼리 묶어서 짝수 인덱스 문자 + 홀수 인덱스 문자. 0은 짝수 취급.
 	 * @see https://edabit.com/challenge/BZzAm9KXuB993p35r
 	 * @param str
 	 * @return
 	 */
 	public static String indexShuffle(String str) {
-		// 짝수 번째 인덱스와 홀수 번째 인덱스 문자끼리 묶어서 리턴. 0은 짝수 취급.
-		String evenString = "";
-		String oddString = "";
-
-		for (int i = 0; i < str.length(); i = i + 2) {
-			evenString += str.charAt(i);
+		StringBuilder evenSb = new StringBuilder();
+		StringBuilder oddSb = new StringBuilder();
+		for (int i = 0; i < str.length(); i++) {
+			if (i % 2 == 0) {
+				evenSb.append(str.charAt(i));
+			} else {
+				oddSb.append(str.charAt(i));
+			}
 		}
-
-		for (int i = 1; i < str.length(); i = i + 2) {
-			oddString += str.charAt(i);
-		}
-
-		return evenString + oddString;
+		return evenSb.toString() + oddSb.toString();
 	}
 
 	/**
 	 * Between Words
-	 * 
+	 * 알파벳순으로 정렬 시 word가 first와 last 사이에 오면 true; otherwise false;
 	 * @see https://edabit.com/challenge/YjeGKZwXsdCo3sr7a
 	 * @param first
 	 * @param last
@@ -902,50 +908,49 @@ public class Challenge {
 	 * @return
 	 */
 	public static boolean isBetween(String first, String last, String word) {
-		// 알파벳순으로 정렬 시 word가 first와 last 사이에 오면 true; otherwise false;
-		String[] sortByAlphabet = new String[] { first, last, word };
+		/* String[] sortByAlphabet = new String[] { first, last, word };
 		Arrays.sort(sortByAlphabet); // 배열을 오름차순으로 정렬
-		return sortByAlphabet[1] == word;
+		return sortByAlphabet[1].equals(word); */
+
+		// Other Solution
+		return first.compareTo(word) < 0 && last.compareTo(word) > 0;
 	}
 
 	/**
 	 * Palindrome?
-	 * 
+	 * 문자열의 첫문자와 끝문자가 같으면 true, 다르면 false;
 	 * @see https://edabit.com/challenge/cwLnTvxpBX5espEgs
 	 * @param str
 	 * @return
 	 */
 	public static boolean checkPalindrome(String str) {
-		// 문자열의 첫문자와 끝문자가 같으면 true, 다르면 false;
 		return str.charAt(0) == str.charAt(str.length() - 1);
 	}
 
 	/**
 	 * Join Two Portions of a Path
-	 * 
+	 * 두 문자열 합치기. 중간에 /는 하나만. /가 없으면 추가. 중복되면 하나만.
+	 * if-only문만 사용해서 푸는 것 피하기
 	 * @see https://edabit.com/challenge/CDuD3xGtWRhnFzAP2
 	 * @param portion1
 	 * @param portion2
 	 * @return
 	 */
 	public static String joinPath(String portion1, String portion2) {
-		// 두 문자열 합치기. 중간에 /는 하나만. /가 없으면 추가. 중복되면 하나만.
-		// if-only문만 사용해서 푸는 것 피하기
-		String revmoveSlash1 = portion1.replaceAll("[/]", "");
-		String revmoveSlash2 = portion2.replaceAll("[/]", "");
-		System.out.println(revmoveSlash1 + "/" + revmoveSlash2);
-		return revmoveSlash1 + "/" + revmoveSlash2;
+		// return portion1.replaceAll("[/]", "") + "/" + portion2.replaceAll("[/]", "");
+
+		//Other Solution
+		return String.join("/", portion1.replace("/", ""), portion2.replace("/", ""));
 	}
 
 	/**
 	 * Index Multiplier
-	 * 
+	 * 배열의 각 값과 인덱스 번호를 곱한 후 총합 리턴
 	 * @see https://edabit.com/challenge/YMLm3DpuZXHFDAnou
 	 * @param arr
 	 * @return
 	 */
 	public static int indexMultiplier(int[] arr) {
-		// 배열의 각 값과 인덱스 번호를 곱한 후 총합 리턴
 		int sum = 0;
 		for (int i = 0; i < arr.length; i++) {
 			sum += (arr[i] * i);
@@ -953,62 +958,64 @@ public class Challenge {
 		return sum;
 	}
 
-	/**************** 다시 풀 것. for문 이용하여 다시 풀 것. */
 	/**
 	 * Concatenating Two Integer Arrays
-	 * 
+	 * 두 배열 합치기. 순서는 원래의 순서 유지. arr1 + arr2 형태
 	 * @see https://edabit.com/challenge/E2WdAPmgNJnbL5RvF
 	 * @param arr1
 	 * @param arr2
 	 * @return
 	 */
-	// 1. 두 배열 합치기
 	public static int[] concat(int[] arr1, int[] arr2) {
-
 		int[] concatArray = new int[arr1.length + arr2.length];
 		System.arraycopy(arr1, 0, concatArray, 0, arr1.length);
 		System.out.println(Arrays.toString(concatArray));
 		// 배열의 요소를 출력하는 방법.
 		System.arraycopy(arr2, 0, concatArray, arr1.length, arr2.length);
-		// System.arraycopy(원본, 복사할 값을 보낼 원본의 시작 인덱스, 사본, 복사할 값을 받을 사본 시작 인덱스, 복사할 원본의
-		// 요소 갯수);
+		// System.arraycopy(원본, 복사할 값을 보낼 원본의 시작 인덱스, 사본, 복사할 값을 받을 사본 시작 인덱스, 복사할 원본의 요소 갯수);
 		return concatArray;
+
+		// Other Solution
+		/* int[] concatArr = new int[arr1.length + arr2.length];
+		for (int i = 0; i < arr1.length; i++) {
+			concatArr[i] = arr1[i];
+		}
+		for (int j = 0; j < arr2.length; j++) {
+			concatArr[j + arr1.length] = arr2[j];
+		}
+		return concatArr; */
+
+		// Other Solution
+		// return IntStream.concat(Arrays.stream(arr1), Arrays.stream(arr2)).toArray();
 	}
 
 	/**
 	 * Find the Smallest and Biggest Numbers
-	 * 
+	 * 배열에서 가장 작은 수와 가장 큰 수 출력 return {가장 작은 수, 가장 큰 수}
 	 * @see https://edabit.com/challenge/J4Yop3GjeZELWeoqT
 	 * @param arr
 	 * @return
 	 */
-	// 1. 배열에서 가장 작은 수와 가장 큰 수 출력 return {가장 작은 수, 가장 큰 수}
 	public static double[] minMax(double[] arr) {
 		double minValue = Double.MAX_VALUE;
 		double maxValue = Double.NEGATIVE_INFINITY;
 		// MIN_VALUE는 가장 작지 않다... 말이랑 안맞는 자바의 좋은 예
 		// Double의 범위에서 가장 작은 값.
-
 		for (int i = 0; i < arr.length; i++) {
 			minValue = Math.min(minValue, arr[i]);
 			maxValue = Math.max(maxValue, arr[i]);
-
 		}
-		double[] minMaxArray = new double[] { minValue, maxValue };
-		return minMaxArray;
+		return new double[] { minValue, maxValue };
 	}
 
 	/**
 	 * Amplify the Multiples of Four
-	 * 
+	 * num의 길이를 갖는 배열 생성. 배열의 값들은 1,2,3,4... 오름차순. 4로 나뉘는 수는 그 요소x10의 값.
 	 * @see https://edabit.com/challenge/XD6bQFpCZWiAMPanQ
 	 * @param num
 	 * @return
 	 */
 	public static int[] amplify(int num) {
-		// 1. num의 길이를 갖는 배열 생성
-		// 2. 배열의 값들은 1,2,3,4... 오름차순
-		// 3. 4의 배수는 4의 배수x10의 값.
 		int[] ampNumbers = new int[num];
 		for (int i = 0; i < num; i++) {
 			ampNumbers[i] = i + 1;
