@@ -2,12 +2,13 @@ package my.sunghyuk.edabit.easy;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import java.util.StringTokenizer;
-import java.util.stream.IntStream;
 
 import my.sunghyuk.edabit.Helper;
 
@@ -1028,131 +1029,74 @@ public class Challenge {
 
 	/**
 	 * Is the Number Symmetrical?
-	 * 
+	 * num이 좌우반전해도 같은 숫자이면 true, 아니면 false. 12321 -> true, 12345 -> false.
 	 * @see https://edabit.com/challenge/gzjQoZY6mYRBwDv2Q
 	 * @param num
 	 * @return
 	 */
 	public static boolean isSymmetrical(int num) {
-		// 1. num이 좌우반전해도 같은 숫자이면 true, 아니면 false
-		// `좌우반전`을 어떻게 컴퓨터가 알아들을 수 있는 로직으로 표현할거냐?
-		//
-		// 2. 12321 -> true, 12345 -> false.
-		// String numText = String.valueOf(num);
-
-		// for (int i = 0; i < numText.length() / 2; i++) {
-		// char firstIndex = numText.charAt(i);
-		// char lastIndex = numText.charAt(numText.length() - (i + 1));
-
-		// if (firstIndex != lastIndex) {
-		// return false;
-		// }
-		// }
-		// return true;
-
-		// num = 12321 divider = 10000 10 ^ 4
-		// num = 232 divider = 100 10 ^ 2
-		// num = 3 END
-
-		// int len = String.valueOf(num).length(); // 1.
-
-		// num = 3223 divider = 1000 10 ^ 3
-		// num = 22 divider = 10 10 ^ 1
-		// num = 2 END
-		System.out.println("-----------------------");
-
-		int len = calculateIntegerLength(num);
-		while (num > 10) {
-			int divider = calculatePow(10, len - 1);
-			int firstIndex = num / divider; // 앞에 숫자 빼오기
-			int lastIndex = num % 10; // 뒤에 숫자 빼오기
-
-			System.out.printf("num=%d, divider=%d, len=%d, firstIndex=%d, lastIndex=%d\n", num, divider, len, firstIndex,
-					lastIndex);
-
+		/* String numStr = String.valueOf(num);
+		for (int i = 0; i < numStr.length() / 2; i++) {
+			char firstIndex = numStr.charAt(i);
+			char lastIndex = numStr.charAt(numStr.length() - i - 1);
 			if (firstIndex != lastIndex) {
 				return false;
 			}
-
-			num -= divider * firstIndex;
-			num /= 10;
-			len -= 2;
 		}
+		return true; */
 
+		// Other Solution
+		// num = 12321 divider = 10000 (10^4)
+		// num = 232 divider = 100 (10^2)
+		// num = 3 END
+		int numLength = Helper.getNumLength(num);
+		while (num > 10) {
+			int divider = Helper.getPowValue(10, numLength - 1);
+			int firstIndex = num / divider; // 앞에 숫자 빼오기
+			int lastIndex = num % 10; // 뒤에 숫자 빼오기
+			// num을 num의 길이를 갖는 10의 제곱수로 나누면 몫을 얻을 수 있고 몫은 numd의 맨 앞자리를 의미.
+			// num의 제곱수 = 10^num의 길이 - 1
+			// num을 10으로 나눈 후 남는 나머지는 맨 뒷자리를 의미
+			if (firstIndex != lastIndex) {
+				return false;
+			}
+			num -= divider * firstIndex; // num에서 맨 앞자리를 떼낸 num. 2321 = 12321 - (10000 * 1)
+			num /= 10; // num에서 맨 뒷자리를 떼낸 num. 232 = 2321 / 10
+			numLength -= 2; // num에서 앞뒷자리를 떼냈으므로 제곱수를 만들기 위한 numLength 값 다시 대입
+		}
 		return true;
-	}
 
-	/**
-	 * 숫자의 길이를 리턴한다.
-	 * 
-	 * @param num
-	 * @return
-	 */
-	private static int calculateIntegerLength(int num) {
-		int len = 0;
-
-		while (num != 0) {
-			len++;
-			num /= 10; // len = 1, 12 / len = 2, 1 / len = 3, 0 /
-		}
-
-		return len;
-	}
-
-	/**
-	 * 제곱 숫자를 리턴한다, 형변환 이슈로 인한 속도 문제 해결
-	 * 
-	 * @param m
-	 * @param n
-	 * @return
-	 */
-	private static int calculatePow(int m, int n) {
-		int result = 1;
-		for (int i = 0; i < n; i++) {
-			result *= m;
-		}
-		return result;
+		// Other Solution
+		/* String numStr = String.valueOf(num);
+		StringBuilder sb = new StringBuilder(numStr);
+		return sb.reverse().toString().equals(numStr); */
 	}
 
 	/**
 	 * Transforming Words into Binary Strings
-	 * 
+	 * 1. a부터 m까지의 문자는 "0" 출력. n부터 z까지의 문자는 "1" 출력
 	 * @see https://edabit.com/challenge/jwzMsyo2tbgn2KbGQ
 	 * @param str
 	 * @return
 	 */
-	// 1. a부터 m까지의 문자는 "0" 출력
-	// 2. n부터 z까지의 문자는 "1" 출력
 	public static String convertBinary(String str) {
-		// str = str.toLowerCase(); // 소문자로 변환
-		String toZero = str.replaceAll("[a-mA-M]", "0");
-		String toOne = toZero.replaceAll("[n-zN-Z]", "1");
+		return str.replaceAll("[a-mA-M]", "0").replaceAll("[n-zN-Z]", "1");
 
-		return toOne;
-
-		// return str.replaceAll("[a-mA-M]", "0").replaceAll("[n-zN-Z]", "1");
-	}
-
-	public static String convertBinaryOtherSol(String str) {
-		str = str.toLowerCase();
+		// Other Solution
+		/* str = str.toLowerCase();
 		char[] strChar = str.toCharArray();
-
 		for (int i = 0; i < strChar.length; i++) {
-
 			if (strChar[i] >= 'a' && strChar[i] <= 'm') {
 				strChar[i] = '0';
 			} else {
 				strChar[i] = '1';
 			}
-
 		}
 		StringBuilder sb = new StringBuilder();
-
 		for (int i = 0; i < strChar.length; i++) {
 			sb.append(strChar[i]);
 		}
-
-		return sb.toString();
+		return sb.toString(); */
 	}
 
 	/**
@@ -1165,173 +1109,119 @@ public class Challenge {
 	// 1. (각 자리 숫자의 합 / 숫자의 길이) 리턴
 	// 2. 512 --> (5 + 1 + 2) / 3 --> 2 리턴
 	public static int mean(int a) {
-
-		int length = 0;
-		// int quotient = a; // 몫
-		// int remainder = 0; // 나머지
+		int length = a == 0 ? 1 : 0; // a가 0인 경우 길이는 1. 아니면 0으로 초기화
 		int sumRemainder = 0;
 		// # 숫자를 10으로 나누면서 나머지들을 더함.
 		// # 나눈 횟수는 숫자의 길이가 됨.
 		// # 몫이 0이 아닌 동안 반복
-
-		// # 321의 몫과 나머지 -> 32 and 1, 3 and 2, 0 and 3
-		// while(quotient != 0) {
-		// remainder = a % 10; // 1, 2, 3
-		// sumRemainder += remainder;
-		// quotient = a / 10; // 32, 3, 0
-		// a = quotient; // a = 32, a = 3, a = 0
-		// length++; // 1, 2, 3
-		// }
-
 		while (a != 0) {
 			sumRemainder += a % 10;
 			a /= 10;
-
 			length++;
 		}
-
-		return sumRemainder / length == 0 ? 1 : length;
+		return sumRemainder / length;
 	}
 
 	/**
 	 * Strange Pair
-	 * 
+	 * 1. 첫번째 문자열의 첫번째 문자와 두번째 문자열의 마지막 문자가 같으면 true
+	 * 2. 첫번째 문자열의 마지막 문자와 두번째 문자열의 첫번째 문자가 같으면 true
+	 * 3. 위의 두 조건 모두 만족 시 true 리턴, 아니면 false
 	 * @see https://edabit.com/challenge/RSbXRKoom6ED9Xe9i
 	 * @param s1
 	 * @param s2
 	 * @return
 	 */
-	// 1. 첫번째 문자열의 첫번째 문자와 두번째 문자열의 마지막 문자가 같으면 true
-	// 2. 첫번째 문자열의 마지막 문자와 두번째 문자열의 첫번째 문자가 같으면 true
-	// 3. 위의 두 조건 모두 만족 시 true 리턴, 아니면 false
-	public static boolean isStrangePair(String s1, String s2) {
+	private static boolean isSameCaseOne(String s1, String s2) {
+		return s1.charAt(0) == s2.charAt(s2.length() - 1);
+	}
 
-		if (s1.length() == 0 && s2.length() == 0) {
+	private static boolean isSameCaseTwo(String s1, String s2) {
+		return s1.charAt(s1.length() - 1) == s2.charAt(0);
+	}
+
+	public static boolean isStrangePair(String s1, String s2) {
+		/* if (s1.length() == 0 && s2.length() == 0) {
 			return true;
 		} else if (s1.length() == 0 || s2.length() == 0) {
 			return false;
 		}
 		// 위의 if문에서 조건식의 실행 순서를 바꾸면 오답 나옴
 		// || 연산자는 두 조건 모두 참인 경우 조건문이 실행되므로 위에서 false를 반환함.
-		// 두 문자열의 길이가 모두 0인 경우에 false를 반환해버림..
-
+		// 두 문자열의 길이가 모두 0인 경우에 false를 반환해버림.
 		// && : 두 조건 모두 참일 경우에만 참 반환
 		// || : 두 조건 모두 거짓일 경우에만 거짓 반환
+		return isSameCaseOne(s1, s2) && isSameCaseTwo(s1, s2); */
 
-		return isSameLetter_one(s1, s2) && isSameLetter_two(s1, s2);
-	}
-
-	private static boolean isSameLetter_one(String s1, String s2) {
-		return s1.charAt(0) == s2.charAt(s2.length() - 1);
-	}
-
-	private static boolean isSameLetter_two(String s1, String s2) {
-		return s1.charAt(s1.length() - 1) == s2.charAt(0);
-	}
-
-	public static boolean isStrangePairOtherSol(String s1, String s2) {
+		// Other Solution
 		if (s1.length() == 0 || s2.length() == 0) {
 			return s1.length() == 0 && s2.length() == 0;
 		}
-
 		return s1.charAt(0) == s2.charAt(s2.length() - 1) && s2.charAt(0) == s1.charAt(s1.length() - 1);
 	}
 
 	/**
 	 * Halve and Halve Again
-	 * 
+	 * 1. a가 몇 번이나 반으로 나눠지는가. 2. 나눈 값이 b보다 큰 동안만. 3. 1000, 3 ➞ 8
+	 * (1000 -> 500 -> 250 -> 125 -> 62.5 -> 31.25 -> 15.625 -> 7.8125 -> 3.90625
 	 * @see https://edabit.com/challenge/FQPo8iZ8vuPEj2dKB
 	 * @param a
 	 * @param b
 	 * @return
 	 */
 	public static int halveCount(int a, int b) {
-		// 1. a가 몇 번이나 반으로 나눠지는가
-		// 2. 나눈 값이 b보다 큰 동안만
-		// 3. 1000, 3 ➞ 8
-		// (1000 -> 500 -> 250 -> 125 -> 62.5 -> 31.25 -> 15.625 -> 7.8125 -> 3.90625
-
 		int halCount = 0;
 		double x = a;
 
 		while (true) {
 			x /= 2;
-			if (x <= b)
+			if (x <= b) { // count++ 하기 전 b보다 큰지 검사
 				break;
-			else
+			} else {
 				halCount++;
+			}
 		}
 		return halCount;
 	}
 
 	/**
-	 * Is the String Empty?
-	 * 
-	 * @see https://edabit.com/challenge/wr8zTBNNeLtspmLLT
-	 * @param str
-	 * @return
-	 */
-	public static boolean isEmpty(String str) {
-		return str.equals("") ? true : false;
-	}
-
-	/**
 	 * Clear the Fog
-	 * 
+	 * str에서 f.o.g 제거. str에 f.o.g가 없으면 "It's a clear day!" 출력.
 	 * @see https://edabit.com/challenge/SSiwbDE337QvJ9FCZ
 	 * @param str
 	 * @return
 	 */
-	// 1. str에서 f.o.g 제거
-	// 2. str에 f.o.g가 없으면 "It's a clear day!" 출력.
 	public static String clearFog(String str) {
-
-		for (int i = 0; i < str.length(); i++) {
-			if (str.charAt(i) == 'f' || str.charAt(i) == 'o' || str.charAt(i) == 'g') {
-				str = str.replaceAll("[`f`o`g]", "");
-				return str;
-			} else {
-				return "It's a clear day!";
+		String[] strArr = str.split("");
+		for (int i = 0; i < strArr.length; i++) {
+			if (strArr[i].equals("f") || strArr[i].equals("o") || strArr[i].equals("g")) {
+				strArr[i] = "";
 			}
 		}
-		return str;
+		return str.length() == String.join("", strArr).length() ? "It's a clear day!" : String.join("", strArr);
 
-		// # str의 각 문자와 문자 배열과 비교
-		// # 비교해서 요소가 있으면 변환
-		// # 없으면 클리어데이 리턴
+		// Other Solution
+		// return str.contains("fog") ? str.replaceAll("[fog]", "") : "It's a clear day!";
 
-		// char[] fog = { 'f', 'o', 'g' };
-		// for (int i = 0; i < str.length(); i++) {
-		// for (int j = 0; j < fog.length; j++) {
-		// if (str.charAt(i) == fog[j]) {
-		// str = str.replaceAll("[`f`o`g]", "");
-		// } else {
-		// return "It's a clear day!";
-		// }
-		// }
-		// }
-		// return str;
-	}
-
-	public static String clearFogOtherSol(String str) {
-		return str.contains("fog") ? str.replaceAll("[fog]", "") : "It's a clear day!";
+		// Other Soluion
+		/* List<String> list = new ArrayList<>();
+		for (Character ch : str.toCharArray()) {
+			if (ch != 'f' && ch != 'o' && ch != 'g') {
+				list.add(String.valueOf(ch));
+			}
+		}
+		return str.length() == list.size() ? "It's a clear day!" : String.join("", list); */
 	}
 
 	/**
 	 * Power of Two
-	 * 
+	 * num이 2의 거듭제곱수인가? (2^n제곱인가)
 	 * @see https://edabit.com/challenge/7LAsTPRvRH8sX6vD5
 	 * @param num
 	 * @return
 	 */
 	public static boolean powerOfTwo(final int num) {
-		// 1. num이 2의 거듭제곱수인가? (2^n제곱인가)
-		// num이 2의 제곱수인가 == num이 2의 제곱수로 나눠지는가
-		// 1, 2, 4, 8, 16, 32, 64...
-		// while and if
-
-		int pow = 1;
-
+		/* int pow = 1;
 		while (true) {
 			if (pow == num) {
 				return true;
@@ -1344,87 +1234,94 @@ public class Challenge {
 				// pow가 num보다 커지면 2의 제곱수가 아니라는 뜻.
 				// 위에서 2의 제곱수이면 true를 리턴했으므로..
 			}
+		} */
+
+		// Other Solution
+		int copyNum = num;
+		while (copyNum != 1) {
+			if (copyNum % 2 != 0) {
+				return false;
+			}
+			copyNum = copyNum / 2;
 		}
+		return true;
+
+		// Other Solution
+		/* int pow = 1;
+		int i = 0;
+		while (pow <= num) {
+			pow = (int) Math.pow(2, i);
+			++i;
+			if (pow == num) {
+				return true;
+			}
+		}
+		return false; */
 	}
 
 	/**
 	 * Hiding the Card Number
-	 * 
+	 * 문자열 마지막 4자리 빼고 *로 변환
 	 * @see https://edabit.com/challenge/8ZFob4Juk8jzHMAHA
 	 * @param card
 	 * @return
 	 */
 	public static String cardHide(String card) {
-		// 1. 마지막 4자리 빼고 *로 변환
-		String result = "";
-		String hideNum = "";
-
-		// for (int i = 0; i < card.length(); i++) {
-		// result += card.length() - 4 > i ? "*" : card.charAt(i);
-		// }
-
-		for (int i = 0; i < card.length() - 4; i++) {
-			hideNum += "*";
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < card.length(); i++) {
+			sb.append(card.length() - 4 > i ? "*" : card.charAt(i));
 		}
+		return sb.toString();
 
-		for (int i = card.length() - 4; i < card.length(); i++) {
-			result += card.charAt(i);
-		}
-
-		return hideNum + result;
+		// Other Solutioin
+		// return card.replaceAll(".(?=.{4})", "*");
+		// x(?=y) : 'y'가 뒤따라오는 x. 
+		// .(?=.{4}) : 아무 문자나 4개가 뒤따라오는'(?=.{4})' 아무 문자 '.'
 	}
 
 	/**
 	 * Get the File Extension
-	 * 
+	 * 파일명의 확장자 리턴. {"index.html", "main.css"} -> {"html", "css"} 리턴
 	 * @see https://edabit.com/challenge/ENNmwseEab73TMoBc
 	 * @param arr
 	 * @return
 	 */
-	// 1. 파일명의 확장자 리턴
-	// 2. {"index.html", "main.css"} -> {"html", "css"} 리턴
 	public static String[] getExtension(String[] arr) {
-		String[] extension = new String[arr.length];
+		/* String[] extension = new String[arr.length];
 		for (int i = 0; i < arr.length; i++) {
 			extension[i] = arr[i].split("\\.")[1];
 			// 각 요소를 .을 기준으로 나눈 뒤 뒤의 요소만 배열에 저장
 			// split(".") -> 안 됨. split("[.]") -> 됨. split("\\.") -> 됨.
 		}
-		return extension;
-	}
+		return extension; */
 
-	public static String[] getExtensionOtherSol1(String[] arr) {
-
+		// Other Solution
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = arr[i].substring(arr[i].indexOf(".") + 1);
 		}
-
 		return arr;
-	}
 
-	public static String[] getExtensionOtherSol2(String[] arr) {
-		String ext[] = new String[arr.length];
-
+		// Other Solution
+		/* String ext[] = new String[arr.length];
 		for (int i = 0; i < arr.length; i++) {
 			String pattern = "^.+[.]";
+			// 아무 문자 하나 이상으로 시작하는 "."
+			// "abc.", "a.", "sadfasdfasdfasdf." 등을 의미
 			ext[i] = arr[i].replaceAll(pattern, "");
 		}
-
-		return ext;
+		return ext; */
 	}
 
 	/**
 	 * GCD of Two Numbers
-	 * 
+	 * n1과 n2의 최대공약수 구하기
 	 * @see https://edabit.com/challenge/jrh488nh4CyDmwMre
 	 * @param n1
 	 * @param n2
 	 * @return
 	 */
-	// 1. n1과 n2의 최대공약수 구하기
 	public static int gcd(int n1, int n2) {
-
-		int gcd = Integer.MIN_VALUE;
+		/* int gcd = Integer.MIN_VALUE;
 		// 최대공약수. 임의의 값. 최대공약수는 양수로 나올 것이기 때문에 나중에 바뀔 수 있는 음수 값으로 넣어줌.
 		for (int commonDivisor = 1; commonDivisor <= Math.min(n1, n2); commonDivisor++) {
 			if (n1 % commonDivisor == 0 && n2 % commonDivisor == 0) {
@@ -1435,12 +1332,10 @@ public class Challenge {
 				// return 밖으로 빼내고 for문이 계속 돌아 조건에 만족하는 최대값(최대공약수) 찾음.
 			}
 		}
-		return gcd;
-	}
+		return gcd; */
 
-	public static int gcdOtherSol1(int n1, int n2) {
-
-		int gcd = Integer.MIN_VALUE;
+		// Other Solution
+		/* int gcd = Integer.MIN_VALUE;
 		for (int tmpCommonDivisor = 1; tmpCommonDivisor <= Math.min(n1, n2); tmpCommonDivisor++) {
 			if (n1 % tmpCommonDivisor == 0 && n2 % tmpCommonDivisor == 0) {
 				if (gcd < tmpCommonDivisor) { // 공약수가 이전의 최대공약수보다 크다면
@@ -1448,44 +1343,37 @@ public class Challenge {
 				}
 			}
 		}
-		return gcd;
-	}
+		return gcd; */
 
-	public static int gcdOtherSol2(int n1, int n2) {
+		// Other Solution
 		int i = n1 < n2 ? n1 : n2; // i(최대공약수)를 둘 중 더 작은 값으로 초기화 하고
 		while (!(n1 % i == 0 && n2 % i == 0)) { // i가 n1, n2 둘 다 나누어지는 경우가 아니라면
 			i--; // i값 감소. 위의 조건을 만족하는 i값이 나오지 않으면 while문 반복. 반복하면서 i 값 중 가장 큰 값을 찾음.
 		}
 		return i; // while문의 조건을 만족하지 않는 경우(i로 n1, n2를 모두 나눌 수 있는 경우) i값 리턴
-	}
 
-	// 이게 왜 되는지 수학이 이해가 안 됨.
-	public static int gcdOtherSol3(int n1, int n2) {
-		return (n2 == 0) ? n1 : gcdOtherSol3(n2, n1 % n2);
-	}
+		// Other Solution
+		// return (n2 == 0) ? n1 : gcd(n2, n1 % n2);
 
-	// 이게 왜 되는지 수학이 이해가 안 됨.
-	public static int gcdOtherSol4(int num1, int num2) {
-		if (num2 != 0) {
-			return gcdOtherSol4(num2, num1 % num2);
+		// Other Solution
+		/* if (n2 != 0) {
+			return gcd(n2, n1 % n2);
 		} else {
-			return num1;
-		}
+			return n1;
+		} */
 	}
 
 	/**
 	 * Reverse an Array
-	 * 
+	 * 배열을 반대로 출력
 	 * @see https://edabit.com/challenge/j5mm8HjTZGZagrnz8
 	 * @param arr
 	 * @return
 	 */
-	// 1. 배열을 반대로 출력
 	public static int[] reverse(int[] arr) {
 		if (arr.length == 0) {
 			return arr;
 		}
-
 		int[] reverseArray = new int[arr.length];
 		for (int i = 0; i < arr.length; i++) {
 			reverseArray[i] = arr[arr.length - (i + 1)];
@@ -1495,17 +1383,13 @@ public class Challenge {
 
 	/**
 	 * Largest Swap
-	 * 
+	 * 두 자리의 수 num의 앞,뒷자리 수를 바꾸었을 때, 원래의 num이 자리를 바꾼 num 이상이면 true 아니면 false
+	 * num = 39, reverseNum = 93 -> false. num = 99, reverseNum = 99 -> true;
 	 * @see https://edabit.com/challenge/Jr7ueGQMEthBFYpB6
 	 * @param num
 	 * @return
 	 */
-	// 1. 두 자리의 수 num의 앞,뒷자리 수를 바꾸었을 때,
-	// 2. 원래의 num이 자리를 바꾼 num 이상이면 true 아니면 false
-	// num = 39, reverseNum = 93 -> false
-	// num = 99, reverseNum = 99 -> true;
 	public static boolean largestSwap(int num) {
-
 		String reverseNumStr = "";
 		int remainder;
 		int divisor = num;
@@ -1516,130 +1400,98 @@ public class Challenge {
 			divisor = divisor / 10;
 			reverseNumStr += String.valueOf(remainder);
 		}
-		System.out.println("reverseNumStr = " + reverseNumStr);
 		int reverseNum = Integer.parseInt(reverseNumStr);
-		System.out.println("reverseNum = " + reverseNum);
-		System.out.println("num = " + num + "reverseNum = " + reverseNum);
 		return num >= reverseNum;
-	}
 
-	public static boolean largestSwapOtherSol1(int num) {
-		int dig1 = num % 10;
+		// Other Solution
+		/* int dig1 = num % 10;
 		int dig2 = num / 10;
-		return dig2 >= dig1;
-	}
-
-	public static boolean largestSwapOtherSol2(int num) {
-		String numb = Integer.toString(num);
-		String x = "" + numb.charAt(1) + numb.charAt(0);
-		int f = Integer.parseInt(numb);
-		int g = Integer.parseInt(x);
-		if (f == g) {
-			return true;
-		}
-		if (f > g) {
-			return true;
-		} else {
-			return false;
-		}
+		return dig2 >= dig1; */
 	}
 
 	/**
 	 * Grab the City
-	 * 
+	 * 문자열에서 도시 이름 출력. 도시 이름은 [] 안에 들어감. 도시 이름이 들어간 [] 은 문자열 맨 마지막에만 옴.
 	 * @see https://edabit.com/challenge/NgyZdeFBWJcBGXxjq
 	 * @param str
 	 * @return
 	 */
-	// 1. 문자열에서 도시 이름 출력
-	// 2. 도시 이름은 [] 안에 들어감.
-	// 3. 도시 이름이 들어간 [] 은 문자열 맨 마지막에만 옴.
 	public static String grabCity(String str) {
-		// # 문자열을 쪼갠 후 맨 마지막 요소만 출력
-		// # 마지막 요소에서 [] 제거
-
-		String[] strArr = str.split("\\[");
-		System.out.println(Arrays.toString(strArr));
+		// 문자열을 쪼갠 후 맨 마지막 요소만 출력, 마지막 요소에서 [] 제거
+		/* String[] strArr = str.split("\\[");
 		String city = strArr[strArr.length - 1];
 		city = city.replaceAll("[\\]]", "");
 		// 특수문자 제거 표현식. 제거하려는 특수문자 앞에 \\ 붙여 사용.
+		return city; */
 
-		return city;
-	}
-
-	public static String grabCityOtherSol(String str) {
+		// Other Solution
 		return str.substring(str.lastIndexOf('[') + 1, str.lastIndexOf(']'));
 	}
 
 	/**
 	 * Letters Only
-	 * 
+	 * 문자열에서 특수문자, 숫자 제외한 문자만 리턴
 	 * @see https://edabit.com/challenge/HPcr7REWMLTosoXME
 	 * @param str
 	 * @return
 	 */
-	// 1. 문자열에서 특수문자, 숫자 제외한 문자만 리턴
 	public static String lettersOnly(String str) {
-
 		return str.replaceAll("[^a-zA-Z]", "");
+
+		// Other Solution
+		/* StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < str.length(); i++) {
+			if (Character.isLetter(str.charAt(i))) {
+				sb.append(str.charAt(i));
+			}
+		}
+		return sb.toString(); */
 	}
 
 	/**
 	 * Convert a Number to Base 2
-	 * 
+	 * decimal을 2진수로 리턴. 문자열로 리턴. 리턴값은 1024 이상일 수 없음. && 연산자는 유용하게 쓰일 수 있다.
 	 * @see https://edabit.com/challenge/xH7uvX2MoH8e85aYS
 	 * @param decimal
 	 * @return
 	 */
-	// 1. decimal을 2진수로 리턴. 문자열로 리턴
-	// 2. 리턴값은 1034 이상일 수 없음.
-	// 3. && 연산자는 유용하게 쓰일 수 있다.
 	public static String binary(int decimal) {
-
-		String binaryStr = "";
-		String remainderStr = "";
+		StringBuilder binaryStr = new StringBuilder();
+		StringBuilder remainderStr = new StringBuilder();
 
 		if (decimal == 0) { // 아래의 while문 실행되지 않으므로 그대로 "0" 리턴.
 			return "0";
 		}
-
 		while (decimal != 0) {
-			remainderStr += String.valueOf(decimal % 2);
+			remainderStr.append(String.valueOf(decimal % 2));
 			decimal = decimal / 2;
 		}
-
 		for (int i = remainderStr.length() - 1; i >= 0; i--) {
-			binaryStr += remainderStr.charAt(i);
+			binaryStr.append(remainderStr.charAt(i));
 		}
+		return binaryStr.toString();
 
-		return binaryStr;
-	}
-
-	public static String binaryOtherSol(int decimal) {
-		return Integer.toBinaryString(decimal);
+		// Other Solution
+		// return Integer.toBinaryString(decimal);
 	}
 
 	/**
 	 * Valid Variable Names
-	 * 
+	 * variable이 올바른 변수명인가 리턴
+	 * 변수명은 항상 문자로 시작해야 함. 
+	 * variable이 숫자나 특수문자로 시작하거나, _ 이외의 특수문자를 포함하거나 공백이 있거나 -> false 리턴
 	 * @see https://edabit.com/challenge/6gDTBRgZKpotCsgib
 	 * @param variable
 	 * @return
 	 */
-	// 1. variable이 올바른 변수명인가 리턴
-	// 2. 변수명은 항상 문자로 시작해야 함.
-	// 3. variable이 숫자나 특수문자로 시작하거나, _ 이외의 특수문자를 포함하거나 공백이 있거나 -> false 리턴
-	// 4. 그렇지 않으면 true 리턴
 	public static boolean variableValid(String variable) {
-
-		// # 공백을 포함하는 경우
+		/* // 공백을 포함하는 경우
 		for (int i = 0; i < variable.length(); i++) {
 			if (variable.charAt(i) == ' ') {
 				return false;
 			}
 		}
-
-		// # _를 제외한 특수문자를 포함하는 경우
+		// _를 제외한 특수문자를 포함하는 경우
 		if (variable.matches("^[^a-zA-Z_].*")) {
 			// 정규표현식
 			// [^a-zA-Z] -> a~z, A~Z가 아닌 경우
@@ -1649,11 +1501,9 @@ public class Challenge {
 			// [~]* ~ 문자가 0개에서 n개까지
 			return false;
 		}
+		return true; */
 
-		return true;
-	}
-
-	public static boolean variableValidOtherSol(String variable) {
+		// Other Solution
 		return variable.matches("^[a-zA-Z_][a-zA-Z0-9_]*$");
 		// 정규표현식
 		// [~]$ -> ~로 종료되는 경우
@@ -1664,29 +1514,25 @@ public class Challenge {
 
 	/**
 	 * Solving Exponential Equations With Logarithms
-	 * 
+	 * b는 a의 몇 제곱인가?
 	 * @see https://edabit.com/challenge/oB67n674gwdTi33P4
 	 * @param a
 	 * @param b
 	 * @return
 	 */
-	// 1. b는 a의 몇 제곱인가?
 	public static int solveForExp(int a, int b) {
-		// # b가 a로 pow번 나누어지면 b는 a의 pow제곱
-		// a = 2, b = 16; pow = 0;
-		// pow = 1, b = 8 // 2, 4 // 3, 2 // 4, 1
-
+		// b가 a로 pow번 나누어지면 b는 a의 pow제곱
+		// a = 2, b = 16; pow = 0일 때,
+		// pow = 1, b = 8 // pow = 2, b = 4 // pow = 3, b = 2 // pow = 4, b = 1
 		int pow = 0;
 		while (b != 1) {
 			b /= a;
 			pow++;
 		}
-
 		return pow;
-	}
 
-	public static int solveForExpOtherSol(int a, int b) {
-		return (int) (Math.log(b) / Math.log(a));
+		// Other Solution
+		// return (int) (Math.log(b) / Math.log(a));
 	}
 
 	/**
