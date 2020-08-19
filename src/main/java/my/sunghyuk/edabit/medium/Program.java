@@ -622,4 +622,20 @@ public class Program {
     }
     return sb.toString();
   }
+
+  /**
+   * Is the Input Factorial of an Integer?
+   * 주어진 정수 n이 팩토리얼 숫자인가. 24 = 4 * 3 * 2 * 1 true. 27 false
+   * @param n
+   * @return
+   */
+  public static boolean isFactorial(int n) {
+    int factorialNum = 1;
+    int i = 1;
+    while (factorialNum < n) {
+      factorialNum *= i;
+      ++i;
+    }
+    return factorialNum == n;
+  }
 }
