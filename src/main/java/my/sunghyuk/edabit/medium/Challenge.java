@@ -2629,4 +2629,71 @@ public class Challenge {
     // 문자열 마지막 문자가 "."이면 잘라낸 후 리턴
     return n; */
   }
+
+  /**
+   * Words With Duplicate Letters
+   * 문장의 각각의 단에에서 중복 문자가 있으면 false, 아니면 true 리턴. 대소문자 무시
+   * @see https://edabit.com/challenge/mdJmXLuw8dLxxdGLc
+   * @param phrase
+   * @return
+   */
+  public static boolean noDuplicateLetters(String phrase) {
+    String[] wordArr = phrase.toLowerCase().split(" ");
+    for (int i = 0; i < wordArr.length; i++) {
+      Set<Character> set = new HashSet<>();
+      for (int j = 0; j < wordArr[i].length(); j++) {
+        set.add(wordArr[i].charAt(j));
+      }
+      if (wordArr[i].length() != set.size()) {
+        return false;
+      }
+    }
+    return true;
+
+    // Other Solution
+    /* String[] wordArr = phrase.toLowerCase().split(" ");
+    for (int i = 0; i < wordArr.length; i++) {
+      for (int j = 0; j < wordArr[i].length(); j++) {
+        for (int k = j + 1; k < wordArr[i].length(); k++) {
+          if (wordArr[i].charAt(j) == wordArr[i].charAt(k)) {
+            return false;
+          }
+        }
+      }
+    }
+    return true; */
+
+    // Other Solution
+    /* String[] wordArr = phrase.toLowerCase().split(" ");
+    for (int i = 0; i < wordArr.length; i++) {
+      if (wordArr[i].chars().distinct().count() != wordArr[i].length()) {
+        return false;
+      }
+    }
+    return true; */
+
+    // Other Solution
+    /* String[] wordArr = phrase.toLowerCase().split(" ");
+    for (int i = 0; i < wordArr.length; i++) {
+      char[] charArr = wordArr[i].toCharArray();
+      Arrays.sort(charArr);
+      for (int j = 0; j < charArr.length - 1; j++) {
+        if (charArr[j] == charArr[j + 1]) {
+          return false;
+        }
+      }
+    }
+    return true; */
+
+    // Other Solution
+    /* String[] wordArr = phrase.toLowerCase().split(" ");
+    for (int i = 0; i < wordArr.length; i++) {
+      for (int j = 0; j < wordArr[i].length(); j++) {
+        if (wordArr[i].indexOf(wordArr[i].charAt(j), j + 1) != -1) {
+          return false;
+        }
+      }
+    }
+    return true; */
+  }
 }
