@@ -2696,4 +2696,27 @@ public class Challenge {
     }
     return true; */
   }
+
+  /**
+   * Repeat the Shorter String
+   * str1과 str2의 문자열 중 더 짧은 문자열을 더 긴 문자열의 길이만큼 반복함
+   * @param str1
+   * @param str2
+   * @return
+   */
+  public static String lengthen(String str1, String str2) {
+    String shorterStr = str1.length() < str2.length() ? str1 : str2;
+    String longerStr = str1.length() > str2.length() ? str1 : str2;
+    StringBuilder sb = new StringBuilder();
+
+    while (sb.length() < longerStr.length()) {
+      for (int i = 0; i < shorterStr.length(); i++) {
+        sb.append(shorterStr.charAt(i));
+        if (sb.length() == longerStr.length()) {
+          break;
+        }
+      }      
+    }
+    return sb.toString();
+  }
 }
