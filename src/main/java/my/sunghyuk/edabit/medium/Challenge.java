@@ -2715,8 +2715,33 @@ public class Challenge {
         if (sb.length() == longerStr.length()) {
           break;
         }
-      }      
+      }
     }
     return sb.toString();
+  }
+
+  /**
+   * Longest Common Ending
+   * str1과 str2에이 가장 길게 공통되는 부분 리턴. 문자열의 끝부분에 있음
+   * @see https://edabit.com/challenge/8yxthmRQsNu86PBy3
+   * @param str1
+   * @param str2
+   * @return
+   */
+  public static String longestCommonEnding(String str1, String str2) {
+    String shorterStr = str1.length() < str2.length() ? str1 : str2;
+    // String longerStr = str1.length() > str2.length() ? str1 : str2;
+    // 두 문자열의 길이가 같은 경우 shorterStr, longerStr 모두 str1이 됨.
+    String longerStr = shorterStr.equals(str1) ? str2 : str1;
+    StringBuilder sb = new StringBuilder();
+
+    for (int i = shorterStr.length() - 1, j = longerStr.length() - 1; i >= 0; i--, j--) {
+      if (shorterStr.charAt(i) == longerStr.charAt(j)) {
+        sb.append(shorterStr.charAt(i));
+      } else {
+        break;
+      }
+    }
+    return sb.reverse().toString();
   }
 }
