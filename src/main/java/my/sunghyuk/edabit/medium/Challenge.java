@@ -2744,4 +2744,49 @@ public class Challenge {
     }
     return sb.reverse().toString();
   }
+
+  /**
+   * Remix the String
+   * 정수 배열의 요소는 문자열의 각 문자 인덱스를 의미함. 인덱스를 오름차순으로 했을 때 문자열 리턴
+   * remix("abcd", [0, 3, 1, 2]) ➞ "acdb"
+   * @see https://edabit.com/challenge/zRjZb4NXtfMjGAMGb
+   * @param str
+   * @param arr
+   * @return
+   */
+  public static String remix(String str, int[] arr) {
+    Map<Integer, Character> map = new HashMap<>();
+    for (int i = 0; i < arr.length; i++) {
+      map.put(arr[i], str.charAt(i));
+    }
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < arr.length; i++) {
+      sb.append(map.get(i));
+    }
+    return sb.toString();
+
+    // Other Solution
+    /* ArrayList<Integer> list = new ArrayList<>();
+    for (int num : arr) {
+      list.add(num);
+    }
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < arr.length; i++)
+      sb.append(str.charAt(list.indexOf(i)));
+    return sb.toString(); */
+
+    // Other Solution
+    /* StringBuilder remixedStr = new StringBuilder(str);
+    for (int i = 0; i < str.length(); i++) {
+      remixedStr.setCharAt(arr[i], str.charAt(i));
+    }
+    return remixedStr.toString(); */
+
+    // Other Solution
+    /* char[] chars = new char[arr.length];
+    for (int i = 0; i < arr.length; i++) {
+      chars[arr[i]] = str.charAt(i);
+    }
+    return new String(chars); */
+  }
 }
