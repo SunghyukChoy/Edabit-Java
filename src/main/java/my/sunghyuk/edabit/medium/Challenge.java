@@ -2789,4 +2789,28 @@ public class Challenge {
     }
     return new String(chars); */
   }
+
+  /**
+   * White Spaces Between Lower and Uppercase Letters
+   * 카멜 케이스 문자열을 공백 넣어서 바꾸기. 대소문자 유지
+   * @see https://edabit.com/challenge/j7qh4xZNvLddnx4Gy
+   * @param s
+   * @return
+   */
+  public static String insertWhitespace(String s) {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < s.length() - 1; i++) {
+      if (Character.isLowerCase(s.charAt(i)) && Character.isUpperCase(s.charAt(i + 1))) {
+        sb.append(s.charAt(i)).append(" ");
+      } else {
+        sb.append(s.charAt(i));
+      }
+    }
+    sb.append(s.charAt(s.length() - 1));
+    return sb.toString().trim();
+
+    // Other Solution
+    // return s.replaceAll("(?<=[a-z])(?=[A-Z])", " ");
+    // return s.replaceAll("([A-Z])", " $1").trim();
+  }
 }
