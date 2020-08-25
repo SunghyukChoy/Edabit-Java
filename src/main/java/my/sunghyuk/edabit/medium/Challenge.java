@@ -2813,4 +2813,28 @@ public class Challenge {
     // return s.replaceAll("(?<=[a-z])(?=[A-Z])", " ");
     // return s.replaceAll("([A-Z])", " $1").trim();
   }
+
+  /**
+   * Common Divisor of Array
+   * 배열 요소들의 최대공약수 리턴
+   * @see https://edabit.com/challenge/tLmBirspM5N35xxuC
+   * @param array
+   * @return
+   */
+  public static int gcdOfArray(int[] array) {
+    Arrays.sort(array);
+    int commonDivisor = array[0];
+    while (true) {
+      int gcd = commonDivisor;
+      for (int i = 0; i < array.length; i++) {
+        if (array[i] % commonDivisor != 0) {
+          commonDivisor--;
+          break;
+        }
+      }
+      if (gcd == commonDivisor) {
+        return gcd;
+      }
+    }
+  }
 }
