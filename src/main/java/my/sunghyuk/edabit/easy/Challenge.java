@@ -2329,4 +2329,21 @@ public class Challenge {
 		}
 		return result; */
 	}
+
+	/**
+	 * Any Prime Number in Range
+	 * 두 수의 범위 안에 소수가 있는가
+	 * @see https://edabit.com/challenge/NjJ9gGNPGaQGxTxCc
+	 * @param n1
+	 * @param n2
+	 * @return
+	 */
+	public static boolean primeNumberInRange(int n1, int n2) {
+		for (int i = n1; i <= n2; i++) {
+			if (Helper.isPrime(i)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
