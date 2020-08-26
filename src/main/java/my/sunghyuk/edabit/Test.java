@@ -114,5 +114,9 @@ public class Test {
     String word = "apple";
     word = word.substring(1, word.length() - 1);
     System.out.println(word);
+
+    String subStringTest = "apple";
+    String subStrResult = subStringTest.substring(subStringTest.indexOf("a"), subStringTest.indexOf("e") + 1);
+    System.out.println(subStrResult);
   }
 }

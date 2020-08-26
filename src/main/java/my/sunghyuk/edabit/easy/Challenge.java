@@ -1537,68 +1537,72 @@ public class Challenge {
 
 	/**
 	 * Check if One Array can be Nested in Another
-	 * 
+	 * arr1 배열의 값들이 arr2 배열 값들의 사이에 들어가는가.
+	 * arr1 요소는 arr2 요소의 최소값보다 크고 최대값보다 작아야 함
+	 * [1, 2, 3, 4], [0, 6]) ➞ true, [9, 9, 8], [8, 9]) ➞ false
 	 * @see https://edabit.com/challenge/xkD7RBBDiWuDHTiXE
 	 * @param arr1
 	 * @param arr2
 	 * @return
 	 */
-	// 1. arr1 배열의 값들이 arr2 배열 값들의 사이에 들어가는가
-	// 2. [1, 2, 3, 4], [0, 6]) ➞ true
-	// 2. [3, 1], [4, 0]) ➞ true
-	// 2. [9, 9, 8], [8, 9]) ➞ false
-	// 2. [1, 2, 3, 4], [2, 3]) ➞ false
-	// # 배열 # 논리 연산자 # boolean # 범위
 	public static boolean canNest(int[] arr1, int[] arr2) {
-		// arr1의 값들은 arr2에서 작은 값과 큰 값의 범위에 들어가는가
-		// arr2의 작은 값과 큰 값 구하기
-		// arr1의 값들을 arr2의 값들과 크기 비교하기
-
-		Arrays.sort(arr2);
-		// 오름차순 정렬. 뒤로 갈수록 값이 커짐
-
+		/* Arrays.sort(arr2); // 오름차순 정렬. 뒤로 갈수록 값이 커짐
 		int minRange = arr2[0];
 		int maxRange = arr2[arr2.length - 1];
-
 		for (int i = 0; i < arr1.length; i++) {
 			if (minRange >= arr1[i] || maxRange <= arr1[i]) {
-				// 미만의 반대는 초과가 아니라 이상
-				// 초과의 반대는 미만이 아니라 이하
+				// 미만의 반대는 초과가 아니라 이상. x가 10보다 작아야 할 때 그 반대는 10을 포함한 10 이상의 값.
+				// 초과의 반대는 미만이 아니라 이하. x가 10보다 커야 할 때 그 반대는 10을 포함한 10 이하의 값.
 				// 두 가지 조건 중 하나라도 참이면 참, 두 조건 모두 참이면 참 -> return false
 				// 주 조건 모두 거짓이면 거짓 -> for 문 탈출. return true
 				return false;
-
 				// 참, 거짓을 구할 때 더 많은 경우가 나오는 것들을 반복물을 통해 구함
-				// 본 문제의 경우 두 조건이 모두 참이어서 참을 반환하는 것보다 하나라도 참이어서 참을 반환하는 경우가 많으므로 그러한 경우들을 반복문을
-				// 통해 찾음.
+				// 본 문제의 경우 두 조건이 모두 참이어서 참을 반환하는 것보다 하나라도 참이어서 참을 반환하는 경우가 많으므로 그러한 경우들을 반복문을 통해 찾음.
 			}
 		}
-		return true;
+		return true; */
+
+		// Other Solution
+		Arrays.sort(arr1);
+		Arrays.sort(arr2);
+		if (arr1[0] > arr2[0] && arr1[arr1.length - 1] < arr2[arr2.length - 1]) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
 	 * Stripping a Sentence Down
-	 * 
+	 * 문자열 str에서 문자열 chars의 문자를 제거한 문자열 리턴
+	 * ("the quick brown fox jumps over the lazy dog", "aeiou") ➞ "th qck brwn fx jmps vr th lzy dg"
 	 * @see https://edabit.com/challenge/EiGazR6eGXHMx3hTy
 	 * @param str
 	 * @param chars
 	 * @return
 	 */
-	// 1. 문자열 str에서 문자열 chars의 문자를 제거한 문자열 리턴
-	// 2. stripSentence("the quick brown fox jumps over the lazy dog", "aeiou") ➞
-	// "th qck brwn fx jmps vr th lzy dg"
-	// # 변환 # replaceAll # 이중 for문
 	public static String stripSentence(String str, String chars) {
 		// chars의 각 문자와 str의 각 문자를 비교하여 같으면 ""로 대체
 		// str = "loop and condition";
 		// chars = "ond";
+
+		// 오답
+		/* for (int i = 0; i < str.length(); i++) {
+			for (int j = 0; j < chars.length(); j++) {
+				if (str.charAt(i) == chars.charAt(j)) {
+					str = str.replaceAll(str.charAt(i) + "", "");
+					// 변환이 되는 대상을 ""(공백)으로 변환하면 문자열의 길이가 달라지고
+					// 초기에 할당되었던 인덱스가 바뀜에 따라 검사를 거치지 않고 누락되는 문자들이 발생함(원래의 있던 자리에서 앞으로 당겨지게 됨에 따라	검사를 거치지 않게 됨)
+					// 이중 for문 사용 시 변환의 대상을 바깥 for문에 두지 말 것
+				}
+			}
+		} */
 
 		for (int i = 0; i < chars.length(); i++) {
 			for (int j = 0; j < str.length(); j++) {
 				if (chars.charAt(i) == str.charAt(j)) {
 					str = str.replaceAll(str.charAt(j) + "", "");
 					// str 문자열에서 해당하는 문자를 모두 ""로 변환한 뒤 str에 다시 저장
-
+		
 					// System.out.println("걸리는 인덱스 = " + "i =" + i + "\nj = " + j);
 					// System.out.println(str);
 				}
@@ -1606,18 +1610,11 @@ public class Challenge {
 		}
 		return str;
 
-		// 오답
-		// for (int i = 0; i < str.length(); i++) {
-		// for (int j = 0; j < chars.length(); j++) {
-		// if (str.charAt(i) == chars.charAt(j)) {
-		// str = str.replaceAll(str.charAt(i) + "", "");
-		// // 변환이 되는 대상을 ""(공백)으로 변환하면 문자열의 길이가 달라지고
-		// // 초기에 할당되었던 인덱스가 바뀜에 따라 검사를 거치지 않고 누락되는 문자들이 발생함(원래의 있던 자리에서 앞으로 당겨지게 됨에 따라
-		// 검사를 거치지 않게 됨)
-		// // 이중 for문 사용 시 변환의 대상을 바깥 for문에 두지 말 것
-		// }
-		// }
-		// }
+		// Other Solution
+		// chars = "[" + chars + "]";
+		// return str.replaceAll(chars, "");
+
+		// return str.replaceAll("[" + chars + "]", "");
 	}
 
 	/**

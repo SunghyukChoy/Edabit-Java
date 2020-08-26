@@ -115,4 +115,6 @@ public class Challenge {
     }
     return primeCnt;
   }
+
+  
 }
