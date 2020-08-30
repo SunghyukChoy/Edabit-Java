@@ -116,5 +116,34 @@ public class Challenge {
     return primeCnt;
   }
 
-  
+  /**
+   * Closest Palindrome Number
+   * 주어진 정수에서 가장 가까운 Palindrome 리턴. 같은 거리에 두 Palindrome이 있다면 더 작은 수 리턴
+   * 주어진 정수가 Palindrome이면 그대로 리턴
+   * closestPalindrome(100) ➞ 99. 99 and 101 are equally distant, so we return the smaller palindrome.
+   * @see https://edabit.com/challenge/F2Kizgj7QxSab7R7p
+   * @param num
+   * @return
+   */
+  public static long closestPalindrome(int num) {
+    if (Helper.isPalindrome(num)) {
+      return num;
+    }
+    int smallerPalindrome = num;
+    int biggerPalindrome = num;
+    while (true) {
+      --smallerPalindrome;
+      ++biggerPalindrome;
+      if (Helper.isPalindrome(smallerPalindrome) && Helper.isPalindrome(biggerPalindrome)) {
+        return smallerPalindrome;
+      }
+      // 두 수가 동시에 Palindrome인 경우는 위에서 처리하고 아래의 코드에선 무조건 한 쪽이 먼저 도달하므로 조건문에서 바로 리턴, 또는 두 조건문의 순서를 바꿔도 상관없음.
+      if (Helper.isPalindrome(smallerPalindrome)) {
+        return smallerPalindrome;
+      }
+      if (Helper.isPalindrome(biggerPalindrome)) {
+        return biggerPalindrome;
+      }
+    }
+  }
 }

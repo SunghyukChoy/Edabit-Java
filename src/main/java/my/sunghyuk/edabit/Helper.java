@@ -80,6 +80,16 @@ public class Helper {
   }
 
   /**
+   * Palindrome 검사 메서드
+   * @param num
+   * @return
+   */
+  public static boolean isPalindrome(int num) {
+    String str = String.valueOf(num);
+    return isPalindrome(str);
+  }
+
+  /**
    * 정수의 각 자리의 값을 곱한 값 구하기 메소드
    * @param num
    * @return
