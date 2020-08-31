@@ -1,8 +1,8 @@
 package my.sunghyuk.edabit.hard;
 
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import my.sunghyuk.edabit.Helper;
 
@@ -145,5 +145,23 @@ public class Challenge {
         return biggerPalindrome;
       }
     }
+  }
+
+  /**
+   * Reverse the Odd Length Words
+   * 문장에서 단어의 길이가 홀수인 단어만 역순으로 출력
+   * @see https://edabit.com/challenge/p5kyThBZDR7oJhjR7   
+   * @param str
+   * @return
+   */
+  public static String reverseOdd(String str) {
+    String[] wordArr = str.split(" ");
+    for (int i = 0; i < wordArr.length; i++) {
+      if (wordArr[i].length() % 2 != 0) {
+        StringBuilder oddWord = new StringBuilder(wordArr[i]);
+        wordArr[i] = oddWord.reverse().toString();
+      }
+    }
+    return String.join(" ", wordArr);
   }
 }
