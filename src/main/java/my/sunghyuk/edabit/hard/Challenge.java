@@ -2,6 +2,7 @@ package my.sunghyuk.edabit.hard;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import my.sunghyuk.edabit.Helper;
@@ -163,5 +164,68 @@ public class Challenge {
       }
     }
     return String.join(" ", wordArr);
+  }
+
+  /**
+   * Swapping Two by Two
+   * 문자 두 개씩 한 쌍을 만들어 서로 자리 바꾸기. swapTwo("ABCDEFGH") ➞ "CDABGHEF"
+   * 두 쌍이 만들어지지 않으면 바꾸지 않음. swapTwo("FFGGHHI") ➞ "GGFFHHI"
+   * @see https://edabit.com/challenge/Bt6tuyqL7ESZHpsec
+   * @param str
+   * @return
+   */
+  public static String swapTwo(String str) {
+    /* List<String> firstPair = new ArrayList<>();
+    List<String> secondPair = new ArrayList<>();    
+    while (str.length() >= 4) {
+      firstPair.add(str.substring(0, 2));
+      str = str.substring(2);
+      secondPair.add(str.substring(0, 2));
+      str = str.substring(2);
+    }    
+    StringBuilder sb = new StringBuilder();    
+    for (int i = 0; i < firstPair.size(); i++) {
+      sb.append(secondPair.get(i));
+      sb.append(firstPair.get(i));
+    }
+    
+    return sb.append(str).toString(); */
+
+    // Other Solution
+    // return str.replaceAll("\\G(..)(..)", "$2$1");
+
+    // Other Solution
+    /* StringBuilder sb = new StringBuilder();
+    int i = 0;
+    while (i < str.length()) {
+      if (i + 3 < str.length()) {
+        sb.append(str.charAt(i + 2)).append(str.charAt(i + 3));
+        sb.append(str.charAt(i)).append(str.charAt(i + 1));
+        i += 4;
+      } else {
+        sb.append(str.charAt(i));
+        i++;
+      }
+    }
+    return sb.toString(); */
+
+    // Other Solution
+    /* if (str.length() < 4) {
+      return str;
+    }
+    String swapStr = str.substring(2, 4) + str.substring(0, 2);
+    if (str.length() > swapStr.length()) {
+      swapStr += swapTwo(str.substring(4));
+    }
+    return swapStr; */
+
+    // Other Solution
+    StringBuilder sb = new StringBuilder();
+    while (str.length() >= 4) {
+      sb.append(str.substring(2, 4));
+      sb.append(str.substring(0, 2));
+      str = str.substring(4);
+    }
+    return sb.append(str).toString();
   }
 }
