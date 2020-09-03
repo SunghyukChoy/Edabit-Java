@@ -1602,7 +1602,7 @@ public class Challenge {
 				if (chars.charAt(i) == str.charAt(j)) {
 					str = str.replaceAll(str.charAt(j) + "", "");
 					// str 문자열에서 해당하는 문자를 모두 ""로 변환한 뒤 str에 다시 저장
-		
+
 					// System.out.println("걸리는 인덱스 = " + "i =" + i + "\nj = " + j);
 					// System.out.println(str);
 				}
@@ -1618,17 +1618,15 @@ public class Challenge {
 	}
 
 	/**
-	 * Alternating Ones and Zeroes 1. 주어진 0과 1을 가지고 하나씩 교차하면서 다시 적을 수 있으면 true 아니면
-	 * false 2. 0001111 ➞ true. Can make: 1010101 // 010001 ➞ false
-	 * 
+	 * Alternating Ones and Zeroes
+	 * 주어진 0과 1을 가지고 하나씩 교차하면서 다시 적을 수 있으면 true 아니면 false
+	 * 0001111 ➞ true. Can make: 1010101 // 010001 ➞ false
 	 * @see https://edabit.com/challenge/D7PZ7rcKGRiCvcm7C
 	 * @param str
 	 * @return
 	 */
-
 	public static boolean canAlternate(String str) {
-
-		int zeroCnt = 0;
+		/* int zeroCnt = 0;
 		int oneCnt = 0;
 		for (int i = 0; i < str.length(); i++) {
 			if (str.charAt(i) == '0') {
@@ -1637,26 +1635,22 @@ public class Challenge {
 				oneCnt++;
 			}
 		}
+		return Math.abs(zeroCnt - oneCnt) == 1 || Math.abs(zeroCnt - oneCnt) == 0; */
 
-		return Math.abs(zeroCnt - oneCnt) == 1 || Math.abs(zeroCnt - oneCnt) == 0;
-	}
-
-	public static boolean canAlternateOtherSol1(String str) {
-		long zeroCnt = str.chars().filter(ch -> ch == '0').count();
+		// Other Solution
+		/* long zeroCnt = str.chars().filter(ch -> ch == '0').count();
 		long oneCnt = str.chars().filter(ch -> ch == '1').count();
+		return zeroCnt - oneCnt >= -1 && zeroCnt - oneCnt <= 1; */
 
-		return zeroCnt - oneCnt >= -1 && zeroCnt - oneCnt <= 1;
-	}
-
-	public static boolean canAlternateOtherSol2(String str) {
+		// Other Solution
 		int zeros = str.replace("1", "").length();
 		int ones = str.replace("0", "").length();
 		return Math.abs(zeros - ones) <= 1;
 	}
 
 	/**
-	 * Semantic Versioning 1. 문자열에서 세 숫자는 각 Major, Minor, Patch의 수를 의미. 각 숫자 리턴
-	 * 
+	 * Semantic Versioning
+	 * 문자열에서 세 숫자는 각 Major, Minor, Patch의 수를 의미. 각 숫자 리턴	 
 	 * @see https://edabit.com/challenge/H4smHFuL5wn58imFK
 	 * @param semver
 	 * @return
@@ -1666,7 +1660,6 @@ public class Challenge {
 		// "."으로 안 잘림. "\\."로 해야 잘림.
 		System.out.println(Arrays.toString(numbers));
 		return numbers[0];
-
 	}
 
 	public static String retrieveMinor(String semver) {
@@ -1680,15 +1673,14 @@ public class Challenge {
 	}
 
 	/**
-	 * Fix the Spacing 1. 불필요한 공백 다 지우기
-	 * 
+	 * Fix the Spacing 
+	 * 불필요한 공백 다 지우기
 	 * @see https://edabit.com/challenge/LJh54oryEc3tkagzD
 	 * @param sentence
 	 * @return
 	 */
 	public static String correctSpacing(String sentence) {
-
-		String[] splitedWords = sentence.split(" ");
+		/* String[] splitedWords = sentence.split(" ");
 		// Arrays.toString(splitedWords) = [, A, , glittering, , gem, , , , , is, , , ,
 		// not, , , enough.] 등의 결과 출력
 		// 쉼표 사이들의 공백은 " "이 아니라 각 요소들을 구분하기 위한 공백임...쉼표 사이에 값이 없는 것들임. ""을 의미.
@@ -1701,47 +1693,38 @@ public class Challenge {
 				// 앞 문자열과 뒷 문자열에 공백을 만들어 줌.
 				correctSpace += word;
 			}
-		}
-
+		}		
 		return correctSpace.substring(1);
 		// 문자열의 맨 앞에 붙은 공백 제거하기 위해 인덱스 1번 문자열부터 출력
 		// substring 사용 시 시작 인덱스만 입력하면 끝 인덱스 넣지 않아도 문자열 마지막까지 출력
-		// 문자 하나하나 붙일 때 반복문 사용하지 말고 substring 사용할 것.
-	}
+		// 문자 하나하나 붙일 때 반복문 사용하지 말고 substring 사용할 것. */
 
-	public static String correctSpacingOtherSol1(String sentence) {
-		while (true) {
-			String tmp = sentence;
-			// 반복문을 돌고 변환된 문자열을 tmp에 넣어줌.
-			sentence = sentence.replace("  ", " ");
-			// 문자열에서 공백 두 개를 한 개로 변환
-			if (tmp.equals(sentence))
-				// 변환된 문자열이 tmp와 같으면 == 더 이상 변환될 문자가 없다면.
-				break;
-			// while문 탈출.
+		// Other Solution
+		/* while (sentence.contains("  ")) {
+			 sentence = sentence.replace("  ", " ");
 		}
-		return sentence.trim();
-		// .trim() : 문자열에서 맨 앞과 맨 뒤의 공백 제거.
-	}
+		return sentence.trim(); */
 
-	public static String correctSpacingOtherSol2(String sentence) {
+		// Other Solution
+		// return sentence.replaceAll("[ ]+", " ").trim();
+
+		// Other Solution
+		/* StringTokenizer tokenizer = new StringTokenizer(sentence, " ");
+		StringBuilder sb = new StringBuilder();
+		while (tokenizer.hasMoreTokens()) {
+			sb.append(tokenizer.nextToken());
+			if (tokenizer.hasMoreTokens())
+				sb.append(" ");
+		}
+		return sb.toString(); */
+
+		// Other Solution
 		return sentence.replaceAll("[ ]+", " ").trim();
 	}
 
-	public static String correctSpacingOtherSol3(String sentence) {
-		StringTokenizer tokenizer = new StringTokenizer(sentence, " ");
-		StringBuilder s = new StringBuilder();
-		while (tokenizer.hasMoreTokens()) {
-			s.append(tokenizer.nextToken());
-			if (tokenizer.hasMoreTokens())
-				s.append(" ");
-		}
-		return s.toString();
-	}
-
 	/**
-	 * The Fibonacci Number // 피보나치 수열에서 a번째 수의 값 구하기 // 수열은 1로 시작함
-	 * 
+	 * The Fibonacci Number
+	 * 피보나치 수열에서 a번째 수의 값 구하기. 수열은 1로 시작함 
 	 * @see https://edabit.com/challenge/t3NThQjrcbjhiF5zt
 	 * @param a
 	 * @return
@@ -1765,31 +1748,21 @@ public class Challenge {
 	 * @return
 	 */
 	public static boolean sameAscii(String a, String b) {
-
-		int sumAsciiA = 0;
+		/* int sumAsciiA = 0;
 		int sumAsciiB = 0;
-
 		for (int i = 0; i < a.length(); i++) {
-			int asciiVal = a.charAt(i);
-			sumAsciiA += asciiVal;
+			sumAsciiA += a.charAt(i);
 		}
 		for (int i = 0; i < b.length(); i++) {
-			int asciiVal = b.charAt(i);
-			sumAsciiB += asciiVal;
+			sumAsciiB += b.charAt(i);
 		}
-		return sumAsciiA == sumAsciiB;
-	}
+		return sumAsciiA == sumAsciiB; */
 
-	public static Boolean sameAsciiOtherSol1(String a, String b) {
-		return getAsciiSum(a) == getAsciiSum(b);
-	}
+		// Other Solution
+		// return getSum(a) == getSum(b);
 
-	private static int getAsciiSum(String s) {
-		return s.chars().sum();
-	}
-
-	public static boolean sameAsciiOtherSol2(String a, String b) {
-		return getSum(a) == getSum(b);
+		// Other Solution
+		return a.chars().sum() == b.chars().sum();
 	}
 
 	private static int getSum(String s) {
@@ -1802,18 +1775,16 @@ public class Challenge {
 
 	/**
 	 * Move Capital Letters to the Front
-	 * 
+	 * 문자열에서 대문자는 문자열의 앞으로 보내기
+	 * 문자의 원래 순서 지킬 것. 첫 번째 대문자는 문자열의 첫 번째, 두 번째는 두 번째..	 
 	 * @see https://edabit.com/challenge/vs7xj6PwALtfpjkmX
 	 * @param str
 	 * @return
 	 */
 	public static String capToFront(String str) {
-		// 1. 문자열에서 대문자는 문자열의 앞으로 보내기
-		// 2. 문자의 원래 순서 지킬 것. 첫 번째 대문자는 문자열의 첫 번째, 두 번째는 두 번째..
-
 		// 아스키코드 값으로 대소문자 구분해서 문자열 만든 후 붙이기
 
-		String upperWord = "";
+		/* String upperWord = "";
 		String lowerWord = "";
 		for (int i = 0; i < str.length(); i++) {
 			int asciiVal = str.charAt(i);
@@ -1823,33 +1794,31 @@ public class Challenge {
 				lowerWord += str.charAt(i);
 			}
 		}
-		return upperWord + lowerWord;
-	}
+		return upperWord + lowerWord; */
 
-	public static String capToFrontOtherSol1(String str) {
+		// Other Solution
+		/* StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < str.length(); i++) {
+			if (Character.isUpperCase(str.charAt(i))) {
+				sb.append(str.charAt(i));
+			}
+		}
+		for (int i = 0; i < str.length(); i++) {
+			if (Character.isLowerCase(str.charAt(i))) {
+				sb.append(str.charAt(i));
+			}
+		}
+		return sb.toString(); */
+
+		// Other Solution
 		return str.replaceAll("[a-z]", "") + str.replaceAll("[A-Z]", "");
 		// str.replaceAll("[a-z]", "") : 문자열의 소문자를 모두 제거. 대문자만 남음.
 		// str.replaceAll("[a-z]", "") : 문자열의 대문자를 모두 제거. 소문자만 남음.
 	}
 
-	public static String capToFrontOtherSol2(String str) {
-		String s = "";
-		String s2 = "";
-		for (int i = 0; i < str.length(); i++) {
-			if (Character.isUpperCase(str.charAt(i))) {
-				// Character.isUpperCase(ch) : ch가 대문자인가
-				// Character.isLowerCase(ch) : ch가 소문자인가
-				s += str.charAt(i);
-			} else {
-				s2 += str.charAt(i);
-			}
-		}
-		return s + s2;
-	}
-
 	/**
 	 * Format Number with Comma(s) Separating Thousands
-	 * 
+	 * 숫자를 천 단위로 끊어서 문자열로 출력 formatNum(100000) ➞ "100,000". formatNum(20) ➞ "20"
 	 * @see https://edabit.com/challenge/BN7hYwzFACGoDZux7
 	 * @param num
 	 * @return
