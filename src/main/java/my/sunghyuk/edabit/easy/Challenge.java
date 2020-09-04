@@ -1825,51 +1825,45 @@ public class Challenge {
 	 */
 	public static String numFormat(int num) {
 
-		String numStr = String.valueOf(num); // num을 문자열로 변환
-
+		/* String numStr = String.valueOf(num); // num을 문자열로 변환
 		if (numStr.length() < 4) {
 			return numStr;
 		}
-
-		String revNumStr = "";
+		String reverseNumStr = "";
 		int count = 0; // for문 실행 횟수. == 문자 하나씩 추가되는 횟수.
-
-		// 틀린 로직. 길이를 조건식으로 사용하는데 길이 조작하지 말 것.
+		
+		// 틀린 for문. 길이를 조건식으로 사용하는데 길이 조작하지 말 것.
 		// for (int i = numStr.length() - 1; i >= 0; i--) {
-		// if (revNumStr.length() != 0 && revNumStr.length() % 3 == 0) {
-		// revNumStr = revNumStr + ',';
+		// 	if (revNumStr.length() != 0 && revNumStr.length() % 3 == 0) {
+		// 		revNumStr = revNumStr + ',';
+		// 	}
+		// 	revNumStr += numStr.charAt(i);
 		// }
-		// revNumStr += numStr.charAt(i);
-		// }
+		
 		for (int i = numStr.length() - 1; i >= 0; i--) { // 문자열을 거꾸로 저장하면서
-			revNumStr += numStr.charAt(i);
+			reverseNumStr += numStr.charAt(i);
 			count++;
 			if (count % 3 == 0) { // 천 단위마다. 문자 3개 찍은 후
-				revNumStr = revNumStr + ","; // 콤마 추가
+				reverseNumStr = reverseNumStr + ","; // 콤마 추가
 			}
 		}
-
+		
 		String formatNum = "";
-
-		for (int i = revNumStr.length() - 1; i >= 0; i--) { // 문자열을 다시 거꾸로 저장 == 원래 순서
-			formatNum += revNumStr.charAt(i);
+		for (int i = reverseNumStr.length() - 1; i >= 0; i--) { // 문자열을 다시 거꾸로 저장 == 원래 순서
+			formatNum += reverseNumStr.charAt(i);
 		}
+		return formatNum; */
 
-		return formatNum;
-	}
-
-	public static String numFormatDevelop(int num) {
-		// 문자열을 거꾸로 저장할 필요 없이 원래 순서대로 저장하면서 콤마 추가
-
-		String numStr = String.valueOf(num);
+		// Other Solution
+		/* String numStr = String.valueOf(num);
 		String formatNum = "";
-
+		
 		for (int i = numStr.length() - 1, cnt = 1; i >= 0; i--, cnt++) {
 			// for문 조건식에 인덱스 아닌 다른 변수 추가 가능.
 			// cnt는 for문 안에서만 사용되므로 for문 안에서 선언
 			formatNum = (cnt % 3 == 0 ? "," : "") + numStr.charAt(i) + formatNum;
 			// 조건식이 하나인 조건문( a or b) 삼항연산자로 수정
-
+			
 			// formatNum += numStr.charAt(i);
 			// 문자를 정순으로 저장 (왼쪽에서 오른쪽으로)
 			// numStr="abcd"라면 formatNum = "abcd" 순
@@ -1878,34 +1872,42 @@ public class Challenge {
 			// numStr="abcd"라면 formatNum = "dcba" 순
 			// 현재 인덱스의 문자가 문자열 맨 앞에 오고 뒤에 그 전의 문자열들을 붙임.
 		}
-		return formatNum;
-	}
+		return formatNum; */
 
-	public static String numFormatOtherSol(int num) {
-		return String.format("%,d", num);
-	}
-
-	public static String numFormatOtherSol2(int num) {
-		String out = "";
-		int length = String.valueOf(num).length();
-		for (int i = 0; i < length; i++) {
-			if ((length - i) % 3 == 0)
-				out += ",";
-			out += Integer.toString(num).charAt(i);
-		}
-		return out;
-	}
-
-	public static String numFormatOtherSol3(int num) {
-		return new DecimalFormat(",###").format(num);
-	}
-
-	public static String numFormatOtherSol4(int num) {
-		return (NumberFormat.getNumberInstance(Locale.US).format(num));
-	}
-
-	public static String numFormatOtherSol5(int num) {
+		// Other Solution
+		String numStr = String.valueOf(num);
 		StringBuilder sb = new StringBuilder();
+
+		while (true) {
+			if (numStr.length() >= 4) {
+				sb.insert(0, numStr.substring(numStr.length() - 3, numStr.length())).insert(0, ",");
+				// .insert(삽입할 위치(인덱스), 삽입할 대상)
+				numStr = numStr.substring(0, numStr.length() - 3);
+			}
+			if (numStr.length() < 4) {
+				sb.insert(0, numStr);
+				break;
+			}
+		}
+		return sb.toString();
+
+		// Other Solution
+		// return String.format("%,d", num);
+		// return new DecimalFormat(",###").format(num);
+		// return (NumberFormat.getNumberInstance(Locale.US).format(num));
+
+		// Other Solution
+		/* String formatStr = "";
+		int strLength = String.valueOf(num).length();
+		for (int i = 0; i < strLength; i++) {
+			if ((strLength - i) % 3 == 0)
+				formatStr += ",";
+			formatStr += Integer.toString(num).charAt(i);
+		}
+		return formatStr; */
+
+		// Other Solution
+		/* StringBuilder sb = new StringBuilder();
 		do {
 			int digit3 = num % 1000;
 			num /= 1000;
@@ -1913,41 +1915,44 @@ public class Challenge {
 			String strDigit3 = String.format(format, digit3);
 			sb.insert(0, (num == 0 ? "" : ",") + strDigit3);
 		} while (num > 0);
-		return sb.toString();
+		return sb.toString(); */
 	}
 
 	/**
 	 * One Button Messaging Device
-	 * 
+	 * 1. 문자열에서 문자 'a'는 버튼을 한 번 눌러야 함. 'b'는 버튼 두 번, 'e'는 다섯 번....
+	 * 문자열이 "abde"라면 12번 눌러야 함. 문자열 msg는 버튼을 몇 번 눌러야 하는가. 공백 무시. 
 	 * @see https://edabit.com/challenge/CCRmCv3huDnBsqmR7
 	 * @param msg
 	 * @return
 	 */
 	public static int howManyTimes(String msg) {
-		// 1. 문자열에서 문자 'a'는 버튼을 한 번 눌러야 함.
-		// 'b'는 버튼 두 번, 'e'는 다섯 번....
-		// 문자열이 "abde"라면 12번 눌러야 함.
-		// 2. 문자열 msg는 버튼을 몇 번 눌러야 하는가. 공백 무시.
 
-		int times = 0;
-
+		/* int times = 0;
 		for (int i = 0; i < msg.length(); i++) {
 			for (int j = 'a'; j <= msg.charAt(i); j++) {
 				times++;
 				// 기존 변수 cnt 삭제. cnt가 곧 times
 			}
 		}
-		return times;
-	}
+		return times; */
 
-	public static int howManyTimesDevelop(String msg) {
-
+		// Other Solution
 		int times = 0;
-
 		for (int i = 0; i < msg.length(); i++) {
 			times += getCharactersValue(msg.charAt(i));
 		}
 		return times;
+
+		// Other Solution
+		/* if (msg.length() == 0) {
+			return 0;
+		}
+		return ((int) msg.charAt(0)) - 96 + howManyTimes(msg.substring(1));
+		// (int) msg.charAt(0) : 0번 인덱스 문자의 아스키코드 값
+		// (int) msg.charAt(0) - 96 : 문자가 갖는 버튼 횟수.
+		// a의 아스키코드 값은 97이므로 -96 해주면 누르는 버튼 횟수가 나옴.
+		// howManyTimes(msg.substring(1)) : 0번 인덱스를 제외한 나머지 문자들 다시 메소드 돌림 */
 	}
 
 	private static int getCharactersValue(char ch) {
@@ -1956,80 +1961,62 @@ public class Challenge {
 		// 문자의 길이만큼 반복문 돌릴 필요 없이 각 문자가 갖는 수의 규칙을 수식으로 표현하여 값 리턴
 	}
 
-	public static int howManyTimesOtherSol(String msg) {
-		if (msg.length() == 0)
-			return 0;
-		return ((int) msg.charAt(0)) - 96 + howManyTimes(msg.substring(1));
-		// (int) msg.charAt(0) : 0번 인덱스 문자의 아스키코드 값
-		// (int) msg.charAt(0) - 96 : 문자가 갖는 버튼 횟수.
-		// a의 아스키코드 값은 97이므로 -96 해주면 누르는 버튼 횟수가 나옴.
-		// howManyTimes(msg.substring(1)) : 0번 인덱스를 제외한 나머지 문자들 다시 메소드 돌림
-	}
-
 	/**
 	 * Fraction Greater Than One
-	 * 
+	 * 문자열의 숫자를 계산했을 때 1보다 크냐 frac > 1
 	 * @see https://edabit.com/challenge/tgcyRZECD5tqHvTWi
 	 * @param frac
 	 * @return
 	 */
 	public static boolean greaterThanOne(String frac) {
-		// 1. 문자열의 숫자를 계산했을 때 1보다 크냐 frac > 1
-		// 구분자로 문자를 나눈 후 숫자로 변환
 
 		String[] fracArray = frac.split("\\/");
 		return Double.parseDouble(fracArray[0]) / Double.parseDouble(fracArray[1]) > 1;
 		// return Integer.parseInt(fracArray[0]) / Integer.parseInt(fracArray[1]) > 1;
 		// parseInt() 사용 시 정수형을 리턴하므로 1.x의 값들을 1로 리턴함.
-	}
 
-	public static boolean greaterThanOneOtherSol(String frac) {
-		String[] fracs = frac.split("/");
-		return Integer.parseInt(fracs[0]) > Integer.parseInt(fracs[1]);
+		// Other Solution
+		/* String[] fracs = frac.split("/");
+		return Integer.parseInt(fracs[0]) > Integer.parseInt(fracs[1]); */
 	}
 
 	/**
 	 * How Many Decimal Places?
-	 * 
+	 * 소수점 이하 자릿수 리턴. 소수점 이하 자리가 없다면 0 리턴
 	 * @see https://edabit.com/challenge/kQZH2EDsn7LYvXk9S
 	 * @param num
 	 * @return
 	 */
 	public static int getDecimalPlaces(String num) {
-		// 1. 소수점 이하 자릿수 리턴. 소수점 이하 자리가 없다면 0 리턴
-
 		// 소수점 이하 자리가 없다 == 정수 == 소수점 없음
 		// == 구분자로 나뉘지 않는다 == 배열 값은 한 개만 가진다
 		String[] numArr = num.split("\\.");
 		// 구분자로 나누어지지 않는 문자열은 그 문자열 자체로 배열에 저장됨.
-
 		return numArr.length == 1 ? 0 : numArr[1].length();
-	}
 
-	public static int getDecimalPlacesOtherSol(String num) {
-		return num.contains(".") ? (num.length() - (num.indexOf(".") + 1)) : 0;
+		// Other Solution
+		// return num.contains(".") ? (num.length() - (num.indexOf(".") + 1)) : 0;
 		// indexOf(str) : str의 인덱스 번호 리턴. 문자가 존재하지 않으면 -1 리턴
 		// (num.indexOf(".") + 1) : .까지의 길이.
 	}
 
 	/**
 	 * Even or Odd Number of Factors
-	 * num의 약수 갯수가 짝수인가 홀수인가 "even", "odd" 리턴 
-	 * 
+	 * num의 약수 갯수가 짝수인가 홀수인가 "even", "odd" 리턴
 	 * @see https://edabit.com/challenge/N3ZBDe99aq8Piar8n
 	 * @param num
 	 * @return
 	 */
 	public static String factorGroup(int num) {
+		/* double rootNum = Math.sqrt(num);
+		return rootNum == (int) rootNum ? "odd" : "even"; */
 
-		// double rootNum = Math.sqrt(num);
-		// return rootNum == (int) rootNum ? "odd" : "even";
-
+		// Other Solution
 		// return Math.sqrt(num) % 1 == 0 ? "odd" : "even";
 
+		// Other Solution
 		int rootNum = (int) Math.sqrt(num);
 		return rootNum * rootNum == num ? "odd" : "even";
-
 	}
 
 	/**
@@ -2040,7 +2027,7 @@ public class Challenge {
 	 * @return
 	 */
 	public static boolean isIsogram(String str) {
-		str = str.toLowerCase();
+		/* str = str.toLowerCase();
 		for (int i = 0; i < str.length() - 1; i++) {
 			for (int j = i + 1; j < str.length(); j++) {
 				if (str.charAt(i) == str.charAt(j)) {
@@ -2048,33 +2035,31 @@ public class Challenge {
 				}
 			}
 		}
-		return true;
-	}
+		return true; */
 
-	public static boolean isIsogramOtherSol1(String str) {
+		// Other Solution
 		Set<Character> set = new HashSet<>();
 		for (int i = 0; i < str.length(); ++i) {
-			if (!set.add(Character.toLowerCase(str.charAt(i))))
+			if (!set.add(Character.toLowerCase(str.charAt(i)))) {
+				// .add()의 리턴 타입 boolean. 문자가 중복되어 저장되지 않는다면 false 리턴.
 				return false;
+			}
 		}
 		return true;
-	}
 
-	public static boolean isIsogramOtherSol2(String str) {
-		return (int) str.toLowerCase().chars().distinct().count() == str.length();
+		// Other Solution
+		// return (int) str.toLowerCase().chars().distinct().count() == str.length();
 	}
 
 	/**
 	 * Increment to Top
-	 * 
+	 * 값이 제일 큰 요소까지 증가량의 합 리턴
 	 * @see https://edabit.com/challenge/HtruskPio7ricRvuG
 	 * @param arr
 	 * @return
 	 */
 	public static int incrementToTop(int[] arr) {
-
 		Arrays.sort(arr);
-
 		int increment = 0;
 		for (int i = 0; i < arr.length - 1; i++) {
 			for (int j = i; j < arr.length - 1; j++) {
@@ -2086,7 +2071,6 @@ public class Challenge {
 
 	/**
 	 * Secret Society
-	 * 
 	 * 배열의 각 요소에서 첫 문자만 딴 뒤 알파벳순으로 정렬한 문자열 리턴
 	 * @see https://edabit.com/challenge/zr7BBJbeYikNBN2hf
 	 * @param friends
@@ -2104,9 +2088,7 @@ public class Challenge {
 
 	/**
 	 * Maximum Possible Total
-	 * 1. 배열에는 10개의 숫자만 주어짐.
-	 * 2. 10개의 숫자 중 큰 5개의 숫자를 더해서 리턴
-	 * 
+	 * 배열에는 10개의 숫자만 주어짐. 10개의 숫자 중 큰 5개의 숫자를 더해서 리턴
 	 * @see https://edabit.com/challenge/TM5f33Mpu52m2jcat
 	 * @param nums
 	 * @return
@@ -2121,49 +2103,57 @@ public class Challenge {
 	}
 
 	/**
-	 * Stretched Words
-	 * 
+	 * Stretched Words	 
 	 * 중복되는 글자 제거해기 tttiiiiiiiiitlllleee -> title 리턴
+	 * "passing", "lottery" 같은 경우는 문제에 포함하지 않음.
 	 * @see https://edabit.com/challenge/vENakDEYEDKFGPSEb
 	 * @param word
 	 * @return
 	 */
 	public static String unstretch(String word) {
-
-		// 1. 결과를 담을 변수를 빈값으로 만들고
-		// 2. word를 반복돌리는데.. 결과 담은 변수 맨 마지막애랑, word의 글자랑 비교
-		// 3. 다르면 변수에 넣고, 같으면 그냥넘어감
-		// 4. 결과 변수 출력 끗
-
-		StringBuilder sb = new StringBuilder(" ");
-
+		/* StringBuilder sb = new StringBuilder(" "); 
+		// " " : word의 문자와 sb의 마지막 문자를 비교하기 위해 임의로 넣은 초기 문자
 		for (int i = 0; i < word.length(); i++) {
 			if (sb.charAt(sb.length() - 1) != word.charAt(i)) {
 				sb.append(word.charAt(i));
 			}
 		}
+		return sb.toString().trim(); */
 
-		return sb.toString().trim();
+		// Other Solution
+		StringBuilder sb = new StringBuilder(String.valueOf(word.charAt(0)));
+		// StringBuilder 객체 생성 시 파라미터로 String 타입이 들어가야 함.
+		for (int i = 1; i < word.length(); i++) {
+			if (word.charAt(i) != word.charAt(i - 1)) {
+				sb.append(word.charAt(i));
+			}
+		}
+		return sb.toString();
+
+		// Other Solution
+		// return word.replaceAll("([a-zA-Z])\\1+", "$1");
 	}
 
 	/**
 	 * Check if the Same Case
-	 * 
+	 * 단어의 모든 문자가 같은 Case인가.
 	 * @see https://edabit.com/challenge/kADGssuyM6vTEwS8p
 	 * @param str
 	 * @return
 	 */
 	public static boolean sameCase(String str) {
 
-		boolean firstCharUpperCase = Character.isUpperCase(str.charAt(0));
-
+		/* boolean firstCharUpperCase = Character.isUpperCase(str.charAt(0));
 		for (int i = 1; i < str.length(); i++) {
 			if (firstCharUpperCase && Character.isLowerCase(str.charAt(i))
 					|| !firstCharUpperCase && Character.isUpperCase(str.charAt(i))) {
 				return false;
 			}
 		}
-		return true;
+		return true; */
+
+		// Other Solution
+		return str.toUpperCase().equals(str) || str.toLowerCase().equals(str);
 	}
 
 	/**

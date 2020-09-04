@@ -112,11 +112,18 @@ public class Test {
     System.out.println(Character.isLowerCase(ch));
 
     String word = "apple";
+    System.out.println(word.substring(0, word.length()));
     word = word.substring(1, word.length() - 1);
     System.out.println(word);
 
     String subStringTest = "apple";
     String subStrResult = subStringTest.substring(subStringTest.indexOf("a"), subStringTest.indexOf("e") + 1);
     System.out.println(subStrResult);
+
+    StringBuilder sb = new StringBuilder("apple");
+    sb.insert(0, "my");
+    System.out.println(sb.toString());
+    sb.insert(2, "red");
+    System.out.println(sb.toString());
   }
 }
