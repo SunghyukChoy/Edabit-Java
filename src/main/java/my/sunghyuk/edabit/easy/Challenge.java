@@ -2153,13 +2153,40 @@ public class Challenge {
 		return true; */
 
 		// Other Solution
+		/* for (int i = 0; i < str.length() - 1; i++) {
+			for (int j = i + 1; j < str.length(); j++) {
+				if ((Character.isUpperCase(str.charAt(i)) && Character.isLowerCase(str.charAt(j)))
+						|| (Character.isLowerCase(str.charAt(i)) && Character.isUpperCase(str.charAt(j)))) {
+					return false;
+				}
+			}
+		}
+		return true; */
+
+		// Other Solution
+		/* if (Character.isUpperCase(str.charAt(0))) {
+			for (int i = 1; i < str.length(); i++) {
+				if (Character.isLowerCase(str.charAt(i))) {
+					return false;
+				}
+			}
+		}
+		if (Character.isLowerCase(str.charAt(0))) {
+			for (int i = 1; i < str.length(); i++) {
+				if (Character.isUpperCase(str.charAt(i))) {
+					return false;
+				}
+			}
+		}
+		return true; */
+
+		// Other Solution
 		return str.toUpperCase().equals(str) || str.toLowerCase().equals(str);
 	}
 
 	/**
 	 * Factor Chain
-	 * 배열이 약수의 연속으로 이어지는가. i-1번째의 요소가 i번째의 약수인가
-	 * 
+	 * 배열이 약수의 연속으로 이어지는가. i-1번째의 요소가 i번째의 약수인가	 * 
 	 * @see https://edabit.com/challenge/SvptD77rYQJgjDvZY
 	 * @param arr
 	 * @return
@@ -2172,44 +2199,28 @@ public class Challenge {
 			}
 		}
 		return true;
-
-		// List<Integer> list = new ArrayList<>();
-		// for (int num : arr) {
-		// 	list.add(num);
-		// }
-
-		// for (int i = 1; i < list.size(); i++) {
-		// 	if (list.get(i) % list.get(i - 1) != 0) {
-		// 		return false;
-		// 	}
-		// }
-		// return true;
 	}
 
 	/**
 	 * Automorphic Numbers
 	 * n의 제곱수 끝자리에 n을 포함하는가
 	 * ex) 5*5 = 25 25의 끝자리에 5를 포함하므로 true. 76*76 = 5776 -> true
-	 * 
 	 * @see https://edabit.com/challenge/GobCTBruAvA3ZDr4J
 	 * @param n
 	 * @return
 	 */
 	public static boolean isAutomorphic(int n) {
-		// 방법 1.
+
 		String nStr = String.valueOf(n);
 		String nsqStr = String.valueOf((long) Math.pow(n, 2));
 		// n^2의 범위가 int형을 벗어날 수 있으므로 long으로 형변환
 		return nStr.matches(nsqStr.substring(nsqStr.length() - nStr.length()));
-
-		// 방법 2.
 		// return nsqStr.endsWith(nStr);
 	}
 
 	/**
 	 * The Reverser!
 	 * 문자열 거꾸로 출력하되 대문자는 소문자로, 소문자는 대문자로 바꿔서
-	 * 
 	 * @see https://edabit.com/challenge/gPWZDe6rciBzYdz3B
 	 * @param text
 	 * @return

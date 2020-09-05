@@ -8,19 +8,12 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-{
+public class AppTest {
     /**
      * Rigorous Test :-)
      */
     @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
-    }
-
-    @Test
-    public void sumOf1To10() {
-        assertEquals(55, Program.sumOf1To10());
+    public void shouldAnswerWithTrue() {
+        assertTrue(true);
     }
 }

@@ -23,18 +23,9 @@ public class Note {
     }
     // [20, 20, 50, 50, 20]
     // [20, 20, 50, 50, 20]
-    // [20, 20, 50, 50, 20]
-    System.out.println("==============================================");
+    // [20, 20, 50, 50, 20]    
 
-    // Arrays.copyOf(원본 배열, 생성할 배열의 길이), Arrays.copyOfRange(원본배열, 시작인덱스, 종료인덱스)
-    int[] copyOfTest = new int[] { 1, 2, 3, 4, 5 };
-    int[] copyArr = Arrays.copyOf(copyOfTest, copyOfTest.length);
-    System.out.println(Arrays.toString(copyArr)); // {1, 2, 3, 4, 5}
-    int[] rangeCopyArr = Arrays.copyOfRange(copyOfTest, 1, copyOfTest.length);
-    // 인덱스 1부터 4까지 (copyOfTest.length = 5)
-    System.out.println(Arrays.toString(rangeCopyArr)); // {2, 3, 4, 5}
     System.out.println("==============================================");
-
     //String.format("%.nf", 변환할 값(실수)), String.format("%자릿수d, 변환할 값(정수))
     double pie = 3.14159265358979;
     System.out.println(String.format("%.2f", pie)); // 3.14
@@ -265,6 +256,45 @@ public class Note {
     System.out.println(compareToTestStr.compareTo("ABCD")); // 32
     // 대소문자가 다른 경우 다른 문자
     System.out.println(compareToTestStr.compareToIgnoreCase("ABCD")); // 0
-    // 대소문자 무시 메서드    
+    // 대소문자 무시 메서드
+
+    System.out.println("==============================================");
+    // 배열의 복사
+
+    int[] numArr = new int[] { 0, 1, 2, 3, 4 };
+    int[] numArrCopy = numArr; // 주소를 참조함. 같은 객체를 가르키는 주소를 복사
+    numArrCopy[0] = -1;
+    System.out.println(numArr[0]); // -1.
+    // numArrCopy 배열의 요소를 바꾼 게 아닌 객체의 값을 바꾼 것. 같은 객체를 참조하는 numArr 배열도 값이 바뀜. 
+    // 얕은 복사라고 함.
+
+    // 배열의 주소가 아닌 값을 복사하는 메서드들. 깊은 복사
+    // Object.clone(), Arrays.copyOf(), Arrays.copyOfRange(), System.arraycopy()
+
+    int[] numArr2 = new int[] { 0, 1, 2, 3, 4 };
+
+    // 원본 배열.clone();
+    int[] cloneTest = numArr2.clone();
+    cloneTest[0] = -1;
+    System.out.println(cloneTest[0]); // -1
+    System.out.println(numArr2[0]); // 0
+
+    // Arrays.copyOf(원본 배열, 사본 배열의 길이)
+    int[] copyOfTest = Arrays.copyOf(numArr2, 3);
+    System.out.println(Arrays.toString(copyOfTest)); // 0, 1, 2
+    copyOfTest = Arrays.copyOf(numArr2, numArr2.length);
+    System.out.println(Arrays.toString(copyOfTest)); // 0, 1, 2, 3, 4
+
+    // Arrays.copyOfRange(원본 배열, 원본 배열의 시작 인덱스, 원본 배열의 끝 인덱스)
+    int[] copyOfRangeTest = Arrays.copyOfRange(numArr2, 1, 3);
+    System.out.println(Arrays.toString(copyOfRangeTest)); // 1, 2
+    // 원본 배열의 시작 인덱스부터 끝 인덱스 이전 인덱스까지 복사
+
+    // System.arraycopy(원본 배열, 원본 배열의 시작 인덱스, 사본 배열, 사본 배열에 삽입할 위치 인덱스, 복사할 길이)
+    int[] arraycopyTest = new int[] { 10, 20, 30, 40, 50 };
+    System.arraycopy(numArr2, 0, arraycopyTest, 1, 3);
+    System.out.println(Arrays.toString(arraycopyTest)); // 10, 0, 1, 2, 50
+    // 원본 배열을 사본 배열의 지정된 위치에 복사.
+
   }
 }
