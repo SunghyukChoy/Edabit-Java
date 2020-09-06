@@ -1,14 +1,10 @@
 package my.sunghyuk.edabit.easy;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
 import java.util.Set;
-import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import my.sunghyuk.edabit.Helper;
 
@@ -2290,5 +2286,33 @@ public class Challenge {
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * Most Left Digit
+	 * @see https://edabit.com/challenge/phaa2KFqeiM9hZeSK
+	 * @param str
+	 * @return 문자열에서 가장 왼쪽에 있는 숫자 리턴
+	 */
+	public static int leftDigit(String str) {
+		for (int i = 0; i < str.length(); i++) {
+			if (Character.isDigit(str.charAt(i))) {
+				return Integer.parseInt(String.valueOf(str.charAt(i)));
+				// return Integer.parseInt(Character.toString(str.charAt(i)));
+				// return Character.getNumericValue(str.charAt(i));
+			}
+		}
+		return -1;
+
+		// Other Solution
+		// return Integer.valueOf(str.replaceAll("\\D+", "").substring(0, 1));
+
+		// Other Solution
+		/* Pattern p = Pattern.compile("\\d");
+		Matcher m = p.matcher(str);
+		while (m.find()) {
+			return Integer.parseInt(m.group());
+		}
+		return -1; */
 	}
 }
