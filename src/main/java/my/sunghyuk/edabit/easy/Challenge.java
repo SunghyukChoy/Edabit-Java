@@ -2315,4 +2315,21 @@ public class Challenge {
 		}
 		return -1; */
 	}
+
+	/**
+	 * Time Conversion
+	 * @see https://edabit.com/challenge/dDjLzbMh2JqjTtG8J
+	 * @param seconds
+	 * @return 주어진 초를 24시 형태("17:00:01")로 리턴. 
+	 */
+	public static String digitalClock(int seconds) {
+		/* StringBuilder sb = new StringBuilder();
+		sb.append(String.format("%02d", (seconds / 3600) % 24)).append(":");
+		// 시. 24시부터 다시 00으로 표기
+		sb.append(String.format("%02d", (seconds % 3600) / 60)).append(":");
+		sb.append(String.format("%02d", (seconds % 3600) % 60));
+		return sb.toString(); */
+
+		return String.format("%02d:%02d:%02d", (seconds / 3600) % 24, (seconds % 3600) / 60, (seconds % 3600) % 60);
+	}
 }
