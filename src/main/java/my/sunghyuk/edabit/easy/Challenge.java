@@ -2332,4 +2332,47 @@ public class Challenge {
 
 		return String.format("%02d:%02d:%02d", (seconds / 3600) % 24, (seconds % 3600) / 60, (seconds % 3600) % 60);
 	}
+
+	/**
+	 * Weekly Salary
+	 * @see https://edabit.com/challenge/uYS6jZBk5sQ6qQyrK
+	 * @param hours
+	 * @return 
+	 * 1) 정수형 배열의 요소는 월요일부터 일요일까지의 각 근무시간
+	 * 2) 시급은 시간당 10달러이고 8시간이 넘어가는 추가시간은 15달러
+	 * 3) 주말은 시급이 두 배. 
+	 * 일주일의 주급 리턴
+	 */
+	public static int weeklySalary(int[] hours) {
+		/* int weeklySalary = 0;
+		int dailySalary = 0;
+		for (int i = 0; i <= 4; i++) {
+			if (hours[i] > 8) {
+				dailySalary = 8 * 10;
+				dailySalary += (hours[i] - 8) * 15;
+			} else {
+				dailySalary = hours[i] * 10;
+			}
+			weeklySalary += dailySalary;
+		}
+		for (int i = 5; i <= 6; i++) {
+			if (hours[i] > 8) {
+				dailySalary = 8 * 20;
+				dailySalary += (hours[i] - 8) * 30;
+			} else {
+				dailySalary = hours[i] * 20;
+			}
+			weeklySalary += dailySalary;
+		}
+		return weeklySalary; */
+
+		// Other Solution
+		int sum = 0;
+		for (int i = 0; i < hours.length; i++) {
+			int dayEarnings = hours[i] * 10 + (hours[i] > 8 ? (hours[i] - 8) * 5 : 0);
+			dayEarnings *= i > 4 ? 2 : 1;
+			sum += dayEarnings;
+		}
+		return sum;
+	}
 }
