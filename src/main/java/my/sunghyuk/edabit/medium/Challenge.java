@@ -17,10 +17,7 @@ import my.sunghyuk.edabit.Helper;
 public class Challenge {
   /**
    * Algorithms II: The Euclidean Algorithm
-   * 
-   * @see : https://edabit.com/challenge/HmicQW4LMYyNHXRzT Function Recursive 에 관한
-   *      문제
-   * 
+   * @see : https://edabit.com/challenge/HmicQW4LMYyNHXRzT Function Recursive 
    * @param a
    * @param b
    * @return
@@ -32,14 +29,11 @@ public class Challenge {
       b = a;
       a = c;
     }
-
     // Find the remainder. Divide "a" by "b" and set "r" as the remainder.
     int r = a % b;
-
     // Is "r" zero? If so terminate the function and return "b" (the second number).
     if (r == 0)
       return b;
-
     // Set "a" = "b" and "b" = "r" and start the algorithm over again.
     return euclidean(b, r);
   }
@@ -49,14 +43,9 @@ public class Challenge {
    * 
    * @see https://edabit.com/challenge/9zBJYnBekqAo52zEp
    * @param str
-   * @return
+   * @return 1. 문자열은 #으로 시작 2. 그 뒤에 문자들은 0~9,a~f 까지 3. #제외 6글자인가
    */
   public static boolean isValidHexCode(String str) {
-    /**
-     * 1. 문자열은 #으로 시작 
-     * 2. 그 뒤에 문자들은 0~9,a~f 까지 
-     * 3. #제외 6글자
-     */
     /**
      * Java String 클래스에서 제공되는 정규표현식 관련 메서드
      * 1. boolean matches(String regex);
@@ -64,42 +53,32 @@ public class Challenge {
      * 3. String replaceFirst(String regex, String replacement);
      * 4. String split(String regex);
      */
+    /* if (str.length() != 7) {
+      return false;
+    }
+    if (str.charAt(0) != '#') {
+      return false;
+    }
+    for (int i = 1; i < str.length(); i++) {
+      char ch = str.charAt(i);
+      if (!((ch >= '0' && ch <= '9') || (ch >= 'a' && ch <= 'f') || (ch >= 'A' && ch <= 'F'))) {
+        return false;
+      }
+    }
+    return true; */
 
-    // // 3.
-    // if (str.length() != 7) {
-    //   return false;
-    // }
-
-    // // 1.
-    // if (str.charAt(0) != '#') {
-    //   return false;
-    // }
-
-    // // 2.
-    // for (int i = 1; i < str.length(); i++) {
-    //   char ch = str.charAt(i);
-
-    //   if (!((ch >= '0' && ch <= '9') || (ch >= 'a' && ch <= 'f') || (ch >= 'A' && ch <= 'F'))) {
-    //     return false;
-    //   }
-
-    // }
-
-    // return true;   
-
+    // Other Solution
+    return str.matches("^#[\\da-fA-F]{6}");
     // ^# : #으로 시작하고
     // [\\da-fA-F] : \\d : 0에서 9, a에서 f, A에서 F까지
     // {6} : 앞 조건식의 문자가 6개
-    return str.matches("^#[\\da-fA-F]{6}");
   }
 
   /**
-   * Filter Repeating Character Strings   
-   * 배열의 요소 중 문자가 반복되는 요소만 배열로 리턴
-   * 요소의 길이가 1이라면 그대로 리턴    
+   * Filter Repeating Character Strings
    * @see https://edabit.com/challenge/tunTJAdBeLgc8s4ap
    * @param arr
-   * @return
+   * @return 배열의 요소 중 문자가 반복되는 요소만 배열로 리턴. 요소의 길이가 1이라면 그대로 리턴
    */
   public static String[] identicalFilter(String[] arr) {
     List<String> list = new ArrayList<>();
@@ -143,17 +122,14 @@ public class Challenge {
 
   /**
    * How Many Solutions Does This Quadratic Have?
-   * (매개변수로 주어지는 a,b,c) ax^2 + bx + c에서 x의 값은 몇 개인가.
-   * 
    * @see https://edabit.com/challenge/Rs23pTNpM6k5M2ThH
    * @param a
    * @param b
    * @param c
-   * @return
+   * @return (매개변수로 주어지는 a,b,c) ax^2 + bx + c에서 x의 값은 몇 개인가.
    */
   public static int solutions(int a, int b, int c) {
-    // 근의 개수 구하는 공식. b^2-4ac > 0 -> 2, // == 0 -> 1, // < 0 -> 0
-    // 문제 의도 모르겠음. 참고할 만한 다른 답안 없음.
+    // 근의 개수 구하는 공식. b^2-4ac > 0 -> 2, // == 0 -> 1, // < 0 -> 0    
     if ((int) Math.pow(b, 2) - 4 * a * c > 0) {
       return 2;
     } else if ((int) Math.pow(b, 2) - 4 * a * c == 0) {
@@ -165,14 +141,12 @@ public class Challenge {
 
   /**
    * Perfect Square Patch
-   * n x n 이차원 배열 만들기  ex : {{3, 3, 3}, {3, 3, 3}, {3, 3, 3}}
-   * 
    * @see https://edabit.com/challenge/7Tb7qMDQHtz3xpydd
    * @param n
-   * @return
+   * @return n x n 이차원 배열 만들기  ex : {{3, 3, 3}, {3, 3, 3}, {3, 3, 3}}
    */
   public static int[][] squarePatch(int n) {
-    // My Solution
+
     /*  int[][] squareArr = new int[n][n];
     // new int[이차원배열 길이(그 일차원 배열을 몇개 갖고 있느냐)][일차원배열 길이(일차원 배열 요소의 수)]
     for (int i = 0; i < n; i++) { // 바깥 배열. 이차원 배열
@@ -201,11 +175,10 @@ public class Challenge {
 
   /**
    * Simulate the Game "Rock, Paper, Scissors"
-   * 가위바위보 게임
    * @see https://edabit.com/challenge/3S8XppR6Yf5mXPxij
    * @param s1
    * @param s2
-   * @return
+   * @return 가위 바위 보, 승자 리턴
    */
   public static String rps(String s1, String s2) {
     /* if (s1.equals("rock")) {
@@ -270,15 +243,14 @@ public class Challenge {
 
   /**
    * The Empty Square Sequence
+   * @see https://edabit.com/challenge/3GvRKZPF2NRPz3DgQ
+   * @param step
+   * @return
    * 주어지는 step은 사각형 한 변 길이의 반. step이 1이라면 사각형은 2 x 2의 크기를 가짐
    * 2 x 2 크기의 사각형은 4칸으로 나뉘어져 있고 각 칸에는 점이 하나씩 들어감
    * step = 2일 때 사각형의 크기는 4 x 4이고 점은 2 x 2에 찍힌 점에서 모서리 방향으로 하나씩 더 찍힘
    * 즉 한 단계씩 진행할 때마다 4개의 점이 더 찍힘. 그 외의 점이 찍히지 않는 칸은 empty square라고 함.
    * step이 n일 때 empty square의 갯수 리턴
-   * 
-   * @see https://edabit.com/challenge/3GvRKZPF2NRPz3DgQ
-   * @param step
-   * @return
    */
   public static int emptySq(int step) {
     // int area; // 사각형의 넓이. == 칸의 갯수
@@ -296,10 +268,9 @@ public class Challenge {
 
   /**
    * Count the Number of Duplicate Characters
-   * 중복되는 문자 갯수(중복 횟수) 리턴, 공백도 문자로 포함   
    * @see https://edabit.com/challenge/zmbR8SKveCgJ6KB5G
    * @param str
-   * @return
+   * @return 중복되는 문자 갯수(중복 횟수) 리턴, 공백도 문자로 포함   
    */
   public static int duplicates(String str) {
     char[] chArr = str.toCharArray();
@@ -325,10 +296,9 @@ public class Challenge {
 
   /**
    * Change Every Letter to the Next Letter
-   * 문자를 다음 알파벳순의 문자로 바꾸기 bye -> czf. 문자열에 z는 없음.
    * @see https://edabit.com/challenge/2Cbbs3pvH2gCMZMsg
    * @param word
-   * @return
+   * @return 문자를 다음 알파벳순의 문자로 바꾸기 bye -> czf. 문자열에 z는 없음.
    */
   public static String move(String word) {
 

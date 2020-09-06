@@ -18,35 +18,25 @@ public class Program {
 
   /**
    * Alphabet Soup
-   * 
    * @see https://edabit.com/challenge/2zKtCWQM2rSxMQqLX
    * @param s
-   * @return
+   * @return 알파벳순으로 정렬
    */
   public static String alphabetSoup(String s) {
-    /**
-     * 1. 알파벳순으로 정렬
-     */
+
     char[] sArray = s.toCharArray();
     Arrays.sort(sArray);
 
     return String.valueOf(sArray);
-  }
-
-  public static String alphabetSoupOtherSol(String s) {
-    String[] letters = s.split("");
-    Arrays.sort(letters);
-    return String.join("", letters);
+    // return String.join("", sArray);
   }
 
   /**
   * Array of Multiples
-  * 매개변수 num의 배수를 갖고, 길이는 매개변수 length인 배열 리턴
-  * 
   * @see https://edabit.com/challenge/rzpucPyoyEtXPo2BG
   * @param num
   * @param length
-  * @return
+  * @return 매개변수 num의 배수를 갖고, 길이는 매개변수 length인 배열 리턴
   */
   public static int[] arrayOfMultiples(int num, int length) {
     int[] multiplesArr = new int[length];
@@ -59,10 +49,9 @@ public class Program {
 
   /**
    * Recursion: Array Sum
-   * 배열 요소의 합. 재귀함수로 풀기
    * @see https://edabit.com/challenge/hf2THAoQRQbAx2jc9
    * @param arr
-   * @return
+   * @return 배열 요소의 합. 재귀함수로 풀기
    */
   public static int sum(int[] arr) {
     // return arr[0] + sum(Arrays.copyOfRange(arr, 1, arr.length));
@@ -76,10 +65,9 @@ public class Program {
 
   /**
    * Calculate the Mean
-   * 배열 요소 값들의 평균 구하기. 소수점 아래 2자리까지
    * @see https://edabit.com/challenge/W64jA8hmGCmjbR7Fb
    * @param nums
-   * @return
+   * @return 배열 요소 값들의 평균 구하기. 소수점 아래 2자리까지
    */
   public static double mean(int[] nums) {
     return Double.valueOf(String.format("%.2f", (double) Arrays.stream(nums).sum() / nums.length));
@@ -89,11 +77,10 @@ public class Program {
   }
 
   /**
-   * Pi to N Decimal Places
-   * Pi 값을 소수점 아래 num 자리수로 리턴
+   * Pi to N Decimal Places   
    * @see https://edabit.com/challenge/MX8ikyoCnDWr33saY
    * @param num
-   * @return
+   * @return Pi 값을 소수점 아래 num 자리수로 리턴
    */
   public static double myPi(int num) {
     String format = "%." + num + "f";
@@ -104,11 +91,9 @@ public class Program {
 
   /**
    * Purge and Organize
-   * 
-   * 배열의 요소들을 중복 없이, 오름차순으로 정렬된 배열로 리턴
    * @see https://edabit.com/challenge/kgMghy3omychqLnXv
    * @param nums
-   * @return
+   * @return 배열의 요소들을 중복 없이, 오름차순으로 정렬된 배열로 리턴
    */
   public static int[] uniqueSort(int[] nums) {
     // Arrays.sort(nums); // HashSet()으로 객체 생성 시 원래의 배열 정렬할 필요 없음. 컬렉션에 담으면서 순서 유지 안 됨. LinkedHashSet()으로 객체 생성 시에는 순서 유지 가능.  
@@ -140,10 +125,9 @@ public class Program {
 
   /**
    * Recursion: Reverse a String
-   * 문자열 거꾸로 출력. 재귀함수로 풀기
    * @see https://edabit.com/challenge/zSqXDoWS8PuhbbPrL
    * @param str
-   * @return
+   * @return 문자열 거꾸로 출력. 재귀함수로 풀기
    */
   public static String reverse(String str) {
     return str.length() == 0 ? "" : str.charAt(str.length() - 1) + reverse(str.substring(0, str.length() - 1));
@@ -343,22 +327,14 @@ public class Program {
 
   /**
    * Find the Missing Number
-   * 배열의 수 중 1 ~ 10(연속적인 수) 사이의 없어진 수 리턴
+   * 배열의 수 중 1 ~ 10 사이의 없어진 수 리턴
    * @see https://edabit.com/challenge/GJh9FraKutcnHoruX
    * @param nums
    * @return
    */
   public static int missingNum(int[] nums) {
     // 1부터 10까지의 합 - 배열의 합 = 없어진 값
-    // return 55 - Arrays.stream(nums).sum();
-
-    // Other Solution
-    Arrays.sort(nums);
-    int sumConsecutiveNum = 0;
-    for (int i = nums[0]; i <= nums[nums.length - 1]; i++) {
-      sumConsecutiveNum += i;
-    }
-    return sumConsecutiveNum - Arrays.stream(nums).sum();
+    return 55 - Arrays.stream(nums).sum();
   }
 
   /**

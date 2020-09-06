@@ -29,14 +29,4 @@ public class MissingNumTests {
   public void test5() {
     assertThat(Program.missingNum(new int[] { 1, 7, 2, 4, 8, 10, 5, 6, 9 }), is(3));
   }
-
-  @Test
-  public void test6() {
-    assertThat(Program.missingNum(new int[] { -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 4 }), is(3));
-  }
-
-  @Test
-  public void test7() {
-    assertThat(Program.missingNum(new int[] { -7, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4 }), is(-6));
-  }
 }

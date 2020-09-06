@@ -29,10 +29,9 @@ public class Program {
 
   /**
    * Shuffle the Name
-   * 두 단어의 순서를 바꿈
    * @see https://edabit.com/challenge/8WBpaPzLP7piuHNeR
    * @param s
-   * @return
+   * @return 두 단어의 순서를 바꿔서 리턴
    */
   public static String nameShuffle(String s) {
     String[] words = s.split(" ");
@@ -42,10 +41,9 @@ public class Program {
 
   /**
    * Phone Number Formatting
-   * 주어진 정수 배열을 "(123) 456-7890"의 형태로 리턴
    * @see https://edabit.com/challenge/sPz2LcPZyAiBHRgwX
    * @param nums
-   * @return
+   * @return 주어진 정수 배열을 "(123) 456-7890"의 형태로 리턴
    */
   public static String formatPhoneNumber(int[] nums) {
     /* StringBuilder sb = new StringBuilder();
@@ -89,11 +87,10 @@ public class Program {
   }
 
   /**
-   * Xs and Os, Nobody Knows
-   * 문자열에서 x,o의 개수를 구하여 같으면 true, 다르면 false. 대소문자 상관없이 개수에 포함
+   * Xs and Os, Nobody Knows   
    * @see https://edabit.com/challenge/bkFqwEP5Gej23didA
    * @param str
-   * @return
+   * @return 문자열에서 x,o의 개수를 구하여 같으면 true, 다르면 false. 대소문자 상관없이 개수에 포함
    */
   public static boolean getXO(String str) {
     int xCount = 0;
@@ -113,11 +110,11 @@ public class Program {
 
   /**
    * Switcharoo
-   * 문자열의 첫 문자와 마지막 문자를 스위칭 하여 리턴
-   * 문자열의 길이가 2보다 작다면 "Incompatible." 리턴. 첫 문자와 마지막 문자가 같다면 "Two's a pair." 리턴
    * @see https://edabit.com/challenge/c52kNwPuWo5kp9x4H
    * @param s
    * @return
+   * 문자열의 첫 문자와 마지막 문자를 스위칭 하여 리턴
+   * 문자열의 길이가 2보다 작다면 "Incompatible." 리턴. 첫 문자와 마지막 문자가 같다면 "Two's a pair." 리턴
    */
   public static String flipEndChars(String s) {
     String flipWord = "";
@@ -157,11 +154,10 @@ public class Program {
   }
 
   /**
-   * Get Word Count
-   * 문자열의 단어 갯수 출력
+   * Get Word Count   
    * @see https://edabit.com/challenge/5LnycSd2xT4uwZCpi
    * @param s
-   * @return
+   * @return 문자열의 단어 갯수 출력
    */
   public static int countWords(String s) {
     String[] wordsArray = s.split(" "); // " " 구분자로 문자열을 쪼갬. 나눈 문자열을 배열로 저장
@@ -169,11 +165,10 @@ public class Program {
   }
 
   /**
-   * Cumulative Array Sum
-   * 1. 배열에 값이 없으면 그대로 리턴 2. 배열의 0번 인덱스는 0번 인덱스에 그대로 저장 3. 배열의 n번 인덱스까지의 값을 더해서 n번 인덱스에 저장
+   * Cumulative Array Sum   
    * @see https://edabit.com/challenge/LmiWWX2kdWn2Z5aZv
    * @param nums
-   * @return
+   * @return 1. 배열에 값이 없으면 그대로 리턴 2. 배열의 0번 인덱스는 0번 인덱스에 그대로 저장 3. 배열의 n번 인덱스까지의 값을 더해서 n번 인덱스에 저장
    */
   public static int[] cumulativeSum(int[] nums) {
     if (nums.length == 0) {
@@ -195,11 +190,10 @@ public class Program {
   }
 
   /**
-   * Remove All Special Characters from a String
-   * 문자열에서 특수문자 제거
+   * Remove All Special Characters from a String   
    * @see https://edabit.com/challenge/YNQQynxnFeoKNiqTM
    * @param s
-   * @return
+   * @return 문자열에서 특수문자 제거
    */
   public static String removeSpecialCharacters(String s) {
 
@@ -260,10 +254,9 @@ public class Program {
 
   /**
    * ATM PIN Code Validation
-   * 4자리 or 6자리 숫자로만 이루어진 PIN -> true. 문자, 특수문자, 공백 포함 시 -> false
    * @see https://edabit.com/challenge/bL2E8p5DGWSNmEtAE
    * @param s
-   * @return
+   * @return 4자리 or 6자리 숫자로만 이루어진 PIN -> true. 문자, 특수문자, 공백 포함 시 -> false
    */
   public static boolean validatePIN(String s) {
     // int pinNum = Integer.parseInt(s);    
@@ -302,15 +295,11 @@ public class Program {
    * Count Ones in Binary Representation of Integer   
    * @see https://edabit.com/challenge/MwYW3sRdZxno5hXAF
    * @param n
-   * @return
-   * n을 2진수로 바꾼 후 2진수에서 1의 갯수 리턴
+   * @return n을 2진수로 바꾼 후 2진수에서 1의 갯수 리턴   
    */
   public static int countOnes(int n) {
-    // # n을 2로 나눔.
-    // # 몫이 2보다 작을 때까지.
-    // # 그 몫과 나머지들을 합치면 2진수
-
-    String binaryNum = "";
+    // n을 2로 나눔. # 몫이 2보다 작을 때까지. 그 몫과 나머지들을 합치면 2진수
+    /* String binaryNum = "";
     int remainder;
     while (n > 1) { // n이 2 이상인 동안
       remainder = n % 2;
@@ -319,23 +308,37 @@ public class Program {
     }
     binaryNum += String.valueOf(n); // 마지막에 남는 몫 n. 몫 + 나머지나머지나머지나머지... = 2진수
     // 위의 연산은 2진수를 원래의 순서대로 출력할 수 없음.. 역순으로 출력됨...
-
+    
     int countOne = 0;
     for (int i = 0; i < binaryNum.length(); i++) {
       if (binaryNum.charAt(i) == '1') {
         countOne++;
       }
     }
-    return countOne;
-  }
+    return countOne; */
 
-  public static int countOnesOtherSol1(int n) {
-    return Integer.bitCount(n);
-  }
+    // Other Solution
+    // return Integer.bitCount(n);
 
-  public static int countOnesOtherSol2(int n) {
+    // Other Solution
+    /* if (n == 0) {
+      return 0;
+    } else {
+      return (n & 1) + countOnesOtherSol3(n >> 1);
+    } */
+
+    // Other Solution
+    /* String binary = Integer.toBinaryString(n);
+    int cnt = 0;
+    for (int i = 0; i < binary.length(); i++) {
+      if (binary.charAt(i) == '1') {
+        cnt++;
+      }
+    }
+    return cnt; */
+
+    // Other Solution
     int count = 0;
-
     while (n != 0) {
       int reminder = n % 2;
       if (reminder == 1) {
@@ -346,48 +349,19 @@ public class Program {
     return count;
   }
 
-  public static int countOnesOtherSol3(int n) {
-    if (n == 0) {
-      return 0;
-    } else {
-      return (n & 1) + countOnesOtherSol3(n >> 1);
-    }
-  }
-
-  public static int countOnesOtherSol4(int n) {
-    String binary = Integer.toBinaryString(n);
-    int cnt = 0;
-    for (int i = 0; i < binary.length(); i++) {
-      if (binary.charAt(i) == '1') {
-        cnt++;
-      }
-    }
-    return cnt;
-  }
-
   /**
    * Capitalize the First Letter of Each Word
-   * 
    * @see https://edabit.com/challenge/mkxS3CnW98Ci3kwCh
    * @param s
-   * @return
+   * @return 문자열에서 각 단어의 첫 번째 문자를 대문자로 변환
    */
-  // 1. 문자열에서 각 단어의 첫 번째 문자를 대문자로 변환
-  // # 변환 # split # substring #toUpperCase # 문자열
   public static String makeTitle(String s) {
 
     String[] words = s.split(" ");
-
     for (int i = 0; i < words.length; i++) {
       words[i] = Character.toUpperCase(words[i].charAt(0)) + words[i].substring(1, words[i].length());
     }
-
-    String capWords = words[0];
-    // 위의 for문에서 변환한 요소를 초기값으로 저장
-    for (int i = 1; i < words.length; i++) {
-      capWords += " " + words[i];
-    }
-    return capWords;
+    return String.join(" ", words);
   }
 
   /**
@@ -395,60 +369,28 @@ public class Program {
    * 
    * @see https://edabit.com/challenge/mDM9eJXqjL7kJc3hh
    * @param s
-   * @return
+   * @return 1. 배열의 1번째 인덱스 문자열의 문자가 0번째 인덱스 문자열 안에 다 들어가는가 들어가면 true, 아니면 false.
+   * 2. 대문자와 소문자 같은 문자로 봄. 3. 정규표현식 이용하지 말고 풀기
    */
-  // 1. 배열의 1번째 인덱스 문자열의 문자가 0번째 인덱스 문자열 안에 다 들어가는가 들어가면 true 아니면 false
-  // 2. 대문자와 소문자 같은 문자로 봄
-  // 3. 정규표현식 이용하지 말고 풀기
   public static boolean letterCheck(String[] s) {
 
-    String chars = s[0].toLowerCase();
-    String text = s[1].toLowerCase();
-
-    for (int i = 0; i < text.length(); i++) {
-      if (!(chars.contains(text.charAt(i) + ""))) {
+    String firstStr = s[0].toLowerCase();
+    String secondStr = s[1].toLowerCase();
+    for (int i = 0; i < secondStr.length(); i++) {
+      if (!firstStr.contains(String.valueOf(secondStr.charAt(i)))) {
         return false;
       }
     }
-
-    return true;
-
-  }
-
-  public static boolean letterCheckOtherSol(String[] s) {
-    String a = s[0].toLowerCase();
-    String b = s[1].toLowerCase();
-
-    for (char c : b.toCharArray()) {
-      if (!a.contains(String.valueOf(c))) {
-        return false;
-      }
-    }
-
     return true;
   }
 
   /**
    * Capitalize the Names
-   * 
    * @see https://edabit.com/challenge/pKmR5HRabYPkdGunz
    * @param s
-   * @return
+   * @return 문자열 배열에서 각 문자열의 첫 문자를 대문자로, 나머지 문자는 소문자로 리턴
    */
-  // 1. 각 요소의 첫 문자를 대문자로
-  // 2. 나머지 요소들은 소문자로
-  // # 변환 # toUpperCase # toLowerCase
   public static String[] capMe(String[] s) {
-
-    for (int i = 0; i < s.length; i++) {
-      char firstLetter = Character.toUpperCase(s[i].charAt(0));
-      String lowerLetters = s[i].substring(1, s[i].length()).toLowerCase();
-      s[i] = firstLetter + lowerLetters;
-    }
-    return s;
-  }
-
-  public static String[] capMeOtherSol(String[] s) {
 
     for (int i = 0; i < s.length; i++) {
       s[i] = Character.toUpperCase(s[i].charAt(0)) + s[i].substring(1).toLowerCase();
@@ -458,58 +400,69 @@ public class Program {
 
   /**
    * Is it Time for Milk and Cookies?
-   * 
    * @see https://edabit.com/challenge/n6bgfrTFfNZt4yWkJ
    * @param date
-   * @return
+   * @return 날짜가 크리스마스 이브면 true, 아니면 false
    */
   public static boolean timeForMilkAndCookies(GregorianCalendar date) {
 
-    int month = date.get(Calendar.MONTH) + 1;
+    /* int month = date.get(Calendar.MONTH) + 1;
     int day = date.get(Calendar.DATE);
-
-    return month == 12 && day == 24;
+    return month == 12 && day == 24; */
+    return date.get(Calendar.MONTH) == 11 && date.get(Calendar.DATE) == 24;
   }
 
   /**
    * Sort Numbers in Ascending Order
-   * 
    * @see https://edabit.com/challenge/WM5s7vuHnXdcKCEjS
    * @param nums
-   * @return
+   * @return 정수형 배열에서 요소를 오름차순으로 정렬
    */
   public static int[] sortNumsAscending(int[] nums) {
-    // 1. 숫자를 오름차순으로 정렬
+
+    /* if (nums == null) {
+      return new int[0];
+    }
+    Arrays.sort(nums);
+    return nums; */
+
+    // Other Solution
     if (nums == null) {
       return new int[0];
     }
-
-    Arrays.sort(nums);
+    int temp;
+    for (int i = 0; i < nums.length; i++) {
+      for (int j = 0; j < nums.length; j++) {
+        if (nums[i] < nums[j]) {
+          temp = nums[j];
+          nums[j] = nums[i];
+          nums[i] = temp;
+        }
+      }
+    }
     return nums;
   }
 
   /**
-   * Maskify the String 1. 문자열에서 마지막 4개의 문자만 빼고 #으로 변환
-   * 
+   * Maskify the String
    * @see https://edabit.com/challenge/ce3CbX2KwdwaJxxra
    * @param s
-   * @return
+   * @return 문자열에서 마지막 4개의 문자만 빼고 #으로 변환
    */
   public static String maskify(String s) {
 
-    if (s.length() <= 4) {
+    /* if (s.length() <= 4) {
       return s;
     }
-
     String toHash = s.substring(0, s.length() - 4);
     // String lastFour = s.substring(s.length() - 4);
-
     toHash = toHash.replaceAll("[^#]", "#");
+    return toHash + s.substring(s.length() - 4); */
 
-    return toHash + s.substring(s.length() - 4);
-  }
+    // Other Solution
+    // return s.replaceAll(".(?=.{4})", "#");
 
-  public static String maskifyOtherSol(String s) {
+    // Other Solution
     StringBuilder sb = new StringBuilder(s);
     for (int i = 0; i < s.length() - 4; i++) {
       sb.replace(i, i + 1, "#");
@@ -518,11 +471,10 @@ public class Program {
   }
 
   /**
-   * Recursion: Fibonacci Numbers 1. 피보나치 수열에서 n번째 수의 값 구하기 2. 수열은 0으로 시작함
-   * 
+   * Recursion: Fibonacci Numbers
    * @see https://edabit.com/challenge/H5Tabm7omS9ia8Rce
    * @param n
-   * @return
+   * @return 1. 피보나치 수열에서 n번째 수의 값 구하기 2. 수열은 0으로 시작함
    */
   public static int fib(int n) {
     // 피보나치 수열 : 0, 1, 1, 2, 3, 5, 8, 13, 21, 34...
@@ -531,41 +483,37 @@ public class Program {
     // F(n) = F(n-2) + F(n-1)
     // if (n == 0)
     //   return 0;
-
     // if (n == 1)
     //   return 1;
-
     // return fib(n-2) + fib(n-1);
 
-    int nMinus2 = 0;
+    /* int nMinus2 = 0;
     int nMinus1 = 1;
-
     for (int i = 2; i < n + 2; i++) {
       int tmp = nMinus2 + nMinus1;
       nMinus2 = nMinus1;
       nMinus1 = tmp;
     }
+    return nMinus2; */
 
-    return nMinus2;
+    // Other Solution
+    return n < 2 ? n : fib(n - 1) + fib(n - 2);
   }
 
   /**
    * Get Sum of People's Budget
-   * 
    * @see https://edabit.com/challenge/XsJnE47kiTt39t3da
    * @param persons
-   * @return
+   * @return Person 객체의 배열에서 각 객체의 연봉을 모두 더하여 리턴
    */
   public static double getBudgets(Person[] persons) {
 
-    Person p1 = persons[0];
+    /* Person p1 = persons[0];
     // 생성자 메소드가 배열에 담겨 파라미터로 들어오므로 각 배열의 값으로 객체 생성하면 됨.Test 파일 참조
     Person p2 = persons[1];
     Person p3 = persons[2];
-    return p1.getBudget() + p2.getBudget() + p3.getBudget();
-  }
+    return p1.getBudget() + p2.getBudget() + p3.getBudget(); */
 
-  public static double getBudgetsOtherSol(Person[] persons) {
     double sum = 0.0;
     for (int i = 0; i < persons.length; i++) {
       sum += persons[i].getBudget();
@@ -575,98 +523,70 @@ public class Program {
 
   /**
    * Check if the String is a Palindrome
-   * 
    * @see https://edabit.com/challenge/DfaTrBDZKjso6HBXs
    * @param str
-   * @return
+   * @return Palindrome : madam, kayak 같은 역으로 정렬해도 원본과 같은 문자열. 1. 문자열이 Palindrome인가 리턴. 2. 대소문자 무시, 특수문자, 공백은 모두 무시
    */
   public static boolean isPalindrome(String str) {
-    // 1. str은 앞뒤가 똑같은 문자열인가
-    // Palindrome : madam, kayak 같은 역으로 정렬해도 원본과 같은 문자열
-    // 2. 대소문자 무시, 특수문자, 공백은 모두 무시
 
-    str = str.toLowerCase().replaceAll("[^a-zA-Z]", "");
-
-    // 되는 코드. 아래에 다른 코드로 수정함.
-    // String reverseStr = "";
-    // for (int i = str.length() - 1; i >= 0; i--) {
-    // reverseStr += str.charAt(i);
-    // }
-    // return str.equals(reverseStr);
-
-    // 되는 코드. 아래에 다른 코드로 수정함.
-    // for (int i = 0; i <= str.length() / 2; i++) {
-    // if (str.charAt(i) == str.charAt(str.length() - i - 1)) {
-
-    // continue;
-    // } else {
-    // return false;
-    // }
-    // }
-    // return true;
-
+    str = str.toLowerCase().replaceAll("[^a-z]", "");
     for (int i = 0; i <= str.length() / 2; i++) {
       if (str.charAt(i) != str.charAt(str.length() - i - 1)) {
-        // str.charAt(str.length() - i - 1 :
-        // 인덱스(앞문자)가 앞에서 뒤로 진행될수록 비교하는 뒷문자도 앞으로 진행되어야 하므로
-        // 진행하는 i만큼 더 빼줌.
+        // str.charAt(str.length() - i - 1 : 인덱스(앞문자)가 앞에서 뒤로 진행될수록 비교하는 뒷문자도 앞으로 진행되어야 하므로 진행하는 만큼 더 빼줌.
         return false;
       }
     }
     return true;
-  }
 
-  public static boolean isPalindromeOtherSol(String str) {
-    str = str.toLowerCase().replaceAll("[^a-z]", "");
-    return str.equals(new StringBuilder(str).reverse().toString());
+    // Other Solution
+    /* str = str.toLowerCase().replaceAll("[^a-z]", "");
+    StringBuilder sb = new StringBuilder();
+    for (int i = str.length() - 1; i >= 0; i--) {
+      sb.append(str.charAt(i));
+    }
+    return str.equals(sb.toString()); */
+
+    // Other Solution
+    /* str = str.toLowerCase().replaceAll("[^a-z]", "");
+    return str.equals(new StringBuilder(str).reverse().toString()); */
   }
 
   /**
    * Return the Index of All Capital Letters
-   * 문자열 s에서 대문자인 문자의 인덱스를 배열로 리턴
-   * 대문자가 없으면 빈 배열 리턴, 문자열에는 특수문자, 숫자가 포함됨.
-   * 
    * @see https://edabit.com/challenge/3ZooM5R5P63w5bPCv
    * @param s
-   * @return
+   * @return 문자열 s에서 대문자인 문자의 인덱스를 배열로 리턴. 대문자가 없으면 빈 배열 리턴, 문자열에는 특수문자, 숫자가 포함됨.
    */
   public static int[] indexOfCaps(String s) {
 
-    // String capital = s.replaceAll("[^A-Z]", "");
-    // 대문자만 담을 배열의 길이
-    int[] capIndex = new int[s.replaceAll("[^A-Z]", "").length()];
-
+    int[] capitalLetterIndex = new int[s.replaceAll("[^A-Z]", "").length()];
+    // 문자열의 대문자 개수를 대문자 인덱스를 담을 배열의 크기로 지정
     for (int i = 0, j = 0; i < s.length(); i++) {
       if (Character.isUpperCase(s.charAt(i))) {
-        capIndex[j] = i;
-        j++;
+        capitalLetterIndex[j] = i; // 대문자의 인덱스(i)를 배열의 j번째 요소에 저장
+        j++; // 배열 인덱스 증가
       }
     }
-    return capIndex;
+    return capitalLetterIndex;
   }
 
   /**
    * Is the Phone Number Formatted Correctly?
-   * 문자열 s의 형식이 "(123) 456-7890"의 형식을 갖는가 
-   * 
    * @see https://edabit.com/challenge/NWtZJ2wHGB7hz9iSd
    * @param s
-   * @return
+   * @return 문자열 s의 형식이 "(123) 456-7890"의 형식을 갖는가
    */
   public static boolean isValidPhoneNumber(String s) {
-
     // return s.matches("\\(\\d{3}\\)\\s\\d{3}-\\d{4}");
     return s.matches("^[(]{1}[0-9]{3}[)]{1}[ ]{1}[0-9]{3}[-]{1}[0-9]{4}");
   }
 
   /**
    * Total Number of Unique Characters
-   * 문자열 s1 + s2는 문자 몇 개로 이루어져 있는가.
-   * countUnique("sore", "zebra") ➞ 7
    * @see https://edabit.com/challenge/FHJ7SPdj7hChTS5LW
    * @param s1
    * @param s2
-   * @return
+   * @return 문자열 s1 + s2는 중복 문자를 제외한 몇 개로 문자로 이루어져 있는가. countUnique("sore", "zebra") ➞ 7
    */
   public static int countUnique(String s1, String s2) {
     Set<Character> set = new HashSet<>();
@@ -683,18 +603,12 @@ public class Program {
 
   /**
    * Convenience Store
-   * 매개변수 int 배열 change는 가지고 있는 화폐 단위별 금액, amountDue는 지불할 금액. 
-   * 배열은 {quarter, dime, nickel, penny}순. 각각 25/10/5/1 센트. 
-   * 주어진 금액으로 지불할 수 있는가
-   * IntStream 사용 문제..
    * @see https://edabit.com/challenge/jfquehNLzpXW5ZQu5
    * @param change
    * @param amountDue
-   * @return
+   * @return 매개변수 int 배열 change는 가지고 있는 화폐 단위별 금액, amountDue는 지불할 금액. 배열은 {quarter, dime, nickel, penny}순. 각각 25/10/5/1 센트. 주어진 금액으로 지불할 수 있는가
    */
   public static boolean changeEnough(int[] change, double amountDue) {
-
-    // My Solution
     /* amountDue = amountDue * 100;
     return change[0] * 25 + change[1] * 10 + change[2] * 5 + change[3] >= amountDue; */
 

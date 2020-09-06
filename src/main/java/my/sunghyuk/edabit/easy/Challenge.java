@@ -19,10 +19,9 @@ public class Challenge {
 
 	/**
 	 * Check if a Number is Prime
-	 * num이 소수인가. 숫자 1은 소수에서 제외
 	 * @see https://edabit.com/challenge/ePj2zup56kZrRbhDX
 	 * @param num
-	 * @return
+	 * @return num이 소수인가. 숫자 1은 소수에서 제외
 	 */
 	public static boolean isPrime(int num) {
 		/* boolean flag = true;
@@ -58,12 +57,11 @@ public class Challenge {
 
 	/**
 	 * The 3 Programmers Problem
-	 * 세 개의 수 중 가장 큰 값 - 가장 작은 값 리턴
 	 * @see https://edabit.com/challenge/akHQKSkHT26TuA7Ka
 	 * @param one
 	 * @param two
 	 * @param three
-	 * @return
+	 * @return 세 개의 수 중 가장 큰 값 - 가장 작은 값 리턴
 	 */
 	public static int programmers(int one, int two, int three) {
 		/* int maxNum = 0;
@@ -139,12 +137,11 @@ public class Challenge {
 
 	/**
 	 * Equality of 3 Values
-	 * 세 개의 수 중 같은 수의 개수 리턴
 	 * @see https://edabit.com/challenge/nfc7H9CQFqJp54uEh
 	 * @param a
 	 * @param b
 	 * @param c
-	 * @return
+	 * @return 세 개의 수 중 같은 수의 개수 리턴
 	 */
 	public static int equal(int a, int b, int c) {
 		/* boolean aEqualB = a == b;
@@ -205,11 +202,10 @@ public class Challenge {
 
 	/**
 	 * Repeating Letters N Times
-	 * 문자열 str에서 각 문자를 n번 반복
 	 * @see https://edabit.com/challenge/HDk4PC9w6KPS3X25W
 	 * @param str
 	 * @param n
-	 * @return
+	 * @return 문자열 str에서 각 문자를 n번 반복
 	 */
 	public static String repeat(String str, int n) {
 		StringBuilder sb = new StringBuilder();
@@ -223,12 +219,11 @@ public class Challenge {
 
 	/**
 	 * Basic Calculator
-	 * 주어진 num1, num2를 operator를 이용하여 계산
 	 * @see https://edabit.com/challenge/gyfsGx7KrGLscxFrD
 	 * @param num1
 	 * @param operator
 	 * @param num2
-	 * @return
+	 * @return 주어진 num1, num2를 operator를 이용하여 계산
 	 */
 	public static int calculator(int num1, char operator, int num2) {
 		/* int result = 0;
@@ -264,10 +259,9 @@ public class Challenge {
 
 	/**
 	 * How Many Vowels?
-	 * 문자열에 있는 모음 개수 리턴
 	 * @see https://edabit.com/challenge/GBKphScsmDi9ek3ra
 	 * @param str
-	 * @return
+	 * @return 문자열에 있는 모음 개수 리턴
 	 */
 	public static int getVowelsCount(String str) {
 		int vowelsCount = 0;
@@ -314,10 +308,9 @@ public class Challenge {
 
 	/**
 	 * Scoring System
-	 * A, B, C 각 문자의 갯수를 배열 형태로 리턴. "ABBACCCCAC" -> [3, 2, 5] 리턴
 	 * @see https://edabit.com/challenge/FRtmuYD26pcQWFR7k
 	 * @param str
-	 * @return
+	 * @return A, B, C 각 문자의 갯수를 배열 형태로 리턴. "ABBACCCCAC" -> [3, 2, 5] 리턴
 	 */
 	private static final int INDEX_OF_A = 0;
 	private static final int INDEX_OF_B = 1;
@@ -371,10 +364,9 @@ public class Challenge {
 
 	/**
 	 * Reverse the Order of a String
-	 * 문자열을 거꾸로 출력
 	 * @see https://edabit.com/challenge/5gPCp7v7iDWZvb4YQ
 	 * @param str
-	 * @return
+	 * @return 문자열을 거꾸로 출력
 	 */
 	public static String reverse(final String str) {
 		// str을 char 하나씩 뽑아 배열로 저장 # 필요없음
@@ -403,10 +395,9 @@ public class Challenge {
 
 	/**
 	 * Shapes With N Sides
-	 * 배열에서 n번째 문자열 리턴
 	 * @see https://edabit.com/challenge/odJPfYRD3kSpE45Jf
 	 * @param n
-	 * @return
+	 * @return 배열에서 n번째 문자열 리턴
 	 */
 	public static String nSidedShape(int n) {
 		String[] result = { "circle", "semi-circle", "triangle", "square", "pentagon", "hexagon", "heptagon", "octagon",
@@ -416,10 +407,9 @@ public class Challenge {
 
 	/**
 	 * Hashes and Pluses
-	 * 문자열 s에서 #와 +의 개수를 정수 배열로 리턴
 	 * @see https://edabit.com/challenge/s8RHRY9hfmvYMuaeC
 	 * @param s
-	 * @return
+	 * @return 문자열 s에서 #와 +의 개수를 정수 배열로 리턴
 	 */
 	public static int[] hashPlusCount(String s) {
 		/* int hashCount = 0;
@@ -451,12 +441,25 @@ public class Challenge {
 
 	/**
 	 * Special Arrays
-	 * 정수 배열에서 짝수 인덱스의 요소가 짝수이면서 홀수 인덱스의 요소가 홀수이면 true, 아니면 false
-	 * 인덱스 0은 짝수 인덱스.
 	 * @see https://edabit.com/challenge/YmeiRhzaiR3MCPBiT
 	 * @param arr
-	 * @return
+	 * @return 정수 배열에서 짝수 인덱스의 요소가 짝수이면서 홀수 인덱스의 요소가 홀수이면 true, 아니면 false.
+	 * 덱스 0은 짝수 인덱스.
 	 */
+	public static boolean isSpecialArray(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			if (Helper.isEven(i) && Helper.isOdd(arr[i])) { // 인덱스가 짝수이면서 요소의 값은 홀수인 경우
+				return false;
+			} else if (Helper.isOdd(i) && Helper.isEven(arr[i])) {// 인덱스가 홀수이면서 요소의 값은 짝수인 경우
+				return false;
+			}
+		}
+		return true;
+
+		// Other Solution
+		// return isEvenIndexIsEven(arr) && isOddIndexIsOdd(arr);
+	}
+
 	private static boolean isEvenIndexIsEven(int[] arr) {
 		// 배열에서 짝수 인덱스 요소의 값이 짝수인지 검사하는 메서드
 		for (int i = 0; i < arr.length; i += 2) {
@@ -477,41 +480,12 @@ public class Challenge {
 		return true;
 	}
 
-	public static boolean isSpecialArray(int[] arr) {
-		for (int i = 0; i < arr.length; i++) {
-			if (Helper.isEven(i) && Helper.isOdd(arr[i])) { // 인덱스가 짝수이면서 요소의 값은 홀수인 경우
-				return false;
-			} else if (Helper.isOdd(i) && Helper.isEven(arr[i])) {// 인덱스가 홀수이면서 요소의 값은 짝수인 경우
-				return false;
-			}
-		}
-		return true;
-
-		// Other Solution
-		// return isEvenIndexIsEven(arr) && isOddIndexIsOdd(arr);
-	}
-
 	/**
 	 * Valid Zip Code
-	 * 올바른 우편번호인가 검사. 1) 문자열은 숫자로만 구성 2) 공백이 있으면 안 됨. 3) 문자열은 5글자
 	 * @see https://edabit.com/challenge/SmKPaHy5uY2gMk9na
 	 * @param zip
-	 * @return
+	 * @return 올바른 우편번호인가 검사. 1) 문자열은 숫자로만 구성 2) 공백이 있으면 안 됨. 3) 문자열은 5글자
 	 */
-	// 메시지 출력 메서드
-	/* public static String getErrorMessage(String zip) {
-		String message = "";
-		if (Helper.hasBlank(zip)) {
-			message += "문자열에 공백이 있습니다.\n";
-		}
-		if (Helper.hasNonNumber(zip)) {
-			message += "문자열에 숫자가 아닌 문자가 있습니다.\n";
-		}
-		if (zip.length() != 5) {
-			message += "문자열이 5자리가 아닙니다.\n";
-		}
-		return message;
-	} */
 	public static boolean isValid(String zip) {
 		// 오답
 		/* try {
@@ -550,13 +524,27 @@ public class Challenge {
 		// return zip.matches("[0-9]{5}");
 	}
 
+	// 메시지 출력 메서드
+	/* public static String getErrorMessage(String zip) {
+		String message = "";
+		if (Helper.hasBlank(zip)) {
+			message += "문자열에 공백이 있습니다.\n";
+		}
+		if (Helper.hasNonNumber(zip)) {
+			message += "문자열에 숫자가 아닌 문자가 있습니다.\n";
+		}
+		if (zip.length() != 5) {
+			message += "문자열이 5자리가 아닙니다.\n";
+		}
+		return message;
+	} */
+
 	/**
 	 * Vowel Replacer
-	 * str 문자열에서 모음을 ch 문자로.
 	 * @see https://edabit.com/challenge/iW7rtor54mbFQ2RrZ
 	 * @param str
 	 * @param ch
-	 * @return
+	 * @return str 문자열에서 모음을 ch 문자로.
 	 */
 	public static String replaceVowels(String str, char ch) {
 		char[] charArray = str.toCharArray();
@@ -574,11 +562,11 @@ public class Challenge {
 
 	/**
 	 * Capture the Rook
-	 * 1. 각 요소의 같은 인덱스를 비교.
-	 * 2. 요소의 첫번째 인덱스(문자)가 같거나 두번째 인덱스(숫자)가 같으면 true
 	 * @see https://edabit.com/challenge/rYD9NTBmNhaPM6wx2
 	 * @param rooks
 	 * @return
+	 * 1. 각 요소의 같은 인덱스를 비교.
+	 * 2. 요소의 첫번째 인덱스(문자)가 같거나 두번째 인덱스(숫자)가 같으면 true
 	 */
 	public static boolean canCapture(String[] rooks) {
 		if (rooks[0].charAt(0) == rooks[1].charAt(0) || rooks[0].charAt(1) == rooks[1].charAt(1)) {
@@ -589,11 +577,10 @@ public class Challenge {
 
 	/**
 	 * Check if String Ending Matches Second String
-	 * str1이 str2의 문자열로 끝나는가
 	 * @see https://edabit.com/challenge/PZnwXraqBPYv7w4Sm
 	 * @param str1
 	 * @param str2
-	 * @return
+	 * @return str1이 str2의 문자열로 끝나는가
 	 */
 	public static boolean checkEnding(String str1, String str2) {
 		return str1.endsWith(str2);
@@ -612,10 +599,9 @@ public class Challenge {
 
 	/**
 	 * Spaces Between Each Character
-	 * str의 각 문자 사이에 공백 넣기
 	 * @see https://edabit.com/challenge/ryEdPW2eqyngyWayy
 	 * @param str
-	 * @return
+	 * @return str의 각 문자 사이에 공백 넣기
 	 */
 	public static String spaceMeOut(String str) {
 		/* char[] characters = str.toCharArray();
@@ -639,10 +625,9 @@ public class Challenge {
 
 	/**
 	 * Difference of Max and Min Numbers in Array
-	 * 배열에서 가장 큰 수와 가장 작은 수의 차 리턴
 	 * @see https://edabit.com/challenge/hymPkXdhmDQLe87QT
 	 * @param arr
-	 * @return
+	 * @return 배열에서 가장 큰 수와 가장 작은 수의 차 리턴
 	 */
 	public static int differenceMaxMin(int[] arr) {
 		/* int maxValue = Integer.MIN_VALUE;
@@ -664,10 +649,9 @@ public class Challenge {
 
 	/**
 	 * Double Letters
-	 * 문자열에 연속되는 두 개의 문자가 있으면 return true; otherwise false;
 	 * @see https://edabit.com/challenge/EaWY5d2pYBckrkAnS
 	 * @param word
-	 * @return
+	 * @return 문자열에 연속되는 두 개의 문자가 있으면 return true; otherwise false;
 	 */
 	public static boolean doubleLetters(String word) {
 		char[] charArray = word.toCharArray();
@@ -681,10 +665,9 @@ public class Challenge {
 
 	/**
 	 * Even Number Generator
-	 * 1부터 num까지의 짝수를 배열로 리턴. num까지 짝수가 없으면 비어있는 배열로 리턴
 	 * @see https://edabit.com/challenge/jwXx478haGbZpRCWQ
 	 * @param num
-	 * @return
+	 * @return 1부터 num까지의 짝수를 배열로 리턴. num까지 짝수가 없으면 비어있는 배열로 리턴
 	 */
 	public static int[] findEvenNums(int num) {
 		int[] evenArr = new int[num / 2];
@@ -714,11 +697,11 @@ public class Challenge {
 
 	/**
 	 * Triangular Number Sequence
-	 * 삼각수 : 1, 3, 6, 10, 15... 순으로 나가는 수. 각 항은 이전 항의 +2, +3, +4, +5...의 값을 가짐
-	 * n번째 항의 값 리턴
 	 * @see https://edabit.com/challenge/4kEHkvobTA4i6AQRE
 	 * @param n
 	 * @return
+	 * 삼각수 : 1, 3, 6, 10, 15... 순으로 나가는 수. 각 항은 이전 항의 +2, +3, +4, +5...의 값을 가짐
+	 * n번째 항의 값 리턴
 	 */
 	public static int triangle(int n) {
 		// 1, 3, 6, 10, 15....
@@ -740,10 +723,9 @@ public class Challenge {
 
 	/**
 	 * Return the Middle Character(s) of a String
-	 * 문자열의 가운데 문자 출력. 가운데 문자가 2개면 2개, 1개면 1개 출력
 	 * @see https://edabit.com/challenge/NrMGhrarTfpYSbr84
 	 * @param word
-	 * @return
+	 * @return 문자열의 가운데 문자 출력. 가운데 문자가 2개면 2개, 1개면 1개 출력
 	 */
 	public static String getMiddle(String word) {
 		/* if (word.length() % 2 == 0) {
@@ -765,11 +747,10 @@ public class Challenge {
 
 	/**
 	 * Nth Smallest Element
-	 * arr 배열에서 n번째로 작은 수 출력. n이 배열의 길이보다 클 켱우 return -1
 	 * @see https://edabit.com/challenge/zgBjnxQw9MHTBHLED
 	 * @param arr
 	 * @param n
-	 * @return
+	 * @return arr 배열에서 n번째로 작은 수 출력. n이 배열의 길이보다 클 켱우 return -1
 	 */
 	public static int nthSmallest(int[] arr, int n) {
 		if (arr.length < n) {
@@ -782,11 +763,10 @@ public class Challenge {
 
 	/**
 	 * Say "Hello" Say "Bye"
-	 * num이 1이면 Hello, 0이면 Bye. 인사말 + name. name의 첫문자는 대문자로
 	 * @see https://edabit.com/challenge/zFccarRuia5zq4rhP
 	 * @param name
 	 * @param num
-	 * @return
+	 * @return num이 1이면 Hello, 0이면 Bye. 인사말 + name. name의 첫문자는 대문자로
 	 */
 	public static String sayHelloBye(String name, int num) {
 		String greeting = (num == 1) ? "Hello" : "Bye";
@@ -799,10 +779,9 @@ public class Challenge {
 
 	/**
 	 * Is the Average of All Elements a Whole Number?
-	 * 배열의 평균값이 정수이면 true. 실수이면 false 
 	 * @see https://edabit.com/challenge/yk7GqGcCpFgQrk8fH
 	 * @param arr
-	 * @return
+	 * @return 배열의 평균값이 정수이면 true. 실수이면 false 
 	 */
 	public static boolean isAvgWhole(int[] arr) {
 		/* int arrSum = 0;
@@ -830,10 +809,9 @@ public class Challenge {
 
 	/**
 	 * Return the Index of the First Vowel
-	 * 첫 번째 모음 인덱스 번호 출력
 	 * @see https://edabit.com/challenge/MsJzAHPmmmcwF4iCr
 	 * @param str
-	 * @return
+	 * @return 첫 번째 모음 인덱스 번호 출력
 	 */
 	public static int firstVowel(String str) {
 		/* char[] vowels = new char[] { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
