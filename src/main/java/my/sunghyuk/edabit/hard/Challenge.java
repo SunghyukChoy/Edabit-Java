@@ -228,4 +228,31 @@ public class Challenge {
     }
     return sb.append(str).toString();
   }
+
+  /**
+   * No Yelling
+   * @see https://edabit.com/challenge/33tRK98geLPcf73PF
+   * @param phrase
+   * @return 문장의 맨 끝에 중복되는 ?, !를 한 개만 남겨놓고 제거. 문장의 중간에 ?, !는 유지
+   * "I just!!! can!!! not!!! believe!!! it!!!" ➞ "I just!!! can!!! not!!! believe!!! it!"
+   */
+  public static String noYelling(String phrase) {
+    String[] words = phrase.split(" ");
+    if (words[words.length - 1].contains("?")) {
+      words[words.length - 1] = words[words.length - 1].replaceAll("\\?+", "?");
+    } else if (words[words.length - 1].contains("!")) {
+      words[words.length - 1] = words[words.length - 1].replaceAll("\\!+", "!");
+    }
+    return String.join(" ", words);
+
+    // Other Solution
+    // return phrase.replaceAll("(?<=\\w+)\\p{Punct}*(\\p{Punct}{1}$)", "$1");
+
+    // Other Solution
+    /* while (phrase.endsWith("!!") || phrase.endsWith("??")) {
+      phrase = phrase.substring(0, phrase.length() - 1);
+      phrase = noYelling(phrase);
+    }
+    return phrase; */
+  }
 }
