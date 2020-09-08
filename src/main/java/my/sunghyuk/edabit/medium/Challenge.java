@@ -1673,7 +1673,7 @@ public class Challenge {
    * @param num
    * @return
    */
-  public static int mysteryFunc(int num) {
+  public static int mysteryFunc2(int num) {
     // num ➞ 2^n + 나머지 값. 2^n은 num보다 클 수 없음. 나머지 값은 num - 2^n.
     // 2^n ➞ 2를 n번 나열.
     int squareOfTwo = 1;
@@ -2806,5 +2806,22 @@ public class Challenge {
         return gcd;
       }
     }
+  }
+
+  /**
+   * Reverse Coding Challenge #6
+   * @see https://edabit.com/challenge/XgFuNXpXAENpZiDaw
+   * @param num
+   * @return 예시의 input과 output을 보고 적절한 메서드 만들기
+   * mysteryFunc(152) ➞ 10. mysteryFunc(832) ➞ 48. mysteryFunc(19) ➞ 9. mysteryFunc(133) ➞ 9
+   */
+  public static int mysteryFunc6(int num) {
+    // 매개변수 num의 각 자리의 수를 곱하면 output.
+    int result = 1;
+    while (num != 0) {
+      result *= num % 10;
+      num /= 10;
+    }
+    return result;
   }
 }
