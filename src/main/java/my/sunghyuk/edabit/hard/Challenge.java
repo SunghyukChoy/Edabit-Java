@@ -255,4 +255,26 @@ public class Challenge {
     }
     return phrase; */
   }
+
+  /**
+   * Carrying the Digits
+   * @see https://edabit.com/challenge/5snfPLPbvjAsZ5kjo
+   * @param n1
+   * @param n2
+   * @return 두 정수를 더했을 때 숫자 올림(자리 올림)은 몇 번 하는가
+   * carryDigits(36, 135) ➞ 1 // You carry the 1 when you sum 6 and 5 together.
+   */
+  public static int carryDigits(int n1, int n2) {
+    int cnt = 0;
+    int i = 0; // 합이 10 이상일 때 넘겨주는 값
+    while (n1 != 0 && n2 != 0) {
+      if (n1 % 10 + n2 % 10 + i >= 10) {
+        cnt++;
+        i++;
+      }
+      n1 = n1 / 10;
+      n2 = n2 / 10;
+    }
+    return cnt;
+  }
 }
