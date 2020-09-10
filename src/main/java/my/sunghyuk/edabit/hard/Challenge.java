@@ -1,9 +1,10 @@
 package my.sunghyuk.edabit.hard;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import my.sunghyuk.edabit.Helper;
 
@@ -276,5 +277,72 @@ public class Challenge {
       n2 = n2 / 10;
     }
     return cnt;
+  }
+
+  /**
+   * Reverse Letters, Keep Numbers in Place
+   * @see https://edabit.com/challenge/AQr6ZPvSWzJ2cPTGt
+   * @param str
+   * @return 문자열에서 문자는 거꾸로, 숫자는 원래대로 출력. reverse("ab89c") ➞ "cb89a"
+   */
+  public static String reverse(String str) {
+
+    /* Map<Integer, String> map = new HashMap<>();
+    for (int i = 0; i < str.length(); i++) {
+      if (Character.isDigit(str.charAt(i))) {
+        map.put(i, String.valueOf(str.charAt(i)));
+      }
+    }
+    StringBuilder sb = new StringBuilder();
+    for (int i = str.length() - 1; i >= 0; i--) {
+      if (!Character.isDigit(str.charAt(i))) {
+        sb.append(str.charAt(i));
+      }
+    }
+    Set<Map.Entry<Integer, String>> set = map.entrySet();
+    Iterator<Map.Entry<Integer, String>> it = set.iterator();
+    while (it.hasNext()) {
+      Map.Entry<Integer, String> entry = it.next();
+      sb.insert(entry.getKey(), entry.getValue());
+    }
+    return sb.toString(); */
+
+    // Other Solution
+    /* String letterStr = str.replaceAll("\\d", "");
+    // 숫자를 제거한 문자로 이루어진 문자열
+    int index = letterStr.length() - 1;
+    // letterStr의 마지막 인덱스
+    char[] charArr = str.toCharArray();
+    // 원본 문자열의 문자 배열
+    for (int i = 0; i < charArr.length; i++) {
+      if (Character.isLetter(charArr[i])) {
+        // 원본 문자열에서 charArr[i]가 문자인 경우
+        charArr[i] = letterStr.charAt(index);
+        // 그 자리에 letterStr의 마지막 문자를 넣음. 원본 문자열에 문자를 역순으로 넣는 과정.
+        // 숫자의 경우 해당하지 않고 넘어감
+        index--;
+      }
+    }
+    return new String(charArr); */
+
+    // Other Solution
+    if (str == null) {
+      return str;
+    }
+    String reverseLetters = new StringBuilder(str.replaceAll("\\d", "")).reverse().toString();
+    StringBuilder sb = new StringBuilder();
+    int i = 0;
+    for (char ch : str.toCharArray()) {
+      sb.append(Character.isDigit(ch) ? ch : reverseLetters.charAt(i++));
+      // charAt(i++) : i 먼저 참조하고 ++ 연산 수행. 초기값 0 먼저 참조 후 1씩 증가. 아래 코드와 같음
+      /* if (Character.isDigit(ch)) {
+        sb.append(ch);
+      } else {
+        char letter = reverseLetters.charAt(i);
+        sb.append(letter);
+        i++;
+      } */
+    }
+    return sb.toString();
   }
 }
