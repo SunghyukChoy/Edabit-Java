@@ -345,4 +345,33 @@ public class Challenge {
     }
     return sb.toString();
   }
+
+  /**
+   * Mangle the String
+   * @see https://edabit.com/challenge/BJkkDwsZrB8SFTAQ2
+   * @param str
+   * @return 문자열의 문자를 해당 문자의 다음 문자로 변환하여 리턴. mangle("Fun times!") ➞ "GvO Ujnft!".
+   * 문자 'z', 'Z'는 'a','A'로 리턴. 변환한 문자가 모음이면 대문자로 리턴.
+   */
+  public static String mangle(String str) {
+    char[] charArr = str.toCharArray();
+
+    for (int i = 0; i < charArr.length; i++) {
+      if (charArr[i] == 'z') {
+        charArr[i] = 'A';
+      } else if (charArr[i] == 'Z') {
+        charArr[i] = 'A';
+      } else if (Character.isLetter(charArr[i])) {
+        charArr[i] += 1;
+        if (Helper.isVowel(charArr[i])) {
+          charArr[i] = Character.toUpperCase(charArr[i]);
+        }
+      }
+    }
+    StringBuilder sb = new StringBuilder();
+    for (char ch : charArr) {
+      sb.append(ch);
+    }
+    return sb.toString();
+  }
 }
