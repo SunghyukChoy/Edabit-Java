@@ -1,10 +1,7 @@
 package my.sunghyuk.edabit.hard;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.Stack;
 
 import my.sunghyuk.edabit.Helper;
 
@@ -357,9 +354,7 @@ public class Challenge {
     char[] charArr = str.toCharArray();
 
     for (int i = 0; i < charArr.length; i++) {
-      if (charArr[i] == 'z') {
-        charArr[i] = 'A';
-      } else if (charArr[i] == 'Z') {
+      if (charArr[i] == 'z' || charArr[i] == 'Z') {
         charArr[i] = 'A';
       } else if (Character.isLetter(charArr[i])) {
         charArr[i] += 1;
@@ -371,6 +366,92 @@ public class Challenge {
     StringBuilder sb = new StringBuilder();
     for (char ch : charArr) {
       sb.append(ch);
+    }
+    return sb.toString();
+
+    // Other Solution
+    /* StringBuilder sb = new StringBuilder();
+    String letter = "";
+    for (char ch : str.toCharArray()) {
+      if ((ch >= 'a' && ch < 'z') || (ch >= 'A' && ch < 'Z')) {
+        ch += 1;
+        letter = String.valueOf(ch);
+      } else if (ch == 'z' || ch == 'Z') {
+        letter = "A";
+      } else {
+        letter = String.valueOf(ch);
+      }
+    
+      if (letter.matches("[aeiou]")) {
+        letter = letter.toUpperCase();
+      }
+    
+      sb.append(letter);
+    }
+    return sb.toString(); */
+  }
+
+  /**
+   * Backspace Attack
+   * @see https://edabit.com/challenge/hYKyiwgw9Ni5ELtDL
+   * @param str
+   * @return backspace 키가 잘못 입력되어 '#'으로 입력됨. 문자열 str에서 원래 입력하려고 했던 문자열 출력
+   * erase("major# spar##ks") ➞ "majo spks". erase("si###t boy") ➞ "t boy"
+   */
+  public static String erase(String str) {
+
+    /* if (!str.contains("#")) {
+      return str;
+    }
+    
+    StringBuilder sb = new StringBuilder();
+    int hashIndex = str.indexOf("#");
+    
+    if (hashIndex != 0) {
+      // hashIndex가 0인 경우 (지우려는 문자의 수보다 입력된 backspace가 많은 경우. "si### boy"의 경우) 아래의 substring 메서드 실행 불가능. StringIndexOutOfBoundsException 발생
+      sb.append(str.substring(0, hashIndex - 1));
+      // 첫 문자부터 hash 이전의 문자(지우려고 의도했던 문자)의 이전 문자까지 저장. 즉 지울 문자 + "#"의 이전 문자까지 저장
+    }
+    sb.append(str.substring(hashIndex + 1));
+    // 첫 번째 hash 이후의 문자 저장
+    return erase(sb.toString()); */
+
+    // Other Solution
+    /* Stack<String> bAStack = new Stack<>();
+    for (int i = 0; i < str.length(); i++) {
+      if (!bAStack.isEmpty() && str.charAt(i) == '#') {
+        bAStack.pop();
+      } else if (bAStack.isEmpty() && str.charAt(i) == '#') {
+        continue;
+      } else {
+        bAStack.push(String.valueOf(str.charAt(i)));
+      }
+    }
+    return String.join("", bAStack); */
+
+    // Other Solution
+    /* while (str.contains("#")) {
+      int index = str.indexOf("#");
+      if (index - 1 >= 0
+          && (Character.isAlphabetic(str.charAt(index - 1)) || Character.isSpaceChar(str.charAt(index - 1)))) {
+        String erase = Character.toString(str.charAt(index - 1));
+        str = str.replaceFirst(erase + "#", "");
+      } else {
+        str = str.replaceFirst("#", "");
+      }
+    }
+    return str; */
+
+    // Other Solution
+    StringBuilder sb = new StringBuilder();
+    for (char c : str.toCharArray()) {
+      if (c == '#') {
+        if (sb.length() != 0) {
+          sb.deleteCharAt(sb.length() - 1);
+        }
+      } else {
+        sb.append(c);
+      }
     }
     return sb.toString();
   }
