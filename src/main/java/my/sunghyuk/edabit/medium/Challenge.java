@@ -2823,4 +2823,25 @@ public class Challenge {
     }
     return result;
   }
+
+  /**
+   * Swap X and Y Coordinates
+   * @see https://edabit.com/challenge/u8tkvqrMSqJetmNcz
+   * @param str
+   * @return 좌표를 나타내는 "(x1, y1), (x2, y2)" 문자열에서 x좌표와 y좌료를 서로 바꾸기
+   */
+  public static String swapXY(String str) {
+
+    String[] words = str.split(",");
+    for (int i = 0; i < words.length; i++) {
+      words[i] = words[i].replaceAll("[()]", "").trim();
+    }
+    /* StringBuilder sb = new StringBuilder();
+    sb.append("(" + words[1] + ", " + words[0] + "), (" + words[3] + ", " + words[2] + ")");
+    return sb.toString(); */
+    return String.format("(%s, %s), (%s, %s)", words[1], words[0], words[3], words[2]);
+
+    // Other Solution
+    // return str.replaceAll("\\(([\\d\\-]+), ([\\d\\-]+)\\)", "($2, $1)");
+  }
 }
