@@ -2425,29 +2425,28 @@ public class Challenge {
    * @return
    */
   public static int persistence(long num) {
-    // num의 값을 가지고 조작할 변수. 나머지값끼리 곱함. 곱한 값을 담을 변수. 그 과정을 거치면 step++. (num > multiplyDigit). 그 multiplyDigit을 다시 돌림. 조작하는 값에 multiplyDigit 대입. 조작하는 값이 한 자리면 break.
+    // 나머지값끼리 곱함. 곱한 값을 담을 변수. 그 과정을 거치면 step++. (num > multiplyDigit). 그 multiplyDigit을 다시 돌림. 조작하는 값에 multiplyDigit 대입. 조작하는 값이 한 자리면 break.
     /* int step = 0;
-    long copyNum = num;
-    while (copyNum >= 10) {
+    
+    while (num >= 10) {
       long multiplyDigit = 1;
       // 나머지값들끼리 곱하고 난 뒤 다음 단계로 넘어갈 때 다시 초기화.
       // 큰 수를 조작하므로 long으로 선언
-      while (copyNum != 0) {
-        multiplyDigit *= copyNum % 10;
-        copyNum /= 10;
-      }      
+      while (num != 0) {
+        multiplyDigit *= num % 10;
+        num /= 10;
+      }
       step++;
-      copyNum = multiplyDigit;
+      num = multiplyDigit;
     }
     return step; */
 
     int step = 0;
-    long copyNum = num;
     long multiplyDigit = 1;
-    while (copyNum >= 10) {
-      multiplyDigit = Helper.getMultiplyDigit(copyNum);
+    while (num >= 10) {
+      multiplyDigit = Helper.getMultiplyDigit(num);
       step++;
-      copyNum = multiplyDigit;
+      num = multiplyDigit;
     }
     return step;
   }

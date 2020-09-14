@@ -455,4 +455,28 @@ public class Challenge {
     }
     return sb.toString();
   }
+
+  /**
+   * Persistent Little Bugger
+   * @see https://edabit.com/challenge/zZxPQRjn8q2iB9Biv
+   * @param num
+   * @return 정수 num의 각 자리 수를 곱한 값이 한 자리의 값이 나오려면 몇 번 반복해야 하는가
+   * bugger(39) ➞ 3 // Because 3 * 9 = 27, 2 * 7 = 14, 1 * 4 = 4 and 4 has only one digit.
+   * 
+   */
+  public static int bugger(int num) {
+
+    int step = 0;
+    int multiplyDigit = 1;
+    while (num >= 10) {
+      while (num != 0) {
+        multiplyDigit *= num % 10;
+        num /= 10;
+      }
+      step++;
+      num = multiplyDigit;
+      multiplyDigit = 1;
+    }
+    return step;
+  }
 }
