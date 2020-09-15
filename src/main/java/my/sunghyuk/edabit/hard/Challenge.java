@@ -1,7 +1,9 @@
 package my.sunghyuk.edabit.hard;
 
 import java.util.Arrays;
-import java.util.Stack;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 import my.sunghyuk.edabit.Helper;
 
@@ -478,5 +480,39 @@ public class Challenge {
       multiplyDigit = 1;
     }
     return step;
+  }
+
+  /**
+   * Almost Palindrome
+   * @see https://edabit.com/challenge/E9AHcnWg7fDfardLF
+   * @param str
+   * @return 문자열에서 문자 하나만 바꾸었을 때 Palindrome이 될 수 있는가.
+   * almostPalindrome("abccia") ➞ true // Transformed to "abccba" by changing "i" to "b".
+   * 주어진 문자열이 이미 Palindrome이라면 false 리턴
+   */
+  public static boolean almostPalindrome(String str) {
+
+    /* char[] charArr = str.toCharArray();
+    for (int i = 0; i < charArr.length; i++) {
+      if (charArr[i] != charArr[charArr.length - 1 - i]) { // 문자열의 앞문자와 뒷문자를 비교하여 다르면
+        charArr[i] = charArr[charArr.length - 1 - i]; // 두 문자를 같은 문자로 통일 시킨 뒤
+        return Helper.isPalindrome(String.valueOf(charArr)); // 그 문자열을 Palindrome 검사
+    
+        // if (Helper.isPalindrome(String.valueOf(charArr))) {
+        //   return true;
+        //   // 이 if문 왜 안 되는지 모르겠음. else 구문으로 return false까지 해줘야 정답 출력
+        // }
+      }
+    }
+    return false; // 주어진 문자열이 이미 Palindrome이라면 위의 if문 타지 않으므로 return false. */
+
+    // Other Solution
+    int differenceCnt = 0; // 앞뒤 문자를 비교하여 다른 횟수
+    for (int i = 0; i < str.length() / 2; i++) {
+      if (str.charAt(i) != str.charAt(str.length() - 1 - i)) {
+        differenceCnt++;
+      }
+    }
+    return differenceCnt == 1;
   }
 }
