@@ -543,4 +543,23 @@ public class Challenge {
     // Other Solution
     // return desire.replaceAll("(.)(?=.*\\1)", "").toUpperCase().replaceAll("[AEIOU\\s]", "");
   }
+
+  /**
+   * Phone Number Word Decoder
+   * @see https://edabit.com/challenge/8NZaLdJBkhZCgNBc7
+   * @param phone
+   * @return 전화번호 형식으로 주어진 문자열에서, 문자열에 포함된 문자를 대응하는 숫자로 바꾸기
+   * textToNum("653-TRY-THIS") ➞ "653-879-8447"
+   */
+  public static String textToNum(String phone) {
+    return phone.replaceAll("[ABC]", "2").replaceAll("[DEF]", "3").replaceAll("[GHI]", "4").replaceAll("[JKL]", "5")
+        .replaceAll("[MNO]", "6").replaceAll("[PQRS]", "7").replaceAll("[TUV]", "8").replaceAll("[WXYZ]", "9");
+
+    // Other Solution
+    /* String[] decodeStr = new String[] { "none", "none", "ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ" };
+    for (int i = 2; i < decodeStr.length; i++) {
+      phone = phone.replaceAll("[" + decodeStr[i] + "]", String.valueOf(i));
+    }
+    return phone; */
+  }
 }
