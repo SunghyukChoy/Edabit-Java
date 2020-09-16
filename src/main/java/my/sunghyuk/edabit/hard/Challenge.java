@@ -1,8 +1,7 @@
 package my.sunghyuk.edabit.hard;
 
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import my.sunghyuk.edabit.Helper;
@@ -514,5 +513,34 @@ public class Challenge {
       }
     }
     return differenceCnt == 1;
+  }
+
+  /**
+   * Magic Sigil Generator
+   * @see https://edabit.com/challenge/6mLZjPrNFrfGfdwqa
+   * @param desire
+   * @return Sigil 만들기. 
+   * 1) 문자를 대문자로 변환하고 2) 문자열에서 공백을 제거하고 3) 중복문자를 제거하되 마지막에 나온 문자를 남긴다
+   * sigilize("I FOUND MY SOULMATE") ➞ "FNDYSLMT"
+   */
+  public static String sigilize(String desire) {
+
+    desire = desire.toUpperCase().replaceAll("[AEIOU ]", "");
+    StringBuilder sb = new StringBuilder();
+    for (int i = desire.length() - 1; i >= 0; i--) {
+      if (!sb.toString().contains(String.valueOf(desire.charAt(i)))) {
+        sb.insert(0, desire.charAt(i));
+      }
+    }
+    return sb.toString();
+
+    // Other Solution    
+    /* desire = desire.toUpperCase().replaceAll("[AEIOU\\s]", "");
+    desire = new StringBuilder(desire).reverse().toString();
+    Set<String> set = new LinkedHashSet<>(Arrays.asList(desire.split("")));
+    return new StringBuilder(String.join("", set)).reverse().toString(); */
+
+    // Other Solution
+    // return desire.replaceAll("(.)(?=.*\\1)", "").toUpperCase().replaceAll("[AEIOU\\s]", "");
   }
 }
