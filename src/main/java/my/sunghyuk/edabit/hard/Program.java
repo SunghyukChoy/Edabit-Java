@@ -32,4 +32,24 @@ public class Program {
     }
     return true;
   }
+
+  /**
+   * String or Integer?
+   * @see https://edabit.com/challenge/paaguQWznz2cPNCiA
+   * @param var
+   * @return Object 타입의 매개변수 var가 정수면 "int", 문자열이면 "str" 리턴
+   */
+  public static String intOrString(Object var) {
+    /* String varStr = String.valueOf(var);
+    if (varStr.equals(var)) {
+      return "str";
+    }
+    if (varStr.equals(String.valueOf(var))) {
+      return "int";
+    }
+    return ""; */
+
+    // Other Solution
+    return var instanceof String ? "str" : "int";
+  }
 }
