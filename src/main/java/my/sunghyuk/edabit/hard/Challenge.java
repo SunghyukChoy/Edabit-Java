@@ -562,4 +562,38 @@ public class Challenge {
     }
     return phone; */
   }
+
+  /**
+   * Building up a Word
+   * @see https://edabit.com/challenge/Eiyu2SZk9rgdp5gZd
+   * @param arr
+   * @return 문자열 배열에서 다음 요소는 이전 요소에서 문자열의 맨 앞 또는 맨 뒤에 문자 하나만을 붙여서 만들 수 있는 요소인가. ["a", "at", "ate", "late", "plate", "plater", "platter"] ➞ False. ["it", "bit", "bite", "biters"] ➞ False
+   */
+  public static boolean canBuild(String[] arr) {
+
+    /* for (int i = 0; i < arr.length - 1; i++) {
+      if (arr[i].length() + 1 != arr[i + 1].length()) {
+        return false;
+      }
+      // if (arr[i].charAt(0) == arr[i + 1].charAt(0)
+      //     && arr[i].charAt(arr[i].length() - 1) == arr[i + 1].charAt(arr[i + 1].length() - 1)) {
+      //   return false;
+      // }
+      // 위의 조건문은 but -> butt 같은 경우('t'를 중간에 붙였다고 할 수도 있고 끝에 붙였다고 할 수도 있는 경우)에서 false 리턴하지 않음. 왜..?
+    
+      if (!arr[i + 1].startsWith(arr[i]) && !arr[i + 1].endsWith(arr[i])) {
+        // !(arr[i + 1].startsWith(arr[i]) || arr[i + 1].endsWith(arr[i])) 과 같은 식
+        return false;
+      }
+    }
+    return true; */
+
+    // Other Solution
+    for (int i = 1; i < arr.length; i++) {
+      if (!arr[i].contains(arr[i - 1]) || arr[i].length() - arr[i - 1].length() != 1) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
