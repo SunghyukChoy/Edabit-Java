@@ -614,4 +614,35 @@ public class Program {
     }
     return factorialNum == n;
   }
+
+  /**
+   * Return Only the Int
+   * @see https://edabit.com/challenge/9k87o8Y4yNt3fvcfB
+   * @param arr
+   * @return Object 타입의 배열에서 정수인 요소만 배열로 리턴
+   */
+  public static int[] returnInts(Object[] arr) {
+    List<Integer> list = new ArrayList<>();
+    for (Object obj : arr) {
+      if (obj instanceof Integer) {
+        list.add((int) obj);
+      }
+    }
+    int[] intsArr = new int[list.size()];
+    for (int i = 0; i < list.size(); i++) {
+      intsArr[i] = list.get(i);
+    }
+    return intsArr;
+
+    // Other Solution
+    /* int[] intsArr = new int[arr.length];
+    int j = 0;
+    for (int i = 0; i < arr.length; i++) {
+      if (arr[i] instanceof Integer) {
+        intsArr[j] = (Integer) arr[i];
+        j++;
+      }
+    }
+    return Arrays.copyOfRange(intsArr, 0, j); */
+  }
 }
