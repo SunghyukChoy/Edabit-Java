@@ -596,4 +596,40 @@ public class Challenge {
     }
     return true;
   }
+
+  /**
+   * Find the Missing Letter
+   * @see https://edabit.com/challenge/4hZ9cHgvkZ94sr2ae
+   * @param arr
+   * @return 알파벳 순서의 문자열 배열에서 중간에 빠진 문자열 리턴
+   */
+  public static String missingLetter(String[] arr) {
+    String str = String.join("", arr);
+    char[] charArr = str.toCharArray();
+    for (int i = 0; i < charArr.length - 1; i++) {
+      if (charArr[i] + 1 != charArr[i + 1]) { // 아스키값 비교. 정수값을 비교함
+        return String.valueOf((char) (charArr[i] + 1));
+        // 아스키값을 문자로 변환 후 다시 문자열로 변환. 괄호 잘 칠 것.
+      }
+    }
+    return "";
+
+    // Other Solution
+    /* String str = String.join("", arr);
+    for (int i = str.charAt(0); i < str.charAt(str.length() - 1); i++) {
+      if (!str.contains(Character.toString((char) i))) {
+        return Character.toString((char) i);
+      }
+    }
+    return null; */
+
+    // Other Solution
+    /* char letter = arr[0].charAt(0);
+    int i = 0;
+    while (("" + letter).equals(arr[i])) {
+      letter++;
+      i++;
+    }
+    return "" + letter; */
+  }
 }
