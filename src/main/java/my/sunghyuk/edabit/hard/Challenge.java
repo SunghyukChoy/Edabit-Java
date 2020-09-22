@@ -1,8 +1,7 @@
 package my.sunghyuk.edabit.hard;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import my.sunghyuk.edabit.Helper;
 
@@ -631,5 +630,47 @@ public class Challenge {
       i++;
     }
     return "" + letter; */
+  }
+
+  /**
+   * Find the Odd Integer
+   * @see https://edabit.com/challenge/8SHAyg8kdX8y72S3z
+   * @param arr
+   * @return 정수 배열에서 홀수 번 등장하는 요소 리턴. findOdd([1, 1, 2, -2, 5, 2, 4, 4, -1, -2, 5]) ➞ -1
+   */
+  public static int findOdd(int[] arr) {
+    if (arr.length == 1) {
+      return arr[0];
+    }
+    Arrays.sort(arr);
+    if (arr[0] != arr[1]) {
+      return arr[0];
+    }
+    return findOdd(Arrays.copyOfRange(arr, 2, arr.length));
+
+    // Other Solution
+    /* ArrayList<Integer> oddIntegers = new ArrayList<>();
+    for (int i : arr) {
+      if (oddIntegers.contains(Integer.valueOf(i))) {
+        oddIntegers.remove(Integer.valueOf(i));
+      } else {
+        oddIntegers.add(Integer.valueOf(i));
+      }
+    }
+    return oddIntegers.get(0).intValue(); */
+
+    // Other Solution
+    /* for (int i = 0; i < arr.length; i++) {
+      int count = 0;
+      for (int j = 0; j < arr.length; j++) {
+        if (arr[i] == arr[j]) {
+          count++;
+        }
+      }
+      if (count % 2 != 0) {
+        return arr[i];
+      }
+    }
+    return 0; */
   }
 }
