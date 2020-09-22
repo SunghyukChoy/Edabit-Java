@@ -1,5 +1,6 @@
 package my.sunghyuk.edabit.hard;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -672,5 +673,65 @@ public class Challenge {
       }
     }
     return 0; */
+  }
+
+  /**
+   * Numbers That are Also Writers
+   * @see https://edabit.com/challenge/7PSvBgGjiA252WdiN
+   * @param n
+   * @return 숫자가 Autobiographical인가. Autobiographical는 자기 자신을 나타내는 수이다. 1) 수의 왼쪽자리부터 시작하여 0의 개수, 1의 개수, 2의 개수...를 나타낸다. 6210001000 is autobiographical, because it has six 0's, two 1's, one 2, zero 3's, zero 4's, zero 5's, one 6, zero 7's, zero 8's, and zero 9's. 2) isAutobiographical(12345) ➞ false 3) n은 항상 0 이상의 정수이며 10자리를 넘는 수는 주어지지 않는다. 
+   */
+  public static boolean isAutobiographical(int n) {
+    String nStr = String.valueOf(n);
+    // n의 모든 digit을 비교하기 위한 초기 n의 문자열. 아래의 for문에서 n은 계속 변하므로 nStr 선언 없이 String.valueOf(n)을 그대로 사용하면 n의 모든 digit을 완전히 검사할 수 없음.
+    for (int i = 0; i <= nStr.length() - 1; i++) {
+      int digit = n / (int) Math.pow(10, nStr.length() - 1 - i);
+      // 숫자의 길이가 짧아지는 만큼 몫(digit)을 구하기 위한 10의 제곱수도 작아저야 하므로 -i 해줌.
+      if (digit != getNumberCnt(nStr, i)) {
+        return false;
+      }
+      n = n % (int) Math.pow(10, nStr.length() - 1 - i);
+      // 숫자의 길이가 짧아지는 만큼 n을 재정의하기 위한 10의 제곱수도 작아저야 하므로 -i 해줌.
+    }
+    return true;
+
+    // Other Solution
+    /* String nStr = String.valueOf(n);
+    for (int i = 0; i < nStr.length(); i++) {
+      int digit = Integer.parseInt(String.valueOf(nStr.charAt(i)));
+      String index = String.valueOf(i);
+      if (digit != nStr.length() - nStr.replaceAll(index, "").length()) {
+        return false;
+      }
+    }
+    return true; */
+
+    // Other Solution. 해석 안 됨..
+    /* char[] nCharArr = Integer.toString(n).toCharArray();
+    int[] numberArr = new int[nCharArr.length];
+    int[] digits = new int[10];
+    for (int i = 0; i < nCharArr.length; i++) {
+      numberArr[i] = nCharArr[i] - '0';
+    }
+    for (int i : numberArr) {
+      digits[i]++;
+    }
+    for (int i = 0; i < numberArr.length; i++) {
+      if (numberArr[i] != digits[i]) {
+        return false;
+      }
+    }
+    return true; */
+  }
+
+  private static int getNumberCnt(String str, int num) {
+    int cnt = 0;
+    String[] strArr = str.split("");
+    for (int i = 0; i < strArr.length; i++) {
+      if (strArr[i].equals(String.valueOf(num))) {
+        cnt++;
+      }
+    }
+    return cnt;
   }
 }
