@@ -645,4 +645,18 @@ public class Program {
     }
     return Arrays.copyOfRange(intsArr, 0, j); */
   }
+
+  /**
+   * Pythagorean Triplet
+   * @see https://edabit.com/challenge/p3BhJuodwuhrNjQJ5
+   * @param a
+   * @param b
+   * @param c
+   * @return  주어진 세 수가 피타고라스의 정리를 만족하는가. 주어진 매개변수가 꼭 a,b < c 인 것은 아님.
+   */
+  public static boolean isTriplet(int a, int b, int c) {
+    int[] nums = new int[] { a, b, c };
+    Arrays.sort(nums);
+    return nums[2] * nums[2] == nums[0] * nums[0] + nums[1] * nums[1];
+  }
 }
