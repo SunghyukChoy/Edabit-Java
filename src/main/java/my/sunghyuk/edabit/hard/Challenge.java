@@ -706,7 +706,7 @@ public class Challenge {
     }
     return true; */
 
-    // Other Solution. 해석 안 됨..
+    // Other Solution. 다시 볼 것
     /* char[] nCharArr = Integer.toString(n).toCharArray();
     int[] numberArr = new int[nCharArr.length];
     int[] digits = new int[10];
@@ -733,5 +733,25 @@ public class Challenge {
       }
     }
     return cnt;
+  }
+
+  /**
+   * Unmix My Strings
+   * @see https://edabit.com/challenge/XRAGxXj4KtakkvD3F
+   * @param str
+   * @return 문자 두 개씩 한 쌍을 이루어 서로 자리 바꾸기. 쌍이 이루어지지 않으면 바꾸지 않음. unmix("badce") ➞ "abcde"
+   */
+  public static String unmix(String str) {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < str.length() - 1; i = i + 2) {
+      sb.append(str.charAt(i + 1)).append(str.charAt(i));
+    }
+    if (str.length() % 2 != 0) {
+      sb.append(str.charAt(str.length() - 1));
+    }
+    return sb.toString();
+
+    // Other Solution
+    // return str.replaceAll("(.)(.)", "$2$1");
   }
 }
