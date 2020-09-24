@@ -754,4 +754,65 @@ public class Challenge {
     // Other Solution
     // return str.replaceAll("(.)(.)", "$2$1");
   }
+
+  /**
+   * Ransom Letter
+   * @see https://edabit.com/challenge/vuxkHGZg8fuWCivPH
+   * @param str1
+   * @param str2
+   * @return ransom note letter : 신문이나 잡지 등에서 글자를 잘라 새로운 문장을 만드는 타이포그래피. 주어진 문자열 str1의 문자들로 str2를 만들 수 있는가. 대소문자 구별 있음. canBuild("aPPleAL", "PAL") ➞ true. canBuild("aPPleAL", "apple") ➞ false  
+   */
+  public static boolean canBuild(String str1, String str2) {
+    // 추가한 테스트(test22, str1과 str2의 길이가 같고 str1에 해당 문자가 있지만 str2의 해당문자보다 수가 적은 경우)에서 틀림
+    /* if (str1.length() < str2.length()) {
+      return false;
+    }
+    int cnt = 0;
+    for (int i = 0; i < str2.length(); i++) {
+      for (int j = 0; j < str1.length(); j++) {
+        if (str2.charAt(i) == str1.charAt(j)) {
+          cnt++;
+          break;
+        }
+      }
+    }
+    return cnt == str2.length(); */
+
+    // Other Solution
+    // 추가한 테스트(test22, str1과 str2의 길이가 같고 str1에 해당 문자가 있지만 str2의 해당문자보다 수가 적은 경우)에서 틀림
+    /* if (str2.length() > str1.length()) {
+      return false;
+    }
+    for (int i = 0; i < str2.length(); i++) {
+      if (!str1.contains(String.valueOf(str2.charAt(i)))) {
+        return false;
+      }
+    }
+    return true; */
+
+    // Other Solution
+    StringBuilder s1 = new StringBuilder(str1);
+    StringBuilder s2 = new StringBuilder(str2);
+    for (int i = 0; i < s2.length(); i++) {
+      char ch = s2.charAt(i);
+      if (s1.indexOf(Character.toString(ch)) > -1) {
+        s1.deleteCharAt(s1.indexOf(Character.toString(ch)));
+        // str1의 해당 문자 개수가 str2보다 많아야 문자열을 만들 수 있음. 서로 대응하는 문자를 삭제해 str1에서의 해당 문자가 str2의 해당 문자보다 많은지 확인함.
+      } else {
+        return false;
+      }
+    }
+    return true;
+
+    // Other Solution
+    /* for (int n = 0; n < str2.length(); n++) {
+      if (str1.replaceFirst(str2.substring(n, n + 1), "").equals(str1)) {
+        // str2의 첫 문자를 str1에서 첫 한 개만 제거할 때 기존의 str1과 같냐
+        return false;
+      } else {
+        str1 = str1.replaceFirst(str2.substring(n, n + 1), "");
+      }
+    }
+    return true; */
+  }
 }
