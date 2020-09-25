@@ -1,8 +1,8 @@
 package my.sunghyuk.edabit.hard;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import my.sunghyuk.edabit.Helper;
 
@@ -814,5 +814,81 @@ public class Challenge {
       }
     }
     return true; */
+  }
+
+  /**
+   * Count the Number of Duplicate Characters
+   * @see https://edabit.com/challenge/ENozFXdPz9YTTHdps
+   * @param str
+   * @return 문자열에서 중복되는 문자의 개수 리턴. 대소문자 구별. duplicateCount("aabbcde") ➞ 2
+   */
+  public static int duplicateCount(String str) {
+
+    /* if (str.length() <= 1) {
+      return 0;
+    }
+    int cnt = 0;
+    for (int i = 1; i < str.length(); i++) {
+      if (str.charAt(0) == str.charAt(i)) {
+        cnt++;
+        break;
+      }
+    }
+    str = str.replace(String.valueOf(str.charAt(0)), "");
+    return cnt + duplicateCount(str); */
+
+    // Other Solution
+    /* StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < str.length(); i++) {
+      for (int j = i + 1; j < str.length(); j++) {
+        if (str.charAt(i) == str.charAt(j)) {
+          sb.append(str.charAt(i));
+          break;
+        }
+      }
+    }
+    return sb.toString().replaceAll("(.)(?=.*\\1)", "").length(); */
+
+    // Other Solution
+    /* int duplicateCount = 0;
+    Map<Character, Integer> map = new HashMap<>();
+    for (char ch : str.toCharArray()) {
+      if (map.containsKey(ch)) {
+        int counter = map.get(ch);
+        map.put(ch, ++counter);
+      } else {
+        map.put(ch, 1);        
+      }
+    }
+    for (char ch : map.keySet()) {
+      if (map.get(ch) > 1) {
+        duplicateCount++;
+      }
+    }
+    return duplicateCount; */
+
+    // Other Solution
+    /* Set<Character> set = new HashSet<>();
+    Set<Character> duplicateSet = new HashSet<>();
+    for (char ch : str.toCharArray()) {
+      if (!set.contains(ch)) {
+        set.add(ch);
+      } else {
+        duplicateSet.add(ch);
+      }
+    }
+    return duplicateSet.size(); */
+
+    // Other Solution
+    Set<Character> set = new HashSet<>();
+    for (int i = 0; i < str.length() - 1; i++) {
+      for (int j = i + 1; j < str.length(); j++) {
+        if (str.charAt(i) == str.charAt(j)) {
+          set.add(str.charAt(i));
+          break;
+        }
+      }
+    }
+    return set.size();
   }
 }
