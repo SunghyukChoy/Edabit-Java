@@ -922,4 +922,35 @@ public class Challenge {
     // Other Solution
     return sentence.replace(" x ", " ecks ").replace(" x", " z").replace("x", "cks"); // replace 순서 유의
   }
+
+  /**
+   * Body Mass Index
+   * @param weight
+   * @param height
+   * @return BMI 수치를 구하여 수치와 비만상태를 문자열로 리턴. BMI : 몸무게(kg) / 키(m)^2. 1 inch = 0.0254 meter, 1 pound = 0.453592 kilogram
+   */
+  public static String BMI(String weight, String height) {
+    String[] weightArr = weight.split(" ");
+    double weightValue = Double.parseDouble(weightArr[0]);
+    String[] heightArr = height.split(" ");
+    double heightValue = Double.parseDouble(heightArr[0]);
+    if (weightArr[1].equals("pounds")) {
+      weightValue *= 0.453592;
+    }
+    if (heightArr[1].equals("inches")) {
+      heightValue *= 0.0254;
+    }
+    double bmi = weightValue / Math.pow(heightValue, 2);
+    String state = "";
+    if (bmi < 18.5) {
+      state = "Underweight";
+    } else if (bmi >= 18.5 && bmi <= 24.9) {
+      state = "Normal weight";
+    } else if (bmi >= 25 && bmi <= 29.9) {
+      state = "Overweight";
+    } else {
+      state = "Obesity";
+    }
+    return String.format("%.1f %s", bmi, state);
+  }
 }
