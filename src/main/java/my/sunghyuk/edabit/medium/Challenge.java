@@ -2844,4 +2844,27 @@ public class Challenge {
     // Other Solution
     // return str.replaceAll("\\(([\\d\\-]+), ([\\d\\-]+)\\)", "($2, $1)");
   }
+
+  /**
+   * Power Ranger
+   * @see https://edabit.com/challenge/LzW7RxkLFFWphQWiK
+   * @param power
+   * @param min
+   * @param max
+   * @return 주어진 매개변수 min부터 max까지의 범위에 들어가는 x의 power승의 개수는 몇 개인가. powerRanger(3, 1, 27) ➞ 3 // 3 cubes (n^3) lie between 1 and 27, 1 (1^3), 8 (2^3) and 27 (3^3)
+   */
+  public static int powerRanger(int power, int min, int max) {
+    int cnt = 0;
+    int i = 1;
+    while ((int) (Math.pow(i, power)) <= max) {
+      if ((int) (Math.pow(i, power)) >= min) {
+        cnt++;
+      }
+      i++;
+    }
+    return cnt;
+
+    // Other Solution
+    // return 1 + (int) Math.floor(Math.pow(max, 1.0 / power)) - (int) Math.ceil(Math.pow(min, 1.0 / power));
+  }
 }
