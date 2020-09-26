@@ -891,4 +891,35 @@ public class Challenge {
     }
     return set.size();
   }
+
+  /**
+   * Pronouncing the Xs
+   * @see https://edabit.com/challenge/g5n85W62rJqZakMry
+   * @param sentence
+   * @return 문장에서 x 발음이 들어가는 단어들을 다음 규칙에 맞게 바꾸기. 모든 'x'는 "cks"로 바꾸되 1) 'x'로 시작하는 단어라면 'z'로 바꾸기 2) 단어 자체가 'x'라면 "ecks"로 바꾸기. "The x ray is excellent" ➞ "The ecks ray is eckscellent". "Inside the box was a xylophone" ➞ "Inside the bocks was a zylophone"
+   */
+  public static String xPronounce(String sentence) {
+    /* String[] words = sentence.split(" ");
+    for (int i = 0; i < words.length; i++) {
+      if (words[i].equals("x")) {
+        words[i] = "ecks";
+      }
+    
+      StringBuilder sb = new StringBuilder();
+      for (int j = 0; j < words[i].length(); j++) {
+        if (words[i].charAt(j) == 'x' && j == 0) {
+          sb.append('z');
+        } else if (words[i].charAt(j) == 'x') {
+          sb.append("cks");
+        } else {
+          sb.append(words[i].charAt(j));
+        }
+      }
+      words[i] = sb.toString();
+    }    
+    return String.join(" ", words); */
+
+    // Other Solution
+    return sentence.replace(" x ", " ecks ").replace(" x", " z").replace("x", "cks"); // replace 순서 유의
+  }
 }
