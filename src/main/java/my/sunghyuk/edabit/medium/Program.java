@@ -659,4 +659,18 @@ public class Program {
     Arrays.sort(nums);
     return nums[2] * nums[2] == nums[0] * nums[0] + nums[1] * nums[1];
   }
+
+  /**
+   * Simple Circle Collision Detection
+   * @param c1
+   * @param c2
+   * @return 주어진 두 원은 내접하는가. 배열의 요소는 반지름, x좌표, y좌표 순.
+   */
+  public static boolean isCircleCollision(int[] c1, int[] c2) {
+    // 두 원점 간의 거리가 두 원의 반지름의 합보다 작으면 내접이라 하드라...
+    double distanceSquare = Math.pow(c2[1] - c1[1], 2) + Math.pow(c2[2] - c1[2], 2);
+    // 피타고라스 정리를 이용한 두 원점 간 거리의 제곱값 c^2 = a^2 + b^2
+    double distance = Math.sqrt(distanceSquare);
+    return distance < c1[0] + c2[0];
+  }
 }
