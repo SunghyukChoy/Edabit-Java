@@ -52,4 +52,42 @@ public class Program {
     // Other Solution
     return var instanceof String ? "str" : "int";
   }
+
+  /**
+   * In the Centre?
+   * @see https://edabit.com/challenge/qbhH4bef2N275iQ2Z
+   * @param str
+   * @return 주어진 문자열 str은 대부분의 공백과 공백이 아닌 문자 하나의 조합으로 이루어져 있다. 이 문자열에서 공백이 아닌 문자의 위치는 문자열에 중앙에 있는가. isCentered("  #  ") ➞ true
+   */
+  public static boolean isCentered(String str) {
+    /* String centreCh = "";
+    for (int i = 0; i < str.length(); i++) {
+      if (str.charAt(i) != ' ') {
+        centreCh = String.valueOf(str.charAt(i));
+      }
+    }
+    return str.substring(0, str.indexOf(centreCh)).length() == str.substring(str.indexOf(centreCh) + 1).length(); */
+
+    // Other Solution
+    /* int i = 0;
+    int j = 0;
+    while (str.charAt(i) == ' ') {
+      i++;
+    }
+    while (str.charAt(str.length() - 1 - j) == ' ') {
+      j++;
+    }
+    return i == j; */
+
+    // Other Solution
+    /* for (int i = 0, j = str.length() - 1; i < j; i++, j--) {
+      if (str.charAt(i) != str.charAt(j)) {
+        return false;
+      }
+    }
+    return true; */
+
+    // Other Solution
+    return str.equals(new StringBuilder(str).reverse().toString());
+  }
 }
