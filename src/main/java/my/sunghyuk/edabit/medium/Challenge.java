@@ -2867,4 +2867,27 @@ public class Challenge {
     // Other Solution
     // return 1 + (int) Math.floor(Math.pow(max, 1.0 / power)) - (int) Math.ceil(Math.pow(min, 1.0 / power));
   }
+
+  /**
+   * 3D Visual Block Sequence
+   * @see https://edabit.com/challenge/JnGKayBeHJFDQ2oiu
+   * @param step
+   * @return 각 step에서의 block 개수가 다음과 같을 때 매개변수 step의 block 개수 리턴. step = 0 block = 0 / step = 1 block = 5 / step = 2 block = 12 / step = 3 block = 20 / step = 4 block = 29 / step = 5 block = 39 / ...
+   */
+  public static int blocks(int step) {
+    // quadratic sequence : 이차 수열(계차 수열). 공차의 값이 일정하게 늘어나는 수열
+    // f(0) = 0;
+    // f(1) = 5;
+    // f(2) = f(1) + d + dd; // 12 // d = 7, dd = 0
+    // f(3) = f(2) + d + dd; // 20 // d = 7, dd = 1
+    // f(4) = f(3) + d + dd; // 29 // d = 7, dd = 2
+    if (step == 0) {
+      return 0;
+    }
+    if (step == 1) {
+      return 5;
+    }
+
+    return blocks(step - 1) + 7 + (step - 2);
+  }
 }
