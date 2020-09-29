@@ -616,4 +616,24 @@ public class Program {
     double[] value = new double[] { 0.25, 0.10, 0.05, 0.01 };
     return IntStream.range(0, change.length).mapToDouble(i -> change[i] * value[i]).sum() >= amountDue;
   }
+
+  /**
+   * Omnipresent Value
+   * @see https://edabit.com/challenge/ZY7b6LA5BeWQJnJX5
+   * @param arr
+   * @param val
+   * @return 매개변수 val은 모든 일차원 배열에 존재하고 있는가. omnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 1) ➞ true
+   */
+  public static boolean omnipresent(int[][] arr, int val) {
+    int cnt = 0;
+    for (int[] oneDimensionArr : arr) {
+      for (int num : oneDimensionArr) {
+        if (num == val) {
+          cnt++;
+          break;
+        }
+      }
+    }
+    return cnt == arr.length;
+  }
 }
