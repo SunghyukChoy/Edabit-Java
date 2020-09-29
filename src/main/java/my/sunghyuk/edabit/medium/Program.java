@@ -693,4 +693,28 @@ public class Program {
       // '%'를 format 메서드에서 사용하는 방법 : %%
     }
   }
+
+  /**
+   * Clone a List
+   * @see https://edabit.com/challenge/T3zjJiXoNRqXqEx9u
+   * @param arr
+   * @return 매개변수 arr 배열에 배열의 값들을 배열 형태로 추가하여 리턴. clone([1, 2, 3]) ➞ [1, 2, 3, [1, 2, 3]]
+   */
+  public static Object[] clone(Object[] arr) {
+    Object[] newArr = new Object[arr.length + 1];
+    for (int i = 0; i < arr.length; i++) {
+      newArr[i] = arr[i];
+    }
+    newArr[newArr.length - 1] = arr;
+    // newArr[newArr.length - 1] = arr.clone(); 위와 같은 코드
+    return newArr;
+
+    // Other Solution
+    /* List<Object> list = new ArrayList<>();
+    for (Object object : arr) {
+      list.add(object);
+    }
+    list.add(arr);
+    return list.toArray(); */
+  }
 }
