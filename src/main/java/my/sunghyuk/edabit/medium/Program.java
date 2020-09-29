@@ -673,4 +673,24 @@ public class Program {
     double distance = Math.sqrt(distanceSquare);
     return distance < c1[0] + c2[0];
   }
+
+  /**
+   * Percentage Changed
+   * @see https://edabit.com/challenge/dETRK2YLCtEPAMvMb
+   * @param oldPrice
+   * @param newPrice
+   * @return 가격으로 주어진 두 매개변수를 비교하여 증감량, 증감상태를 문자열로 리턴
+   */
+  public static String percentageChanged(String oldPrice, String newPrice) {
+    double oldValue = Integer.parseInt(oldPrice.substring(1));
+    // double oldValue = Integer.parseInt(oldPrice.replaceAll("\\$", ""));
+    double newValue = Integer.parseInt(newPrice.substring(1));
+    // 계산값이 소수로 나오므로 double로 선언한다
+    if (oldValue > newValue) {
+      return String.format("%d%% decrease", Math.round(100 - ((newValue / oldValue) * 100)));
+    } else {
+      return String.format("%d%% increase", Math.round(((newValue - oldValue) / oldValue) * 100));
+      // '%'를 format 메서드에서 사용하는 방법 : %%
+    }
+  }
 }
