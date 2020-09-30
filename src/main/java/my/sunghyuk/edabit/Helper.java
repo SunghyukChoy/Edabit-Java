@@ -12,12 +12,8 @@ public class Helper {
    * @return
    */
   public static boolean isVowel(char ch) {
-    if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I'
-        || ch == 'O' || ch == 'U') {
-      return true;
-    } else {
-      return false;
-    }
+    ch = Character.toLowerCase(ch);   
+    return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
   }
 
   /**

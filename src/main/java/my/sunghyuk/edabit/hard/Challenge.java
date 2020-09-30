@@ -953,4 +953,20 @@ public class Challenge {
     }
     return String.format("%.1f %s", bmi, state);
   }
+
+  /**
+   * Most Common Last Vowel
+   * @see https://edabit.com/challenge/sHWvPRwcY93w6qGNB
+   * @param str
+   * @return 공통되는 모음 중 가장 마지막에 위치한 모음 리턴 1) 가장 많은 모음은 문장에 하나만 존재 2) 모음이 하나라면 그 모음을 리턴 3) 소  문자로 리턴
+   */
+  public static String commonLastVowel(String str) {
+    str = str.toLowerCase();
+    for (int i = str.length() - 1; i >= 0; i--) {
+      if (Helper.isVowel(str.charAt(i)) && str.substring(0, i).contains(String.valueOf(str.charAt(i)))) {
+        return String.valueOf(str.charAt(i));
+      }
+    }
+    return str.replaceAll("[^aeiou]", ""); // 모음이 하나만 있는 경우
+  }
 }
