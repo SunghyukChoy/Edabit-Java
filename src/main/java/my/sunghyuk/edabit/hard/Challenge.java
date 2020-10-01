@@ -969,4 +969,28 @@ public class Challenge {
     }
     return str.replaceAll("[^aeiou]", ""); // 모음이 하나만 있는 경우
   }
+
+  /**
+   * Digits Battle!
+   * @see https://edabit.com/challenge/42DtofyzmZXjWXCtw
+   * @param num
+   * @return 숫자의 왼쪽부터 2개를 한 쌍으로 묶어서 비교를 했을 때 더 큰 수가 이김. 이긴 수를 모아서 정수로 리턴. 두 수가 같으면 이긴 수 모음에 넣지 않음. 한 쌍이 만들어지지 않으면 그 수를 그대로 모음.
+   * battleOutcome(578921445) ➞ 7925 // [57]: 7 wins; [89] 9 wins; [21] 2 wins; // [44] neither wins; 5 (automatically) wins
+   */
+  public static int battleOutcome(int num) {
+    StringBuilder sb = new StringBuilder();
+    String numStr = String.valueOf(num);    
+    while (numStr.length() > 1) {
+      if (numStr.charAt(0) == numStr.charAt(1)) {
+        numStr = numStr.substring(2);
+      } else {
+        sb.append(numStr.charAt(0) > numStr.charAt(1) ? numStr.charAt(0) : numStr.charAt(1));
+        numStr = numStr.substring(2);
+      }
+    }
+    if (String.valueOf(num).length() % 2 != 0) {
+      sb.append(String.valueOf(num).charAt(String.valueOf(num).length() - 1));
+    }
+    return Integer.parseInt(sb.toString());
+  }
 }
