@@ -636,4 +636,20 @@ public class Program {
     }
     return cnt == arr.length;
   }
+
+  /**
+   * Fruit Juices
+   * @see https://edabit.com/challenge/CC7f9DpPfMMqmkfvC
+   * @param flavor
+   * @param ml
+   * @return 문자열 flavor에서 각 단어의 3글자와 ml에서의 숫자를 더하여 문자열로 리턴. getDrinkID("passion fruit", "750ml") ➞ "PASFRU750". 대문자로 리턴
+   */
+  public static String getDrinkID(String flavor, String ml) {
+    String[] flavorArr = flavor.toUpperCase().split(" ");
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < flavorArr.length; i++) {
+      sb.append(flavorArr[i].substring(0, 3));
+    }
+    return sb.append(ml.replace("ml", "")).toString();
+  }
 }

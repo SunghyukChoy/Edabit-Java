@@ -569,7 +569,7 @@ public class Challenge {
    * @param arr
    * @return 문자열 배열에서 다음 요소는 이전 요소에서 문자열의 맨 앞 또는 맨 뒤에 문자 하나만을 붙여서 만들 수 있는 요소인가. ["a", "at", "ate", "late", "plate", "plater", "platter"] ➞ False. ["it", "bit", "bite", "biters"] ➞ False
    */
-  public static boolean canBuild(String[] arr) {
+  public static boolean canBuild1(String[] arr) {
 
     /* for (int i = 0; i < arr.length - 1; i++) {
       if (arr[i].length() + 1 != arr[i + 1].length()) {
@@ -762,7 +762,7 @@ public class Challenge {
    * @param str2
    * @return ransom note letter : 신문이나 잡지 등에서 글자를 잘라 새로운 문장을 만드는 타이포그래피. 주어진 문자열 str1의 문자들로 str2를 만들 수 있는가. 대소문자 구별 있음. canBuild("aPPleAL", "PAL") ➞ true. canBuild("aPPleAL", "apple") ➞ false  
    */
-  public static boolean canBuild(String str1, String str2) {
+  public static boolean canBuild2(String str1, String str2) {
     // 추가한 테스트(test22, str1과 str2의 길이가 같고 str1에 해당 문자가 있지만 str2의 해당문자보다 수가 적은 경우)에서 틀림
     /* if (str1.length() < str2.length()) {
       return false;
@@ -979,7 +979,7 @@ public class Challenge {
    */
   public static int battleOutcome(int num) {
     StringBuilder sb = new StringBuilder();
-    String numStr = String.valueOf(num);    
+    String numStr = String.valueOf(num);
     while (numStr.length() > 1) {
       if (numStr.charAt(0) == numStr.charAt(1)) {
         numStr = numStr.substring(2);
