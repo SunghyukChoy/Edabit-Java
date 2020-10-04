@@ -1,7 +1,9 @@
 package my.sunghyuk.edabit.hard;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import my.sunghyuk.edabit.Helper;
@@ -992,5 +994,29 @@ public class Challenge {
       sb.append(String.valueOf(num).charAt(String.valueOf(num).length() - 1));
     }
     return Integer.parseInt(sb.toString());
+  }
+
+  /**
+   * A Capital Challenge
+   * @param s1
+   * @param s2
+   * @return 각 문자열에서 어떤 문자가 대문자인 경우 서로 다른 문자열에서 그 문자의 위치에 해당하는 문자를 찾아 더하여 문자열로 리턴. 두 문자열의 길이는 서로 다를 수 있음. 문자가 알파벳이 아닌 경우가 있음. selectLetters("heLLO", "GUlp") ➞ "help". selectLetters("1234567", "XxXxX")  ➞ "135"
+   */
+  public static String selectLetters(String s1, String s2) {
+
+    int shorterLength = Math.min(s1.length(), s2.length());
+    // 해당 인덱스의 문자가 다른 문자열에서는 없을 수 있으므로 공통되는 문자의 길이까지만 검사함
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < shorterLength; i++) {
+      if (Character.isUpperCase(s2.charAt(i))) {
+        sb.append(s1.charAt(i));
+      }
+    }
+    for (int i = 0; i < shorterLength; i++) {
+      if (Character.isUpperCase(s1.charAt(i))) {
+        sb.append(s2.charAt(i));
+      }
+    }
+    return sb.toString();
   }
 }
