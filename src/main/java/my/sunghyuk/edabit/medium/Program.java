@@ -11,6 +11,8 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import my.sunghyuk.edabit.Helper;
+
 public class Program {
 
   private Program() {
@@ -716,5 +718,27 @@ public class Program {
     }
     list.add(arr);
     return list.toArray(); */
+  }
+
+  /**
+   * Dashed Vowels
+   * @see https://edabit.com/challenge/CKH5qJdtcFGNsdAfp
+   * @param s
+   * @return 문자열에서 모음인 문자 앞뒤로 "-" 붙이기
+   */
+  public static String dashed(String s) {
+    /* StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < s.length(); i++) {
+      if (Helper.isVowel(s.charAt(i))) {
+        sb.append("-").append(s.charAt(i)).append("-");
+      } else {
+        sb.append(s.charAt(i));
+      }
+    }
+    return sb.toString(); */
+
+    // Other Solution
+    // return s.replaceAll("([aeiouAEIOU])", "-$1-");
+    return s.replaceAll("(?i)([aeiou])", "-$1-");
   }
 }
