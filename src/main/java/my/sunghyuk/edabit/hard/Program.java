@@ -90,4 +90,23 @@ public class Program {
     // Other Solution
     return str.equals(new StringBuilder(str).reverse().toString());
   }
+
+  /**
+   * Exact Factorial Bounds
+   * @see https://edabit.com/challenge/hTWrPnnCScgSsoN9A
+   * @param n
+   * @return 주어진 n이 팩토리얼 숫자인가. 그렇다면 n과 팩토리얼 수열에서의 마지막 값을 배열로 리턴, 아니라면 빈 배열 리턴. 재귀함수로 풀 수 있음.
+   */
+  public static long[] isExact(long n) {
+    long factorialNum = 1;
+    long i = 1;
+    while (factorialNum < n) {
+      factorialNum *= i;
+      if (factorialNum == n) {
+        return new long[] { n, i };
+      }
+      i++;
+    }
+    return new long[] {};
+  }
 }
