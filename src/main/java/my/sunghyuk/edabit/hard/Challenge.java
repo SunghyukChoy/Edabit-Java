@@ -1019,4 +1019,35 @@ public class Challenge {
     }
     return sb.toString();
   }
+
+  /**
+   * Reorder Digits
+   * @see https://edabit.com/challenge/EiTYFd9jwghDz3aoG
+   * @param arr
+   * @param orderBy
+   * @return orderBy가 "asc"라면 배열에서 정수를 (digit-오름차순) 정수로 만들고, "desc"라면 정수를 (digit-내림차순) 정수로 만들어 리턴. 
+   */
+  public static int[] reorderDigits(int[] arr, String orderBy) {
+
+    for (int i = 0; i < arr.length; i++) {
+      if (orderBy.equals("asc")) {
+        arr[i] = ascSort(arr[i]);
+      } else if (orderBy.equals("desc")) {
+        arr[i] = descSort(arr[i]);
+      }
+    }
+    return arr;
+  }
+
+  private static int ascSort(int num) {
+    char[] numCharArr = String.valueOf(num).toCharArray();
+    Arrays.sort(numCharArr);
+    return Integer.parseInt(String.valueOf(numCharArr));
+  }
+
+  private static int descSort(int num) {
+    char[] numCharArr = String.valueOf(num).toCharArray();
+    Arrays.sort(numCharArr);
+    return Integer.parseInt(new StringBuilder(String.valueOf(numCharArr)).reverse().toString());
+  }
 }
