@@ -741,4 +741,16 @@ public class Program {
     // return s.replaceAll("([aeiouAEIOU])", "-$1-");
     return s.replaceAll("(?i)([aeiou])", "-$1-");
   }
+
+  /**
+   * The DECIMATOR
+   * @see https://edabit.com/challenge/w9mNwtPZX7qimRzJr
+   * @param s
+   * @return  문자열에서 1/10의 길이를 잘라서 리턴. 문자열의 길이가 12여서 1.2를 잘라야 한다면 2로 올림하여 자름. decimator("123456789012345678901") ➞ "123456789012345678" // 21 characters, removed 3.
+   */
+  public static String decimator(String s) {
+    // int ceil = (int) Math.ceil(s.length() * 0.1); // 자르는 문자의 길이
+    return s.substring(0, s.length() - (int) Math.ceil(s.length() * 0.1));
+    // return s.substring(0, 9 * s.length() / 10);
+  }
 }
