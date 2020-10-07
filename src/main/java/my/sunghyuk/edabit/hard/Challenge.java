@@ -1050,4 +1050,26 @@ public class Challenge {
     Arrays.sort(numCharArr);
     return Integer.parseInt(new StringBuilder(String.valueOf(numCharArr)).reverse().toString());
   }
+
+  /**
+   * Product of Remaining Elements
+   * @see https://edabit.com/challenge/EjQM5woRAhYEmuGFp
+   * @param arr
+   * @return 정수 배열에서 어떤 한 요소는 나머지 요소들을 곱한 값인가
+   */
+  public static boolean canPartition(int[] arr) {
+    for (int i = 0; i < arr.length; i++) {
+      int elementsMultiply = 1;
+      for (int j = 0; j < arr.length; j++) {
+        if (i != j) {
+          elementsMultiply *= arr[j];
+        }
+        // arr[i[를 제외하지 않고 모든 요소를 모두 곱한 후 다시 arr[i]로 나누는 것은 arr[i]가 0이고 다른 요소들을 0이 아닐 때 실제 elementsMultiply는 0이 아님에도 0으로 만들어 버리므로 틀린 코드임. 처음부터 arr[i]는 제외하고 곱해야 함.
+      }
+      if (arr[i] == elementsMultiply) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
