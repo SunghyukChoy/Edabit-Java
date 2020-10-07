@@ -1,6 +1,8 @@
 package my.sunghyuk.edabit.hard;
 
-import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class Program {
   private Program() {
@@ -108,5 +110,24 @@ public class Program {
       i++;
     }
     return new long[] {};
+  }
+
+  /**
+   * Filter out Strings from an Array
+   * @see https://edabit.com/challenge/vNszi3mbJA5BhgGFX
+   * @param str
+   * @return 문자열 배열에서 음수 값을 나타내지 않는 문자열만 배열로 리턴. 0은 음수 아님. 배열의 순서 유지, 중복된 요소는 제거. filterArray([1, 2, "aasf", "1", "123", 123]) ➞ [1, 2, 123]
+   */
+  public static String[] filterArray(String[] str) {
+    for (int i = 0; i < str.length; i++) {
+      str[i] = str[i].replaceAll("[^0-9]", "");
+    }
+    Set<String> numSet = new LinkedHashSet<>();
+    for (int i = 0; i < str.length; i++) {
+      if (!str[i].equals("")) {
+        numSet.add(str[i]);
+      }
+    }
+    return numSet.toArray(new String[numSet.size()]);
   }
 }
