@@ -1072,4 +1072,19 @@ public class Challenge {
     }
     return false;
   }
+
+  /**
+   * Rhyme Time
+   * @see https://edabit.com/challenge/gdiL9PHcySFP74mnK
+   * @param str1
+   * @param str2
+   * @return 매개변수 두 문자열은 라임이 맞는가...는 뭔말인지 모르겠고 각 문장의 마지막 단어가 같은 모음으로 구성되어 있는가. 대소문자 구별 안 함. doesRhyme("Sam I am!", "Green eggs and ham.") ➞ true
+   */
+  public static boolean doesRhyme(String str1, String str2) {
+    // String[] str1Arr = str1.toLowerCase().split(" ");
+    // String[] str2Arr = str2.toLowerCase().split(" ");
+    return str1.toLowerCase().split(" ")[str1.toLowerCase().split(" ").length - 1].replaceAll("[^aeiou]", "")
+        .equals(str2.toLowerCase().split(" ")[str2.toLowerCase().split(" ").length - 1].replaceAll("[^aeiou]", ""));
+    // equals() 대신 == 쓰면 틀림.
+  }
 }
