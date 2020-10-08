@@ -1087,4 +1087,41 @@ public class Challenge {
         .equals(str2.toLowerCase().split(" ")[str2.toLowerCase().split(" ").length - 1].replaceAll("[^aeiou]", ""));
     // equals() 대신 == 쓰면 틀림.
   }
+
+  /**
+   * Know Your Neighbor
+   * @see https://edabit.com/challenge/ka4Mk98LW4TEbcqzH
+   * @param str
+   * @return 문자열의 각 문자는 "+"로 둘러쌓여 있는가. 1) 어떠한 문자의 양쪽에 모두 "+"가 있는지를 의미 2) "+"가 문자에 꼭 인접해야 하는 것은 아님. "+f+d+c+#+f+" ➞ true / "+d+=3=+s+" ➞ true / "f++d+g+8+" ➞ false
+   */
+  public static boolean plusSign(String str) {
+
+    while (str.length() != 1) {
+      // 문자열을 계속 재정의 하여 마지막 "+" 하나만 남기 전까지
+      int firstPlusIdx = str.indexOf("+");
+      int secondPlusIdx = str.indexOf("+", firstPlusIdx + 1);
+      if (firstPlusIdx == -1 || secondPlusIdx == -1) {
+        return false;
+      }
+      String word = str.substring(0, secondPlusIdx + 1);
+      StringBuilder sb = new StringBuilder(word);
+      if (!sb.toString().equals(sb.reverse().toString())) {
+        // !sb.toString().equals(sb.reverse()) 하면 boolean 값 제대로 안 나옴
+        return false;
+      }
+      str = str.substring(secondPlusIdx);
+      // 검사한 문자열의 두 번째 "+"부터 시작하는 문자열로 재정의
+    }
+    return true;
+
+    // Other Solution
+    /* for (int i = 0; i < str.length(); i++) {
+      if (Character.isLetter(str.charAt(i))) {
+        if (i == 0 || i == str.length() - 1 || str.charAt(i - 1) != '+' || str.charAt(i + 1) != '+') {
+          return false;
+        }
+      }
+    }
+    return true; */
+  }
 }
