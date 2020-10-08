@@ -2890,4 +2890,28 @@ public class Challenge {
 
     return blocks(step - 1) + 7 + (step - 2);
   }
+
+  /**
+   * The Nth Term of the Sequence
+   * @see https://edabit.com/challenge/HhExSRj4aXHxTQEgG
+   * @param n
+   * @return 각 항의 값은 다음과 같을 때 n 번째 항의 값 구하기 n = 0, val = 1 / n = 1, val = 2 / n = 2, val = 6 / n = 3, val = 13 / n = 4, val = 23 / n = 5, val = 36 / n = 6, val = 52 /
+   */
+  public static int seq(int n) {
+    // n = 0, val = 1 /
+    // n = 1, val = 2 /         d = 4, dd = 3
+    // n = 2, val = 6 /  f(1) + 4
+    // n = 3, val = 13 / f(2) + 4 + dd
+    // n = 4, val = 23 / f(3) + 4 + dd * 2
+    // n = 5, val = 36 / f(4) + 4 + dd * 3
+    // n = 6, val = 52 / 
+    //                   f(n-1) + 4 + dd(n-2)
+    if (n == 0) {
+      return 1;
+    }
+    if (n == 1) {
+      return 2;
+    }    
+    return seq(n - 1) + 4 + 3 * (n - 2);
+  }
 }
