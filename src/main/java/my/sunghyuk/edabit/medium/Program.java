@@ -753,4 +753,22 @@ public class Program {
     return s.substring(0, s.length() - (int) Math.ceil(s.length() * 0.1));
     // return s.substring(0, 9 * s.length() / 10);
   }
+
+  /**
+   * Determine If Two Numbers Add up to a Target Value
+   * @param a
+   * @param b
+   * @param v
+   * @return 각 정수 배열에서 숫자 하나씩을 뽑아 더햇을 떄 v가 나올 수 있는가
+   */
+  public static boolean sumOfTwo(int[] a, int[] b, int v) {
+    for (int i = 0; i < a.length; i++) {
+      for (int j = 0; j < b.length; j++) {
+        if (a[i] + b[j] == v) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 }
