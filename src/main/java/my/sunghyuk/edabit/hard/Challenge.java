@@ -1154,4 +1154,25 @@ public class Challenge {
     }
     return String.join(":", timeArr);
   }
+
+  /**
+   * Powerful Numbers
+   * @see https://edabit.com/challenge/ACHoZjkBGijBvwbDP
+   * @param num
+   * @return  num의 약수 중 소수들의 집합에서 모든 소수의 제곱값 또한 num의 약수라면 num은 Powerful Number라 한다. num은 Powerful Number인가. isPowerful(36) ➞ true // p = (2, 3) (prime factors of 36) // 2^2 = 4 (factor of 36) // 3^2 = 9 (factor of 36)
+   */
+  public static boolean isPowerful(int num) {
+    List<Integer> primeList = new ArrayList<>();
+    for (int i = 1; i <= num; i++) {
+      if (num % i == 0 && Helper.isPrime(i)) {
+        primeList.add(i);
+      }
+    }
+    for (Integer prime : primeList) {
+      if (num % Math.pow(prime, 2) != 0) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
