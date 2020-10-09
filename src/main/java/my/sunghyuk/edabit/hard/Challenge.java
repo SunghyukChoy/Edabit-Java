@@ -1175,4 +1175,46 @@ public class Challenge {
     }
     return true;
   }
+
+  /**
+   * Truncate String at a Given Length
+   * @see https://edabit.com/challenge/WXTuWJ5nSEzjcakQJ
+   * @param str
+   * @param length
+   * @return 주어진 길이만큼 문자열을 자르는데, 문장이 깔끔하게 잘리지 않으면 (문장의 단어 중간에서 잘린다면) 중간에 잘리는 단어는 제거하고 리턴 1) truncate("Lorem ipsum dolor sit amet.", 11) ➞ "Lorem ipsum" 2) truncate("Lorem ipsum dolor sit amet.", 16) ➞ "Lorem ipsum"
+   */
+  public static String truncate(String str, int length) {
+    if (length > str.length()) {
+      return str;
+    }
+    if (!str.substring(0, length).contains(" ")) {
+      return "";
+    }
+    while (str.charAt(length) != ' ') {
+      length--;
+    }
+    return str.substring(0, length);
+
+    // Other Solution
+    /* while (str.length() > length) {
+      if (str.lastIndexOf(" ") > 0) {
+        str = str.substring(0, str.lastIndexOf(" "));        
+        // str.length() == length가 될 때까지 문장의 뒷 단어들을 자름.
+      } else { // lastIndexOf(" ")가 -1 나오는 경우
+        str = "";
+      }
+    }
+    return str.trim(); */
+
+    // Other Solution
+    /* StringBuilder sb = new StringBuilder();
+    for (String word : str.split(" ")) {
+      if (sb.length() + word.length() > length) {
+        break;
+      } else {
+        sb.append(word).append(" ");
+      }
+    }
+    return sb.toString().trim(); */
+  }
 }
