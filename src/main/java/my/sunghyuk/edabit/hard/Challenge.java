@@ -70,7 +70,7 @@ public class Challenge {
    * @param s
    * @return
    */
-  public static String convertTime(String s) {
+  public static String convertTime1(String s) {
     /* String hour = s.substring(0, 2);
     if (s.endsWith("AM")) {
       if (hour.equals("12")) {
@@ -1105,7 +1105,7 @@ public class Challenge {
       }
       String word = str.substring(0, secondPlusIdx + 1);
       StringBuilder sb = new StringBuilder(word);
-      if (!sb.toString().equals(sb.reverse().toString())) {
+      if (!word.equals(sb.reverse().toString())) {
         // !sb.toString().equals(sb.reverse()) 하면 boolean 값 제대로 안 나옴
         return false;
       }
@@ -1123,5 +1123,35 @@ public class Challenge {
       }
     }
     return true; */
+  }
+
+  /**
+   * 12 vs 24 Hours
+   * @see https://edabit.com/challenge/ayvtiYuzTxkphRBxB
+   * @param time
+   * @return 24시 시간제는 12시 시간제로, 12시 시간제는 24시 시간제로
+   */
+  public static String convertTime2(String time) {
+    String[] timeArr = time.split(":");
+
+    if (time.contains("am") || time.contains("pm")) {
+      timeArr[1] = timeArr[1].replaceAll("[^0-9]", "");
+      if (Integer.parseInt(timeArr[0]) == 12) {
+        timeArr[0] = "0";
+      }
+      if (time.contains("pm")) {
+        timeArr[0] = String.valueOf(Integer.parseInt(timeArr[0]) + 12);
+      }
+    }
+
+    if (!time.contains("am") && !time.contains("pm")) {
+      if (Integer.parseInt(timeArr[0]) < 12) {
+        timeArr[1] = timeArr[1] + " am";
+      } else {
+        timeArr[0] = String.valueOf(Integer.parseInt(timeArr[0]) - 12);
+        timeArr[1] = timeArr[1] + " pm";
+      }
+    }
+    return String.join(":", timeArr);
   }
 }
