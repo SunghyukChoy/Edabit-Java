@@ -1246,4 +1246,48 @@ public class Challenge {
     }
     return false;
   }
+
+  /**
+   * Correct Inequality Signs
+   * @see https://edabit.com/challenge/vtW558tXEYFQGv27S
+   * @param str
+   * @return 부등호식이 옳은 식인가. correctSigns("13 > 44 > 33 > 1") ➞ false. correctSigns("1 < 2 < 6 < 9 > 3") ➞ true
+   */
+  public static boolean correctSigns(String str) {
+
+    // 추가한 테스트(test 8, 부등호가 혼합되어 있고 정답이 false인 경우) 통과 안 됨
+    // 코드 수정 못하겠음. 아마 틀린 로직 같음
+    /* if (str.contains("<") && !str.contains(">")) {
+      String[] numStrArr = str.replace(" ", "").split("<");
+      for (int i = 0; i < numStrArr.length - 1; i++) {
+        if (Integer.parseInt(numStrArr[i]) >= Integer.parseInt(numStrArr[i + 1])) {
+          return false;
+        }
+      }
+    }
+    if (str.contains(">") && !str.contains("<")) {
+      String[] numStrArr = str.replace(" ", "").split(">");
+      for (int i = 0; i < numStrArr.length - 1; i++) {
+        if (Integer.parseInt(numStrArr[i]) <= Integer.parseInt(numStrArr[i + 1])) {
+          return false;
+        }
+      }
+    }
+    return true; */
+
+    // Other Solution
+    String[] numStrArr = str.split(" ");
+    for (int i = 0; i < numStrArr.length - 2; i += 2) {
+      if (numStrArr[i + 1].equals(">")) {
+        if (Integer.parseInt(numStrArr[i]) <= Integer.parseInt(numStrArr[i + 2])) {
+          return false;
+        }
+      } else {
+        if (Integer.parseInt(numStrArr[i]) >= Integer.parseInt(numStrArr[i + 2])) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
 }
