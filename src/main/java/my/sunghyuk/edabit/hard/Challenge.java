@@ -1217,4 +1217,33 @@ public class Challenge {
     }
     return sb.toString().trim(); */
   }
+
+  /**
+   * Shiny Semiprimes: Brilliant Numbers
+   * @see https://edabit.com/challenge/5Jw7K2fvuaAqRPPtJ
+   * @param n
+   * @return 주어진 n이 Brilliant Number인가. Brilliant Number란 1) 자기 자신은 소수가 아님 2) 자신의 약수 중 한 소수의 제곱값이 자기 자신인 수 3) 자신의 약수 중 두 소수의 곱이 자기 자신이되 그 두 소수는 같은 자리수를 가진 경우 
+   */
+  public static boolean isBrilliant(int n) {
+    /* if (Helper.isPrime(n)) {
+      return false;
+    } */
+    // 위의 코드 필요없음. n이 소수라면 아래 이중 for문의 if문 조건을 충족하지 못함.
+
+    List<Integer> list = new ArrayList<>();
+    for (int i = 1; i <= n; i++) {
+      if (n % i == 0 && Helper.isPrime(i)) {
+        list.add(i);
+      }
+    }
+    for (int i = 0; i < list.size(); i++) {
+      for (int j = 0; j < list.size(); j++) {
+        if (list.get(i) * list.get(j) == n
+            && String.valueOf(list.get(i)).length() == String.valueOf(list.get(j)).length()) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 }
