@@ -1290,4 +1290,49 @@ public class Challenge {
     }
     return true;
   }
+
+  /**
+   * Minimum Swaps to Alternate a Binary String
+   * @see https://edabit.com/challenge/P2aqoBtZj6GCsdFsY
+   * @param str
+   * @return 0과 1로 이루어진 문자열을 0과 1이 교차되는 문자열로 만드는 데에 문자를 바꾸는 최소한의 횟수 리턴. 1) 서로 자리 바꿈이 아니라 0을 1로, 또는 1을 0으로 바꿈을 의미 2) 0으로 시작하든 1로 시작하는 상관없음. minSwaps("010010111") ➞ 4 // Two possible conversions: // 1. "101010101" (4 swaps) //   2. "010101010" (5 swaps)
+   */
+  public static int minSwaps(String str) {
+    /* int[] swapCnt = new int[2];
+    for (int i = 0; i < str.length(); i += 2) {
+      if (str.charAt(i) == '1') {
+        swapCnt[0]++;
+      }
+    }
+    for (int i = 1; i < str.length(); i += 2) {
+      if (str.charAt(i) == '0') {
+        swapCnt[0]++;
+      }
+    }
+    for (int i = 0; i < str.length(); i += 2) {
+      if (str.charAt(i) == '0') {
+        swapCnt[1]++;
+      }
+    }
+    for (int i = 1; i < str.length(); i += 2) {
+      if (str.charAt(i) == '1') {
+        swapCnt[1]++;
+      }
+    }
+    return swapCnt[0] < swapCnt[1] ? swapCnt[0] : swapCnt[1]; */
+
+    // Other Solution
+    return Math.min(countSwaps(str, '1'), countSwaps(str, '0'));
+  }
+
+  private static int countSwaps(String str, char bit) {
+    int cnt = 0;
+    for (char ch : str.toCharArray()) {
+      if (ch != bit) {
+        cnt++;
+      }
+      bit = bit == '1' ? '0' : '1';
+    }
+    return cnt;
+  }
 }
