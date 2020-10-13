@@ -2914,4 +2914,59 @@ public class Challenge {
     }
     return seq(n - 1) + 4 + 3 * (n - 2);
   }
+
+  /**
+   * Return the End Letters of Numbers
+   * @see https://edabit.com/challenge/9To632EycoudpkgHM
+   * @param num
+   * @return num과 num의 서수를 문자열로 리턴. 서수는 1st, 2nd, 3rd, 4th..를 의미
+   */
+  public static String returnTheEndOfNumber(int num) {
+    /* String ordinal = "";
+    switch (num % 10) {
+      case 1:
+        ordinal = "ST";
+        break;
+      case 2:
+        ordinal = "ND";
+        break;
+      case 3:
+        ordinal = "RD";
+        break;    
+      default:
+        ordinal = "TH";
+    }
+    if (num % 100 >= 10 && num % 100 <= 20) {
+      ordinal = "TH";
+    }
+    return String.format("%s-%s", String.valueOf(num), ordinal); */
+
+    // Other Solution
+    /* String numStr = String.valueOf(num);
+    if (numStr.endsWith("11") || numStr.endsWith("12") || numStr.endsWith("13")) {
+      return num + "-TH";
+    } else if (numStr.endsWith("1")) {
+      return num + "-ST";
+    } else if (numStr.endsWith("2")) {
+      return num + "-ND";
+    } else if (numStr.endsWith("3")) {
+      return num + "-RD";
+    } else {
+      return num + "-TH";
+    } */
+
+    // Other Solution
+    int j = num % 10;
+    int k = num % 100;
+    if (j == 1 && k != 11) {
+      return String.valueOf(num) + "-ST";
+    }
+    if (j == 2 && k != 12) {
+      return String.valueOf(num) + "-ND";
+    }
+    if (j == 3 && k != 13) {
+      return String.valueOf(num) + "-RD";
+    }
+    return String.valueOf(num) + "-TH";
+  }
 }
