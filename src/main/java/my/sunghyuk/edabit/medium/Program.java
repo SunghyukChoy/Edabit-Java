@@ -772,4 +772,25 @@ public class Program {
     }
     return false;
   }
+
+  /**
+   * Number Split
+   * @see https://edabit.com/challenge/E22KYTGMhwpYtjn8x
+   * @param n
+   * @return 정수 n을 반으로 나눈 값 두 개를 배열로 리턴. n이 홀수인 경우 1번 인덱스 배열에 더 큰 값을 넣음.
+   */
+  public static int[] numberSplit(int n) {
+    /* int[] halves = new int[2];
+    if (n < 0 && n % 2 != 0) {
+      halves[0] = (int) Math.ceil(n / 2) - 1;
+      halves[1] = (int) Math.ceil(n / 2);
+    } else {
+      halves[0] = (int) Math.ceil(n / 2);
+      halves[1] = n - (int) Math.ceil(n / 2);
+    }
+    return halves; */
+
+    // Other Solution
+    return new int[] { (int) Math.floor(n / 2.0), (int) Math.ceil(n / 2.0) };
+  }
 }
