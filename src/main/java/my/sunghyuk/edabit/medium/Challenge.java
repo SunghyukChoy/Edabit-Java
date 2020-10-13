@@ -2911,7 +2911,7 @@ public class Challenge {
     }
     if (n == 1) {
       return 2;
-    }    
+    }
     return seq(n - 1) + 4 + 3 * (n - 2);
   }
 }

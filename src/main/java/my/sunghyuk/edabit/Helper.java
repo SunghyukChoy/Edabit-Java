@@ -12,7 +12,7 @@ public class Helper {
    * @return
    */
   public static boolean isVowel(char ch) {
-    ch = Character.toLowerCase(ch);   
+    ch = Character.toLowerCase(ch);
     return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
   }
 
@@ -175,5 +175,34 @@ public class Helper {
       powValue *= num;
     }
     return powValue;
+  }
+
+  /**
+   * 정수의 각 자리 합 구하기
+   * @param str
+   * @return
+   */
+  public static int getDigitSum(String str) {
+    int strInt = Integer.parseInt(str);
+    int sum = 0;
+    while (strInt != 0) {
+      sum += strInt % 10;
+      strInt /= 10;
+    }
+    return sum;
+  }
+
+  /**
+   * 정수의 각 자리 합 구하기
+   * @param str
+   * @return
+   */
+  private static int getDigitSum(int num) {
+    int sum = 0;
+    while (num != 0) {
+      sum += num % 10;
+      num /= 10;
+    }
+    return sum;
   }
 }

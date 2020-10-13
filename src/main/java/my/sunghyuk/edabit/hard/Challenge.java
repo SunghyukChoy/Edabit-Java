@@ -1335,4 +1335,38 @@ public class Challenge {
     }
     return cnt;
   }
+
+  /**
+   * A Periodic Series
+   * @see https://edabit.com/challenge/oXXBnHjXLAHKcvqXN
+   * @param str
+   * @return Periodic Series의 길이를 리턴. 
+   * 1) 정수를 나타내는 문자열에서 정수의 각 자리의 수를 합하여 문자열의 뒤에 붙임
+   * 2) 붙인 문자열에서 붙인 길이만큼 문자열의 앞을 자름
+   * 3) 이런식으로 하여 전에 나왔던 문자열이 다시 나올 때까지 반복할 때 이 배열의 길이를 리턴
+   * "124", "247", "713", "311", "115", "157", "713", "311" .. // 전에 나왔던 "713"이 다시 나오기까지 이전의 길이
+   */
+  public static int periodic(String str) {
+    Set<String> set = new HashSet<>();
+    set.add(str);
+    while (true) {
+      StringBuilder sb = new StringBuilder(str);
+      str = sb.append(getDigitSum(str)).substring(getDigitSum(str).length());
+      if (set.contains(str)) {
+        break;
+      }
+      set.add(str);
+    }
+    return set.size();
+  }
+
+  private static String getDigitSum(String str) {
+    int strInt = Integer.parseInt(str);
+    int sum = 0;
+    while (strInt != 0) {
+      sum += strInt % 10;
+      strInt /= 10;
+    }
+    return String.valueOf(sum);
+  }
 }
