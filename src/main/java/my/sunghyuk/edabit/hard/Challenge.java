@@ -1369,4 +1369,39 @@ public class Challenge {
     }
     return String.valueOf(sum);
   }
+
+  /**
+   * Working 9 to 5
+   * @see https://edabit.com/challenge/phxxGdTJraPEQmKdq
+   * @param arr
+   * @return 근무시간에 따른 임금 리턴. 배열로 주어지는 매개변수는 {근무시작시간, 근무종료시간, 시간당 임금, 정규시간 외 근무 임금 배율}, 정규 근무 시간은 9시부터 17시
+   */
+  public static String overTime(double[] arr) {
+
+    /* double regularWorkTime = 0;
+    if (arr[0] <= 17 && arr[1] <= 17) {
+      regularWorkTime = arr[1] - arr[0];
+    } else if (arr[0] <= 17 && arr[1] > 17) {
+      regularWorkTime = 17 - arr[0];
+    }
+    
+    double extraWorkTime = 0;
+    if (arr[0] > 17) {
+      extraWorkTime = arr[1] - arr[0];
+    } else if (arr[1] > 17) {
+      extraWorkTime = arr[1] - 17;
+    }
+    return String.format("%s%.2f", "$", regularWorkTime * arr[2] + extraWorkTime * arr[2] * arr[3]); */
+
+    // Other Solution
+    double sum = 0.0;
+    for (double i = arr[0]; i < arr[1]; i += 0.25) {
+      if (i < 17) {
+        sum += 0.25 * arr[2];
+      } else if (i >= 17) {
+        sum += 0.25 * arr[2] * arr[3];
+      }
+    }
+    return String.format("$%.2f", sum);
+  }
 }
