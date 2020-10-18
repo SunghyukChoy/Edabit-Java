@@ -1,5 +1,6 @@
 package my.sunghyuk.edabit.medium;
 
+import java.rmi.server.ObjID;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -819,5 +820,21 @@ public class Program {
       threeWordsArr[i] = s.substring(i, i + 3);
     Arrays.sort(threeWordsArr);
     return threeWordsArr;
+  }
+
+  /**
+   * Peeling off the Outer Layers
+   * @see https://edabit.com/challenge/Nwq8yK3Eq2DqbxDsL
+   * @param arr
+   * @return i x j 행렬에서 가장 바깥 요소를 제외한 배열 리턴
+   */
+  public static Object[][] peelLayer(Object[][] arr) {
+    Object[][] InnerArr = new Object[arr.length - 2][arr[0].length - 2];
+    for (int i = 1, m = 0; i < arr.length - 1; i++, m++) {
+      for (int j = 1, n = 0; j < arr[i].length - 1; j++, n++) {
+        InnerArr[m][n] = arr[i][j];
+      }
+    }
+    return InnerArr;
   }
 }
