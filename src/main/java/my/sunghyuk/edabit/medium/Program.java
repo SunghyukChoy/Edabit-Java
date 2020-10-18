@@ -837,4 +837,22 @@ public class Program {
     }
     return InnerArr;
   }
+
+  /**
+   * Count the Digits
+   * @see https://edabit.com/challenge/aAMcXEH67BLzJfyZz
+   * @param n
+   * @return 정수의 길이 리턴. 문자열로 변환하지 말고 풀기
+   */
+  public static int digitsCount(long n) {
+    int length = 0;
+    while (true) {
+      n /= 10;
+      length++;
+      if (n == 0) {
+        break;
+      }
+    }
+    return length;
+  }
 }
