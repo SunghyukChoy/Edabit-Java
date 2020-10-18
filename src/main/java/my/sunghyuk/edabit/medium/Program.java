@@ -855,4 +855,23 @@ public class Program {
     }
     return length;
   }
+
+  /**
+   * Harshad Number
+   * @see https://edabit.com/challenge/xLHemSaX8jAc6Tyz9
+   * @param n
+   * @return 정수 n이 Harshad Number인가? 재귀함수로 풀 수 있음. Harshad Number : 각 자리 수의 합으로 나누어 떨어지는 수
+   */
+  public static boolean isHarshad(int n) {
+    int digitSum = 0;
+    int copyN = n;
+    while (true) {
+      digitSum += copyN % 10;
+      copyN /= 10;
+      if (copyN == 0) {
+        break;
+      }
+    }
+    return n % digitSum == 0;
+  }
 }
