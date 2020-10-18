@@ -793,4 +793,31 @@ public class Program {
     // Other Solution
     return new int[] { (int) Math.floor(n / 2.0), (int) Math.ceil(n / 2.0) };
   }
+
+  /**
+   * Triple Letter Groupings
+   * @see https://edabit.com/challenge/PkqSq3ea2bfJvF6Tk
+   * @param s
+   * @return 각 문자마다 문자를 3개씩 묶어 문자열 배열을 만든 후 정렬하여 리턴
+   */
+  public static String[] threeLetterCollection(String s) {
+    /* if (s.length() <= 2) {
+      return new String[] {};
+    }
+    String[] threeWordsArr = new String[s.length() - 2];
+    for (int i = 0; i < s.length() - 2; i++) {
+      StringBuilder sb = new StringBuilder();
+      sb.append(s.charAt(i)).append(s.charAt(i + 1)).append(s.charAt(i + 2));
+      threeWordsArr[i] = sb.toString();
+    }
+    Arrays.sort(threeWordsArr);
+    return threeWordsArr; */
+
+    // Other Solution
+    String[] threeWordsArr = new String[s.length() < 3 ? 0 : s.length() - 2];
+    for (int i = 0; i < s.length() - 2; i++)
+      threeWordsArr[i] = s.substring(i, i + 3);
+    Arrays.sort(threeWordsArr);
+    return threeWordsArr;
+  }
 }
