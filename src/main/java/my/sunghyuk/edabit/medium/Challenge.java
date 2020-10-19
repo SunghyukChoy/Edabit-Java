@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -2968,5 +2969,32 @@ public class Challenge {
       return String.valueOf(num) + "-RD";
     }
     return String.valueOf(num) + "-TH";
+  }
+
+  /**
+   * Remove Repeated Characters
+   * @see https://edabit.com/challenge/mtrBW4w2Bkum4bGt5
+   * @param str
+   * @return 중복 문자 제거 후 리턴
+   */
+  public static String unrepeated(String str) {
+    /* Set<Character> set = new LinkedHashSet<>();
+    for (char ch : str.toCharArray()) {
+      set.add(ch);
+    }
+    Iterator<Character> it = set.iterator();
+    StringBuilder sb = new StringBuilder();
+    while (it.hasNext()) {
+      sb.append(it.next());
+    }
+    return sb.toString(); */
+
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < str.length(); i++) {
+      if (!sb.toString().contains(String.valueOf(str.charAt(i)))) {
+        sb.append(str.charAt(i));
+      }
+    }
+    return sb.toString();
   }
 }
