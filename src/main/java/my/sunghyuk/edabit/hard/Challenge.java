@@ -1455,4 +1455,20 @@ public class Challenge {
     }
     return sb.toString(); */
   }
+
+  /**
+   * Balanced Words
+   * @see https://edabit.com/challenge/NGnsMw8CG8gxEFW7w
+   * @param word
+   * @return 양쪽 문자의 합이 같은가
+   */
+  public static boolean balanced(String word) {
+    int leftSideSum = 0;
+    int rightSideSum = 0;
+    for (int i = 0, j = word.length() - 1; i < word.length() / 2; i++, j--) {
+      leftSideSum += word.charAt(i);
+      rightSideSum += word.charAt(j);
+    }
+    return leftSideSum == rightSideSum;
+  }
 }
