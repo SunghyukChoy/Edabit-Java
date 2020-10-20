@@ -130,4 +130,22 @@ public class Program {
     }
     return numSet.toArray(new String[numSet.size()]);
   }
+
+  /**
+   * Pronic Number
+   * @see https://edabit.com/challenge/mMc9D6vB4iPiiAK7k
+   * @param n
+   * @return 주어진 정수 n이 어떠한 두 연속된 정수 곱의 값이라면 n은 Pronic Number(또는 heteromecic number)라 한다. n은 Pronic Number인가. 재귀함수로 풀 수 있음
+   */
+  public static boolean isHeteromecic(int n) {
+    for (int i = 0; i <= Math.sqrt(n); i++) {
+      if (i * (i + 1) == n) {
+        return true;
+      }
+    }
+    return false;
+
+    // Other Solution
+    // return (int) Math.sqrt(n) * ((int) Math.sqrt(n) + 1) == n;
+  }
 }
