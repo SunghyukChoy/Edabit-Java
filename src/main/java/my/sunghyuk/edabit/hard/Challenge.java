@@ -1404,4 +1404,55 @@ public class Challenge {
     }
     return String.format("$%.2f", sum);
   }
+
+  /**
+   * Replace Every Nth Instance of a Character
+   * @see https://edabit.com/challenge/Yr2kTTb6zf5PNx6DE
+   * @param txt
+   * @param nth
+   * @param oldChar
+   * @param newChar
+   * @return 주어진 문자열 txt에서 매 nth번째 oldChar를 newChar로 교체 후 리턴
+   */
+  public static String replaceNth(String txt, int nth, String oldChar, String newChar) {
+
+    if (nth == 0) {
+      return txt;
+    }
+    StringBuilder sb = new StringBuilder();
+    int cnt = 0;
+    for (int i = 0; i < txt.length(); i++) {
+      if (txt.charAt(i) == oldChar.charAt(0)) {
+        cnt++;
+      }
+      sb.append(txt.charAt(i));
+      if (cnt == nth) {
+        sb.deleteCharAt(sb.length() - 1);
+        sb.append(newChar);
+        // == sb.setCharAt(sb.length() - 1, newChar.charAt(0));
+        // == sb.replace(sb.length() - 1, sb.length(), newChar);
+        cnt = 0;
+      }
+    }
+    return sb.toString();
+
+    // Other Solution
+    /* StringBuilder sb = new StringBuilder(txt);
+    int count = 0;
+    int lastIndex = 0;
+    
+    while (sb.indexOf(oldChar, lastIndex) != -1) {
+      int oldCharIndex = sb.indexOf(oldChar, lastIndex);
+      if (oldCharIndex == -1) {
+        break;
+      }
+      lastIndex = oldCharIndex + 1;
+      count++;
+      if (count == nth) {
+        sb.replace(oldCharIndex, oldCharIndex + 1, newChar);
+        count = 0;
+      }
+    }
+    return sb.toString(); */
+  }
 }
