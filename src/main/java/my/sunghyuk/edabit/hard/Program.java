@@ -1,6 +1,6 @@
 package my.sunghyuk.edabit.hard;
 
-import java.util.HashSet;
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -147,5 +147,34 @@ public class Program {
 
     // Other Solution
     // return (int) Math.sqrt(n) * ((int) Math.sqrt(n) + 1) == n;
+  }
+
+  /**
+   * N-Length Letter Groups
+   * @see https://edabit.com/challenge/5RvoqBgeykwy2Xqdb
+   * @param s
+   * @param n
+   * @return 주어진 문자열 s를 주어진 길이 n만큼씩 자른 문자열 배열로 리턴. 1) 오름차순 배열로 리턴 2) 문자열의 길이가 주어진 길이보다 작다면 빈 배열로 리턴 3) Java Streams API 이용하여 풀어보기 4) 재귀함수로 풀 수 있음
+   */
+  public static String[] collect(String s, int n) {
+    if (s.length() < n) {
+      return new String[0];
+    }
+    String[] wordArr = new String[s.length() / n];
+    for (int i = 0; i < wordArr.length; i++) {
+      wordArr[i] = s.substring(0, n);
+      s = s.substring(n);
+    }
+    Arrays.sort(wordArr);
+    return wordArr;
+
+    // Other Solution
+    /* return IntStream.range(0, s.length() / n).mapToObj(i -> s.substring(i * n, (i + 1) * n)).sorted()
+        .toArray(String[]::new); */
+
+    // Other Solution
+    /* String[] wordArr = s.replaceAll(".{" + n + "}", "$0,").replaceAll(",[^,]{1," + --n + "}$", "").split(",");
+    Arrays.sort(wordArr);
+    return n >= s.length() ? new String[0] : wordArr; */
   }
 }
