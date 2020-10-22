@@ -652,4 +652,36 @@ public class Program {
     }
     return sb.append(ml.replace("ml", "")).toString();
   }
+
+  /**
+   * Find the Largest Even Number
+   * @see https://edabit.com/challenge/FDauhMn4rAcsW7Goh
+   * @param r
+   * @return 배열에서 가장 큰 짝수 리턴. 짝수가 없다면 -1 리턴
+   */
+  public static int probe(int[] r) {
+    if (r.length == 0) {
+      return -1;
+    }
+    Arrays.sort(r);
+    return r[r.length - 1] % 2 == 0 ? r[r.length - 1] : probe(Arrays.copyOfRange(r, 0, r.length - 1));
+
+    // Other Solution
+    /* int maxEvenNum = Integer.MIN_VALUE;
+    for (int i = 0; i < r.length; i++) {
+      if (r[i] % 2 == 0 && r[i] >= maxEvenNum) {
+        maxEvenNum = r[i];
+      }
+    }
+    return maxEvenNum == Integer.MIN_VALUE ? -1 : maxEvenNum; */
+
+    // Other Solution
+    /* Arrays.sort(r);
+    for (int i = r.length - 1; i >= 0; i--) {
+      if (r[i] % 2 == 0) {
+        return r[i];
+      }
+    }
+    return -1; */
+  }
 }
