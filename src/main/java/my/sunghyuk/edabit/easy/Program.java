@@ -45,7 +45,7 @@ public class Program {
    * @param nums
    * @return 주어진 정수 배열을 "(123) 456-7890"의 형태로 리턴
    */
-  public static String formatPhoneNumber(int[] nums) {
+  public static String phoneNumberFormatting(int[] nums) {
     /* StringBuilder sb = new StringBuilder();
     sb.append("(");
     getPhoneNumberFormat(sb, Arrays.copyOfRange(nums, 0, 3));
@@ -683,5 +683,59 @@ public class Program {
       }
     }
     return -1; */
+  }
+
+  /**
+   * Filter by Digit Length
+   * @see https://edabit.com/challenge/AwHcrbtX9vXXbARmX
+   * @param numbers
+   * @param length
+   * @return numbers 배열에서 자리수가 length인 수만 배열로 리턴. 순서 유지
+   */
+  public static int[] filterByLength(int[] numbers, int length) {
+
+    /* List<Integer> list = new ArrayList<>();
+    for (int i = 0; i < numbers.length; i++) {
+      if (String.valueOf(Math.abs(numbers[i])).length() == length) {
+        list.add(numbers[i]);
+      }
+    }
+    int[] filteredArr = new int[list.size()];
+    for (int i = 0; i < list.size(); i++) {
+      filteredArr[i] = list.get(i);
+    }
+    return filteredArr; */
+
+    // Other Solution
+    /* List<Integer> list = new ArrayList<>();
+    for (int i = 0; i < numbers.length; i++) {
+      int digit = 0;
+      int number = numbers[i];
+      while (true) {
+        number /= 10;
+        digit++;
+        if (number == 0) {
+          break;
+        }
+      }
+      if (digit == length) {
+        list.add(numbers[i]);
+      }
+    }
+    int[] filteredArr = new int[list.size()];
+    for (int i = 0; i < list.size(); i++) {
+      filteredArr[i] = list.get(i);
+    }
+    return filteredArr; */
+
+    // Other Solution
+    int[] filteredArr = new int[numbers.length];
+    int i = 0;
+    for (int number : numbers) {
+      if (String.valueOf(Math.abs(number)).length() == length) {
+        filteredArr[i++] = number;
+      }
+    }
+    return java.util.Arrays.copyOfRange(filteredArr, 0, i);
   }
 }
