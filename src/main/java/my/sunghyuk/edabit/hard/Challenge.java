@@ -1471,4 +1471,74 @@ public class Challenge {
     }
     return leftSideSum == rightSideSum;
   }
+
+  /**
+   * Look-And-Say Sequence
+   * @see https://edabit.com/challenge/PRWwoRZnnh5eyyRbD
+   * @param term
+   * @return 문자열 term을 읽어서 그 소리대로 문자열을 만들어 리턴
+   * "1" = "one 1" = "11"
+   * "11" = "two 1's" = "21"
+   * "21" = "one 2, one 1" = "1211"   
+   * "1211" = "one 1, one 2, two 1's" = "111221"
+   * "111221" = "three 1's, two 2's, one 1" = "312211"
+   * 1) 문자는 1, 2, 3으로만 이루어져 있음
+   */
+  public static String lookAndSay(String term) {
+
+    /* List<String> list = new ArrayList<>();
+    StringBuilder sb = new StringBuilder();
+    sb.append(term.charAt(0));
+    
+    for (int i = 1; i < term.length(); i++) {
+      if (term.charAt(i) == sb.charAt(sb.length() - 1)) {
+        sb.append(term.charAt(i));
+      } else {
+        list.add(sb.toString());
+        sb.setLength(0); // sb 값 비움
+        // == sb.delete(0, sb.length());
+        sb.append(term.charAt(i));
+      }
+    
+      if (i == term.length() - 1) {
+        // 마지막 같은 문자끼리의 모음
+        list.add(sb.toString());
+      }
+    }
+    
+    StringBuilder sayWord = new StringBuilder();
+    for (String str : list) {
+      int sbLength = str.length();
+      sayWord.append(String.valueOf(sbLength)).append(str.charAt(0));
+    }
+    return sayWord.toString(); */
+
+    // Other Solution
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < term.length(); i++) {
+      int count = 1;
+      for (int j = i + 1; j < term.length(); j++, i++) {
+        if (term.charAt(j) == term.charAt(i)) {
+          count++;
+        } else {
+          break;
+        }
+      }
+      sb.append(count).append(term.charAt(i));
+    }
+    return sb.toString();
+
+    // Other Solution
+    /* StringBuilder sb = new StringBuilder();
+    while (term.length() > 0) {
+      int length = 0;
+      String currentLetter = String.valueOf(term.charAt(0));
+      while (term.length() > 0 && currentLetter.equals(String.valueOf(term.charAt(0)))) {
+        length++;
+        term = term.substring(1);
+      }
+      sb.append(length).append(currentLetter);
+    }
+    return sb.toString(); */
+  }
 }
