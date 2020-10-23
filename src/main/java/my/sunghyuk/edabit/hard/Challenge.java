@@ -1541,4 +1541,31 @@ public class Challenge {
     }
     return sb.toString(); */
   }
+
+  /**
+   * Parentheses Clusters
+   * @see https://edabit.com/challenge/kKQPf5xTAdnBjqvZ8
+   * @param str
+   * @return 짝을 이루는 괄호끼리 묶어 배열로 리턴. split("()()()") ➞ ["()", "()", "()"]. split("((()))(())()()(()())") ➞ ["((()))", "(())", "()", "()", "(()())"]
+   */
+  public static String[] split(String str) {
+    StringBuilder sb = new StringBuilder();
+    List<String> list = new ArrayList<>();
+    int openingParenthesis = 0;
+    int closingParenthesis = 0;
+
+    for (int i = 0; i < str.length(); i++) {
+      if (str.charAt(i) == '(') {
+        openingParenthesis++;
+      } else {
+        closingParenthesis++;
+      }
+      sb.append(str.charAt(i));
+      if (openingParenthesis == closingParenthesis) {
+        list.add(sb.toString());
+        sb.setLength(0);
+      }
+    }    
+    return list.toArray(new String[list.size()]);
+  }
 }
