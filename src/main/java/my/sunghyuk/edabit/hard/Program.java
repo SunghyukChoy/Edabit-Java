@@ -177,4 +177,40 @@ public class Program {
     Arrays.sort(wordArr);
     return n >= s.length() ? new String[0] : wordArr; */
   }
+
+  /**
+   * Disarium Number
+   * @see https://edabit.com/challenge/GjCgCugvh4eorPmgM
+   * @param n
+   * @return Disarium Number란 수의 왼쪽부터 각 자리의 수 * 1, 2, 3, 4... 제곱의 합이 자신인 수를 말한다. n은 Disarium Number인가. isDisarium(75) ➞ false // 7^1 + 5^2 = 7 + 25 = 32. isDisarium(135) ➞ true // 1^1 + 3^2 + 5^3 = 1 + 9 + 125 = 135
+   */
+  public static boolean isDisarium(int n) {
+    int nCopy = n;
+    int digitSum = 0;
+    int i = 1;
+    while (nCopy != 0) {
+      int digit = nCopy / (int) Math.pow(10, String.valueOf(nCopy).length() - 1);
+      digitSum += Math.pow(digit, i++);
+      nCopy = nCopy % (int) Math.pow(10, String.valueOf(nCopy).length() - 1);
+    }
+    return digitSum == n;
+
+    // Other Solution
+    // return n == getDigitSum(n, String.valueOf(n).length());
+
+    // Other Solution
+    /* int pow = String.valueOf(n).length();
+    int digitSum = 0;
+    int nCopy = n;
+    while (pow > 0) {
+      digitSum += Math.pow(nCopy % 10, pow);
+      pow--;
+      nCopy = nCopy / 10;
+    }
+    return digitSum == n; */
+  }
+
+  private static int getDigitSum(int n, int pow) {
+    return n < 1 ? 0 : (int) Math.pow(n % 10, pow) + getDigitSum(n / 10, --pow);
+  }
 }
