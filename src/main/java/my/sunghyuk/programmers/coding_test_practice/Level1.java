@@ -31,4 +31,21 @@ public class Level1 {
     Arrays.sort(answer);
     return answer;
   }
+
+  /**
+   * K번째수
+   * @see https://programmers.co.kr/learn/courses/30/lessons/42748
+   * @param array
+   * @param commands
+   * @return
+   */
+  public int[] solution2(int[] array, int[][] commands) {
+    int[] answer = new int[commands.length];
+    for (int i = 0; i < commands.length; i++) {
+      int[] newArr = Arrays.copyOfRange(array, commands[i][0] - 1, commands[i][1]);
+      Arrays.sort(newArr);
+      answer[i] = newArr[commands[i][2] - 1];
+    }
+    return answer;
+  }
 }
