@@ -1,8 +1,10 @@
 package my.sunghyuk.edabit.hard;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class Program {
   private Program() {
@@ -212,5 +214,34 @@ public class Program {
 
   private static int getDigitSum(int n, int pow) {
     return n < 1 ? 0 : (int) Math.pow(n % 10, pow) + getDigitSum(n / 10, --pow);
+  }
+
+  /**
+   * Find the Longest Word
+   * @see https://edabit.com/challenge/MYtinBHDSk4Bk7HnH
+   * @param ㄴ
+   * @return 문장에서 가장 긴 "단어" 리턴. 재귀함수로 풀 수 있음. 1) 특수문자를 제외한 문자열의 길이를 비교(소유격을 나타내는 단어는 소유격이 아닌 단어 자체를 비교, 강조를 의미하는 "" 등 제외) 2) 소문자로 리턴.
+   */
+  public static String findLongest(String sentence) {
+
+    /* String[] wordArr = sentence.toLowerCase().replace("'s", "").split(" ");
+    String longestWord = "";
+    for (int i = 0; i < wordArr.length; i++) {
+      if (wordArr[i].replaceAll("[^a-z]", "").length() > longestWord.length()) {
+        longestWord = wordArr[i].replaceAll("[^a-z]", "");
+      }
+    }
+    return longestWord; */
+
+    // Other Solution
+    String[] wordArr = sentence.toLowerCase().replaceAll("[^a-z]", " ").split(" ");
+    // 특수기호들을 " "으로 만든 후 " " 기준으로 자르면 문장부호들은 단어에서 잘려나가 단어에서 문장부호를 제외한 "단어"만 얻을 수 있음.
+    String longestWord = "";
+    for (int i = 0; i < wordArr.length; i++) {
+      if (wordArr[i].length() > longestWord.length()) {
+        longestWord = wordArr[i];
+      }
+    }
+    return longestWord;
   }
 }
