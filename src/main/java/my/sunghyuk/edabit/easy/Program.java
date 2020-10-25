@@ -738,4 +738,21 @@ public class Program {
     }
     return java.util.Arrays.copyOfRange(filteredArr, 0, i);
   }
+
+  /**
+   * Adding Numbers
+   * @see https://edabit.com/challenge/vFLhYANAZQGKTtxA2
+   * @param a
+   * @param b
+   * @return 문자열로 이루어진 두 수의 합. 유효한 값이 아니라면 "Invalid Operation" 리턴
+   */
+  public static String add(String a, String b) {
+    if (a == null || b == null) {
+      return "Invalid Operation";
+    }    
+    if (a.length() == 0 || b.length() == 0) {
+      return "Invalid Operation";
+    }
+    return String.valueOf(Integer.parseInt(a) + Integer.parseInt(b));
+  }
 }

@@ -234,8 +234,11 @@ public class Program {
     return longestWord; */
 
     // Other Solution
-    String[] wordArr = sentence.toLowerCase().replaceAll("[^a-z]", " ").split(" ");
+    // String[] wordArr = sentence.toLowerCase().replaceAll("[^a-z]", " ").split(" ");
     // 특수기호들을 " "으로 만든 후 " " 기준으로 자르면 문장부호들은 단어에서 잘려나가 단어에서 문장부호를 제외한 "단어"만 얻을 수 있음.
+    String[] wordArr = sentence.toLowerCase().replaceAll("[^a-z ]", " ").split(" +");
+    //.replaceAll("[^a-z ]", " ") .split(" +")
+    // 특수기호와 공백이 붙어있어 공백이 두 개 생기는 경우 공백 한 개 이상의 기준으로 자름
     String longestWord = "";
     for (int i = 0; i < wordArr.length; i++) {
       if (wordArr[i].length() > longestWord.length()) {
