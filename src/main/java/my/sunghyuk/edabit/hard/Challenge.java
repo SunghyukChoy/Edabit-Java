@@ -2,8 +2,12 @@ package my.sunghyuk.edabit.hard;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import my.sunghyuk.edabit.Helper;
@@ -1569,19 +1573,36 @@ public class Challenge {
     return list.toArray(new String[list.size()]);
   }
 
-  public int[] solution(int[] numbers) {
-    Set<Integer> set = new HashSet<>();
-    for (int i = 0; i < numbers.length - 1; i++) {
-      for (int j = i + 1; j < numbers.length; j++) {
-        set.add(numbers[i] + numbers[j]);
+  /**
+   * Unique Character Mapping
+   * @https://edabit.com/challenge/zcobRojF5p8DWkfiC
+   * @param str
+   * @return 문자열의 각 문자에 값을 매핑하는데, 1) 첫 문자는 0으로 매핑되며 2) 새로운 문자는 +1 값을 매핑 3) 같은 문자는 같은 값을 가짐. characterMapping("babbcb") ➞ [0, 1, 0, 0, 2, 0]
+   */
+  public static int[] characterMapping(String str) {
+
+    Map<Character, Integer> map = new LinkedHashMap<>();
+    int value = 0;
+    int[] mappingNum = new int[str.length()];
+    for (int i = 0; i < str.length(); i++) {
+      map.put(str.charAt(i), map.get(str.charAt(i)) == null ? value++ : map.get(str.charAt(i)));
+      // == map.put(str.charAt(i), map.containsKey(str.charAt(i)) ? map.get(str.charAt(i)) : value++);
+      mappingNum[i] = map.get(str.charAt(i));
+    }
+    return mappingNum;
+
+    // Other Solution
+    /* StringBuilder keyStr = new StringBuilder();
+    int[] mappingNum = new int[str.length()];
+    int value = 0;
+    for (int i = 0; i < str.length(); i++) {
+      if (!keyStr.toString().contains(String.valueOf(str.charAt(i)))) {
+        mappingNum[i] = value++;
+        keyStr.append(str.charAt(i));
+      } else {
+        mappingNum[i] = keyStr.indexOf(String.valueOf(str.charAt(i)));
       }
     }
-    int[] answer = new int[set.size()];
-    int i = 0;
-    for (int num : set) {
-      answer[i++] = num;
-    }
-    Arrays.sort(answer);
-    return answer;
+    return mappingNum; */
   }
 }
