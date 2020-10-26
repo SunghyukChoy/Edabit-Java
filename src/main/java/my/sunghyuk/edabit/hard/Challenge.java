@@ -1605,4 +1605,43 @@ public class Challenge {
     }
     return mappingNum; */
   }
+
+  /**
+   * Count the Lone Ones
+   * @see https://edabit.com/challenge/YHa95Qi8yXTu8oQLL
+   * @param n
+   * @return 정수 n에서 홀로 떨어져 있는 1의 개수 리턴. countLoneOnes(1191) ➞ 1. countLoneOnes(1111) ➞ 0
+   */
+  public static int countLoneOnes(long n) {
+    String[] oneArr = String.valueOf(n).replaceAll("[^1]", " ").split(" ");
+    int cnt = 0;
+    for (int i = 0; i < oneArr.length; i++) {
+      if (oneArr[i].length() == 1) {
+        cnt++;
+      }
+    }
+    return cnt;
+
+    // Other Solution
+    // return String.valueOf(n).replaceAll("1{2,}|[^1]", "").length();
+
+    // Other Solution
+    /* int cnt = 0;
+    String nStr = Long.toString(n);
+    if (nStr.charAt(0) == '1' && (nStr.length() == 1)) {
+      return 1;
+    }
+    if (nStr.charAt(0) == '1' && nStr.charAt(1) != '1') {
+      cnt++;
+    }
+    for (int i = 1; i < nStr.length() - 1; i++) {
+      if (nStr.charAt(i - 1) != '1' && nStr.charAt(i) == '1' && nStr.charAt(i + 1) != '1') {
+        cnt++;
+      }
+    }
+    if (nStr.charAt(nStr.length() - 1) == '1' && nStr.charAt(nStr.length() - 2) != '1') {
+      cnt++;
+    }
+    return cnt; */
+  }
 }
