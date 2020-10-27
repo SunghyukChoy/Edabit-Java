@@ -247,4 +247,21 @@ public class Program {
     }
     return longestWord;
   }
+
+  /**
+   * Largest Gap
+   * @see https://edabit.com/challenge/qSJ5hZfG52Nf2hXWS
+   * @param numbers
+   * @return 배열을 정렬한 후 앞 요소와 뒷 요소의 차이 값 중 가장 큰 차이 값 리턴
+   */
+  public static int largestGap(int[] numbers) {
+    Arrays.sort(numbers);
+    int largestGap = 0;
+    for (int i = numbers.length - 1; i >= 1; i--) {
+      if (numbers[i] - numbers[i - 1] > largestGap) { 
+        largestGap = numbers[i] - numbers[i - 1];
+      }
+    }
+    return largestGap;
+  }
 }
