@@ -2997,4 +2997,29 @@ public class Challenge {
     }
     return sb.toString();
   }
+
+  /**
+   * Histogram Function
+   * https://edabit.com/challenge/YLwQGrA24g9TmiGXf   
+   * @param arr
+   * @param chr
+   * @return 주어진 chr을 배열의 요소만큼 반복한 후 줄바꿈, 다시 요소만큼 반복한 문자열 리턴
+   */
+  public static String histogram(int[] arr, String chr) {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < arr.length; i++) {
+      for (int j = 0; j < arr[i]; j++) {
+        sb.append(chr);
+      }
+      sb.append("\n");
+    }
+    return sb.toString().trim();
+
+    // Other Solution
+    /* StringBuilder sb = new StringBuilder();
+    for (int n : arr) {
+      sb.append(String.format("%0" + n + "d", 0).replace("0", chr) + "\n");
+    }
+    return sb.toString().trim(); */
+  }
 }
