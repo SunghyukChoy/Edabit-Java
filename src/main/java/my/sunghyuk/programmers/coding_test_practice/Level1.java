@@ -48,4 +48,15 @@ public class Level1 {
     }
     return answer;
   }
+
+  /**
+   * 가운데 글자 가져오기
+   * @see https://programmers.co.kr/learn/courses/30/lessons/12903  
+   * @param s
+   * @return
+   */
+  public String solution3(String s) {
+    return s.length() % 2 != 0 ? String.valueOf(s.charAt(s.length() / 2))
+        : s.substring(s.length() / 2 - 1, s.length() / 2 + 1);
+  }
 }
