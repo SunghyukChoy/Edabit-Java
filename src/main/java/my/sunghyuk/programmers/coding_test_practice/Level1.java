@@ -1,7 +1,9 @@
 package my.sunghyuk.programmers.coding_test_practice;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Level1 {
@@ -58,5 +60,27 @@ public class Level1 {
   public String solution3(String s) {
     return s.length() % 2 != 0 ? String.valueOf(s.charAt(s.length() / 2))
         : s.substring(s.length() / 2 - 1, s.length() / 2 + 1);
+  }
+
+  /**
+   * 같은 숫자는 싫어
+   * @see https://programmers.co.kr/learn/courses/30/lessons/12906
+   * @param arr
+   * @return
+   */
+  public int[] solution4(int[] arr) {
+
+    List<Integer> list = new ArrayList<>();
+    list.add(arr[0]);
+    for (int i = 1; i < arr.length; i++) {
+      if (list.get(list.size() - 1) != arr[i]) {
+        list.add(arr[i]);
+      }
+    }
+    int[] noDuplicate = new int[list.size()];
+    for (int i = 0; i < list.size(); i++) {
+      noDuplicate[i] = list.get(i);
+    }
+    return noDuplicate;
   }
 }
