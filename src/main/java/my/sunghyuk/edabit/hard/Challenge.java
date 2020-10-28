@@ -1644,4 +1644,58 @@ public class Challenge {
     }
     return cnt; */
   }
+
+  /**
+   * Ones and Zeroes
+   * @see https://edabit.com/challenge/GPAXxz5EPgSMby3fd
+   * @param str
+   * @return 문자열은 같은 길이의 1과 0으로 연속되어 있는가. 1) 연속된 1 뒤에 연속된 0이 나옴. sameLength("110011100010") ➞ true. sameLength("101010110") ➞ false
+   */
+  public static boolean sameLength(String str) {
+    String[] onesArr = str.replaceAll("[^1]", " ").trim().split(" +");
+    String[] zerosArr = str.replaceAll("[^0]", " ").trim().split(" +");
+    // tirm()을 하지 않으면 문자열의 맨 앞이나 뒤에 공백이 있는 경우 배열에 값이 없는 요소가 생김
+    if (onesArr.length != zerosArr.length) {
+      return false;
+    }
+    for (int i = 0; i < zerosArr.length; i++) {
+      if (onesArr[i].length() != zerosArr[i].length()) {
+        return false;
+      }
+    }
+    return true;
+
+    // Other Solution
+    // 추가한 테스트(test13, 연속된 0으로 시작하며 리턴값이 true인 경우 틀림.)
+    /* while (str.length() > 0) {
+      if (!str.contains("01")) {
+        return false;
+      }
+      str = str.replace("01", "");
+    }
+    return true; */
+
+    // Other Solution
+    /* int balance = 0;
+    for (int i = 0; i < str.length() && balance >= 0; i++) {
+      if (str.charAt(i) == str.charAt(0)) {
+        balance++;
+      } else if (str.charAt(i) != str.charAt(0)) {
+        balance--;
+      }
+    }
+    return balance == 0; */
+
+    // Other Solution
+    /* String[] split = str.split("(?<=0)(?=1)|(?<=1)(?=0)");
+    if (split.length % 2 != 0) {
+      return false;
+    }
+    for (int i = 0; i < split.length; i = i + 2) {
+      if (split[i].length() != split[i + 1].length()) {
+        return false;
+      }
+    }
+    return true; */
+  }
 }

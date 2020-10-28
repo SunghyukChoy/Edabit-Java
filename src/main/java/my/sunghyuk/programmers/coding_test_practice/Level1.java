@@ -2,8 +2,10 @@ package my.sunghyuk.programmers.coding_test_practice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Level1 {
@@ -82,5 +84,48 @@ public class Level1 {
       noDuplicate[i] = list.get(i);
     }
     return noDuplicate;
+  }
+
+  /**
+   * 모의고사
+   * @see https://programmers.co.kr/learn/courses/30/lessons/42840
+   * @param answers
+   * @return
+   */
+  public int[] solution5(int[] answers) {
+    int[] firstStudentPicks = new int[] { 1, 2, 3, 4, 5 };
+    int[] secondStudentPicks = new int[] { 2, 1, 2, 3, 2, 4, 2, 5 };
+    int[] thirdStudentPicks = new int[] { 3, 3, 1, 1, 2, 2, 4, 4, 5, 5 };
+
+    int[] firstStudentAnswers = getStudentAnswers(answers.length, firstStudentPicks);
+    int[] secondStudentAnswers = getStudentAnswers(answers.length, secondStudentPicks);
+    int[] thirdStudentAnswers = getStudentAnswers(answers.length, thirdStudentPicks);
+
+    int firstStudentCorrectAnswerCount = getCorrectAnswerCount(firstStudentAnswers, answers);
+    int secondStudentCorrectAnswerCount = getCorrectAnswerCount(secondStudentAnswers, answers);
+    int thirdStudentCorrectAnswerCount = getCorrectAnswerCount(thirdStudentAnswers, answers);
+
+    return null;
+  }
+
+  private static int[] getStudentAnswers(int answersLength, int[] studentPicks) {
+    int[] studentAnswers = new int[answersLength];
+    for (int i = 0, j = 0; i < answersLength; i++, j++) {
+      studentAnswers[i] = studentPicks[j];
+      if (j == studentPicks.length - 1) {
+        j = 0;
+      }
+    }
+    return studentAnswers;
+  }
+
+  private static int getCorrectAnswerCount(int[] studentAnswers, int[] answers) {
+    int correctAnswerCount = 0;
+    for (int i = 0; i < answers.length; i++) {
+      if (answers[i] == studentAnswers[i]) {
+        correctAnswerCount++;
+      }
+    }
+    return correctAnswerCount;
   }
 }
