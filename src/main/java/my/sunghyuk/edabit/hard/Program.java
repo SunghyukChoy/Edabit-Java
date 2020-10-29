@@ -1,10 +1,11 @@
 package my.sunghyuk.edabit.hard;
 
+import java.rmi.server.ObjID;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
-import java.util.stream.Stream;
 
 public class Program {
   private Program() {
@@ -258,10 +259,36 @@ public class Program {
     Arrays.sort(numbers);
     int largestGap = 0;
     for (int i = numbers.length - 1; i >= 1; i--) {
-      if (numbers[i] - numbers[i - 1] > largestGap) { 
+      if (numbers[i] - numbers[i - 1] > largestGap) {
         largestGap = numbers[i] - numbers[i - 1];
       }
     }
     return largestGap;
+  }
+
+  /**
+   * Oddly or Evenly Positioned from Last
+   * @see https://edabit.com/challenge/99yALJGy4ZmFzaqvr
+   * @param arr
+   * @param par
+   * @return 주어진 par가 "odd"이면 배열 맨 뒤의 홀수 번째 요소에서 시작하여 홀수 번째 요소들을, "even"이면 짝수 번째 요소에서 시작하여 짝수 번째 요소들을 배열로 리턴. 배열 순서 유지
+   */
+  public static Object[] charAtPos(Object[] arr, String par) {
+    List<Object> list = new ArrayList<>();
+    if (par.equals("odd")) {
+      for (int i = arr.length - 1; i >= 0; i = i - 2) {
+        list.add(arr[i]);
+      }
+    }
+    if (par.equals("even")) {
+      for (int i = arr.length - 2; i >= 0; i = i - 2) {
+        list.add(arr[i]);
+      }
+    }
+    Object[] filteredArr = new Object[list.size()];
+    for (int i = filteredArr.length - 1, j = 0; i >= 0; i--, j++) {
+      filteredArr[i] = list.get(j);
+    }
+    return filteredArr;
   }
 }
