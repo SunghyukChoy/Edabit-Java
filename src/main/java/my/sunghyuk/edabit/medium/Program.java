@@ -874,4 +874,38 @@ public class Program {
     }
     return n % digitSum == 0;
   }
+
+  /**
+   * Integer Digits Count
+   * @see https://edabit.com/challenge/4r33Yd2HuEireb3Sm
+   * @param n
+   * @return 정수의 자리수 리턴. 재귀함수로 풀 수 있음.
+   */
+  public static int count(int n) {
+
+    // if (n == 0) {
+    //   return 1;
+    // }
+    return n == 0 ? 1 : (1 + (n / 10 == 0 ? 0 : count(n / 10)));
+
+    // Other Solution
+    /* int digitCnt = 0;
+    while (true) {
+      n /= 10;
+      digitCnt++;
+      if (n == 0) {
+        break;
+      }
+    }
+    return digitCnt; */
+
+    // Other Solution
+    // return count(Math.abs(n), 1);
+  }
+
+  private static int count(int n, int i) {
+    if (n < 10)
+      return i;
+    return count(n / 10, ++i);
+  }
 }
