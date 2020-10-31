@@ -908,4 +908,23 @@ public class Program {
       return i;
     return count(n / 10, ++i);
   }
+
+  /**
+   * Hours Passed
+   * @see https://edabit.com/challenge/D33ry6zNZzRyuQRPF
+   * @param t1
+   * @param t2
+   * @return t1에서 t2가 되기까지 몇 시간이 흘렀는가
+   */
+  public static String hoursPassed(String t1, String t2) {
+
+    if (t1.equals(t2)) {
+      return "No time has passed.";
+    }
+    int startingTime = t1.contains("PM") ? (Integer.parseInt(t1.split(":")[0])) + 12
+        : Integer.parseInt(t1.split(":")[0]) == 12 ? 0 : Integer.parseInt(t1.split(":")[0]);
+    int endingTime = t2.contains("PM") ? (Integer.parseInt(t2.split(":")[0])) + 12
+        : Integer.parseInt(t2.split(":")[0]) == 12 ? 0 : Integer.parseInt(t2.split(":")[0]);
+    return endingTime - startingTime + " hours";
+  }
 }
