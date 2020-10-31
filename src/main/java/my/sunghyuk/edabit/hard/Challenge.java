@@ -2,13 +2,12 @@ package my.sunghyuk.edabit.hard;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.StringTokenizer;
 
 import my.sunghyuk.edabit.Helper;
 
@@ -1575,7 +1574,7 @@ public class Challenge {
 
   /**
    * Unique Character Mapping
-   * @https://edabit.com/challenge/zcobRojF5p8DWkfiC
+   * @see https://edabit.com/challenge/zcobRojF5p8DWkfiC
    * @param str
    * @return 문자열의 각 문자에 값을 매핑하는데, 1) 첫 문자는 0으로 매핑되며 2) 새로운 문자는 +1 값을 매핑 3) 같은 문자는 같은 값을 가짐. characterMapping("babbcb") ➞ [0, 1, 0, 0, 2, 0]
    */
@@ -1697,5 +1696,70 @@ public class Challenge {
       }
     }
     return true; */
+  }
+
+  /**
+   * Remove the Last Vowel
+   * @see https://edabit.com/challenge/buctumjkfFWGx5iP6
+   * @param str
+   * @return 문장의 각 단에에서 마지막 모음을 제거한 문장 리턴
+   */
+  public static String removeLastVowel(String str) {
+    /* StringBuilder sb = new StringBuilder();
+    String[] wordArr = str.split(" ");
+    for (int i = 0; i < wordArr.length; i++) {
+      int lastVowelIndex = getLastVowelIndex(wordArr[i]);
+      for (int j = 0; j < wordArr[i].length(); j++) {
+        sb.append(wordArr[i].charAt(j));
+      }
+      sb.deleteCharAt(lastVowelIndex);
+      wordArr[i] = sb.toString();
+      sb.setLength(0);
+    }
+    return String.join(" ", wordArr); */
+
+    // Other Solution
+    // return str.replaceAll("\\b(\\w*)(?i)[aeiou](?=\\w*\\b)", "$1");
+
+    // Other Solution
+    /* StringBuilder sb = new StringBuilder();
+    StringTokenizer st = new StringTokenizer(str, " ");
+    String vowels = "aeiou";
+    
+    while (st.hasMoreTokens()) {
+      String word = st.nextToken();
+      for (int i = word.length() - 1; i >= 0; i--) {
+        if (vowels.contains(Character.toString(Character.toLowerCase(word.charAt(i))))) {
+          word = word.substring(0, i).concat(word.substring(i + 1));
+          break;
+        }
+      }
+      sb.append(word).append(" ");
+    }
+    return sb.toString().trim(); */
+
+    // Other Solution
+    String[] wordArr = str.split(" ");
+    for (int i = wordArr.length - 1; i >= 0; i--) {
+      for (int j = wordArr[i].length() - 1; j >= 0; j--) {
+        if (Helper.isVowel(wordArr[i].charAt(j))) {
+          wordArr[i] = wordArr[i].substring(0, j) + wordArr[i].substring(j + 1);
+          break;
+        }
+      }
+    }
+    return String.join(" ", wordArr);
+  }
+
+  private static int getLastVowelIndex(String str) {
+    String lastVowel = "";
+    for (int i = str.length() - 1; i >= 0; i--) {
+      if (Helper.isVowel(str.charAt(i))) {
+        lastVowel = String.valueOf(str.charAt(i));
+        break;
+      }
+    }
+    return str.lastIndexOf(lastVowel);
+    // str.indexOf()가 아닌 str.lastIndexOf(). indexOf() 하면 해당 문자열의 첫 번째 인덱스 리턴
   }
 }
