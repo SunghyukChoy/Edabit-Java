@@ -927,4 +927,22 @@ public class Program {
         : Integer.parseInt(t2.split(":")[0]) == 12 ? 0 : Integer.parseInt(t2.split(":")[0]);
     return endingTime - startingTime + " hours";
   }
+
+  /**
+   * Spin Around, Touch the Ground
+   * @see https://edabit.com/challenge/L5uwyF4SsAG4DmPpJ
+   * @param turns
+   * @return turns 배열의 요소가 "right"이면 오른쪽으로 90도 돌고 "left"이면 왼쪽으로 90도 돈다고 할 때 배열의 요소를 다 돌면 회전한 바퀴수는 얼마인가. spinAround(["right", "right", "right", "right", "left", "right"]) ➞ 1. 각 바퀴마다 카운트가 아닌 최종 각도를 갖고 계산...
+   */
+  public static int spinAround(String[] turns) {
+    int degree = 0;
+    for (int i = 0; i < turns.length; i++) {
+      if (turns[i].equals("right")) {
+        degree += 90;
+      } else if (turns[i].equals("left")) {
+        degree -= 90;
+      }
+    }
+    return Math.abs(degree) / 360;
+  }
 }
