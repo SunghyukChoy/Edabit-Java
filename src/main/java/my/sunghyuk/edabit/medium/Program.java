@@ -945,4 +945,21 @@ public class Program {
     }
     return Math.abs(degree) / 360;
   }
+
+  /**
+   * Longest Word
+   * @see https://edabit.com/challenge/LzY7r73f9xKhKvtki
+   * @param phrase
+   * @return 문장에서 가장 긴 단어 리턴. 가장 긴 단어의 길이가 같다면 앞에 엤는 긴 단어 리턴. 재귀함수로 풀 수 있음
+   */
+  public static String longestWord(String phrase) {
+    String[] wordArr = phrase.split(" ");
+    String longestWord = "";
+    for (int i = wordArr.length - 1; i >= 0; i--) {
+      if (wordArr[i].length() >= longestWord.length()) {
+        longestWord = wordArr[i];
+      }
+    }
+    return longestWord;
+  }
 }
