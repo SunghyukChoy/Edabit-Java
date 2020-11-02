@@ -1762,4 +1762,44 @@ public class Challenge {
     return str.lastIndexOf(lastVowel);
     // str.indexOf()가 아닌 str.lastIndexOf(). indexOf() 하면 해당 문자열의 첫 번째 인덱스 리턴
   }
+
+  /**
+   * Mind the Gap
+   * @see https://edabit.com/challenge/a68pt3brD2hGF2Mqe
+   * @param n
+   * @return 세 자리 이상의 정수로 이루어져 있고 그 정수의 왼쪽 첫 번째 자리와 마지막 자리를 붙여 그 수로 나누어지는 수를 Gapful Number라 한다. 정수 100은 세 자리 수이고 첫 번째 자리 "1"과 마지막 자리 "0"을 붙인 정수 10으로 나누어지므로 Gapful Number이다. 주어진 정수 n에서 자기 자신을 포함한 가장 가까운 Gapful Number 리턴. Gapful Number가 두 개라면 더 작은 수 리턴
+   */
+  public static int gapful(int n) {
+    int smallerGapfulNum = n;
+    int biggerGapfulNum = n;
+    while (true) {
+      if (isGapful(smallerGapfulNum)) {
+        return smallerGapfulNum;
+      }
+      if (isGapful(biggerGapfulNum)) {
+        return biggerGapfulNum;
+      }
+      smallerGapfulNum--;
+      biggerGapfulNum++;
+    }
+
+    // Other Solution
+    /* for (int i = 0; n - i > 100; i++) {
+      boolean isSmallerNumGapful = isGapful(n - i);
+      boolean isBiggerNumGapful = isGapful(n + i);
+      if (isSmallerNumGapful || isBiggerNumGapful) {
+        return isSmallerNumGapful ? n - i : n + i;
+      }
+    }
+    return 100; */
+  }
+
+  private static boolean isGapful(int n) {
+    if (n < 100) {
+      return false;
+    }
+    String formedStr = String.valueOf(String.valueOf(n).charAt(0))
+        + String.valueOf(String.valueOf(n).charAt(String.valueOf(n).length() - 1));
+    return n % Integer.parseInt(formedStr) == 0;
+  }
 }
