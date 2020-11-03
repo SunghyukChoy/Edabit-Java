@@ -962,4 +962,14 @@ public class Program {
     }
     return longestWord;
   }
+
+  /**
+   * Transcribe to mRNA
+   * @see https://edabit.com/challenge/aPmfBKu7ixcsYYKaZ
+   * @param strand
+   * @return 각 문자열을 대응하는 문자열로 변환. // A, T, G and C in DNA converts to U, A, C and G respectively in mRNA.
+   */
+  public static String dnaToRna(String strand) {
+    return strand.replace("A", "U").replace("T", "A").replace("G", " ").replace("C", "G").replace(" ", "C");
+  }
 }
