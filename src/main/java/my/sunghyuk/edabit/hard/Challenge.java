@@ -1802,4 +1802,22 @@ public class Challenge {
         + String.valueOf(String.valueOf(n).charAt(String.valueOf(n).length() - 1));
     return n % Integer.parseInt(formedStr) == 0;
   }
+
+  /**
+   * Semiprimes
+   * @see https://edabit.com/challenge/mB5LofGBxARkoYhRR
+   * @param n
+   * @return 자기 자신과 1을 제외한 두 개의 소수로 나누어지는 정수를 squarefree semiprime이라 하고 그 두개의 소수가 같은 수(즉, 한 개 소수의 제곱값으로 이루어진 정수)인 정수를 semiprime이라 한다. 49는 한 개의 소수 7의 제곱값으로 semiprime이고 15는 두 소수 3과 5의 곱으로 squarefree semiprime이다. 정수 n이 무엇인지 리턴
+   */
+  public static String semiprime(int n) {
+    for (int i = 2; i < n; i++) {
+      if (n % i == 0 && Helper.isPrime(i) && n == Math.pow(i, 2)) {
+        return "Semiprime";
+      }
+      if (n % i == 0 && Helper.isPrime(i) && Helper.isPrime(n / i)) {
+        return "Squarefree Semiprime";
+      }
+    }
+    return "Neither";
+  }
 }
