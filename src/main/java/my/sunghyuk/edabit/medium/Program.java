@@ -972,4 +972,18 @@ public class Program {
   public static String dnaToRna(String strand) {
     return strand.replace("A", "U").replace("T", "A").replace("G", " ").replace("C", "G").replace(" ", "C");
   }
+
+  /**
+   * Get the File Name
+   * @see https://edabit.com/challenge/hgHMhpJjyFxYJMMXp
+   * @param path
+   * @return 파열 경로에서 파일 이름만 리턴. 파일명 그대로라면 그대로 리턴
+   */
+  public static String getFilename(String path) {
+    /* String[] pathArr = path.split("/");
+    return pathArr[pathArr.length - 1]; */
+
+    // Other Solution
+    return path.substring(path.lastIndexOf("/") + 1);
+  }
 }
