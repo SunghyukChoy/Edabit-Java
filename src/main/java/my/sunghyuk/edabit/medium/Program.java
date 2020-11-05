@@ -829,13 +829,13 @@ public class Program {
    * @return i x j 행렬에서 가장 바깥 요소를 제외한 배열 리턴
    */
   public static Object[][] peelLayer(Object[][] arr) {
-    Object[][] InnerArr = new Object[arr.length - 2][arr[0].length - 2];
+    Object[][] innerArr = new Object[arr.length - 2][arr[0].length - 2];
     for (int i = 1, m = 0; i < arr.length - 1; i++, m++) {
       for (int j = 1, n = 0; j < arr[i].length - 1; j++, n++) {
-        InnerArr[m][n] = arr[i][j];
+        innerArr[m][n] = arr[i][j];
       }
     }
-    return InnerArr;
+    return innerArr;
   }
 
   /**

@@ -86,6 +86,7 @@ public class Level1 {
     return noDuplicate;
   }
 
+  /***********************아직 못 품*******************************/
   /**
    * 모의고사
    * @see https://programmers.co.kr/learn/courses/30/lessons/42840
@@ -127,5 +128,27 @@ public class Level1 {
       }
     }
     return correctAnswerCount;
+  }
+
+  /***********************아직 못 품*******************************/
+  /**
+   * 완주하지 못한 선수
+   * @param participant
+   * @param completion
+   * @return
+   */
+  public String solution6(String[] participant, String[] completion) {
+
+    for (int i = 0; i < participant.length; i++) {
+      for (int j = 0; j < completion.length; j++) {
+        if (participant[i].equals(completion[j])) {
+          participant[i] = "";
+          completion[j] = "";
+          break;
+        }
+      }
+    }
+    Arrays.sort(participant);
+    return participant[participant.length - 1];
   }
 }

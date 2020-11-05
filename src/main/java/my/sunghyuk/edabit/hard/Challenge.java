@@ -1820,4 +1820,22 @@ public class Challenge {
     }
     return "Neither";
   }
+
+  /**
+   * Ice Cream Sandwich
+   * @see https://edabit.com/challenge/hLF2GH3SxbsFew3bC
+   * @param str
+   * @return 문자열이  ice cream sandwich인가.  ice cream sandwich란 1) 문자열을 이루는 처음과 끝이 같음. 즉 처음과 끝이 같은 길이의 같은 문자들로 이루어짐 2) 문자열의 중앙은 처음과 끝을 이루는 문자열과 다른 문자열로 이루어져 있음. 3) 문자열의 길이는 최소 3이며 다른 두 문자로 이루어져 있음.
+   */
+  public static boolean isIcecreamSandwich(String str) {
+
+    Set<Character> set = new HashSet<>();
+    for (Character ch : str.toCharArray()) {
+      set.add(ch);
+    }
+    return new StringBuilder(str).reverse().toString().equals(str) && set.size() == 2;
+
+    // Other Solution
+    // return str.matches("(.+?)(?!\\1)(.)\\2*\\1");
+  }
 }
