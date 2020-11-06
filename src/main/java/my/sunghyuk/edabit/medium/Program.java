@@ -986,4 +986,19 @@ public class Program {
     // Other Solution
     return path.substring(path.lastIndexOf("/") + 1);
   }
+
+  /**
+   * Is the String in Order?
+   * @see https://edabit.com/challenge/KWbrmP9uYSnYtwkAB
+   * @param str
+   * @return 문자열 str의 문자들은 오름차순으로 정렬되어 있는가.
+   */
+  public static boolean isInOrder(String str) {
+    for (int i = str.length() - 1; i >= 1; i--) {
+      if (str.charAt(i - 1) > str.charAt(i)) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
