@@ -1838,4 +1838,27 @@ public class Challenge {
     // Other Solution
     // return str.matches("(.+?)(?!\\1)(.)\\2*\\1");
   }
+
+  /**
+   * Hole Number Sequence
+   * @see https://edabit.com/challenge/NkatKxjHtPed4J3EF
+   * @param N
+   * @return 숫자 0, 4, 6, 8, 9의 공통점은 숫자가 구멍 모양을 갖고 있다는 것이다. 8은 두 개의 구멍, 나머지는 각 1개의 구멍을 갖고 있다. 이 때, 1부터 정수 N까지의 숫자가 가지고 있는 구멍의 수를 모두 더하여 리턴.
+   */
+  public static int sumOfHoles(int N) {
+    int holesCnt = 0;
+    for (int i = 1; i <= N; i++) {
+      int num = i;
+      while (num != 0) {
+        if (num % 10 == 0 || num % 10 == 4 || num % 10 == 6 || num % 10 == 9) {
+          holesCnt++;
+        }
+        if (num % 10 == 8) {
+          holesCnt += 2;
+        }
+        num /= 10;
+      }
+    }
+    return holesCnt;
+  }
 }
