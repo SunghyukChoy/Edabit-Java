@@ -1860,5 +1860,15 @@ public class Challenge {
       }
     }
     return holesCnt;
+
+    // Other Solution
+    /* int holesCnt = 0;
+    int[] holes = { 1, 0, 0, 0, 1, 0, 1, 0, 2, 1 };
+    for (int i = 1; i <= N; i++) {
+      for (int num = i; num > 0; num /= 10) {
+        holesCnt += holes[num % 10];
+      }
+    }
+    return holesCnt; */
   }
 }

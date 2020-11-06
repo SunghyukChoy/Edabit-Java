@@ -1,6 +1,5 @@
 package my.sunghyuk.edabit.medium;
 
-import java.rmi.server.ObjID;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -9,10 +8,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import my.sunghyuk.edabit.Helper;
 
 public class Program {
 
@@ -1000,5 +996,27 @@ public class Program {
       }
     }
     return true;
+  }
+
+  /**
+   * Index Filtering
+   * @see https://edabit.com/challenge/WrHfLyMXCMuGjxf2s
+   * @param idx
+   * @param str
+   * @return 문자열과 인덱스를 나타내는 정수형 배열이 주어졌을 때 인덱스에 해당하는 문자들을 더하여 리턴
+   */
+  public static String indexFilter(int[] idx, String str) {
+
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < idx.length; i++) {
+      if (idx[i] >= 0) {
+        sb.append(str.charAt(idx[i]));
+      }
+      if (idx[i] < 0) {
+        sb.append(str.charAt(str.length() - Math.abs(idx[i])));
+        // sb.append(str.charAt(str.length() + idx[i]));
+      }
+    }
+    return sb.toString().toLowerCase();
   }
 }
