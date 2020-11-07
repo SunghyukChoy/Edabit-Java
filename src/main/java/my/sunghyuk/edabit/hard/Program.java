@@ -291,4 +291,19 @@ public class Program {
     }
     return filteredArr;
   }
+
+  /**
+   * Numbered Cards
+   * @see https://edabit.com/challenge/qE9gCJtrtcMurvQtT
+   * @param you
+   * @param opp
+   * @return 정수형 배열 you와 opp에서 각각 두 개의 정수를 뽑아 두 자리 수를 만들었을 때 you의 배열에서 만든 수가 더 크면 true, 아니면 false 리턴
+   */
+  public static boolean winRound(int[] you, int[] opp) {
+    Arrays.sort(you);
+    Arrays.sort(opp);
+    // return Integer.parseInt(String.valueOf(you[you.length - 1]) + String.valueOf(you[you.length - 2])) > Integer
+    //     .parseInt(String.valueOf(opp[opp.length - 1]) + String.valueOf(opp[opp.length - 2]));
+    return you[you.length - 1] * 10 + you[you.length - 2] > opp[opp.length - 1] * 10 + opp[opp.length - 2];
+  }
 }
