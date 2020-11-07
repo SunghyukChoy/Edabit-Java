@@ -1019,4 +1019,19 @@ public class Program {
     }
     return sb.toString().toLowerCase();
   }
+
+  /**
+   * Count Letters in a Word Search
+   * @see https://edabit.com/challenge/Sej5nsmmjBAXv6hHv
+   * @param arr
+   * @param c
+   * @return 이차원 문자 배열 arr에서 매개변수 c가 등장하는 횟수 리턴
+   */
+  public static int letterCounter(char[][] arr, char c) {
+    int showUpCnt = 0;
+    for (int i = 0; i < arr.length; i++) {
+      showUpCnt += arr[i].length - String.valueOf(arr[i]).replace(String.valueOf(c), "").length();
+    }
+    return showUpCnt;
+  }
 }
