@@ -749,10 +749,27 @@ public class Program {
   public static String add(String a, String b) {
     if (a == null || b == null) {
       return "Invalid Operation";
-    }    
+    }
     if (a.length() == 0 || b.length() == 0) {
       return "Invalid Operation";
     }
     return String.valueOf(Integer.parseInt(a) + Integer.parseInt(b));
+  }
+
+  /**
+   * Emphasize The Words
+   * @see https://edabit.com/challenge/954ZMB8AKKJBEnvDu
+   * @param str
+   * @return 문장에서 각 단어의 첫 번째 문자를 대문자로 변환, 나머지 문자는 소문자로 변환
+   */
+  public static String emphasize(String str) {
+    if (str.isEmpty()) {
+      return str;
+    }
+    String[] wordArr = str.split(" ");
+    for (int i = 0; i < wordArr.length; i++) {
+      wordArr[i] = String.valueOf(wordArr[i].charAt(0)).toUpperCase() + wordArr[i].substring(1).toLowerCase();
+    }
+    return String.join(" ", wordArr);
   }
 }
