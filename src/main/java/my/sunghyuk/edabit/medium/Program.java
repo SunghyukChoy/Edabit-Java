@@ -1,5 +1,7 @@
 package my.sunghyuk.edabit.medium;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -1033,5 +1035,21 @@ public class Program {
       showUpCnt += arr[i].length - String.valueOf(arr[i]).replace(String.valueOf(c), "").length();
     }
     return showUpCnt;
+  }
+
+  /**
+   * Curzon Numbers
+   * @see https://edabit.com/challenge/zCBrgDYqgfsd6THJd
+   * @param n
+   * @return 2^n + 1이 2*n + 1의 배수라면 n은 curzon number라 한다. n은 curzon number인가. 극히 큰 수에 대해 BigInteger 또는 BigDecimal 사용.
+   */
+  public static boolean isCurzon(int n) {
+
+    BigInteger bi = BigInteger.valueOf(2).pow(n).add(BigInteger.ONE); // Math.pow() 쓰면 틀림
+    BigInteger bi2 = BigInteger.valueOf(2).multiply(BigInteger.valueOf(n)).add(BigInteger.ONE);
+    return bi.remainder(bi2).equals(BigInteger.ZERO);
+
+    // Other Solution
+    // return (Math.pow(2, n)) % (2 * n + 1) == 2 * n;
   }
 }
