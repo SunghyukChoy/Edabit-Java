@@ -12,6 +12,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+import javafx.beans.binding.StringBinding;
+
 public class Program {
 
   private Program() {
@@ -1051,5 +1053,24 @@ public class Program {
 
     // Other Solution
     // return (Math.pow(2, n)) % (2 * n + 1) == 2 * n;
+  }
+
+  /**
+   * CMS Selector Based on a Given String
+   * @see https://edabit.com/challenge/M7GmLubPNJEfQj78E
+   * @param cms
+   * @param re
+   * @return 문자열 배열 cms에서 문자열 re를 포함하는 요소들을 배열로 리턴. 대소문자 구별 안 함. 오름차순 정렬 후 리턴
+   */
+  public static String[] cmsSelector(String[] cms, String re) {
+    List<String> list = new ArrayList<>();
+    for (int i = 0; i < cms.length; i++) {
+      if (cms[i].toLowerCase().contains(re.toLowerCase())) {
+        list.add(cms[i]);
+      }
+    }
+    String[] cmsArr = list.toArray(new String[list.size()]);
+    Arrays.sort(cmsArr);
+    return cmsArr;
   }
 }
