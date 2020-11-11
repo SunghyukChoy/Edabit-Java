@@ -13,6 +13,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 import javafx.beans.binding.StringBinding;
+import javafx.geometry.Side;
 
 public class Program {
 
@@ -1072,5 +1073,47 @@ public class Program {
     String[] cmsArr = list.toArray(new String[list.size()]);
     Arrays.sort(cmsArr);
     return cmsArr;
+  }
+
+  /**
+   * Missing Letters
+   * @see https://edabit.com/challenge/jXvNMQRZPwKmex4nG
+   * @param strLetters
+   * @return 알파벳순으로 구성된 주어진 문자열에서 중간에 빠진 알파벳들을 문자열로 리턴. getMissing("abcdefgpqrstuvwxyz") ➞ "hijklmno"
+   */
+  public static String getMissing(String strLetters) {
+
+    /* StringBuilder sb = new StringBuilder();
+    Set<Character> set = new LinkedHashSet<>();
+    char[] letterArr = strLetters.toCharArray();
+    char missingLetter = 'a';
+    
+    Arrays.sort(letterArr);
+    for (char letter : letterArr) {
+      set.add(letter);
+    }
+    while (set.size() != 26) {
+      if (set.add(missingLetter)) {
+        sb.append(missingLetter);
+      }
+      missingLetter++;
+    }
+    return sb.toString(); */
+
+    // Other Solution
+    /* String alphabet = "abcdefghijklmnopqrstuvwxyz";
+    for (int i = 0; i < strLetters.length(); i++) {
+      alphabet = alphabet.replace(String.valueOf(strLetters.charAt(i)), "");
+    }
+    return alphabet; */
+
+    // Other Solution
+    StringBuilder sb = new StringBuilder();
+    for (char i = 'a'; i <= 'z'; i++) {
+      if (strLetters.indexOf(i) == -1) {
+        sb.append(i);
+      }
+    }
+    return sb.toString();
   }
 }
