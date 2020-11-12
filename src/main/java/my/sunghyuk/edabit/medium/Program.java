@@ -1128,4 +1128,37 @@ public class Program {
 
     return y == 0 ? x : x * 2 * shiftToLeft(1, y - 1);
   }
+
+  /**
+   * Slightly Superior
+   * @see https://edabit.com/challenge/6ZPqDxQfGkX9rmPGg
+   * @param a
+   * @param b
+   * @return Oject 타입의 배열 a와 b에서 a의 어느 한 요소만 b의 그 자리에 있는 요소보다 큰가. 1) 같은 인덱스의 요소는 같은 타입임. 2) 두 요소가 똑같다면 false
+   */
+  public static boolean isFirstSuperior(Object a[], Object b[]) {
+
+    /* for (int i = 0; i < a.length; i++) {
+      if (a[i] instanceof String && ((String) a[i]).compareTo((String) b[i]) > 0) {
+        return true;
+      } else if (a[i] instanceof Integer && (int) a[i] > (int) b[i]) {
+        return true;
+      } else if (a[i] instanceof Double && (double) a[i] > (double) b[i]) {
+        return true;
+      } else if (a[i] instanceof Character && (char) a[i] > (char) b[i]) {
+        return true;
+      } else if (a[i] instanceof Boolean && (boolean) a[i] && !(boolean) b[i]) {
+        return true;
+      }
+    }
+    return false; */
+
+    // Other Solution
+    for (int i = 0; i < a.length; i++) {
+      if (a[i].toString().compareTo(b[i].toString()) > 0) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
