@@ -1116,4 +1116,16 @@ public class Program {
     }
     return sb.toString();
   }
+
+  /**
+   * Left Shift by Powers of Two
+   * @see https://edabit.com/challenge/KpAxNFuZj79KzLDc5 
+   * @param x
+   * @param y
+   * @return x >> y의 연산 결과 리턴. x >> y는 x * 2^y. 재귀함수로 풀 수 있음.
+   */
+  public static int shiftToLeft(int x, int y) {
+
+    return y == 0 ? x : x * 2 * shiftToLeft(1, y - 1);
+  }
 }
