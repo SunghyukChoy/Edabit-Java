@@ -1161,4 +1161,31 @@ public class Program {
     }
     return false;
   }
+
+  /**
+   * Basic Arithmetic Operations
+   * @see https://edabit.com/challenge/eHA9jMjzADDo6PhuJ
+   * @param a
+   * @param b
+   * @param op
+   * @return 주어진 op를 이용해 a와 b 연산 결과 리턴. a op b 리턴. ArithmeticException이 발생하는 경우(예를 들면 0으로 나누는 경우) Integer.MIN_VALUE 리턴.
+   */
+  public static int operation(String a, String b, String op) {
+    switch (op) {
+      case "add":
+        return Integer.parseInt(a) + Integer.parseInt(b);
+      case "subtract":
+        return Integer.parseInt(a) - Integer.parseInt(b);
+      case "multiply":
+        return Integer.parseInt(a) * Integer.parseInt(b);
+      case "divide":
+        try {
+          return Integer.parseInt(a) / Integer.parseInt(b);
+        } catch (Exception arithmException) {
+          return Integer.MIN_VALUE;
+        }
+      default:
+        return 0;
+    }
+  }
 }
