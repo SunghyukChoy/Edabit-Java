@@ -3022,4 +3022,23 @@ public class Challenge {
     }
     return sb.toString().trim(); */
   }
+
+  /**
+   * Length of Worm
+   * @see https://edabit.com/challenge/5aGCby28ZfsSZr4cH
+   * @param worm
+   * @return 문자열 "-"의 길이 리턴, "-" 하나당 10 mm. "-" 이외의 문자가 있다면 "invalid" 리턴
+   */
+  public static String wormLength(String worm) {
+    /* if (worm.isEmpty() || worm.replaceAll("[-]", "").length() > 0) {
+      return "invalid";
+    } */
+    if (worm.isEmpty() || worm.split("-").length > 0) {
+      return "invalid";
+    }
+    return String.format("%d mm.", worm.length() * 10);
+
+    // Other Solution
+    // return worm.matches("^[-]+$") ? worm.length() * 10 + " mm." : "invalid";
+  }
 }
