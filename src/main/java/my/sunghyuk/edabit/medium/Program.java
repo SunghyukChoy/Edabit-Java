@@ -1188,4 +1188,15 @@ public class Program {
         return 0;
     }
   }
+
+  /**
+   * Video Length in Seconds
+   * @see https://edabit.com/challenge/9D39q2q9yAFCDM9da
+   * @param tm
+   * @return "mm:ss" 형태의 문자열을 초 단위 값으로 리턴. ss가 유효한 값이 아니라면 -1 리턴.
+   */
+  public static int minutesToSeconds(String tm) {
+    String[] timeArr = tm.split(":");
+    return Integer.parseInt(timeArr[1]) > 59 ? -1 : Integer.parseInt(timeArr[0]) * 60 + Integer.parseInt(timeArr[1]);
+  }
 }
