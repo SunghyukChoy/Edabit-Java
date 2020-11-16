@@ -133,13 +133,14 @@ public class Level1 {
   /***********************아직 못 품*******************************/
   /**
    * 완주하지 못한 선수
+   * @see https://programmers.co.kr/learn/courses/30/lessons/42576
    * @param participant
    * @param completion
    * @return
    */
   public String solution6(String[] participant, String[] completion) {
 
-    for (int i = 0; i < participant.length; i++) {
+    /* for (int i = 0; i < participant.length; i++) {
       for (int j = 0; j < completion.length; j++) {
         if (participant[i].equals(completion[j])) {
           participant[i] = "";
@@ -149,6 +150,15 @@ public class Level1 {
       }
     }
     Arrays.sort(participant);
-    return participant[participant.length - 1];
+    return participant[participant.length - 1]; */
+
+    String participnatStr = String.join(" ", participant);
+    for (int i = 0; i < completion.length; i++) {
+      if (participnatStr.contains(completion[i])) {
+        participnatStr = participnatStr.substring(0, participnatStr.indexOf(completion[i]))
+            + participnatStr.substring(participnatStr.indexOf(completion[i]) + completion[i].length());
+      }
+    }
+    return participnatStr.trim();
   }
 }

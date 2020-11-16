@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -14,6 +16,7 @@ import java.util.regex.Pattern;
 
 import javafx.beans.binding.StringBinding;
 import javafx.geometry.Side;
+import javafx.print.Collation;
 
 public class Program {
 
@@ -1198,5 +1201,31 @@ public class Program {
   public static int minutesToSeconds(String tm) {
     String[] timeArr = tm.split(":");
     return Integer.parseInt(timeArr[1]) > 59 ? -1 : Integer.parseInt(timeArr[0]) * 60 + Integer.parseInt(timeArr[1]);
+  }
+
+  /**
+   * Potential Friend?
+   * @see https://edabit.com/challenge/8YajvDynPYF6XG3nZ
+   * @param y
+   * @param o
+   * @return 각자의 관심사가 담긴 두 개의 배열이 주어졌을 때, 적어도 두 개 이상의 관심사가 같거나, 각자 관심사가 하나일 땐 그 관심사가 같다면 둘은 친구라 한다. 둘은 친구인가 리턴.
+   */
+  public static boolean isPotentialFriend(String[] y, String[] o) {
+    /* if (Arrays.equals(y, o)) {
+      return true;
+    }
+    int commonCnt = 0;
+    for (int i = 0; i < y.length; i++) {
+      if (String.join(" ", o).contains(y[i])) {
+        commonCnt++;
+      }
+    }
+    return commonCnt >= 2; */
+
+    // Other Solution
+    Set<String> set = new HashSet<>();
+    Collections.addAll(set, y);
+    Collections.addAll(set, o);
+    return set.size() + 2 <= y.length + o.length || set.size() == y.length;
   }
 }
