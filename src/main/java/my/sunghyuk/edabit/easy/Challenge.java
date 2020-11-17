@@ -2375,4 +2375,20 @@ public class Challenge {
 		}
 		return sum;
 	}
+
+	/**
+	 * How Much is True?
+	 * @see https://edabit.com/challenge/vKpGt4ufSKmEJ3Xjd
+	 * @param arr
+	 * @return boolean 타입 배열에서 true 개수 리턴
+	 */
+	public static int countTrue(boolean[] arr) {
+		int trueCnt = 0;
+		for (boolean bool : arr) {
+			if (bool) {
+				trueCnt++;
+			}
+		}
+		return trueCnt;
+	}
 }
