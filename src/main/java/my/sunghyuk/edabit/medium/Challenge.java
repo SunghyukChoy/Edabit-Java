@@ -3041,4 +3041,14 @@ public class Challenge {
     // Other Solution
     // return worm.matches("^[-]+$") ? worm.length() * 10 + " mm." : "invalid";
   }
+
+  /**
+   * Geometry 1: Length of Line Segment
+   * @see https://edabit.com/challenge/XuhT6hazGTL9c4bwE
+   * @param point
+   * @return x,y 좌표가 주어졌을 때 두 점 사이의 거리 리턴
+   */
+  public static double lineLength(int[][] point) {
+    return Math.sqrt(Math.pow(point[0][0] - point[1][0], 2) + Math.pow(point[0][1] - point[1][1], 2));
+  }
 }
