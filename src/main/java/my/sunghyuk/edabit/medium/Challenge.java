@@ -3051,4 +3051,24 @@ public class Challenge {
   public static double lineLength(int[][] point) {
     return Math.sqrt(Math.pow(point[0][0] - point[1][0], 2) + Math.pow(point[0][1] - point[1][1], 2));
   }
+
+  /**
+   * You FAILEDPASSED the Exam
+   * @see https://edabit.com/challenge/BxnxYJGQ9MMQn2EfR
+   * @param userScore
+   * @param passScore
+   * @return 시험 점수와 통과 점수가 주어졌을 때 결과에 따른 문자열 출력
+   */
+  public static String gradePercentage(String userScore, String passScore) {
+    String result = "";
+    if (Integer.parseInt(userScore.substring(0, userScore.length() - 1)) >= Integer
+        .parseInt(passScore.substring(0, passScore.length() - 1))) {
+      result = "PASSED";
+    }
+    if (Integer.parseInt(userScore.substring(0, userScore.length() - 1)) < Integer
+        .parseInt(passScore.substring(0, passScore.length() - 1))) {
+      result = "FAILED";
+    }
+    return String.format("You %s the Exam", result);
+  }
 }
