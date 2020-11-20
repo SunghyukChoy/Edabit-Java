@@ -1871,4 +1871,22 @@ public class Challenge {
     }
     return holesCnt; */
   }
+
+  /**
+   * Star Shorthand
+   * @see https://edabit.com/challenge/6KPGPdQDCXsHYaQTL
+   * @param str
+   * @return 주어진 문자열을 "문자*연속횟수" 형태의 문자열로 리턴. 1) 문자가 연속되지 않으면 반복횟수는 생략. toStarShorthand("77777geff") ➞ "7*5gef*2". toStarShorthand("abbccc") ➞ "ab*2c*3"
+   */
+  public static String toStarShorthand(String str) {
+    StringBuilder sb = new StringBuilder();
+    while (str.length() != 0) {
+      sb.append(str.charAt(0));
+      if (str.replaceAll("[^" + str.charAt(0) + "]", "").length() > 1) {
+        sb.append('*').append(str.replaceAll("[^" + str.charAt(0) + "]", "").length());
+      }
+      str = str.replace(String.valueOf(str.charAt(0)), "");
+    }
+    return sb.toString();
+  }
 }
