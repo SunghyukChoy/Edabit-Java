@@ -2391,4 +2391,23 @@ public class Challenge {
 		}
 		return trueCnt;
 	}
+
+	/**
+	 * FizzBuzz Interview Question
+	 * @see https://edabit.com/challenge/QCgoxbd32BqFr6AY7
+	 * @param n
+	 * @return 매개변수 n이 3의 배수이면 "Fizz", 5의 배수이면 "Buzz", 3과 5의 배수이면 "FizzBuzz", 무엇도 아니면 정수의 문자열 리턴
+	 */
+	public static String fizzBuzz(int n) {
+		if (n % 3 == 0 && n % 5 == 0) {
+			return "FizzBuzz";
+		}
+		if (n % 3 == 0) {
+			return "Fizz";
+		}
+		if (n % 5 == 0) {
+			return "Buzz";
+		}
+		return String.valueOf(n);
+	}
 }
