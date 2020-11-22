@@ -772,4 +772,24 @@ public class Program {
     }
     return String.join(" ", wordArr);
   }
+
+  /**
+   * End Corona!
+   * @see https://edabit.com/challenge/2eWypgBrG9yerbjFd
+   * @param recovers
+   * @param newCases
+   * @param activeCases
+   * @return 일일 회복자 수, 일일 감염자 수, 현재 총 감염자 수가 주어졌을 때 전명병이 끝나기까지의 기간 리턴
+   */
+  public static int endCorona(int recovers, int newCases, int activeCases) {
+    /* int day = 0;
+    while (activeCases > 0) {
+      activeCases += newCases;
+      activeCases -= recovers;
+      day++;
+    }
+    return day; */
+
+    return (int) Math.ceil(activeCases / (double) (recovers - newCases));
+  }
 }
