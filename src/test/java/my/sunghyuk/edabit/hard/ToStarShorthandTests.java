@@ -34,4 +34,9 @@ public class ToStarShorthandTests {
   public void test6() {
     assertEquals("", Challenge.toStarShorthand(""));
   }
+
+  @Test
+  public void test7() {
+    assertEquals("a*2bc*3a*2d*2e", Challenge.toStarShorthand("aabcccaadde"));
+  }
 }

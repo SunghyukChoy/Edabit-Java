@@ -1879,13 +1879,47 @@ public class Challenge {
    * @return 주어진 문자열을 "문자*연속횟수" 형태의 문자열로 리턴. 1) 문자가 연속되지 않으면 반복횟수는 생략. toStarShorthand("77777geff") ➞ "7*5gef*2". toStarShorthand("abbccc") ➞ "ab*2c*3"
    */
   public static String toStarShorthand(String str) {
-    StringBuilder sb = new StringBuilder();
+    // 추가한 테스트(test7, 앞에 나왔던 문자가 뒤에 다시 나오는 경우) 통과 못함
+    /* StringBuilder sb = new StringBuilder();
     while (str.length() != 0) {
       sb.append(str.charAt(0));
       if (str.replaceAll("[^" + str.charAt(0) + "]", "").length() > 1) {
         sb.append('*').append(str.replaceAll("[^" + str.charAt(0) + "]", "").length());
       }
       str = str.replace(String.valueOf(str.charAt(0)), "");
+    }
+    return sb.toString(); */
+
+    // Other Solution
+    if (str.isEmpty()) {
+      return str;
+    }
+    StringBuilder temp = new StringBuilder();
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < str.length(); i++) {
+      // temp에 아무것도 없는 경우, temp에 문자를 넣음
+      if (temp.length() == 0) {
+        temp.append(str.charAt(i));
+      }
+      // temp의 마지막 문자와 str의 문자가 같은 경우, temp에 str의 문자를 붙임      
+      else if (str.charAt(i) == temp.charAt(temp.length() - 1)) {
+        temp.append(str.charAt(i));
+      }
+      // temp의 마지막 문자와 str의 문자가 다른 경우, temp는 sb에 넣고 temp를 비운 후 temp에 str의 문자를 넣음      
+      else {
+        sb.append(temp.charAt(temp.length() - 1));
+        if (temp.length() > 1) {
+          sb.append('*').append(temp.length());
+        }
+        temp.setLength(0);
+        temp.append(str.charAt(i));
+      }
+    }
+
+    // 문자가 모두 같아서 temp에 모두 저장된 경우
+    sb.append(temp.charAt(temp.length() - 1));
+    if (temp.length() > 1) {
+      sb.append('*').append(temp.length());
     }
     return sb.toString();
   }
