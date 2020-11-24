@@ -1125,7 +1125,7 @@ public class Program {
    * @see https://edabit.com/challenge/KpAxNFuZj79KzLDc5 
    * @param x
    * @param y
-   * @return x >> y의 연산 결과 리턴. x >> y는 x * 2^y. 재귀함수로 풀 수 있음.
+   * @return x << y의 연산 결과 리턴. x << y는 x * 2^y. 재귀함수로 풀 수 있음.
    */
   public static int shiftToLeft(int x, int y) {
 
@@ -1227,5 +1227,20 @@ public class Program {
     Collections.addAll(set, y);
     Collections.addAll(set, o);
     return set.size() + 2 <= y.length + o.length || set.size() == y.length;
+  }
+
+  /**
+   * Temperature Conversion
+   * @see https://edabit.com/challenge/usRLjLkxmg8SeYius
+   * @param celcius
+   * @return 섭씨 온도가 주어졌을 때 화씨 온도와 절대 온도로 변환한 배열로 리턴 1) 화씨 온도 : 섭씨 온도 * 9 / 5 + 32. 2) 절대 온도 : 섭씨 온도 + 273.15 3) 섭씨 0도는 화씨 32도, 절대 온도 273.15도 4) 반올림 하여 소수점 아래 두 자리 이후로는 절삭
+   */
+  public static double[] convertToTemps(double celcius) {
+
+    double fahrenheit = (celcius * 9 / 5) + 32;
+    fahrenheit = Math.round(fahrenheit * 100) / 100.0;
+    double kelvin = celcius + 273.15;
+    kelvin = Math.round(kelvin * 100) / 100.0;
+    return kelvin < 0 ? new double[] {} : new double[] { fahrenheit, kelvin };
   }
 }
