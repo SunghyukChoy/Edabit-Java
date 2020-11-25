@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -1922,5 +1923,59 @@ public class Challenge {
       sb.append('*').append(temp.length());
     }
     return sb.toString();
+  }
+
+  /**
+   * Is Edabit in the String?
+   * @see https://edabit.com/challenge/3yzvdLMYJbczD548d
+   * @param s
+   * @return 주어진 문자열의 e-d-a-b-i-t 순서의 문자를 가지고 있는가 리턴. edabitInString(“eddaaabt”) ➞ “NO”. edabitInString(“edwardisabletodoit”) ➞ “YES”
+   */
+  public static String edabitInString(String s) {
+
+    // Other Solution
+    /* if (s.toLowerCase().matches(".*e.*d.*a.*b.*i.*t.*")) {
+      return "YES";
+    } else {
+      return "NO";
+    } */
+
+    // Other Solution
+    /* String edabit = "edabit";
+    StringBuilder sb = new StringBuilder();
+    int h = 0;
+    
+    for (int i = 0; i < s.length(); i++) {
+      char ch = s.charAt(i);
+      if (h < edabit.length() && ch == edabit.charAt(h)) {
+        sb.append(ch);
+        h++;
+      }
+    }
+    return (sb.toString().equals(edabit)) ? "YES" : "NO"; */
+
+    // Other Solution
+    /* String edabit = "edabit";
+    int index = 0;
+    for (int i = 0; i < edabit.length(); i++) {
+      index = s.indexOf(edabit.charAt(i), index);
+      if (index == -1) {
+        return "NO";
+      }
+    }
+    return "YES"; */
+
+    // Other Solution
+    String edabit = "edabit";
+    int n = 0;
+
+    for (int i = 0; i < s.length(); i++) {
+      if (s.charAt(i) == edabit.charAt(n)) {
+        n++;
+      }
+      if (n == edabit.length())
+        return "YES";
+    }
+    return "NO";
   }
 }
