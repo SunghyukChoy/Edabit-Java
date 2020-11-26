@@ -1925,6 +1925,7 @@ public class Challenge {
     return sb.toString();
   }
 
+  /***********************************다시 볼 것 **************************************/
   /**
    * Is Edabit in the String?
    * @see https://edabit.com/challenge/3yzvdLMYJbczD548d
@@ -1977,5 +1978,59 @@ public class Challenge {
         return "YES";
     }
     return "NO";
+  }
+
+  /**
+   * camelCase ⇄ snake_case
+   * @see https://edabit.com/challenge/HjvecTb3aFMjJ59sB
+   * @param str
+   * @return 카멜 케이스 ⇄ 스네이크 케이스
+   */
+  public static String toCamelCase(String str) {
+    /* StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < str.length(); i++) {
+      sb.append(str.charAt(i));
+      if (str.charAt(i) == '_') {
+        sb.deleteCharAt(sb.length() - 1);
+        sb.append(Character.toUpperCase(str.charAt(i + 1)));
+        i++;
+      }
+    }
+    return sb.toString(); */
+
+    // Other Solution
+    String[] wordArr = str.split("_");
+    StringBuilder sb = new StringBuilder(wordArr[0]);
+    for (int i = 1; i < wordArr.length; i++) {
+      sb.append(Character.toUpperCase(wordArr[i].charAt(0))).append(wordArr[i].substring(1));
+    }
+    return sb.toString();
+  }
+
+  public static String toSnakeCase(String str) {
+    /* StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < str.length(); i++) {
+      sb.append(str.charAt(i));
+      if (Character.isUpperCase(str.charAt(i))) {
+        sb.deleteCharAt(sb.length() - 1);
+        sb.append('_').append(Character.toLowerCase(str.charAt(i)));
+      }
+    }
+    return sb.toString(); */
+
+    // Other Solution
+    // return str.replaceAll("([A-Z])", "_$1").toLowerCase();
+
+    // Other Solution
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < str.length(); i++) {
+      if (Character.isLowerCase(str.charAt(i))) {
+        sb.append(str.charAt(i));
+      } else {
+        sb.append('_').append(Character.toLowerCase(str.charAt(i)));
+      }
+    }
+    return sb.toString();
+
   }
 }
