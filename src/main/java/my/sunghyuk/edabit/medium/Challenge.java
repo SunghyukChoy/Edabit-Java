@@ -3071,4 +3071,26 @@ public class Challenge {
     }
     return String.format("You %s the Exam", result);
   }
+
+  /**
+   * Print Grid
+   * @see https://edabit.com/challenge/v9YKCBnGLJh8ZobKj
+   * @param rows
+   * @param cols
+   * @return 행과 열의 수가 주어졌을 때 정수 1부터 시작하는 행렬 문자열 만들기
+   */
+  public static String printGrid(int rows, int cols) {
+
+    StringBuilder sb = new StringBuilder();
+    for (int i = 1; i <= rows; i++) {
+      for (int j = 0, num = i; j < cols; j++, num += rows) {
+        sb.append(num);
+        if (j != cols - 1) {
+          sb.append(", ");
+        }
+      }
+      sb.append("\n");
+    }
+    return sb.toString().trim();
+  }
 }
