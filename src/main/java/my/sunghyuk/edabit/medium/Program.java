@@ -1,22 +1,19 @@
 package my.sunghyuk.edabit.medium;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
-
-import javafx.beans.binding.StringBinding;
-import javafx.geometry.Side;
-import javafx.print.Collation;
 
 public class Program {
 
@@ -1242,5 +1239,47 @@ public class Program {
     double kelvin = celcius + 273.15;
     kelvin = Math.round(kelvin * 100) / 100.0;
     return kelvin < 0 ? new double[] {} : new double[] { fahrenheit, kelvin };
+  }
+
+  /**
+   * Money Formatting
+   * @see https://edabit.com/challenge/7r3uQADjtXEk7qirj
+   * @param money
+   * @return 주어진 실수를 달러 단위로 변환. 1) 소수점 아래 두 자리까지 출력 2) 음수 있음
+   */
+  public static String dolladollaBills(double money) {
+    /* int integer = Math.abs((int) money / 1);
+    double realNumber = Math.round((Math.abs(money) - integer) * 100) / 100.0;
+    StringBuilder sb = new StringBuilder();
+    
+    for (int i = String.valueOf(integer).length() - 1, j = 1; i >= 0; i--, j++) {
+      sb.insert(0, String.valueOf(integer).charAt(i));
+      if (j % 3 == 0 && i != 0) {
+        sb.insert(0, ',');
+      }
+    }
+    return money > 0 ? String.format("$%s", sb.toString()) + String.format("%.2f", realNumber).substring(1)
+        : String.format("-$%s", sb.toString()) + String.format("%.2f", realNumber).substring(1); */
+
+    // Other Solution
+    // return String.format("$%,.2f", money).replaceAll("\\$-", "-\\$");
+
+    // Other Solution
+    /* DecimalFormat df = new DecimalFormat("$###,###,##0.00");
+    return df.format(money); */
+
+    // Other Solution
+    /* DecimalFormatSymbols dfs = new DecimalFormatSymbols(Locale.US);
+    dfs.setDecimalSeparator('.');
+    dfs.setGroupingSeparator(',');
+    DecimalFormat df = new DecimalFormat("$#,##0.00", dfs);
+    return df.format(money); */
+
+    // Other Solution
+    if (money > 0) {
+      return "$" + String.format("%,.2f", money);
+    } else {
+      return "-$" + String.format("%,.2f", money).substring(1);
+    }
   }
 }
