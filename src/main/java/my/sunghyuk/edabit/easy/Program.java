@@ -792,4 +792,14 @@ public class Program {
 
     return (int) Math.ceil(activeCases / (double) (recovers - newCases));
   }
+
+  /**
+   * Remove The Letters ABC
+   * @see https://edabit.com/challenge/pbK6j5Try2TuDeSwK
+   * @param words
+   * @return 주어진 문자열에서 "a", "b", "c"를 제거한 문자열 리턴, "a", "b", "c"가 없으면 null 리턴
+   */
+  public static String removeABC(String words) {
+    return words.replaceAll("[abc]", "").equals(words) ? null : words.replaceAll("[abc]", "");
+  }
 }
