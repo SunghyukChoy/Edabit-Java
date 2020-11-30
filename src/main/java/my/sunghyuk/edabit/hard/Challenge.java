@@ -2033,4 +2033,28 @@ public class Challenge {
     return sb.toString();
 
   }
+
+  /**
+   * Spoonerisms
+   * @see https://edabit.com/challenge/TSKay7qmB2KyrDwnK
+   * @param phrase
+   * @return 두 단어로 이루어진 문자열에서 각 단어의 첫 음절에 해당하는 문자열을 서로 바꾸기. spoonerise("history lecture") ➞ "listory hecture". spoonerise("chow mein") ➞ "mow chein". spoonerise("edabit rules!") ➞ "redabit ules!"
+   */
+  public static String spoonerise(String phrase) {
+    String[] wordArr = phrase.split(" ");
+    String firstConsonant = getWord(wordArr[0]);
+    String secondConsonant = getWord(wordArr[1]);
+    return secondConsonant + wordArr[0].substring(firstConsonant.length()) + " " + firstConsonant
+        + wordArr[1].substring(secondConsonant.length());
+  }
+
+  private static String getWord(String str) {
+    StringBuilder sb = new StringBuilder();
+    int i = 0;
+    while (!Helper.isVowel(str.charAt(i))) {
+      sb.append(str.charAt(i));
+      i++;
+    }
+    return sb.toString();
+  }
 }
