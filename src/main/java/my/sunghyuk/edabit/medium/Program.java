@@ -15,6 +15,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+import my.sunghyuk.edabit.Helper;
+
 public class Program {
 
   private Program() {
@@ -1281,5 +1283,32 @@ public class Program {
     } else {
       return "-$" + String.format("%,.2f", money).substring(1);
     }
+  }
+
+  /**
+   * Extend the Vowels
+   * @see https://edabit.com/challenge/EFFCkmQcYTFkt3FxC
+   * @param w
+   * @param n
+   * @return 주어진 문자열에서 모음인 문자를 주어진 정수 n만큼 늘여서 리턴
+   */
+  public static String extendVowels(String w, int n) {
+    StringBuilder sb = new StringBuilder();
+    StringBuilder temp = new StringBuilder();
+    for (int i = 0; i < w.length(); i++) {
+      if (Helper.isVowel(w.charAt(i))) {
+        for (int j = 0; j <= n; j++) {
+          temp.append(w.charAt(i));
+        }
+        sb.append(temp);
+        temp.setLength(0);
+      } else {
+        sb.append(w.charAt(i));
+      }
+    }
+    return n < 0 ? "invalid" : sb.toString();
+
+    // Other Solution
+    // return n > -1 ? w.replaceAll("(?i)([aeiou])", new String(new char[n + 1]).replace("\0", "$1")) : "invalid";
   }
 }
