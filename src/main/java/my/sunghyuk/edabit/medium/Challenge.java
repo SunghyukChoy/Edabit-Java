@@ -3093,4 +3093,24 @@ public class Challenge {
     }
     return sb.toString().trim();
   }
+
+  /**
+   * Meme Sum :)
+   * @see https://edabit.com/challenge/4HRk9MkZm4wNR6PZJ
+   * @param a
+   * @param b
+   * @return 각 자리의 수를 더한 값을 숫자 올림 없이 그 자리에 다시 써서 리턴. memeSum(122, 81) ➞ 1103. // 1+0 = 1, 2+8 = 10, 2+1 = 3. // 122 + 81 = 1103
+   */
+  public static int memeSum(int a, int b) {
+    StringBuilder sb = new StringBuilder();
+    while (true) {
+      sb.insert(0, a % 10 + b % 10);
+      a /= 10;
+      b /= 10;
+      if (a == 0 && b == 0) {
+        break;
+      }
+    }
+    return Integer.parseInt(sb.toString());
+  }
 }
