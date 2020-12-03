@@ -1311,4 +1311,22 @@ public class Program {
     // Other Solution
     // return n > -1 ? w.replaceAll("(?i)([aeiou])", new String(new char[n + 1]).replace("\0", "$1")) : "invalid";
   }
+
+  /**
+   * Inclusive Array Ranges
+   * @see https://edabit.com/challenge/DwMxxFrzZ5eZfBSGL
+   * @param startNum
+   * @param endNum
+   * @return startNum으로 시작하여 endNum으로 끝나는 정수형 배열 리턴. 시작하는 수보다 끝나는 수가 작다면 시작하는 수 하나만 담은 배열 리턴
+   */
+  public static int[] inclusiveArray(int startNum, int endNum) {
+    if (startNum >= endNum) {
+      return new int[] { startNum };
+    }
+    int[] arr = new int[endNum - startNum + 1];
+    for (int i = 0; i < arr.length; i++) {
+      arr[i] = startNum++;
+    }
+    return arr;
+  }
 }
