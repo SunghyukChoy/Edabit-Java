@@ -1,10 +1,13 @@
 package my.sunghyuk.edabit.easy;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
+import javax.print.attribute.standard.JobPriority;
 
 import my.sunghyuk.edabit.Helper;
 
@@ -240,16 +243,16 @@ public class Challenge {
 
 		// Other Solution
 		switch (operator) {
-			case '+':
-				return num1 + num2;
-			case '-':
-				return num1 - num2;
-			case '*':
-				return num1 * num2;
-			case '/':
-				return (num2 != 0) ? num1 / num2 : 0;
-			default:
-				return 0;
+		case '+':
+			return num1 + num2;
+		case '-':
+			return num1 - num2;
+		case '*':
+			return num1 * num2;
+		case '/':
+			return (num2 != 0) ? num1 / num2 : 0;
+		default:
+			return 0;
 		}
 	}
 
@@ -601,9 +604,9 @@ public class Challenge {
 	 */
 	public static String spaceMeOut(String str) {
 		/* char[] characters = str.toCharArray();
-		String spaceWord = "";		
-		for (int i = 1; i < characters.length; i++) {
-			spaceWord += characters[i - 1] + " ";
+		String spaceWord = "";
+		for (int i = 0; i < characters.length - 1; i++) {
+			spaceWord += characters[i] + " ";
 		}
 		spaceWord = spaceWord + str.charAt(str.length() - 1);
 		return spaceWord; */
@@ -725,16 +728,19 @@ public class Challenge {
 	 */
 	public static String getMiddle(String word) {
 		/* if (word.length() % 2 == 0) {
-			return String.valueOf(word.charAt((word.length() / 2) - 1)) + String.valueOf(word.charAt(word.length() / 2));
+			return word.substring(word.length() / 2 - 1, word.length() / 2 + 1);
 		}
 		return String.valueOf(word.charAt((word.length() - 1) / 2)); */
 
 		// Other Solution
 		while (true) {
-			if (word.length() == 2) {
+			/* if (word.length() == 2) {
 				return word;
 			}
 			if (word.length() == 1) {
+				return word;
+			} */
+			if (word.length() <= 2) {
 				return word;
 			}
 			word = word.substring(1, word.length() - 1);
@@ -765,12 +771,18 @@ public class Challenge {
 	 * @return num이 1이면 Hello, 0이면 Bye. 인사말 + name. name의 첫문자는 대문자로
 	 */
 	public static String sayHelloBye(String name, int num) {
-		String greeting = (num == 1) ? "Hello" : "Bye";
+		StringBuilder sb = new StringBuilder(String.valueOf(Character.toUpperCase(name.charAt(0))))
+				.append(name.substring(1)); // StringBuilder 객체는 char 문자로 초기화 할 수 없음.
+		// System.out.println(sb.insert(0, "Hello ").toString());
+		// System.out.println(sb.insert(0, "Bye ").toString()); // 여기서 "Hello Bye Name" 출력. 출력문에서 sb 변수값 변함. 디버깅 시 조심.
+		return num == 1 ? sb.insert(0, "Hello ").toString() : sb.insert(0, "Bye ").toString();
+
+		/* String greeting = (num == 1) ? "Hello" : "Bye";
 		char firstCh = Character.toUpperCase(name.charAt(0));
 		// char 타입은 기본 자료형. 클래스에 접근하여 메서드 사용.
 		// int -> Integer, boolean -> Boolean .....
 		String upperCaseName = firstCh + name.substring(1, name.length());
-		return greeting + " " + upperCaseName;
+		return greeting + " " + upperCaseName; */
 	}
 
 	/**
@@ -780,6 +792,7 @@ public class Challenge {
 	 * @return 배열의 평균값이 정수이면 true. 실수이면 false 
 	 */
 	public static boolean isAvgWhole(int[] arr) {
+
 		/* int arrSum = 0;
 		for (int i = 0; i < arr.length; i++) {
 			arrSum += arr[i];
@@ -798,6 +811,14 @@ public class Challenge {
 		
 		return doubleAvg - IntAvg == 0;
 		// 연산 결과의 실제 값이 정수로 변환한 값보다 크다면 실제의 값은 실수 타입이 맞음. 그렇지 않고 두 값이 같다면 실제 값은 처음부터 정수임. */
+
+		// Other Solution
+		/* double sum = 0;
+		for (int i = 0; i < arr.length; i++) {
+			sum += arr[i];
+		}
+		double avg = sum / arr.length;
+		return avg == Math.round(avg); */
 
 		// Other Solution
 		return Arrays.stream(arr).sum() % arr.length == 0;
@@ -981,6 +1002,10 @@ public class Challenge {
 			maxValue = Math.max(maxValue, arr[i]);
 		}
 		return new double[] { minValue, maxValue };
+
+		// Other Solution
+		/* Arrays.sort(arr);
+		return new double[] { arr[0], arr[arr.length - 1] }; */
 	}
 
 	/**
@@ -1146,13 +1171,11 @@ public class Challenge {
 	public static int halveCount(int a, int b) {
 		int halCount = 0;
 		double x = a;
-
-		while (true) {
+		while (x > b) {
 			x /= 2;
-			if (x <= b) { // count++ 하기 전 b보다 큰지 검사
-				break;
-			} else {
+			if (x > b) { // count++ 하기 전 b보다 큰지 검사
 				halCount++;
+
 			}
 		}
 		return halCount;
@@ -1195,6 +1218,7 @@ public class Challenge {
 	 * @return
 	 */
 	public static boolean powerOfTwo(final int num) {
+		List<String> list = new ArrayList<>();		
 		/* int pow = 1;
 		while (true) {
 			if (pow == num) {
@@ -2409,5 +2433,84 @@ public class Challenge {
 			return "Buzz";
 		}
 		return String.valueOf(n);
+	}
+
+	/**
+	 * Exists a Number Higher?
+	 * @see https://edabit.com/challenge/aWzxPLibBLJgn8AbZ
+	 * @param arr
+	 * @param n
+	 * @return 배열의 수 중 주어진 n 이상의 수가 있는가.
+	 */
+	public static boolean existsHigher(int[] arr, int n) {
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] >= n) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Find the Discount
+	 * @see https://edabit.com/challenge/Wci9YChXWRj6JBeFP
+	 * @param price
+	 * @param percentage
+	 * @return 가격과 할인율이 주어졌을 때 할인이 적용된 금액 리턴
+	 */
+	public static double discount(int price, int percentage) {
+		return price * (double) (100 - percentage) / 100;
+	}
+
+	/**
+	 * Match the Last Item
+	 * @see https://edabit.com/challenge/tQ26d2JJkxpjszfsk
+	 * @param t
+	 * @return 문자열 배열의 마지막 요소를 제외한 앞의 배열들을 연결했을 때 마지막 요소의 문자열이 나오는가
+	 */
+	public static boolean matchLastItem(String[] t) {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < t.length - 1; i++) {
+			sb.append(t[i]);
+		}
+		return sb.toString().equals(t[t.length - 1]);
+	}
+
+	/**
+	 * Trimmed Averages
+	 * @see https://edabit.com/challenge/S6ScbuTciqryqTAAg
+	 * @param arr
+	 * @return 주어진 배열에서 가장 큰 수와 작은 수를 제외한 나머지 수들의 평균 리턴. 수수점 반올림.
+	 */
+	public static int trimmedAverages(int[] arr) {
+		Arrays.sort(arr);
+		// int sum = 0;
+		double sum = 0;
+		for (int i = 1; i < arr.length - 1; i++) {
+			sum += arr[i];
+		}
+		// return (int) Math.round((double) sum / (arr.length - 2));
+		return (int) Math.round(sum / (arr.length - 2));
+	}
+
+	/**
+	 * Parity Bit Validation
+	 * @see https://edabit.com/challenge/KMggZFnrWJGxk2tvn
+	 * @param bits
+	 * @return 1과 0으로 이루어진 문자열에서 마지막 문자가 1이면 앞의 7자리에서 1은 홀수 번 등장한다. 마지막 문자가 0이면 1은 짝수 번 등장한다. 주어진 문자열은 위의 규칙을 만족하는가.
+	 */
+	public static boolean validateBinary(String bits) {
+		/* char[] charArr = bits.toCharArray();
+		int oneCnt = 0;
+		for (int i = 0; i < charArr.length - 1; i++) {
+			if (charArr[i] == '1') {
+				oneCnt++;
+			}
+		}
+		return charArr[charArr.length - 1] == '1' ? Helper.isOdd(oneCnt) : Helper.isEven(oneCnt); */
+
+		return bits.charAt(bits.length() - 1) == '1'
+				? bits.substring(0, bits.length() - 1).replace("0", "").length() % 2 == 1
+				: bits.substring(0, bits.length() - 1).replace("0", "").length() % 2 == 0;
 	}
 }

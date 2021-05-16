@@ -2057,4 +2057,20 @@ public class Challenge {
     }
     return sb.toString();
   }
+
+  /**
+   * Needle in a Hex String
+   * @see https://edabit.com/challenge/xhhLGZzhwvkN6AR29
+   * @param hex
+   * @param needle
+   * @return 16진수 문자열로 이루어진 문자열 hex 에서 문자열 needle의 첫 번째 인덱스 리턴.firstIndex("68 65 6c 6c 6f 20 77 6f 72 6c 64", "world") ➞ 6
+   */
+  public static int firstIndex(String hex, String needle) {
+    String[] hexStrArr = hex.split(" ");
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < hexStrArr.length; i++) {
+      sb.append((char) Integer.parseInt(hexStrArr[i], 16));
+    }
+    return sb.toString().indexOf(needle);
+  }
 }

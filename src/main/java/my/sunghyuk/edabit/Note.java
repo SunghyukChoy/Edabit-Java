@@ -7,39 +7,41 @@ import java.util.Arrays;
 
 public class Note {
   public static void main(String[] ar) {
+
     // Arrays.fill(배열, 배열을 채울 값)
     int[][] arr = new int[3][5];
     for (int[] row : arr) {
       // int[] row : 2차원 배열 요소(1차원 배열)를 하나씩 가져와 담을 변수 선언
       Arrays.fill(row, 20);
       // 그 1차원 배열을 20으로 채움.
-
       Arrays.fill(row, 2, 4, 50);
       // Arrays.fill(배열, 시작인덱스, 종료인덱스, 배열을 채울 값)
       // 지정한 배열의 2,3 인덱스를 지정된 값으로 채움.
     }
     for (int[] row : arr) {
       System.out.println(Arrays.toString(row));
+      // [20, 20, 50, 50, 20]
+      // [20, 20, 50, 50, 20]
+      // [20, 20, 50, 50, 20]
     }
-    // [20, 20, 50, 50, 20]
-    // [20, 20, 50, 50, 20]
-    // [20, 20, 50, 50, 20]    
-
     System.out.println("==============================================");
+
     //String.format("%.nf", 변환할 값(실수)), String.format("%자릿수d, 변환할 값(정수))
     double pie = 3.14159265358979;
     System.out.println(String.format("%.2f", pie)); // 3.14
     System.out.println(String.format("%.3f", pie)); // 3.142
     System.out.println(String.format("%010d", 12345)); // 0000012345 10자리 수. 앞을 0으로 채움
     System.out.println(String.format("%10d", 12345)); //      12345 앞을 공백으로 채움.
+    System.out.println("==============================================");
+
     // Math.round(변환할 값)
     int roundNum = Math.round(10.45f); // 소수점 첫째 자리에서 반올림 하여 정수로 리턴
     System.out.println(roundNum);
     System.out.println(Math.round(pie * 100) / 100.0); // 3.14
     System.out.println(Math.round(pie * 1000) / 1000.0); // 3.142
     // Math.round() : 소수점 아래 0 절삭, String.format() : 절삭하지 않음.
-
     System.out.println("==============================================");
+
     // .indexOf("찾을 문자열")  .indexOf("찾을 문자열", 시작 인덱스)
     // .lastIndexOf("찾을 문자열")  .lastIndexOf("찾을 문자열", 시작 인덱스)
     String indexOfTest = "Hello world";
@@ -55,6 +57,7 @@ public class Note {
     // 뒤에서부터 찾기 시작하지만 반환하는 인덱스는 원래의 인덱스 번호
     // 즉 왼쪽에서 몇 번째 위치하는지를 인덱스로 반환. 시작 인덱스 또한 원래의 인덱스 번호 기준
     System.out.println("==============================================");
+
     // Integer.toHexString(). 10진수를 16진수로 변환하는 방법
     System.out.printf("%02X%n", 255); // FF
     System.out.printf("%02x%n", 255); // ff
@@ -67,12 +70,14 @@ public class Note {
     System.out.println(Integer.toHexString(255).toUpperCase()); // FF
     System.out.println(Integer.toHexString(10).toUpperCase()); // A
     System.out.println("==============================================");
+
     // Math.ceil(), Math.floor(), Math.round()
     System.out.println(Math.ceil(Math.PI)); // 올림 // 4.0
     System.out.println(Math.floor(3.7564)); // 내림 // 3.0
     System.out.println(Math.round(3.7564)); // 반올림 // 소수점 버림  // 4
     System.out.println(Math.round(3.1234)); // 반올림 // 소수점 버림  // 3
     System.out.println("==============================================");
+
     // .equal()과 == 비교
     // == :
     // - 항등 연산자이다.
@@ -103,6 +108,7 @@ public class Note {
     System.out.println(strArr[0] == strArr[1]);
     // true. 다른 주소값을 가져 false를 반환할 것 같지만 JVM의 판단 하에 true를 반환함..더 알아볼 것... 
     System.out.println("==============================================");
+
     // Integer.toBinaryString(10진수), Integer.toOctalString(10진수), Integer.toHexString(10진수)
     // 10진수 숫자를 각각 2진수, 8진수, 16진수 String으로 변환하는 메소드
     System.out.println(Integer.toBinaryString(2)); // 10
@@ -118,7 +124,16 @@ public class Note {
     System.out.println(Integer.parseInt("11", 2)); // 3
     System.out.println(Integer.parseInt("20", 8)); // 16
     System.out.println(Integer.parseInt("10", 16)); // 16
+    // 16진수 형태의 문자열을 일반 char로 변환
+    System.out.println((char) Integer.parseInt("77", 16)); // w
+    System.out.println((char) Integer.parseInt("6f", 16)); // o
+    System.out.println((char) Integer.parseInt("72", 16)); // r
+    // 16진수 형태의 문자열이 접두사 "0x"를 포함하는 경우    
+    String hexStr2 = "0x6f";
+    hexStr2 = hexStr2.replaceFirst("0x", "");
+    System.out.println((char) Integer.parseInt(hexStr2, 16)); // o
     System.out.println("==============================================");
+
     String replaceTest = "Uno. Dos. Tres.";
     // replaceTest.replace(CharSequence target, CharSequence replacement)
     // CharSequence 객체는 String 객체를 상속하는 객체이므로 다형성에 의해 String 객체를 인자로 주어도 됨.
@@ -133,9 +148,9 @@ public class Note {
     // replaceAll() 메소드에서 인자값으로 "."을 넣으면 정규식으로 인식하여 정규식에 해당하는 문자들을 바꿀 문자로 바꿈. 정규식에서 .은 모든 문자(any character)를 의미하므로 위의 출력문에서 해당하는 문자들을 "/"로 바꿈.
     // replaceTest.replaceFirst(regex, replacement)
     System.out.println(replaceTest.replaceFirst("[.]", "/")); // "Uno/ Dos. Tres."
-    // 정규식에 해당하는 첫 번째 문자만 바꿀 문자로 바꿈.    
-
+    // 정규식에 해당하는 첫 번째 문자만 바꿀 문자로 바꿈.
     System.out.println("==============================================");
+
     // BigInteger 객체 생성 방법 세 가지
     BigInteger two = new BigInteger("2"); // 문자열로 생성
     BigInteger bi = new BigInteger("FFFF", 16); // n진수의 문자열로 생성
@@ -155,8 +170,8 @@ public class Note {
     // .intValue(), .longValue(), .floatValue(), .doubleValue()
     int intValue = biNum.intValue();
     System.out.println(intValue); // 1234567890
-
     System.out.println("==============================================");
+
     // 소수점을 저장할 수 있는 가장 크기가 큰 타입인 double은 소수점의 정밀도에 있어 한계가 있어 값이 유실될 수 있다. BigDecimal은 Java 언어에서 숫자를 정밀하게 저장하고 표현할 수 있는 유일한 방법이다.
 
     // BigDecimal 객체 생성 방법 세 가지
@@ -186,15 +201,15 @@ public class Note {
     // c.divide(d)는 1.4285714285714285714285714285714.... 무한소수로 에러 발생
     // c.divde(d, n) : n은 반올림 자리값.
     // divide() 메서드는 나중에 더 알아볼 것...
-
     System.out.println("==============================================");
+
     // char 배열을 String으로 변환
     char[] charArr = new char[] { 'h', 'e', 'l', 'l', 'o' };
     System.out.println(String.valueOf(charArr)); // hello
     System.out.println(new String(charArr)); // hello
     System.out.println(String.copyValueOf(charArr)); // hello
-
     System.out.println("==============================================");
+
     // 불변객체 : Immutable Object => String, LocalDateTime : 대표적인 불변객체
     String x = "1234";
     x += "567"; // 1234567
@@ -207,8 +222,8 @@ public class Note {
      * x에 문자열 추가 시 #12 메모리 해제 #223 // 메모리 할당 다시. 새로운 주소 memory value [1][2][3][4][5][6][7]
      * StringBuffer, StringBuilder 클래스 객체는 메모리를 다시 할당하지 않고도 문자열 추가 가능.
      */
-
     System.out.println("==============================================");
+
     // compareTo() 숫자 비교
     Integer compareToTestNum = 10;
     System.out.println(compareToTestNum.compareTo(20)); // -1
@@ -257,10 +272,9 @@ public class Note {
     // 대소문자가 다른 경우 다른 문자
     System.out.println(compareToTestStr.compareToIgnoreCase("ABCD")); // 0
     // 대소문자 무시 메서드
-
     System.out.println("==============================================");
-    // 배열의 복사
 
+    // 배열의 복사
     int[] numArr = new int[] { 0, 1, 2, 3, 4 };
     int[] numArrCopy = numArr; // 주소를 참조함. 같은 객체를 가르키는 주소를 복사
     numArrCopy[0] = -1;
