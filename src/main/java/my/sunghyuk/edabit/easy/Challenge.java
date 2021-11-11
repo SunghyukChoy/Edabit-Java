@@ -1,5 +1,6 @@
 package my.sunghyuk.edabit.easy;
 
+import java.rmi.server.ObjID;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -243,16 +244,16 @@ public class Challenge {
 
 		// Other Solution
 		switch (operator) {
-		case '+':
-			return num1 + num2;
-		case '-':
-			return num1 - num2;
-		case '*':
-			return num1 * num2;
-		case '/':
-			return (num2 != 0) ? num1 / num2 : 0;
-		default:
-			return 0;
+			case '+':
+				return num1 + num2;
+			case '-':
+				return num1 - num2;
+			case '*':
+				return num1 * num2;
+			case '/':
+				return (num2 != 0) ? num1 / num2 : 0;
+			default:
+				return 0;
 		}
 	}
 
@@ -1218,7 +1219,7 @@ public class Challenge {
 	 * @return
 	 */
 	public static boolean powerOfTwo(final int num) {
-		List<String> list = new ArrayList<>();		
+		List<String> list = new ArrayList<>();
 		/* int pow = 1;
 		while (true) {
 			if (pow == num) {
@@ -2512,5 +2513,50 @@ public class Challenge {
 		return bits.charAt(bits.length() - 1) == '1'
 				? bits.substring(0, bits.length() - 1).replace("0", "").length() % 2 == 1
 				: bits.substring(0, bits.length() - 1).replace("0", "").length() % 2 == 0;
+	}
+
+	/**
+	 * Stuttering As We Speak
+	 * @see https://edabit.com/challenge/2tXKcSr4fZKMQToui
+	 * @param word
+	 * @return 말을 더듬는 문장 만들기. 주어진 단어의 앞 두 글자와 '... '를 추가, 느낌표로 종료. stuttering("astonishing") ➞ "as... as... astonishing!"
+	 */
+	public static String stuttering(String word) {
+		return word.substring(0, 2) + "... " + word.substring(0, 2) + "... " + word + "!";
+	}
+
+	/**
+	 * Find Number of Digits in Number
+	 * @see https://edabit.com/challenge/z9ofdqhTYi9tdCj5T
+	 * @param num
+	 * @return 주어진 수의 자리수 리턴
+	 */
+	public static int numOfDigits(int num) {
+		if (num == 0) {
+			return 1;
+		}
+		int digit = 0;
+		while (num != 0) {
+			digit++;
+			num /= 10;
+		}
+		return digit;
+	}
+
+	/**
+	 * Flick Switch
+	 * @param t
+	 * @return 매개변수로 주어진 배열만큼의 길이의 배열을 리턴하는데 요소의 값은 true여야 함. 하지만 주어진 배열에 "flick"이라는 문자가 있으면 리턴하는 배열의 요소 값은 반대로 바뀜. true, false 값을 담은 배열 리턴
+	 */
+	public static Boolean[] switches(Object[] t) {
+		boolean value = true;
+		Boolean[] arr = new Boolean[t.length];
+		for (int i = 0; i < t.length; i++) {
+			if (t[i].equals("flick")) {
+				value = !value;
+			}
+			arr[i] = value;
+		}
+		return arr;
 	}
 }

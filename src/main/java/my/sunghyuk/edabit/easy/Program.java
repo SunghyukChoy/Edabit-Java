@@ -802,4 +802,21 @@ public class Program {
   public static String removeABC(String words) {
     return words.replaceAll("[abc]", "").equals(words) ? null : words.replaceAll("[abc]", "");
   }
+
+  /**
+   * Can You Spare A Square?
+   * @see https://edabit.com/challenge/iJSAYBTLZvLuqAnN4
+   * @param people
+   * @param tp
+   * @return tp눈 주어진 roll의 수이고 하나의 roll당 500 sheets를 갖고 있음. 한 사람당 하루에 57 sheet를 쓴다고 할 때 14일을 버틸 수 있는가
+   */
+  public static String tpChecker(int people, int tp) {
+
+    int days = (tp * 500) / (people * 57);
+    if (days >= 14) {
+      return "Your TP will last " + days + " days, no need to panic!";
+    } else {
+      return "Your TP will only last " + days + " days, buy more!";
+    }
+  }
 }

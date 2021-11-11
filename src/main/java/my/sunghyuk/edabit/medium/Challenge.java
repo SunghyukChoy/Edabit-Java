@@ -1,5 +1,6 @@
 package my.sunghyuk.edabit.medium;
 
+import java.io.Console;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -3110,5 +3111,24 @@ public class Challenge {
       }
     }
     return Integer.parseInt(sb.toString());
+  }
+
+  /**
+   * Highest Digit
+   * @param n
+   * @return 주어진 정수에서 가장 큰 digit 리턴.
+   */
+  public static int highestDigit(int n) {
+    int digit;
+    int highestDigit = n % 10;
+    n /= 10;
+    while (n != 0) {
+      digit = n % 10;
+      n /= 10;
+      if (digit > highestDigit) {
+        highestDigit = digit;
+      }
+    }
+    return highestDigit;
   }
 }
